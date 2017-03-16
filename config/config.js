@@ -6,10 +6,10 @@ module.exports = {
  
     development: {
     	redis: {
-            port: 6379,
-            host: 'localhost',
-            pass: '',
-            db: 1
+            port: 3844,
+            host: '50.30.35.9',
+            pass: '5e6b16047caeb75191d9c0cb77bbb9a6',
+            db: 16
         },
         db: 'mongodb://Muhammed:012580504999@users-shard-00-00-gkxxn.mongodb.net:27017,users-shard-00-01-gkxxn.mongodb.net:27017,users-shard-00-02-gkxxn.mongodb.net:27017/users?ssl=true&replicaSet=users-shard-0&authSource=admin',
 
