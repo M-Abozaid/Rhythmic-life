@@ -44,6 +44,7 @@ class SessionStore {
 	}
 
 	findOrCreate(fbid) {
+		console.log('findOrCreate inside');
 		let newSession = false;
 		return redis.findFirstKey(this._redisPrefix + '*' + fbid)
 		.then(key => {

@@ -115,6 +115,7 @@ exports.getKey = function (keyName) {
 exports.findFirstKey = function(pattern) {
     return client.keysQ(pattern)
     .then(function(keys) {
+        console.log('findFirstKey inside');
         return keys && keys.length && keys[0];
     });
 }
