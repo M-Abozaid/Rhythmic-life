@@ -31,7 +31,7 @@ exports.getOrCreateUserByRecipientId = function(id, data) {
 			});
 			return user.saveQ();
 		}
-		console.log('user');
+		console.log('user'+user);
 		return user;
 	});
 };
@@ -48,6 +48,7 @@ exports.updateUserLocation = function(recipientId, location) {
 };
 
 exports.logActivity = function(id) {
+	console.log('updating activity');
 	return User.updateQ({_id: id}, {$set: {lastActivity: new Date()}});
 };
 

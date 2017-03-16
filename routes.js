@@ -115,7 +115,7 @@ function processMessage(messaging) {
 			return userService.logActivity(session.context.userData._id);
 		})
 		.then(() => {
-			//console.log(session.context);
+			console.log('session.context' +session.context);
 			return GraphAPI.sendTypingOn(sender);
 		})
 		.then(() => {

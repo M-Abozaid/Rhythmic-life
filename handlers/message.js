@@ -5,7 +5,7 @@ const wit = require('../wit');
 
 module.exports = function handleTextMessage (sessionId, context, msg) {
 	context.message = msg;
-	//console.log(context)
+	console.log('inside handleTextMessage')
 	wit.runActions(sessionId, msg, context, (error, context) => {
 		if (error) {
 			console.log('Oops! Got an error from Wit:', error);
