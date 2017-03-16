@@ -11,15 +11,17 @@ module.exports = {
             pass: '',
             db: 1
         },
-        db: 'mongodb://localhost/chatbotdb',
+        db: 'mongodb://Muhammed:012580504999@users-shard-00-00-gkxxn.mongodb.net:27017,users-shard-00-01-gkxxn.mongodb.net:27017,users-shard-00-02-gkxxn.mongodb.net:27017/users?ssl=true&replicaSet=users-shard-0&authSource=admin',
 
-    	fbPageToken: '',
-    	fbPageID: '',
-    	fbWebhookVerifyToken: '',
-    	witToken: ''
+    	fbPageToken: 'EAAGCwOXSeYsBAII8O2PpPLM2kVNv80Ge78FR1tuima9fJdzTI5RGufCqBmqN4aICPMN9ZCENFhomY3EOZBdqZBZAVOFzYwvvw2ZA2GanvVVNOPcxAbBAO3HR5ztoV9z2L4hZBPkjUIYKkxTdZC6DgFvcGJZAL28Ftxrha60fge5pOwZDZD',
+    	fbPageID: '425239977818507',
+    	fbWebhookVerifyToken: 'EAAGCwOXSeYsBAII8O2PpPLM2kVNv80Ge78FR1tuima9fJdzTI5RGufCqBmqN4aICPMN9ZCENFhomY3EOZBdqZBZAVOFzYwvvw2ZA2GanvVVNOPcxAbBAO3HR5ztoV9z2L4hZBPkjUIYKkxTdZC6DgFvcGJZAL28Ftxrha60fge5pOwZDZD',
+    	witToken: '3M4PL43CYYL5FD4UAGSP4SD2S42WZNJX'
     },
  
     production: {
 
     }
 }
+
+//770789176412771
