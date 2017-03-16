@@ -2,7 +2,7 @@
 
 const request = require('request-promise');
 const config = require('./config')
-const FB_PAGE_TOKEN = config.fbPageToken;
+const FB_PAGE_TOKEN = 'EAAGCwOXSeYsBAII8O2PpPLM2kVNv80Ge78FR1tuima9fJdzTI5RGufCqBmqN4aICPMN9ZCENFhomY3EOZBdqZBZAVOFzYwvvw2ZA2GanvVVNOPcxAbBAO3HR5ztoV9z2L4hZBPkjUIYKkxTdZC6DgFvcGJZAL28Ftxrha60fge5pOwZDZD';
 const Q = require('q');
 const _ = require('lodash');
 
