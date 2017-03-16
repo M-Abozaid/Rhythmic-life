@@ -33,9 +33,10 @@ function extractMessagingObjects(body) {
 
 //Main routes
 exports.get = function(req, res, next) {
-	if (req.query['hub.mode'] === 'subscribe' && req.query['hub.verify_token'] === FB_VERIFY_TOKEN) {
+	console.log("Validating webhook");
+	if (req.query['hub.mode'] === 'subscribe' && req.query['hub.verify_token'] === 'Hello-dude') {
 		res.send(req.query['hub.challenge']);
-		console.log("Validating webhook");
+		
 	} else {
 		res.sendStatus(400);
 	}
