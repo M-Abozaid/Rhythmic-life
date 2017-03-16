@@ -28,6 +28,14 @@ exports.init = function (config, forceNoDebug) {
     debug('initializing database connection');
     mongoose.connect(config.db);
 
+    // code from corsera
+    var db1 = mongoose.connection;
+    db1.on('error', console.error.bind(console, 'connection error:'));
+    db1.once('open', function () {
+        // we're connected!
+        console.log("Connected correctly to server");
+    });
+    
     //Set debug mode for dev environment
     var env = process.env.NODE_ENV || 'development';
     if (env === 'development' && !forceNoDebug) {

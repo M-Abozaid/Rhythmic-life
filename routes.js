@@ -76,7 +76,7 @@ const handlePostback = require('./handlers/postback');
 
 
 function processMessage(messaging) {
-	
+	console.log('processin message');
 	const sender = messaging.sender.id;
 
 	let sessionId;
@@ -85,6 +85,7 @@ function processMessage(messaging) {
 	
 	return sessionStore.findOrCreate(sender)
 		.then(data => {
+			console.log('findOrCreate');
 			sessionId = data.sessionId;
 			session = data.session;
 			newSession = data.newSession;
@@ -100,7 +101,7 @@ function processMessage(messaging) {
 			return data;	
 		})
 		.then(data => {
-	
+			console.log('findOrCreate then');
 			if (!session.context.userData._id) {
 				return userService.getOrCreateUserByRecipientId(sender, session.context.userData)	
 					.then(user => {
@@ -110,6 +111,7 @@ function processMessage(messaging) {
 			}
 		})
 		.then(() => {
+			console.log('saveSession');
 			return userService.logActivity(session.context.userData._id);
 		})
 		.then(() => {
