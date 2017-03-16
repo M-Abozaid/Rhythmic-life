@@ -49,4 +49,4 @@ const actions = {
 
 
 // Setting up our bot
-module.exports = new Wit({accessToken: '3M4PL43CYYL5FD4UAGSP4SD2S42WZNJX', actions: actions});
+module.exports = new Wit({accessToken: 'UUFARUEEEUYJJHUZSYO3JGMPPLKVBOV5', actions: actions});

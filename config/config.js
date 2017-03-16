@@ -16,7 +16,7 @@ module.exports = {
     	fbPageToken: 'EAAGCwOXSeYsBAII8O2PpPLM2kVNv80Ge78FR1tuima9fJdzTI5RGufCqBmqN4aICPMN9ZCENFhomY3EOZBdqZBZAVOFzYwvvw2ZA2GanvVVNOPcxAbBAO3HR5ztoV9z2L4hZBPkjUIYKkxTdZC6DgFvcGJZAL28Ftxrha60fge5pOwZDZD',
     	fbPageID: '770789176412771',
     	fbWebhookVerifyToken: 'Hello-dude',
-    	witToken: '3M4PL43CYYL5FD4UAGSP4SD2S42WZNJX'
+    	witToken: 'UUFARUEEEUYJJHUZSYO3JGMPPLKVBOV5'
     },
  
     production: {
