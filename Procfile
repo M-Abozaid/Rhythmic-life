@@ -1,1 +1,1 @@
-web:    bin/start-stunnel node app.js
+web:  node app.js
