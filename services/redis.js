@@ -13,6 +13,13 @@ error.log = console.error.bind(console);
 
 var redisIsReady = false;
 
+//config 
+ 
+const configport = 3844;
+const confighost = '50.30.35.9';
+const configpass = '5e6b16047caeb75191d9c0cb77bbb9a6';
+const configdb = 16;
+        
 
 // Redis client object
 var client;
@@ -27,18 +34,18 @@ function createClientQ(client) {
 }
 
 function createClient(config, returnBuffers) {
-    debug('connecting to %s:%s', config.host, config.port);
+    debug('connecting to %s:%s', confighost, configport);
     var client;
 
-    client = redis.createClient(config.port, config.host, {return_buffers: returnBuffers});
+    client = redis.createClient(configport, confighost, {return_buffers: returnBuffers});
     client = createClientQ(client);
 
-    if (config.pass) {
-        client.auth(config.pass);
+    if (configpass) {
+        client.auth(configpass);
     }
 
-    if (config.db) {
-        client.select(config.db);
+    if (configdb) {
+        client.select(configdb);
     }
 
     client.on('error', function (err) {
@@ -61,7 +68,12 @@ exports.redisIsReady = function () {
  * @param {Object} config configuration with host, port, pass
  */
 exports.init = function initRedis(config) {
-    client = createClient(config.redis);
+    client = createClient( {
+            port: 3844,
+            host: '50.30.35.9',
+            pass: '5e6b16047caeb75191d9c0cb77bbb9a6',
+            db: 16
+        });
 };
 
 
@@ -114,3 +126,4 @@ exports.findFirstKey = function(pattern) {
 exports.getClient = function() {
     return client;
 };
+
