@@ -31,6 +31,7 @@ exports.getOrCreateUserByRecipientId = function(id, data) {
 			});
 			return user.saveQ();
 		}
+		console.log('user');
 		return user;
 	});
 };
