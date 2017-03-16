@@ -16,11 +16,15 @@ const config = require('./config');
 const actions = {
 	send(request, response) {
 
+		const {sessionId, context, entities} = request;
+   		const {text, quickreplies} = response;
 		debug('saying', response);
 
 		let recipientId;
 		return sessionStore.get(request.sessionId)
 		.then(session => {
+			console.log('user said...', request.text);
+      		console.log('sending...', JSON.stringify(response));
 			recipientId = session.fbid;
 			return GraphAPI.sendTemplateMessage(recipientId, response);
 		})
