@@ -18,7 +18,7 @@ exports.getById = function (id) {
 
 
 exports.getOrCreateUserByRecipientId = function(id, data) {
-	console.log('user'+user);
+	
 	return exports.getByRecipientId(id)
 	.then( user => {
 		if (!user) {
