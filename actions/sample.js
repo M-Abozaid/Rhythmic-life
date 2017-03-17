@@ -14,7 +14,7 @@ module.exports = function({sessionId, context, text, entities}) {
 		debug(`The current context is ${JSON.stringify(context)}`);
 		debug(`Wit extracted ${JSON.stringify(entities)}`);
 
-		return GraphAPI.sendPlainMessage(recipientId, 'Hi');
+		return GraphAPI.sendPlainMessage(recipientId, 'Hi{context.userData.data.first_name}');
 	})
 	.then(function() {
 		return context;
