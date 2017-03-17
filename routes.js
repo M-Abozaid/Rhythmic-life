@@ -24,7 +24,7 @@ function extractMessagingObjects(body) {
 				return !!(msg.message || msg.postback);
 			})
 			messages = messages.concat(recievedMessages);
-			console.log('messages'+JSON.stringify(messages));
+			console.log('messages in extract '+JSON.stringify(messages));
 		}
 	}
 	console.log("messages obj" +messages);
@@ -83,7 +83,7 @@ function processMessage(messaging) {
 	let sessionId;
 	let session;
 	let newSession;
-	
+	console.log('sender inside processin message '+sender);
 	return sessionStore.findOrCreate(sender)
 		.then(data => {
 			console.log('findOrCreate');
