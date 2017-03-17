@@ -75,7 +75,7 @@ class GraphAPI {
 	getUserProfile(recipientId) {
 		return request({
 			method:'GET', 
-			url: 'https://graph.facebook.com/v2.6/' + recipientId,
+			url: 'https://graph.facebook.com/v2.8/' + recipientId,
 			json: true,
 			qs: {
 				fields: 'first_name,last_name,locale,timezone,gender', 
