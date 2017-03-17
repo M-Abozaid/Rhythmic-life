@@ -16,11 +16,13 @@ module.exports = function({sessionId, context, text, entities}) {
 		console.log('user'+context.userData.first_name);
 		console.log('entities '+ JSON.stringify(entities));
 		let greeting = entities.greetings.value;
+		console.log('entitiy value '+greeting);
+		
 		switch(greeting){
 			case 'good afternoon':
 			return GraphAPI.sendPlainMessage(recipientId, 'Good afternoon '+context.userData.first_name);
 
-			case 'good morning':
+			case "good morning":
 			return GraphAPI.sendPlainMessage(recipientId, 'Good morning '+context.userData.first_name);
 
 			case 'good evening':
