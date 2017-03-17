@@ -73,6 +73,7 @@ class GraphAPI {
 	}
 
 	getUserProfile(recipientId) {
+		console.log('gettingg UserProfile');
 		return request({
 			method:'GET', 
 			url: 'https://graph.facebook.com/v2.8/' + recipientId,
