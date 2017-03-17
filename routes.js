@@ -26,7 +26,7 @@ function extractMessagingObjects(body) {
 			messages = messages.concat(recievedMessages);
 		}
 	}
-
+	console.log("messages obj" +messages);
 	return messages;
 }
 
@@ -107,6 +107,7 @@ function processMessage(messaging) {
 					.then(user => {
 						session.context.userData._id = user._id.toString();
 						return sessionStore.saveSession(sessionId, session); 
+						console.log('user'+user);
 					});
 			}
 		})

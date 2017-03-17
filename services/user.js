@@ -2,7 +2,8 @@
 
 var debug = require('debug')('cbp:services:user');
 
-var mongoose = require('mongoose-q')(require('mongoose'));
+//var mongoose = require('mongoose-q')(require('mongoose'));
+var mongoose = (require('mongoose'));
 var User = mongoose.model('User');
 
 var Q = require('q');
@@ -17,6 +18,7 @@ exports.getById = function (id) {
 
 
 exports.getOrCreateUserByRecipientId = function(id, data) {
+	console.log('user'+user);
 	return exports.getByRecipientId(id)
 	.then( user => {
 		if (!user) {
