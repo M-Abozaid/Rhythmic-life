@@ -114,9 +114,10 @@ exports.getKey = function (keyName) {
 };
 
 exports.findFirstKey = function(pattern) {
+   console.log('findFirstKey inside bef post');
     return client.keysQ(pattern)
     .then(function(keys) {
-        console.log('findFirstKey inside');
+        
         return keys && keys.length && keys[0];
     });
 }

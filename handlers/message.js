@@ -15,6 +15,7 @@ module.exports = function handleTextMessage (sessionId, context, msg) {
 		console.log('Waiting for futher messages.');
 
 		if (context['done']) {
+			console.log('context done inside runActions');
 		   	sessionStore.destroy(sessionId);
 		}			
 	});

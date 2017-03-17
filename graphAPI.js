@@ -9,7 +9,7 @@ const _ = require('lodash');
 class GraphAPI {
 	constructor() {
 		this.api = request.defaults({
-			uri: 'https://graph.facebook.com/v2.6/me/messages',
+			uri: 'https://graph.facebook.com/v2.8/me/messages',
 			method: 'POST',
 			json: true,
 			qs: { access_token: FB_PAGE_TOKEN },

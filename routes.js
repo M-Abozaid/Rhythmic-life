@@ -24,6 +24,7 @@ function extractMessagingObjects(body) {
 				return !!(msg.message || msg.postback);
 			})
 			messages = messages.concat(recievedMessages);
+			console.log('messages'+JSON.stringify(messages));
 		}
 	}
 	console.log("messages obj" +messages);
@@ -91,6 +92,7 @@ function processMessage(messaging) {
 			newSession = data.newSession;
 		
 			if (!session.context.userData) {
+				console.log('right before gitting user profile');
 				return GraphAPI.getUserProfile(sender)
 					.then(user => {
 						console.log('after gitting user profile');

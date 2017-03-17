@@ -29,6 +29,7 @@ const UserSchema = new Schema({
             when: Date
         }    
     ],
+    
 
     lastActivity: {type: Date, default: Date.now, index: true},
 
