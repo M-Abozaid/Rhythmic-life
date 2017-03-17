@@ -15,9 +15,9 @@ module.exports = function({sessionId, context, text, entities}) {
 		debug(`Wit extracted ${JSON.stringify(entities)}`);
 		console.log('user'+context.userData.first_name);
 		console.log('entities '+ JSON.stringify(entities));
-		let greeting = entities.greetings.value;
+		let greeting = entities.greetings[0].value;
 		console.log('entitiy value '+greeting);
-		
+
 		switch(greeting){
 			case 'good afternoon':
 			return GraphAPI.sendPlainMessage(recipientId, 'Good afternoon '+context.userData.first_name);
