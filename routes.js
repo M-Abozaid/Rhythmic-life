@@ -47,7 +47,7 @@ exports.receive = function(req, res, next) {
 
 	//respond as soon as possible
 	res.status(200).end();
-	console.log("A POST REQUEST RECEIVED" + JSON.stringify(req));
+	console.log("A POST REQUEST RECEIVED" );
 	const messages = extractMessagingObjects(req.body);
 	if (!messages.length) {
 		return;
