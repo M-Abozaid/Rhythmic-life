@@ -13,8 +13,8 @@ module.exports = function({sessionId, context, text, entities}) {
 		debug(`Session ${sessionId} received ${text}`);
 		debug(`The current context is ${JSON.stringify(context)}`);
 		debug(`Wit extracted ${JSON.stringify(entities)}`);
-
-		return GraphAPI.sendPlainMessage(recipientId, 'Hi');
+		console.log('user'+context.userData.first_name);
+		return GraphAPI.sendPlainMessage(recipientId, 'Hi'+context.userData.first_name);
 	})
 	.then(function() {
 		return context;
