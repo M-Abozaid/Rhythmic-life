@@ -7,7 +7,7 @@ const GraphAPI = require('./graphAPI');
 const sessionStore = require('./sessionStore');
 
 const userService = require('./services/user');
-const config = require('./config');
+const config = require('config'); ///// Fix shouldnt be ./config
 
 const FB_VERIFY_TOKEN = config.fbWebhookVerifyToken;
 const FB_PAGE_ID = config.fbPageID; 
@@ -18,7 +18,7 @@ function extractMessagingObjects(body) {
 	var messages = [];
 
 	for (var i = 0; i < body.entry.length; i++) {
-		console.log('inside the for loop for body.entry '+FB_PAGE_ID);
+		console.log('inside the for loop for body.entry ');
 		var eventEntry = body.entry[i];
 		if (eventEntry.id.toString() === FB_PAGE_ID){
 			var recievedMessages = _.filter(eventEntry.messaging, function(msg) {
