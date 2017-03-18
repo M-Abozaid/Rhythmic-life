@@ -30,18 +30,18 @@ function createClientQ(client) {
 }
 
 function createClient(config, returnBuffers) {
-    debug('connecting to %s:%s', config.host,  config.port);
+    debug('connecting to %s:%s', config.redis.host,  config.redis.port);
     var client;
 
-    client = redis.createClient(config.port, config.host, {return_buffers: returnBuffers});
+    client = redis.createClient(config.redis.port, config.redis.host, {return_buffers: returnBuffers});
     client = createClientQ(client);
 
-    if (config.pass) {
-        client.auth(config.pass);
+    if (config.redis.pass) {
+        client.auth(config.redis.pass);
     }
 
-    if (config.db) {
-        client.select(config.db);
+    if (config.redis.db) {
+        client.select(config.redis.db);
     }
 
     client.on('error', function (err) {
@@ -66,12 +66,7 @@ exports.redisIsReady = function () {
  * @param {Object} config configuration with host, port, pass
  */
 exports.init = function initRedis(config) {
-    client = createClient( {
-            port: config.port,
-            host: config.host,
-            pass: config.pass,
-            db: config.db
-        });
+    client = createClient( config.redis);
 };
 
 
