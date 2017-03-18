@@ -17,4 +17,8 @@ dump.rdb
 .DS_Store
 npm-debug.log
 node_modules
+<<<<<<< HEAD
 
+=======
+config
+>>>>>>> 177c58b2ef2b8c10c8cc8ec9853d3cc888cb39bb
