@@ -16,10 +16,10 @@ var redisIsReady = false;
 
 //config 
  
-const configport = config.redis.port;        //3844;
-const confighost = config.redis.host;//'50.30.35.9';
-const configpass = config.redis.pass;//'5e6b16047caeb75191d9c0cb77bbb9a6';
-const configdb = config.redis.db;
+//const configport = config.redis.port;        //3844;
+//const confighost = config.redis.host;//'50.30.35.9';
+//const configpass = config.redis.pass;//'5e6b16047caeb75191d9c0cb77bbb9a6';
+//const configdb = config.redis.db;
         
 
 // Redis client object
@@ -35,18 +35,18 @@ function createClientQ(client) {
 }
 
 function createClient(config, returnBuffers) {
-    debug('connecting to %s:%s', confighost, configport);
+    debug('connecting to %s:%s', config.host,  config.port);
     var client;
 
-    client = redis.createClient(configport, confighost, {return_buffers: returnBuffers});
+    client = redis.createClient(config.port, config.host, {return_buffers: returnBuffers});
     client = createClientQ(client);
 
-    if (configpass) {
-        client.auth(configpass);
+    if (config.pass) {
+        client.auth(config.pass);
     }
 
-    if (configdb) {
-        client.select(configdb);
+    if (confi.gdb) {
+        client.select(config.db);
     }
 
     client.on('error', function (err) {
