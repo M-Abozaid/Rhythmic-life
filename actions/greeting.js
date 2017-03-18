@@ -29,7 +29,7 @@ module.exports = function({sessionId, context, text, entities}) {
 			return GraphAPI.sendPlainMessage(recipientId, 'Good evening '+context.userData.first_name);
 
 			default:
-			return GraphAPI.sendPlainMessage(recipientId, 'Hello '+context.userData.first_name);
+			return GraphAPI.sendPlainMessage(recipientId, 'Hello أهلا يخويا'+context.userData.first_name);
 		}
 
 		

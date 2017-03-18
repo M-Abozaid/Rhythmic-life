@@ -9,16 +9,17 @@ const Q = require('q');
 const redis = require('redis');
 const debug = require('debug')('cbp:lib:redis');
 const error = require('debug')('cbp:lib:redis:error');
+const config = require('config');
 error.log = console.error.bind(console);
 
 var redisIsReady = false;
 
 //config 
  
-const configport = 3844;
-const confighost = '50.30.35.9';
-const configpass = '5e6b16047caeb75191d9c0cb77bbb9a6';
-const configdb = 16;
+const configport = config.redis.port;        //3844;
+const confighost = config.redis.host;//'50.30.35.9';
+const configpass = config.redis.pass;//'5e6b16047caeb75191d9c0cb77bbb9a6';
+const configdb = config.redis.db;
         
 
 // Redis client object

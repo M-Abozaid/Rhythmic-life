@@ -11,6 +11,8 @@ const GraphAPI = require('./graphAPI');
 const sessionStore = require('./sessionStore');
 const config = require('./config');
 
+const 
+
 
 // bot actions
 const actions = {
@@ -53,4 +55,4 @@ const actions = {
 
 
 // Setting up our bot
-module.exports = new Wit({accessToken: 'UUFARUEEEUYJJHUZSYO3JGMPPLKVBOV5', actions: actions});
+module.exports = new Wit({accessToken: config.witToken, actions: actions});
