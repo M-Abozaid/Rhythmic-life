@@ -18,6 +18,7 @@ function extractMessagingObjects(body) {
 	var messages = [];
 
 	for (var i = 0; i < body.entry.length; i++) {
+		console.log('inside the for loop for body.entry ');
 		var eventEntry = body.entry[i];
 		if (eventEntry.id.toString() === FB_PAGE_ID){
 			var recievedMessages = _.filter(eventEntry.messaging, function(msg) {
@@ -27,7 +28,7 @@ function extractMessagingObjects(body) {
 			console.log('messages in extract '+JSON.stringify(messages));
 		}
 	}
-	console.log("messages obj" +messages);
+	console.log("messages obj" +JSON.stringify(messages));
 	return messages;
 }
 

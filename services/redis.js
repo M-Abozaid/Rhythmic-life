@@ -49,7 +49,7 @@ function createClient(config, returnBuffers) {
     });
 
     client.on('connect', function() {
-        console.log('redis is ready');
+        
         redisIsReady = true;
     });
 
@@ -57,6 +57,7 @@ function createClient(config, returnBuffers) {
 }
 
 exports.redisIsReady = function () {
+    console.log('redis is ready');
     return redisIsReady;
 };
 
@@ -66,10 +67,10 @@ exports.redisIsReady = function () {
  */
 exports.init = function initRedis(config) {
     client = createClient( {
-            port: 3844,
-            host: '50.30.35.9',
-            pass: '5e6b16047caeb75191d9c0cb77bbb9a6',
-            db: 16
+            port: config.port,
+            host: config.host,
+            pass: config.pass,
+            db: config.db
         });
 };
 
