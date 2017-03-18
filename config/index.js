@@ -55,17 +55,17 @@ function mergeSharedConfigs(shared, config) {
  * @private
  */
 function createConfig() {
-    const env = process.env.NODE_ENV || 'development';
+    const env =  'development'; //process.env.NODE_ENV ||
     var config = require('./config');
 
     config = mergeSharedConfigs(config.shared, config[env]);
     
     config.fbPageToken = process.env.FB_VERIFY_TOKEN || config.fbPageToken;
     config.fbPageID = process.env.FB_PAGE_ID || config.fbPageID;
-    config.fbWebhookVerifyToken =   config.development.fbWebhookVerifyToken;  //  ||  process.env.FB_WEBHOOK_VERIFY_TOKEN
+    config.fbWebhookVerifyToken =   config.fbWebhookVerifyToken; //process.env.FB_WEBHOOK_VERIFY_TOKEN
     config.witToken = process.env.WIT_TOKEN || config.witToken;
 
-    config.redis =  config.development.redis;  //  || redisConfig() 
+    config.redis =  config.redis;  //  || redisConfig() 
     config.db = mongoConfig() || config.db;
     console.log('config in createConfig  '+JSON.stringify(config))
     return config;
