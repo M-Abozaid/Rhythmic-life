@@ -76,7 +76,7 @@ class GraphAPI {
 		console.log('gettingg UserProfile');
 		return request({
 			method:'GET', 
-			url: 'https://graph.facebook.com/v2.8/' + recipientId+'?fields=first_name,last_name,locale,timezone,gender',
+			url: 'https://graph.facebook.com/v2.8/' + recipientId,
 			json: true,
 			qs: {
 				fields: 'first_name,last_name,locale,timezone,gender', 

@@ -10,7 +10,7 @@ const userService = require('./services/user');
 const config = require('./config');
 
 const FB_VERIFY_TOKEN = config.fbWebhookVerifyToken;
-const FB_PAGE_ID = config.fbPageID; //'770789176412771';
+const FB_PAGE_ID = config.fbPageID; 
 
 
 

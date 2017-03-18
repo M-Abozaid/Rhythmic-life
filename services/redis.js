@@ -15,12 +15,7 @@ error.log = console.error.bind(console);
 var redisIsReady = false;
 
 //config 
- 
-//const configport = config.redis.port;        //3844;
-//const confighost = config.redis.host;//'50.30.35.9';
-//const configpass = config.redis.pass;//'5e6b16047caeb75191d9c0cb77bbb9a6';
-//const configdb = config.redis.db;
-        
+
 
 // Redis client object
 var client;
