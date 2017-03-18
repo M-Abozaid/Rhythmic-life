@@ -45,7 +45,7 @@ function createClient(config, returnBuffers) {
         client.auth(config.pass);
     }
 
-    if (confi.gdb) {
+    if (config.db) {
         client.select(config.db);
     }
 
