@@ -62,10 +62,10 @@ function createConfig() {
     
     config.fbPageToken = process.env.FB_VERIFY_TOKEN || config.fbPageToken;
     config.fbPageID = process.env.FB_PAGE_ID || config.fbPageID;
-    config.fbWebhookVerifyToken = process.env.FB_WEBHOOK_VERIFY_TOKEN || config.fbWebhookVerifyToken;
+    config.fbWebhookVerifyToken =   config.fbWebhookVerifyToken;  //  ||  process.env.FB_WEBHOOK_VERIFY_TOKEN
     config.witToken = process.env.WIT_TOKEN || config.witToken;
 
-    config.redis = redisConfig() || config.redis;
+    config.redis =  config.redis;  //  || redisConfig() 
     config.db = mongoConfig() || config.db;
     console.log('config in createConfig  '+JSON.stringify(config))
     return config;
