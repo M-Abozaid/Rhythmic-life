@@ -11,7 +11,6 @@ const GraphAPI = require('./graphAPI');
 const sessionStore = require('./sessionStore');
 const config = require('./config');
 
-const 
 
 
 // bot actions
