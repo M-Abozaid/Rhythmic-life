@@ -65,7 +65,7 @@ function createConfig() {
     config.fbWebhookVerifyToken = process.env.FB_WEBHOOK_VERIFY_TOKEN || config.fbWebhookVerifyToken;
     config.witToken = process.env.WIT_TOKEN || config.witToken;
 
-    config.redis = config.redis || redisConfig() ;
+    config.redis = config.redis; //|| redisConfig() ;
     config.db = mongoConfig() || config.db;
 
     return config;
