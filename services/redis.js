@@ -66,7 +66,8 @@ exports.redisIsReady = function () {
  * @param {Object} config configuration with host, port, pass
  */
 exports.init = function initRedis(config) {
-    client = createClient( config.redis);
+    console.log('config in initRedis '+JSON.stringify(config))
+    client = createClient(config.redis);
 };
 
 

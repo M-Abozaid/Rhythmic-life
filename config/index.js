@@ -67,7 +67,7 @@ function createConfig() {
 
     config.redis = redisConfig() || config.redis;
     config.db = mongoConfig() || config.db;
-
+    console.log('config in createConfig  '+JSON.stringify(config))
     return config;
 }
 
