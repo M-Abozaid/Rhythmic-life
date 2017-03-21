@@ -2,6 +2,7 @@
 
 const GraphAPI = require('../graphAPI');
 const platformHelpers = require('../platformHelpers');
+const helper = require('../witHelpers');
 const sessionStore = require('../sessionStore');
 const debug = require('debug')('cbp:actions:sample');
 
@@ -16,10 +17,11 @@ module.exports = function({sessionId, context, text, entities}) {
 		debug(`Wit extracted ${JSON.stringify(entities)}`);
 		console.log('user'+context.userData.first_name);
 		console.log('entities '+ JSON.stringify(entities));
-		let addActivity = entities.diary[0].value;
-		console.log('entitiy value '+addActivity);
-
-		if(addActivity){
+		const diary = helper.getEntityValues(entities ,diary );
+		//let addActivity = entities.diary[0].value;
+		console.log('entitiy value '+diary);
+		const replies = [];
+		if(diary){
 			const replies = ['habit','occasional'];
 			const text = 'allright! tell me the name of the activity?';
 		}
