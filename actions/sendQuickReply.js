@@ -8,7 +8,7 @@ const debug = require('debug')('cbp:actions:sample');
 
 
 module.exports = function({sessionId, context, text, entities}) {
-	console.log('context '+JSON.stringify(context));
+	console.log('context in sendQuick'+JSON.stringify(context));
 	return sessionStore.get(sessionId)
 	.then(session => {
 		const recipientId = session.fbid;
@@ -23,7 +23,7 @@ module.exports = function({sessionId, context, text, entities}) {
 		//const replies = [];
 		//if(diary){
 		replies = ['habit','occasional'];
-		const text = 'allright! tell me the name of the activity?';
+		//const text = 'allright! tell me the name of the activity?';
 		//}
 
 		//let data = platformHelpers.generateQuickReplies(text, replies);
