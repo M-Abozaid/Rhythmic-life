@@ -17,6 +17,7 @@ module.exports = function({sessionId, context, text, entities}) {
 		debug(`Wit extracted ${JSON.stringify(entities)}`);
 		console.log('user'+context.userData.first_name);
 		console.log('entities '+ JSON.stringify(entities));
+		/*
 		const diary = helper.getEntityValues(entities ,'diary' );
 		//let addActivity = entities.diary[0].value;
 		console.log('entitiy value '+diary);
@@ -29,7 +30,8 @@ module.exports = function({sessionId, context, text, entities}) {
 		let data = platformHelpers.generateQuickReplies(text1, replies);
 		
 		return GraphAPI.sendTemplateMessage(recipientId, data);
-		
+		*/
+		return GraphAPI.sendPlainMessage(recipientId, 'Good evening '+context.userData.first_name);
 
 		
 	})
