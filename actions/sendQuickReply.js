@@ -22,12 +22,28 @@ module.exports = function({sessionId, context, text, entities}) {
 		console.log('entitiy value '+diary);
 		//const replies = [];
 		//if(diary){
-		  replies = ['habit','occasional'];
-			const text = 'allright! tell me the name of the activity?';
+		replies = ['habit','occasional'];
+		const text = 'allright! tell me the name of the activity?';
 		//}
 
-		let data = platformHelpers.generateQuickReplies(text, replies);
-			return GraphAPI.sendTemplateMessage(recipientId, data);
+		//let data = platformHelpers.generateQuickReplies(text, replies);
+		let data = { 
+		    "text": 'allright! tell me the name of the activity?',
+		    "quick_replies":[
+		    	 {
+			        "content_type":"text",
+			        "title": 'habit',
+			        "payload": key
+			      },
+			      {
+
+			        "content_type":"text",
+			        "title": 'occasional',
+			        "payload": key
+			      }	]
+		   }
+
+		return GraphAPI.sendTemplateMessage(recipientId, data);
 		
 
 		
