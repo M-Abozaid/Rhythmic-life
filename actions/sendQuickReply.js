@@ -22,7 +22,7 @@ module.exports = function({sessionId, context, text, entities}) {
 		console.log('entitiy value '+diary);
 		//const replies = [];
 		//if(diary){
-		replies = ['habit','occasional'];
+		//replies = ['habit','occasional'];
 		//const text = 'allright! tell me the name of the activity?';
 		//}
 
@@ -33,13 +33,13 @@ module.exports = function({sessionId, context, text, entities}) {
 		    	 {
 			        "content_type":"text",
 			        "title": 'habit',
-			        "payload": key
+			        "payload": 1
 			      },
 			      {
 
 			        "content_type":"text",
 			        "title": 'occasional',
-			        "payload": key
+			        "payload": 2
 			      }	]
 		   }
 
