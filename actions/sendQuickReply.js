@@ -24,7 +24,7 @@ module.exports = function({sessionId, context, text, entities}) {
 		//const replies = [];
 		//if(diary){
 		var replies = {0:'habit',1:'occasional'};
-		const text1 = 'allright! tell me the name of the activity?';
+		const text1 = 'Choose the activity type';
 		//}
 
 		let data = platformHelpers.generateQuickReplies(text1, replies);
