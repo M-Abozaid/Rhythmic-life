@@ -20,7 +20,7 @@ module.exports = function({sessionId, context, text, entities}) {
 		console.log('entitiy value '+addActivity);
 
 		if(addActivity){
-			const replies = {['habit','occasional']};
+			const replies = {'habit','occasional'};
 			const text = 'allright! tell me the name of the activity?';
 		}
 
