@@ -6,7 +6,7 @@ const debug = require('debug')('cbp:actions:sample');
 const helper = require('../witHelpers');
 
 
-module.exports = function({sessionId, context, text, entities}) {
+module.exports = async function({sessionId, context, text, entities}) {
 	console.log('context in create'+JSON.stringify(context));
 	console.log('entities in create '+ JSON.stringify(entities));
 	return sessionStore.get(sessionId)
@@ -28,8 +28,8 @@ module.exports = function({sessionId, context, text, entities}) {
 		return GraphAPI.sendPlainMessage(recipientId, 'created activity '+activityName + 'of type: '+activityType);
 		
 	})
-	/*
+	
 	.then(function() {
 		return context;
-	});*/
+	});
 }
