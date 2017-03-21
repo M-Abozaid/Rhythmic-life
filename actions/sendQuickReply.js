@@ -21,10 +21,10 @@ module.exports = function({sessionId, context, text, entities}) {
 		//let addActivity = entities.diary[0].value;
 		console.log('entitiy value '+diary);
 		const replies = [];
-		if(diary){
+		//if(diary){
 			const replies = ['habit','occasional'];
 			const text = 'allright! tell me the name of the activity?';
-		}
+		//}
 
 		let data = platformHelpers.generateQuickReplies(text, replies);
 			return GraphAPI.sendTemplateMessage(recipientId, data);
