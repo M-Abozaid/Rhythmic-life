@@ -134,6 +134,7 @@ function processMessage(messaging) {
 			const quickReply = messaging.message && messaging.message.quick_reply;
 			if (quickReply) {
 				return handleQuickReply(sender, sessionId, session.context, quickReply.payload);
+				console.log('handling quickreply');
 			} 
 
 			const msg = messaging.message && messaging.message.text;
