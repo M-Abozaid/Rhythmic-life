@@ -17,7 +17,7 @@ module.exports = function({sessionId, context, text, entities}) {
 		debug(`Wit extracted ${JSON.stringify(entities)}`);
 		console.log('user'+context.userData.first_name);
 		console.log('entities '+ JSON.stringify(entities));
-		const diary = helper.getEntityValues(entities ,diary );
+		const diary = helper.getEntityValues(entities ,'diary' );
 		//let addActivity = entities.diary[0].value;
 		console.log('entitiy value '+diary);
 		//const replies = [];
