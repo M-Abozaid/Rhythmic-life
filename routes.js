@@ -80,7 +80,7 @@ const handlePostback = require('./handlers/postback');
 function processMessage(messaging) {
 	console.log('processin message');
 	const sender = messaging.sender.id;
-	if(sender==FB_PAGE_ID){return;}  ///the part is for previnting the page to post 
+	//if(sender==FB_PAGE_ID){return;}  ///the part is for previnting the page to post 
 									///and "error":{"message":"(#100) Tried accessing nonexisting field 
 	let sessionId;
 	let session;
