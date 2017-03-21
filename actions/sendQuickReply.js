@@ -1,6 +1,7 @@
 'use strict';
 
 const GraphAPI = require('../graphAPI');
+const platformHelpers = require('../platformHelpers');
 const sessionStore = require('../sessionStore');
 const debug = require('debug')('cbp:actions:sample');
 
@@ -15,15 +16,17 @@ module.exports = function({sessionId, context, text, entities}) {
 		debug(`Wit extracted ${JSON.stringify(entities)}`);
 		console.log('user'+context.userData.first_name);
 		console.log('entities '+ JSON.stringify(entities));
-		let activityName = entities.activityName[0].value;
-		let activityType = entities.activityType[0].value;
+		let addActivity = entities.diary[0].value;
+		console.log('entitiy value '+addActivity);
 
-		console.log('entitiy1 value '+activityName+' entitiy2 value '+activityType);
+		if(addActivity){
+			const replies = {['habit','occasional']};
+			const text = 'allright! tell me the name of the activity?';
+		}
 
-		context.message = 'created activity '+activityName ;
-			
-		return GraphAPI.sendPlainMessage(recipientId, 'created activity '+activityName + 'of type: '+activityType);
-
+		let data = platformHelpers.generateQuickReplies(text, replies);
+			return GraphAPI.sendTemplateMessage(recipientId, data);
+		
 
 		
 	})
