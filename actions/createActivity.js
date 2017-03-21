@@ -18,11 +18,11 @@ module.exports = function({sessionId, context, text, entities}) {
 		let activityName = entities.activityName[0].value;
 		let activityType = entities.activityType[0].value;
 
-		console.log('entitiy value '+activityName);
+		console.log('entitiy1 value '+activityName+' entitiy2 value '+activityType);
 
-		
+		context.message = 'created activity '+activityName ;
 			
-			return GraphAPI.sendPlainMessage(recipientId, 'created activity '+activityName + 'of type: '+activityType);
+			//return GraphAPI.sendPlainMessage(recipientId, 'created activity '+activityName + 'of type: '+activityType);
 
 
 		
