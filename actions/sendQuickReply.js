@@ -20,9 +20,9 @@ module.exports = function({sessionId, context, text, entities}) {
 		const diary = helper.getEntityValues(entities ,diary );
 		//let addActivity = entities.diary[0].value;
 		console.log('entitiy value '+diary);
-		const replies = [];
+		//const replies = [];
 		//if(diary){
-			const replies = ['habit','occasional'];
+		  replies = ['habit','occasional'];
 			const text = 'allright! tell me the name of the activity?';
 		//}
 
