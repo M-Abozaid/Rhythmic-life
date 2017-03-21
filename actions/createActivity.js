@@ -6,7 +6,7 @@ const debug = require('debug')('cbp:actions:sample');
 const helper = require('../witHelpers');
 
 
-module.exports = async function({sessionId, context, text, entities}) {
+module.exports = function({sessionId, context, text, entities}) {
 	console.log('context in create'+JSON.stringify(context));
 	console.log('entities in create '+ JSON.stringify(entities));
 	return sessionStore.get(sessionId)

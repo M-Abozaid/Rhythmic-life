@@ -15,7 +15,7 @@ const config = require('./config');
 
 // bot actions
 const actions = {
-	async send(request, response) {
+	 send(request, response) {
 
 		const {sessionId, context, entities} = request;
    		const {text, quickreplies} = response;
