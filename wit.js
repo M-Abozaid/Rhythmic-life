@@ -28,6 +28,8 @@ const actions = {
       		console.log('sending...', JSON.stringify(response));
 			recipientId = session.fbid;
 			return GraphAPI.sendTemplateMessage(recipientId, response);
+		}).then(function() {
+			return context;
 		})
 		.catch((err) => {
 			console.log('Oops! An error occurred while forwarding the response to', recipientId, ':', err );
