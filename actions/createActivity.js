@@ -26,11 +26,10 @@ module.exports = function({sessionId, context, text, entities}) {
 		context.message = 'created activity '+activityName ;
 			
 		return GraphAPI.sendPlainMessage(recipientId, 'created activity '+activityName + 'of type: '+activityType);
-
-
 		
 	})
+	/*
 	.then(function() {
 		return context;
-	});
+	});*/
 }

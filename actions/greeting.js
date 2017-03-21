@@ -33,8 +33,8 @@ module.exports = function({sessionId, context, text, entities}) {
 		}
 
 		
-	})
+	})/*
 	.then(function() {
 		return context;
-	});
+	});*/
 }
