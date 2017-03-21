@@ -15,8 +15,8 @@ module.exports = function({sessionId, context, text, entities}) {
 		debug(`Wit extracted ${JSON.stringify(entities)}`);
 		console.log('user'+context.userData.first_name);
 		console.log('entities '+ JSON.stringify(entities));
-		let activityName = entities.activityName[0].value;
-		let activityType = entities.activityType[0].value;
+		let activityName = entities.activity_name[0].value;
+		let activityType = entities.activity_type[0].value;
 
 		console.log('entitiy1 value '+activityName+' entitiy2 value '+activityType);
 
