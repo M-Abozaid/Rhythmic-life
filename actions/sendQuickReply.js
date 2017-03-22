@@ -23,7 +23,7 @@ module.exports = function({sessionId, context, text, entities}) {
 		//console.log('entitiy value '+diary);
 		//const replies = [];
 		//if(diary){
-		activityName = helper.getEntityValues(entities ,'acitvity_name' );
+		//activityName = helper.getEntityValues(entities ,'acitvity_name' );
 		var replies = {0:'habit',1:'occasional'};
 		const text1 = 'Choose the activity type';
 		//}
@@ -33,11 +33,11 @@ module.exports = function({sessionId, context, text, entities}) {
 		return GraphAPI.sendTemplateMessage(recipientId, data);
 		
 		//return GraphAPI.sendPlainMessage(recipientId, 'Good evening '+context.userData.first_name);
-		if (activityName){
-			context.activityName = activityName;
-		}else{
+		//if (activityName){
+		//	context.activityName = activityName;
+		//}else{
 			context.activityName = context.message; 
-		}
+		//}
 		
 	})
 	
