@@ -51,15 +51,7 @@ const actions = {
 				console.log('user said...', request.text);
 				console.log('sending...', JSON.stringify(response));
 				recipientId = session.fbid;
-				if (quickreplies) {
-					var replies = {
-						0: 'habit',
-						1: 'occasional'
-					};
-					const text1 = 'Choose the activity type';
-
-					let response = platformHelpers.generateQuickReplies(text1, replies);
-				}
+				
 				return GraphAPI.sendTemplateMessage(recipientId, response);
 			}) //.then(function() {
 			//return context;
@@ -70,8 +62,9 @@ const actions = {
 
 	},
 
-	['select-joke'] ({sessionId, context, text, entities}) {
+	pass ({sessionId, context, text, entities}) {
 	console.log('context '+JSON.stringify(context));
+	console.log('inside select-joke');
 	return sessionStore.get(sessionId)
 	.then(function(){
 		return new Promise(function(resolve, reject) {

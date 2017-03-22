@@ -5,8 +5,12 @@ const platformHelpers = require('../platformHelpers');
 
 
 module.exports = function handleQuickReply(sender, sessionId, context, payload) {
-		context.message = msg;
+	//context.message = msg;
+
 	console.log('inside handleTextMessage')
+
+	let payloadTokens = payload.split(':');
+	const msg = payloadTokens[0];
 	wit.runActions(sessionId, msg, context, (error, context) => {
 		if (error) {
 			console.log('Oops! Got an error from Wit:', error);
@@ -21,7 +25,7 @@ module.exports = function handleQuickReply(sender, sessionId, context, payload) 
 		}			
 	});
 
-	/*
+/*	
 	let payloadTokens = payload.split(':');
 	const action = payloadTokens[0];
 	const data = payloadTokens[1];
@@ -38,7 +42,7 @@ module.exports = function handleQuickReply(sender, sessionId, context, payload) 
 			return sendGenericCardsSample(sender);
 			break;
 	}
-	*/
+*/
 }
 
 
