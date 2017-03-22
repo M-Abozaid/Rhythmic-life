@@ -30,6 +30,9 @@ module.exports = function({sessionId, context, text, entities}) {
 	})
 	
 	.then(function() {
-		return context;
+		.then(function(){
+		return new Promise(function(resolve, reject) {
+		return resolve(context);
+		});
 	});
 }
