@@ -12,6 +12,7 @@ module.exports = function handleQuickReply(sender, sessionId, context, payload) 
 
 	let payloadTokens = payload.split(':');
 	const msg = payloadTokens[0];
+	
 	wit.runActions(sessionId, msg, context, (error, context) => {
 		if (error) {
 			console.log('Oops! Got an error from Wit:', error);
