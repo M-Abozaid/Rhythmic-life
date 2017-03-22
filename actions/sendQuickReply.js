@@ -18,6 +18,7 @@ module.exports = function({sessionId, context, text, entities}) {
 		console.log('user '+context.userData.first_name);
 		console.log('entities '+ JSON.stringify(entities));
 		
+		context.activityName = context.message;
 		//const diary = helper.getEntityValues(entities ,'diary' );
 		//let addActivity = entities.diary[0].value;
 		//console.log('entitiy value '+diary);
@@ -36,7 +37,7 @@ module.exports = function({sessionId, context, text, entities}) {
 		//if (activityName){
 		//	context.activityName = activityName;
 		//}else{
-			context.activityName = context.message; 
+			 
 		//}
 		
 	})

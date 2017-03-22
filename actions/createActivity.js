@@ -22,7 +22,7 @@ module.exports = function({sessionId, context, text, entities}) {
 		//let activityName = helper.getEntityValues(entities ,'acitvity_name' );
 		let activityType = helper.getEntityValues(entities ,'activity_type' );
 		//let activityType = context.message;
-		console.log('entitiy1 value '+context.activityName+' entitiy2 value '+activityType);
+		console.log('entitiy1 value '+context.text+' entitiy2 value '+activityType);
 
 		
 			
