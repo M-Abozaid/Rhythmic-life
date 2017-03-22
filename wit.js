@@ -10,7 +10,7 @@ const Wit = require('node-wit').Wit;
 const GraphAPI = require('./graphAPI');
 const sessionStore = require('./sessionStore');
 const config = require('./config');
-
+const platformHelpers = require('./platformHelpers');
 
 
 // bot actions
