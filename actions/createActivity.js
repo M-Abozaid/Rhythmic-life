@@ -29,7 +29,6 @@ module.exports = function({sessionId, context, text, entities}) {
 		
 	})
 	
-	.then(function() {
 		.then(function(){
 		return new Promise(function(resolve, reject) {
 		return resolve(context);
