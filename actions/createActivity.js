@@ -18,12 +18,13 @@ module.exports = function({sessionId, context, text, entities}) {
 		console.log('user'+context.userData.first_name);
 		console.log('entities '+ JSON.stringify(entities));
 		//let activityName = entities.activity_name[0].value;
-		//let activityType = entities.activity_type[0].value;
-		let activityName = helper.getEntityValues(entities ,'acitvity_name' );
-		let activityType = helper.getEntityValues(entities ,'activity_type' );
-		console.log('entitiy1 value '+activityName+' entitiy2 value '+activityType);
+		let activityType = entities.activity_type[0].value;
+		//let activityName = helper.getEntityValues(entities ,'acitvity_name' );
+		//let activityType = helper.getEntityValues(entities ,'activity_type' );
+		//let activityType = context.message;
+		console.log('entitiy1 value '+context.activityName+' entitiy2 value '+activityType);
 
-		context.message = 'created activity '+activityName ;
+		
 			
 		return GraphAPI.sendPlainMessage(recipientId, 'created activity '+activityName + 'of type: '+activityType);
 		
