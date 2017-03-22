@@ -70,7 +70,7 @@ const actions = {
 
 	},
 
-	[select-joke] ({sessionId, context, text, entities}) {
+	['select-joke'] ({sessionId, context, text, entities}) {
 	console.log('context '+JSON.stringify(context));
 	return sessionStore.get(sessionId)
 	.then(function(){
