@@ -48,11 +48,14 @@ const actions = {
 		let recipientId;
 		return sessionStore.get(request.sessionId)
 			.then(session => {
+				return new Promise(function(resolve, reject) {
 				console.log('user said...', request.text);
 				console.log('sending...', JSON.stringify(response));
 				recipientId = session.fbid;
 				
 				return GraphAPI.sendTemplateMessage(recipientId, response);
+				return resolve();
+    		});
 			}) 
 			.catch((err) => {
 				console.log('Oops! An error occurred while forwarding the response to', recipientId, ':', err);
