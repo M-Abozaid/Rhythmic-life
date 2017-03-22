@@ -53,7 +53,7 @@ const actions = {
 				console.log('sending...', JSON.stringify(response));
 				recipientId = session.fbid;
 				
-				return GraphAPI.sendTemplateMessage(recipientId, response);
+				GraphAPI.sendTemplateMessage(recipientId, response);
 				return resolve();
     		});
 			}) 
