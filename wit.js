@@ -49,11 +49,21 @@ const actions = {
 		return sessionStore.get(request.sessionId)
 			.then(session => {
 				return new Promise(function(resolve, reject) {
+				if(quickreplies){
+					var replies = {0:'habit',1:'occasional'};
+					const text1 = 'Choose the activity type';
+					//}
+
+					let data = platformHelpers.generateQuickReplies(text1, replies);
+					
+					return GraphAPI.sendTemplateMessage(recipientId, data);
+				}else{
 				console.log('user said...', request.text);
 				console.log('sending...', JSON.stringify(response));
 				recipientId = session.fbid;
 				
 				GraphAPI.sendTemplateMessage(recipientId, response);
+				}
 				return resolve();
     		});
 			}) 
