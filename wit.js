@@ -4,7 +4,7 @@ const debug = require('debug')('cbp:wit');
 const fs = require('fs');
 const path = require('path');
 const Q = require('q');
-
+const helper = require('./witHelpers');
 const Wit = require('node-wit').Wit;
 
 const GraphAPI = require('./graphAPI');
