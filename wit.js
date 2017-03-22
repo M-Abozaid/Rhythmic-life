@@ -15,8 +15,17 @@ const config = require('./config');
 
 // bot actions
 const actions = {
-	 send(request, response) {
+	send(request, response) {
 
+    const {sessionId, context, entities} = request;
+    const {text, quickreplies} = response;
+    return new Promise(function(resolve, reject) {
+        console.log('user said...', request.text);
+        console.log('sending...', JSON.stringify(response));
+        return resolve();
+    });		
+
+		/*
 		const {sessionId, context, entities} = request;
    		const {text, quickreplies} = response;
 		debug('saying', response);
@@ -34,6 +43,7 @@ const actions = {
 		.catch((err) => {
 			console.log('Oops! An error occurred while forwarding the response to', recipientId, ':', err );
 		});
+		*/
     }
 
 };
