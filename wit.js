@@ -74,7 +74,7 @@ const actions = {
 	console.log('context '+JSON.stringify(context));
 	return sessionStore.get(sessionId)
 	.then(
-		return new Promise(function(resolve, reject) {
+		//return new Promise(function(resolve, reject) {
 			// const category = firstEntityValue(entities, 'category') || 'default';
 			// const sentiment = firstEntityValue(entities, 'sentiment');
 			// if (sentiment) {
@@ -86,7 +86,7 @@ const actions = {
 			//const jokes = allJokes[context.cat || 'default'];
 			//context.joke = jokes[Math.floor(Math.random() * jokes.length)];
 			return resolve(context);
-		});
+		//});
 	)}
 
 
