@@ -49,6 +49,10 @@ const actions = {
 		return sessionStore.get(request.sessionId)
 			.then(session => {
 				return new Promise(function(resolve, reject) {
+				console.log('user said...', request.text);
+				console.log('sending...', JSON.stringify(response));
+				recipientId = session.fbid;
+
 				if(quickreplies){
 					var replies = {0:'habit',1:'occasional'};
 					const text1 = 'Choose the activity type';
@@ -58,9 +62,7 @@ const actions = {
 					
 					return GraphAPI.sendTemplateMessage(recipientId, data);
 				}else{
-				console.log('user said...', request.text);
-				console.log('sending...', JSON.stringify(response));
-				recipientId = session.fbid;
+				
 				
 				GraphAPI.sendTemplateMessage(recipientId, response);
 				}
