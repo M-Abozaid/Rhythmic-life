@@ -2,7 +2,8 @@
 
 const GraphAPI = require('../graphAPI');
 const platformHelpers = require('../platformHelpers');
-
+const sessionStore = require('../sessionStore');
+const wit = require('../wit');
 
 module.exports = function handleQuickReply(sender, sessionId, context, payload) {
 	//context.message = msg;
