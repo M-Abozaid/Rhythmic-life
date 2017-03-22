@@ -6,7 +6,7 @@ const debug = require('debug')('cbp:actions:sample');
 
 
 module.exports = function({sessionId, context, text, entities}) {
-	console.log('context '+JSON.stringify(context));
+	console.log('context in greeting'+JSON.stringify(context));
 	return sessionStore.get(sessionId)
 	.then(session => {
 		const recipientId = session.fbid;

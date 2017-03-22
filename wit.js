@@ -53,9 +53,7 @@ const actions = {
 				recipientId = session.fbid;
 				
 				return GraphAPI.sendTemplateMessage(recipientId, response);
-			}) //.then(function() {
-			//return context;
-			//})
+			}) 
 			.catch((err) => {
 				console.log('Oops! An error occurred while forwarding the response to', recipientId, ':', err);
 			});
@@ -63,8 +61,7 @@ const actions = {
 	},
 
 	pass ({sessionId, context, text, entities}) {
-	console.log('context '+JSON.stringify(context));
-	console.log('inside select-joke');
+	console.log('inside pass context '+JSON.stringify(context));
 	return sessionStore.get(sessionId)
 	.then(function(){
 		return new Promise(function(resolve, reject) {
