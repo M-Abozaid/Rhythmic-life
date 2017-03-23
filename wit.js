@@ -49,27 +49,24 @@ const actions = {
 		return sessionStore.get(request.sessionId)
 			.then(session => {
 				console.log('context in send '+JSON.stringify(context));
+				recipientId = session.fbid;
+				return recipientId;
+			}).then(function(recipientId){
 				return new Promise(function(resolve, reject) {
 				console.log('user said...', request.text);
 				console.log('sending...', JSON.stringify(response));
-				recipientId = session.fbid;
-
 				if(quickreplies){
 					var replies = {0:'habit',1:'occasional'};
 					const text1 = 'Choose the activity type';
-					//}
-
 					let data = platformHelpers.generateQuickReplies(text1, replies);
-					
 					return GraphAPI.sendTemplateMessage(recipientId, data);
-				}else{
-				
-				
-				GraphAPI.sendTemplateMessage(recipientId, response);
+				}else{				
+					GraphAPI.sendTemplateMessage(recipientId, response);
+					console.log('after sendTemplateMessage insid send action');
 				}
 				return resolve();
     		});
-			}) 
+			})
 			.catch((err) => {
 				console.log('Oops! An error occurred while forwarding the response to', recipientId, ':', err);
 			});
