@@ -18,7 +18,7 @@ module.exports = function({sessionId, context, text, entities}) {
 		console.log('entities '+ JSON.stringify(entities));
 		
 		return new Promise(function(resolve, reject) {
-			activityName = helper.getEntityValues(entities ,'acitvity_name' );
+			let activityName = helper.getEntityValues(entities ,'acitvity_name' );
 			context.activityName = activityName;
 		return resolve(context);
 		});
