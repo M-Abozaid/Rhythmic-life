@@ -7,7 +7,7 @@ const platformHelpers = require('../platformHelpers');
 const helper = require('../witHelpers');
 
 module.exports = function({sessionId, context, text, entities}) {
-	console.log('context in greeting '+JSON.stringify(context));
+	console.log('context in setName '+JSON.stringify(context));
 	return sessionStore.get(sessionId)
 	.then(session => {
 		const recipientId = session.fbid;

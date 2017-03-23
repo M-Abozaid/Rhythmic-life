@@ -48,6 +48,7 @@ const actions = {
 		let recipientId;
 		return sessionStore.get(request.sessionId)
 			.then(session => {
+				console.log('context in send '+JSON.stringify(context));
 				return new Promise(function(resolve, reject) {
 				console.log('user said...', request.text);
 				console.log('sending...', JSON.stringify(response));
