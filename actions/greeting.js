@@ -9,6 +9,7 @@ module.exports = function({sessionId, context, text, entities}) {
 	console.log('context in greeting'+JSON.stringify(context));
 	return sessionStore.get(sessionId)
 	.then(session => {
+		console.log('sessionId in greeting '+sessionId);
 		const recipientId = session.fbid;
 		debug(`Session ${sessionId} received ${text}`);
 		debug(`The current context is ${JSON.stringify(context)}`);

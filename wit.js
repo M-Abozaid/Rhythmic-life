@@ -49,6 +49,7 @@ const actions = {
 		return sessionStore.get(request.sessionId)
 			.then(session => {
 				console.log('context in send '+JSON.stringify(context));
+				console.log('sessionId in send '+sessionId);
 				recipientId = session.fbid;
 				return recipientId;
 			}).then(function(recipientId){
