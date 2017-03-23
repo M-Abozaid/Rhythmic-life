@@ -8,7 +8,7 @@ const wit = require('../wit');
 module.exports = function handleQuickReply(sender, sessionId, context, payload) {
 	//context.message = msg;
 
-	console.log('inside handleTextMessage')
+	console.log('inside handleQuickReply '+'context '+JSON.stringify(context)+'payload '+ JSON.stringify(payload));
 
 	let payloadTokens = payload.split(':');
 	const msg = payloadTokens[0];
