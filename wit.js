@@ -71,29 +71,7 @@ const actions = {
 				console.log('Oops! An error occurred while forwarding the response to', recipientId, ':', err);
 			});
 
-	},
-
-	pass ({sessionId, context, text, entities}) {
-	console.log('inside pass context '+JSON.stringify(context));
-	return sessionStore.get(sessionId)
-	.then(function(){
-		return new Promise(function(resolve, reject) {
-			// const category = firstEntityValue(entities, 'category') || 'default';
-			// const sentiment = firstEntityValue(entities, 'sentiment');
-			// if (sentiment) {
-			//   context.ack = sentiment === 'positive' ? 'Glad you liked it.' : 'Hmm.';
-			// } else {
-			//   delete context.ack;
-			// }
-
-			//const jokes = allJokes[context.cat || 'default'];
-			//context.joke = jokes[Math.floor(Math.random() * jokes.length)];
-			return resolve(context);
-		});
 	}
-	)}
-
-
 };
 
 

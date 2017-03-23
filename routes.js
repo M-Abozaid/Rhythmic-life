@@ -56,6 +56,7 @@ exports.receive = function(req, res, next) {
 	}
 
 	var processPromises = _.map(messages, (messaging) => {
+		if(messaging.sender.id==FB_PAGE_ID){return;}
 		return processMessage(messaging);
 	});
 
