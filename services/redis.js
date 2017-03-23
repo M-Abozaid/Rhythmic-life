@@ -49,7 +49,7 @@ function createClient(config, returnBuffers) {
     });
 
     client.on('connect', function() {
-        
+        console.log('redis is connected');
         redisIsReady = true;
     });
 
