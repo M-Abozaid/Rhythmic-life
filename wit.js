@@ -5,7 +5,7 @@ const fs = require('fs');
 const path = require('path');
 const Q = require('q');
 const helper = require('./witHelpers');
-const Wit = require('node-wit').Wit;
+const Wit = require('./node-wit').Wit;
 
 const GraphAPI = require('./graphAPI');
 const sessionStore = require('./sessionStore');

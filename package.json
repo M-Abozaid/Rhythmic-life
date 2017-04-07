@@ -23,7 +23,7 @@
     "mongoose-q": "^0.1.0",
     "morgan": "^1.7.0",
     "node-uuid": "^1.4.7",
-    "node-wit": "4.1.0",
+    //"node-wit": "4.1.0",
     "q": "^1.4.1",
     "redis": "^2.6.5",
     "request-promise": "^3.0.0",
