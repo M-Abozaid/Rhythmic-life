@@ -41,6 +41,7 @@ function Wit(opts) {
   };
 
   this.converse = (sessionId, message, context, reset) => {
+    console.log('inside converse  ');
     let qs = 'session_id=' + encodeURIComponent(sessionId);
     if (message) {
       qs += '&q=' + encodeURIComponent(message);
@@ -64,6 +65,7 @@ function Wit(opts) {
 
   const continueRunActions = (sessionId, currentRequest, message, prevContext, i) => {
     return (json) => {
+      console.log('inside continueRunActions json ', JSON.stringify(json));
       if (i < 0) {
         logger.warn('Max steps reached, stopping.');
         return prevContext;
@@ -137,13 +139,14 @@ function Wit(opts) {
   this.runActions = function(sessionId, message, context, maxSteps) {
     if (!actions) throwMustHaveActions();
     const steps = maxSteps ? maxSteps : DEFAULT_MAX_STEPS;
-
+    console.log('inside runAction sessionId ',sessionId);
     // Figuring out whether we need to reset the last turn.
     // Each new call increments an index for the session.
     // We only care about the last call to runActions.
     // All the previous ones are discarded (preemptive exit).
     const currentRequest = (this._sessions[sessionId] || 0) + 1;
     this._sessions[sessionId] = currentRequest;
+    console.log('inside runAction currentRequest  ',currentRequest);
     const cleanup = ctx => {
       if (currentRequest === this._sessions[sessionId]) {
         delete this._sessions[sessionId];
