@@ -51,6 +51,7 @@ exports.receive = function(req, res, next) {
 	res.status(200).end();
 	console.log("A POST REQUEST RECEIVED" );
 	const messages = extractMessagingObjects(req.body);
+	if(!(messages[0].sender.id)){next();}
 	if(messages[0].sender.id==FB_PAGE_ID){next();}
 	if(messages[0].sender.id==FB_PAGE_ID){return;}
 	if (!messages.length) {
