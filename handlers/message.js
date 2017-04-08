@@ -5,7 +5,6 @@ const wit = require('../wit');
 const GraphAPI = require('../graphAPI');
 module.exports = function handleTextMessage (sessionId, session, msg) {
 	let context = session.context
-	context.message = msg;
 	const recipientId = session.fbid;
 	let mesLog = session.mesLog || [];
 	mesLog.push(msg)
@@ -14,7 +13,7 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 	console.log('context inside  handleTextMessage ',JSON.stringify(context));
 	console.log('messeging  ',msg);
 	console.log('session  ',JSON.stringify(session));
-	if(context.message == 'hi'){
+	if(msg == 'hi'){
 
 		 GraphAPI.sendPlainMessage(recipientId, 'Hello! ');  //+context.userData.first_name).then()
 		
