@@ -5,7 +5,17 @@ const wit = require('../wit');
 
 module.exports = function handleTextMessage (sessionId, context, msg) {
 	context.message = msg;
-	console.log('inside handleText Message'+'context '+JSON.stringify(context))
+
+
+console.log('context inside  handleTextMessage ',JSON.stringify(context));
+	if(msg == 'hi'){
+
+		return GraphAPI.sendPlainMessage(recipientId, 'Hello! ')  //+context.userData.first_name).then()
+	}
+
+	/*
+	context.message = msg;
+	console.log('inside handleTextMessage'+'context '+JSON.stringify(context))
 	wit.runActions(sessionId, msg, context).then((context) => {
               // Our bot did everything it has to do.
               // Now it's waiting for further messages to proceed.
@@ -26,7 +36,7 @@ module.exports = function handleTextMessage (sessionId, context, msg) {
               console.error('Oops! Got an error from Wit: ', err.stack || err);
             })
 
-
+	*/
 /*
 		(error, context) => {
 		if (error) {
