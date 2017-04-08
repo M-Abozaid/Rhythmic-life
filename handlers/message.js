@@ -5,15 +5,18 @@ const wit = require('../wit');
 const GraphAPI = require('../graphAPI');
 module.exports = function handleTextMessage (sessionId, context, msg) {
 	context.message = msg;
+	return sessionStore.get(sessionId)
+	.then(session => {
+	const recipientId = session.fbid;
 
-
-console.log('context inside  handleTextMessage ',JSON.stringify(context));
-console.log('messeging  ',msg);
+	console.log('context inside  handleTextMessage ',JSON.stringify(context));
+	console.log('messeging  ',msg);
 	if(context.message == 'hi'){
 
 		return GraphAPI.sendPlainMessage(recipientId, 'Hello! ')  //+context.userData.first_name).then()
 	}
-	return
+});
+	//return
 
 	/*
 	context.message = msg;
