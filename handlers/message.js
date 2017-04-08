@@ -20,7 +20,7 @@ module.exports = function handleTextMessage (sessionId, context, msg) {
               // }
 
               // Updating the user's current session state
-              sessions[sessionId].context = context;
+              //sessions[sessionId].context = context;
             })
             .catch((err) => {
               console.error('Oops! Got an error from Wit: ', err.stack || err);

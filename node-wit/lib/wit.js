@@ -53,6 +53,7 @@ function Wit(opts) {
     const fullURL = witURL + '/converse?' + qs;
     const handler = makeWitResponseHandler(logger, 'converse');
     logger.debug(method, fullURL);
+    console.log('method ',method,'fullURL ', fullURL);
     return fetch(fullURL, {
       method,
       headers,
