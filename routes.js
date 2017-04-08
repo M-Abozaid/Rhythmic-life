@@ -143,7 +143,8 @@ function processMessage(messaging) {
 
 			const msg = messaging.message && messaging.message.text;
 			if (msg) {
-				return handleTextMessage(sessionId, session.context, msg);
+				console.log('session  ',JSON.stringify(session));
+				return handleTextMessage(sessionId, session, msg);
 			} 
 
 			const payload = messaging.postback && messaging.postback.payload;
