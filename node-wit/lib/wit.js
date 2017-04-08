@@ -127,7 +127,7 @@ function Wit(opts) {
             return nextContext;
           }
           return this.converse(sessionId, null, nextContext).then(
-            console.log('Inside calling converse in continue nextContext ',nextContext);
+            console.log('Inside calling converse in continue nextContext ',nextContext)
             continueRunActions(sessionId, currentRequest, message, nextContext, i - 1)
           );
         });
