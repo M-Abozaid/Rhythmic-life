@@ -2,7 +2,7 @@
 
 const sessionStore = require('../sessionStore');
 const wit = require('../wit');
-
+const GraphAPI = require('../graphAPI');
 module.exports = function handleTextMessage (sessionId, context, msg) {
 	context.message = msg;
 
