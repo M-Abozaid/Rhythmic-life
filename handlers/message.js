@@ -11,7 +11,7 @@ module.exports = function handleTextMessage (sessionId, context, msg) {
 	let mesLog = session.mesLog || [];
 	mesLog.push(msg)
 	session.mesLog = mesLog
-	saveSession(sessionId, session)
+	sessionStore.saveSession(sessionId, session)
 	console.log('context inside  handleTextMessage ',JSON.stringify(context));
 	console.log('messeging  ',msg);
 	console.log('session  ',JSON.stringify(session));
