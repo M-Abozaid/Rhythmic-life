@@ -8,7 +8,10 @@ module.exports = function handleTextMessage (sessionId, context, msg) {
 	return sessionStore.get(sessionId)
 	.then(session => {
 	const recipientId = session.fbid;
-	
+	mesLog = session.mesLog || [];
+	mesLog.push(msg)
+	session.mesLog = mesLog
+	saveSession(sessionId, session)
 	console.log('context inside  handleTextMessage ',JSON.stringify(context));
 	console.log('messeging  ',msg);
 	console.log('session  ',JSON.stringify(session));
