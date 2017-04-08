@@ -127,7 +127,6 @@ function Wit(opts) {
             return nextContext;
           }
           return this.converse(sessionId, null, nextContext).then(
-            console.log('shit');
             continueRunActions(sessionId, currentRequest, message, nextContext, i - 1)
           );
         });
