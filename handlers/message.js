@@ -1,12 +1,11 @@
 'use strict';
-
+const platformHelpers = require('../platformHelpers');
 const sessionStore = require('../sessionStore');
 const wit = require('../wit');
 const GraphAPI = require('../graphAPI');
-module.exports = function handleTextMessage (sessionId, context, msg) {
+module.exports = function handleTextMessage (sessionId, session, msg) {
+	let context = session.context
 	context.message = msg;
-	return sessionStore.get(sessionId)
-	.then(session => {
 	const recipientId = session.fbid;
 	let mesLog = session.mesLog || [];
 	mesLog.push(msg)
@@ -17,9 +16,13 @@ module.exports = function handleTextMessage (sessionId, context, msg) {
 	console.log('session  ',JSON.stringify(session));
 	if(context.message == 'hi'){
 
-		return GraphAPI.sendPlainMessage(recipientId, 'Hello! ')  //+context.userData.first_name).then()
+		 GraphAPI.sendPlainMessage(recipientId, 'Hello! ');  //+context.userData.first_name).then()
+		
+
+		let data = platformHelpers.generateQuickReplies('Would you like to add new activity', {0:'yes',1:'no'});
+		 GraphAPI.sendTemplateMessage(recipientId, data);
 	}
-});
+
 	//return
 
 	/*
