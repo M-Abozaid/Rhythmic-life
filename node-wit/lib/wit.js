@@ -121,11 +121,13 @@ function Wit(opts) {
       } else if (json.type === 'action') {
         throwIfActionMissing(actions, json.action);
         return actions[json.action](request).then(ctx => {
+          console.log('After calling the action ');
           const nextContext = ctx || {};
           if (currentRequest !== this._sessions[sessionId]) {
             return nextContext;
           }
           return this.converse(sessionId, null, nextContext).then(
+            console.log('Inside calling converse in continue nextContext ',nextContext);
             continueRunActions(sessionId, currentRequest, message, nextContext, i - 1)
           );
         });
