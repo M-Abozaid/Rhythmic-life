@@ -51,9 +51,9 @@ function Wit(opts) {
     }
     const method = 'POST';
     const fullURL = witURL + '/converse?' + qs;
-    const handler = makeWitResponseHandler(logger, 'converse ','body' , JSON.stringify(context));
+    const handler = makeWitResponseHandler(logger, 'converse ');
     logger.debug(method, fullURL);
-    console.log('method ',method,'fullURL ', fullURL);
+    console.log('method ',method,'fullURL ', fullURL ,'body' , JSON.stringify(context));
     return fetch(fullURL, {
       method,
       headers,
