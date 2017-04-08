@@ -5,7 +5,7 @@ const wit = require('../wit');
 const GraphAPI = require('../graphAPI');
 module.exports = function handleTextMessage (sessionId, session, msg) {
 	let context = session.context
-	const recipientId = session.fbid;
+	const recipientId = session.userData.fbid;
 	let mesLog = session.mesLog || [];
 	mesLog.push(msg)
 	session.mesLog = mesLog
