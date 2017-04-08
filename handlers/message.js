@@ -8,9 +8,10 @@ module.exports = function handleTextMessage (sessionId, context, msg) {
 	return sessionStore.get(sessionId)
 	.then(session => {
 	const recipientId = session.fbid;
-
+	
 	console.log('context inside  handleTextMessage ',JSON.stringify(context));
 	console.log('messeging  ',msg);
+	console.log('session  ',JSON.stringify(session));
 	if(context.message == 'hi'){
 
 		return GraphAPI.sendPlainMessage(recipientId, 'Hello! ')  //+context.userData.first_name).then()
