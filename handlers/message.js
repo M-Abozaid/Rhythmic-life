@@ -13,9 +13,9 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 	session.mesLog = mesLog
 
 
-	if (!context.first) {let context.first = {main:{},sub:{}}};  
-	if (!context.second) {let context.second = {main:{},sub:{}}};
-	if (Objec.keys(context.first).length == 0){ // if No context 
+	if (!context.first) { context.first = {main:{},sub:{}}};  
+	if (!context.second) { context.second = {main:{},sub:{}}};
+	if (Objec.keys(context.first.main).length == 0){ // if No context 
 
 		if (msg == "add activity"){
 			addActivity(context,msg);
