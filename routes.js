@@ -97,7 +97,6 @@ function processMessage(messaging) {
 			sessionId = data.sessionId;
 			session = data.session;
 			newSession = data.newSession;
-			sessionStore.destroy(sessionId)
 			if (!session.context.userData) {
 				console.log('right before gitting user profile');
 				return GraphAPI.getUserProfile(sender)
