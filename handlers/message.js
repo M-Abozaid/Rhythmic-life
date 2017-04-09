@@ -4,7 +4,7 @@ const sessionStore = require('../sessionStore');
 const wit = require('../wit');
 const GraphAPI = require('../graphAPI');
 module.exports = function handleTextMessage (sessionId, session, msg) {
-	/*
+	
 	let context = session.context
 	const recipientId = session.fbid;
 	let mesLog = session.mesLog || [];
@@ -22,7 +22,7 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 		let data = platformHelpers.generateQuickReplies('Would you like to add new activity', {0:'yes',1:'no'});
 		 GraphAPI.sendTemplateMessage(recipientId, data);
 	}
-*/
+
 	//return
 
 	/*
@@ -63,6 +63,12 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 		   	sessionStore.destroy(sessionId);
 		}			
 	});
+
+
+	data   {"sessionId":"cs32174f60-1cbb-11e7-865b-d17b0e22f62c1221099964674152"
+	,"newSession":true,"session":{"fbid":"1221099964674152","context":
+	{"userData":{"first_name":"Mohammed","last_name":"Abo-zaid","locale":"en_US",
+	"timezone":2,"gender":"male","recipientId":"1221099964674152"}}}}
 */
 
 };

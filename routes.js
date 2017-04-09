@@ -122,6 +122,7 @@ function processMessage(messaging) {
 			}
 		})
 		.then(() => {
+			console.log('data 3 ',JSON.stringify(data));
 			console.log('saveSession');
 			return userService.logActivity(session.context.userData._id);
 		})
