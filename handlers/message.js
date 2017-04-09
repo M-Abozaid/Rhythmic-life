@@ -3,23 +3,39 @@ const platformHelpers = require('../platformHelpers');
 const sessionStore = require('../sessionStore');
 const wit = require('../wit');
 const GraphAPI = require('../graphAPI');
+const addActivity = require('../actions/addActivity')
+
 module.exports = function handleTextMessage (sessionId, session, msg) {
-	
-	let context = session.context
 	const recipientId = session.fbid;
+	const context = session.context;
 	let mesLog = session.mesLog || [];
 	mesLog.push(msg)
 	session.mesLog = mesLog
+
+
+	if (!context.first) {let context.first = {main:{},sub:{}}};  
+	if (!context.second) {let context.second = {main:{},sub:{}}};
+	if (Objec.keys(context.first).length == 0){ // if No context 
+
+		if (msg == "add activity"){
+			addActivity(context,msg);
+		}
+
+		if(msg == 'hi'){
+		let data = platformHelpers.generateQuickReplies('Would you like to add new activity', {0:'yes',1:'no'});
+		GraphAPI.sendPlainMessage(recipientId, 'Hello! ').then(  //+context.userData.first_name).then()
+		()=>{GraphAPI.sendTemplateMessage(recipientId, data)})
+	}
+	}else {
+
+	}
+
+	
 	sessionStore.saveSession(sessionId, session)
 	console.log('context inside  handleTextMessage ',JSON.stringify(context));
 	console.log('messeging  ',msg);
 	console.log('session  ',JSON.stringify(session));
-	if(msg == 'hi'){
-let data = platformHelpers.generateQuickReplies('Would you like to add new activity', {0:'yes',1:'no'});
-		 GraphAPI.sendPlainMessage(recipientId, 'Hello! ').then(  //+context.userData.first_name).then()
-		 ()=>{GraphAPI.sendTemplateMessage(recipientId, data)}
-		 )
-	}
+	
 
 	//return
 
