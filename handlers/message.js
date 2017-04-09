@@ -15,7 +15,7 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 
 	if (!context.first) { context.first = {main:{},sub:{}}};  
 	if (!context.second) { context.second = {main:{},sub:{}}};
-	if (Objec.keys(context.first.main).length == 0){ // if No context 
+	if (Object.keys(context.first.main).length == 0){ // if No context 
 
 		if (msg == "add activity"){
 			addActivity(context,msg);
