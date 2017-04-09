@@ -4,6 +4,7 @@ const sessionStore = require('../sessionStore');
 const wit = require('../wit');
 const GraphAPI = require('../graphAPI');
 module.exports = function handleTextMessage (sessionId, session, msg) {
+	/*
 	let context = session.context
 	const recipientId = session.fbid;
 	let mesLog = session.mesLog || [];
@@ -21,7 +22,7 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 		let data = platformHelpers.generateQuickReplies('Would you like to add new activity', {0:'yes',1:'no'});
 		 GraphAPI.sendTemplateMessage(recipientId, data);
 	}
-
+*/
 	//return
 
 	/*

@@ -93,7 +93,6 @@ function processMessage(messaging) {
 	return sessionStore.findOrCreate(sender)
 		.then(data => {
 			console.log('findOrCreate');
-			console.log('data   ',JSON.stringify(data));
 			sessionId = data.sessionId;
 			session = data.session;
 			newSession = data.newSession;
@@ -144,7 +143,6 @@ function processMessage(messaging) {
 
 			const msg = messaging.message && messaging.message.text;
 			if (msg) {
-				console.log('session  ',JSON.stringify(session));
 				return handleTextMessage(sessionId, session, msg);
 			} 
 
