@@ -26,6 +26,7 @@ class GraphAPI {
 				message: data,
 			}
 		};
+		console.log('opts inside sendTemplateMessage ', JSON.stringify(opts));
 		return this.api(opts);
 	}
 
