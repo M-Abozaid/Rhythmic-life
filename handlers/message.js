@@ -16,11 +16,12 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 	console.log('session  ',JSON.stringify(session));
 	if(msg == 'hi'){
 
-		// GraphAPI.sendPlainMessage(recipientId, 'Hello! ');  //+context.userData.first_name).then()
+		 GraphAPI.sendPlainMessage(recipientId, 'Hello! ').then(  //+context.userData.first_name).then()
 		
 
 		let data = platformHelpers.generateQuickReplies('Would you like to add new activity', {0:'yes',1:'no'});
 		 GraphAPI.sendTemplateMessage(recipientId, data);
+		 )
 	}
 
 	//return
