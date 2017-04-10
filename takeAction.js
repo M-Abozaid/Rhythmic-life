@@ -16,7 +16,7 @@ if (Object.keys(context.first.main).length == 0){ // if No context
 }else {
 
 }
-return new Promise(function(resolve, reject)=>{
+return new Promise(function(resolve, reject){
 resolve(context)
 })
 }
