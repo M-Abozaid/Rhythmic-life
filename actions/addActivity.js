@@ -6,44 +6,37 @@ module.exports = function(context, msg){
 
 	console.log('done');
 	let recipientId = context.userData.recipientId;
-	let cleanSub = function(){
-		context.second = context.first;
-		context.first.sub = {};
-	}
-	context.first.main.addingActivity = true
+	
+	context.current.main = 'addingActivity' ;
 
-	if(Object.keys(context.first.sub).length == 0){ //  there is no subcontext
+	if(Object.keys(context.current).length == 1){ //  there is only main in the current context 
 		//context.first.sub.activityName = true
 		console.log('activity ',msg,' saved');
 		let data = platformHelpers.generateQuickReplies('Choose the Type ', {0:'work',1:'study',2:'entertainment'});
 		GraphAPI.sendTemplateMessage(recipientId, data)
-		cleanSub();
-		context.first.sub.activityName = true
+		context.current.activityType = msg
 
 	}else {
-			if(context.first.sub.activityName){
+			if(context.current.activityType){
 			GraphAPI.sendPlainMessage(recipientId, 'Ok tell me the name of the activity! ')
-			cleanSub();
-			context.first.sub.positivity = true	
+			context.current.positivity = msg	
 			//return
 			}else{
-				if(context.first.sub.positivity){
+				if(context.current.positivity){
 					console.log('activity type ',msg,' saved');
 					let data = platformHelpers.generateQuickReplies('is is positve or ngative', {0:'positive',1:'ngative',2:'other'});
 					GraphAPI.sendTemplateMessage(recipientId, data)
-					cleanSub();
-					context.first.sub.hebitual = true
+					context.current.hebitual = msg
 				}else{
-					if(context.first.sub.hebitual){
+					if(context.current.hebitual){
 						let data = platformHelpers.generateQuickReplies('Is it a habit ', {0:'Yes',1:'NO'});
 						GraphAPI.sendTemplateMessage(recipientId, data)
-						cleanSub();
-						context.first.sub.done = true
+						context.current.done = true
 					}else{
-						if(context.first.sub.done){
-						GraphAPI.sendPlainMessage(recipientId, 'Activity add successfully!')
-						cleanSub();
-						context.first.main = {}
+						if(context.current.done){
+						GraphAPI.sendPlainMessage(recipientId, 'Activity added successfully!')
+						console.log('saving to the database.....',JSON.stringify(context.current));
+						context.current = {}
 						}
 					}
 				}

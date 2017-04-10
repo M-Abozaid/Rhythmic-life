@@ -13,19 +13,20 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 	session.mesLog = mesLog
 
 
-	if (!context.first) { context.first = {main:{},sub:{}}};  
-	if (!context.second) { context.second = {main:{},sub:{}}};
+	//if (!context.first) { context.first = {main:{},sub:{}}};  
+	//if (!context.second) { context.second = {main:{},sub:{}}};
 
 	takeAction(context, msg).then((context)=>{
-		
+		session.context = context;
 		sessionStore.saveSession(sessionId, session)
 
+		console.log('context inside  handleTextMessage ',JSON.stringify(context));
+		console.log('messeging  ',msg);
+		console.log('session  inside  handleTextMessage',JSON.stringify(session));
 	})
 	
 
-	console.log('context inside  handleTextMessage ',JSON.stringify(context));
-	console.log('messeging  ',msg);
-	console.log('session  ',JSON.stringify(session));
+	
 	
 
 	//return
