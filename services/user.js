@@ -4,7 +4,8 @@ var debug = require('debug')('cbp:services:user');
 
 var mongoose = require('mongoose-q')(require('mongoose'));
 //var mongoose = (require('mongoose'));
-var User = mongoose.model('User');
+//var User = mongoose.model('User');
+User = require('../schemas/user');
 
 var Q = require('q');
 
