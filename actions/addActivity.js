@@ -12,6 +12,7 @@ module.exports = function(context, msg){
 
 		User.findOne({recipientId : recipientId},(err,user)=>{
 			if (err) throw err;
+			console.log('the user  ',JSON.stringify(user));
 			user.activities.push({
 				name: context.current.activityName,
 				type: context.current.activityType,
