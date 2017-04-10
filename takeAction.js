@@ -1,7 +1,9 @@
 const addActivity = require('./actions/addActivity')
+const platformHelpers = require('../platformHelpers');
+const GraphAPI = require('../graphAPI');
 
 let takeAction = function(context,msg){
-	
+
 if(msg == 'hi'){
 	context.first.main = {};
 	let data = platformHelpers.generateQuickReplies('Would you like to add new activity', {0:'yes',1:'no'});
