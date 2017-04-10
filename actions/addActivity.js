@@ -18,7 +18,7 @@ module.exports = function(context, msg){
 				positivity: context.current.positivity,
 				hebitual: context.current.hebitual
 			})
-
+			console.log('Pushed ');
 			user.save(function (err, user) {
                         if (err) throw err;
                         //res.json(user);
