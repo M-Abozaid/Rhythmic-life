@@ -11,14 +11,14 @@ const ActivitySchema = new Schema({
         type: String
     },
     positivity:{
-        type: Boolean
+        type: String
     },
     // period:{
     //     type: Number,
     //     required: true
     // },
     hebitual:{
-        type: Boolean
+        type: String
     },
 
 });
@@ -60,5 +60,7 @@ const UserSchema = new Schema({
 
 
 
-mongoose.model('User', UserSchema);
+let User = mongoose.model('User', UserSchema);
+
+module.exports = User;
 

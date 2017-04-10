@@ -10,7 +10,7 @@ module.exports = function(context, msg){
 	let recipientId = context.userData.recipientId;
 	let saveActivity = function(){
 
-		User.find({'recipientId' : recipientId},(err,user)=>{
+		User.findOne({recipientId : recipientId},(err,user)=>{
 			if (err) throw err;
 			user.activitie.push({
 				name: activityName,
