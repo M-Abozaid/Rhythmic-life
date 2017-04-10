@@ -17,18 +17,18 @@ module.exports = function(context, msg){
 		context.current.activityType = msg
 
 	}else {
-			if(context.current.activityType){
+			if(context.current.activityType && !context.current.positivity){
 			GraphAPI.sendPlainMessage(recipientId, 'Ok tell me the name of the activity! ')
 			context.current.positivity = msg	
 			//return
 			}else{
-				if(context.current.positivity){
+				if(context.current.positivity && !context.current.hebitual){
 					console.log('activity type ',msg,' saved');
 					let data = platformHelpers.generateQuickReplies('is is positve or ngative', {0:'positive',1:'ngative',2:'other'});
 					GraphAPI.sendTemplateMessage(recipientId, data)
 					context.current.hebitual = msg
 				}else{
-					if(context.current.hebitual){
+					if(context.current.hebitual&& !context.current.done){
 						let data = platformHelpers.generateQuickReplies('Is it a habit ', {0:'Yes',1:'NO'});
 						GraphAPI.sendTemplateMessage(recipientId, data)
 						context.current.done = true
