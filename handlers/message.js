@@ -15,7 +15,13 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 
 	if (!context.first) { context.first = {main:{},sub:{}}};  
 	if (!context.second) { context.second = {main:{},sub:{}}};
-	takeAction(context, msg).then((context)=>{sessionStore.saveSession(sessionId, session)})
+
+	takeAction(context, msg).then((context)=>{
+		context.second.sub = context.first.sub;
+		context.first.sub = {};
+		sessionStore.saveSession(sessionId, session)
+
+	})
 	
 
 	console.log('context inside  handleTextMessage ',JSON.stringify(context));

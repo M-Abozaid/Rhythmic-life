@@ -15,10 +15,14 @@ let takeAction = function(context,msg){
 
 		if (msg == "add activity"){
 			addActivity(context,msg);
+
 		}
 
 		
 	}else {
+		if(context.first.main.addingActivity){
+			addActivity(context,msg);
+		}
 
 	}
 	return new Promise(function(resolve, reject){
