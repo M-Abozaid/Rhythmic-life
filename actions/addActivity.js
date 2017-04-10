@@ -48,7 +48,7 @@ module.exports = function(context, msg){
 	console.log('context in addActivity ', JSON.stringify(context));
 
 
-	cleanSub = function(){
+	let cleanSub = function(){
 		context.second = context.first;
 		context.first.sub = {};
 	}
