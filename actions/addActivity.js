@@ -18,7 +18,7 @@ module.exports = function(context, msg){
 			let data = platformHelpers.generateQuickReplies('Choose the Type ', {0:'work',1:'study',2:'entertainment'});
 
 			GraphAPI.sendTemplateMessage(recipientId, data)
-			context.second.sub = context.first.sub;
+			context.second = context.first;
 			context.first.sub = {};
 			context.first.sub.positivity = true	
 			//return
