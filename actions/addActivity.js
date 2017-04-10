@@ -13,10 +13,10 @@ module.exports = function(context, msg){
 		User.findOne({recipientId : recipientId},(err,user)=>{
 			if (err) throw err;
 			user.activities.push({
-				name: activityName,
-				type: activityType,
-				positivity: positivity,
-				hebitual: hebitual
+				name: context.current.activityName,
+				type: context.current.activityType,
+				positivity: context.current.positivity,
+				hebitual: context.current.hebitual
 			})
 
 			user.save(function (err, user) {
