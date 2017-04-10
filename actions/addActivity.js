@@ -6,6 +6,10 @@ module.exports = function(context, msg){
 
 	console.log('done');
 	let recipientId = context.userData.recipientId;
+	let cleanSub = function(){
+		context.second = context.first;
+		context.first.sub = {};
+	}
 	context.first.main.addingActivity = true
 
 	if(Object.keys(context.first.sub).length == 0){ //  there is no subcontext
@@ -48,10 +52,6 @@ module.exports = function(context, msg){
 	console.log('context in addActivity ', JSON.stringify(context));
 
 
-	let cleanSub = function(){
-		context.second = context.first;
-		context.first.sub = {};
-	}
-
+	
 	//context.first.main = {};
 }
