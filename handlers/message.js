@@ -3,7 +3,7 @@ const platformHelpers = require('../platformHelpers');
 const sessionStore = require('../sessionStore');
 //const wit = require('../wit');
 const GraphAPI = require('../graphAPI');
-const takeAction require('../takeAction')
+const takeAction = require('../takeAction')
 
 module.exports = function handleTextMessage (sessionId, session, msg) {
 	const recipientId = session.fbid;
