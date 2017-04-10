@@ -5,7 +5,7 @@ const GraphAPI = require('../graphAPI');
 module.exports = function(context, msg){
 
 	console.log('done');
-
+	let recipientId = context.userData.recipientId;
 	context.first.main.addingActivity = true
 
 	if(Object.keys(context.first.sub).length == 0){ //  there is no subcontext
