@@ -13,7 +13,7 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 	session.mesLog = mesLog
 
 
-	//if (!context.first) { context.first = {main:{},sub:{}}};  
+	if (!context.current) { context.current = {}};  
 	//if (!context.second) { context.second = {main:{},sub:{}}};
 
 	takeAction(context, msg).then((context)=>{
