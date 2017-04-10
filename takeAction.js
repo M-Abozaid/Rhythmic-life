@@ -5,7 +5,7 @@ const GraphAPI = require('./graphAPI');
 let takeAction = function(context,msg){
 	let recipientId = context.userData.recipientId;
 	if(msg == 'hi'){
-		//context.current.main = {};
+		context.current = {};
 		//context.current.sub = {};
 		let data = platformHelpers.generateQuickReplies('Would you like to add new activity', {0:'yes',1:'no'});
 		GraphAPI.sendPlainMessage(recipientId, 'Hello! ').then(  //+context.userData.first_name).then()
