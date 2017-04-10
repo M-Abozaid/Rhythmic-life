@@ -107,6 +107,8 @@ function processMessage(messaging) {
 						return data;
 					});
 			}
+			sessionStore.destroy(sessionId); 
+			console.log("DESTROYYYYYYYYYYYed")
 			return data;	
 		})
 		.then(data => {
