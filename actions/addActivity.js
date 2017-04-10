@@ -26,6 +26,7 @@ module.exports = function(context, msg){
                         if (err) throw err;
                         //res.json(user);
                         console.log('saved to the database');
+                        context.current = {}
                     });
 		})
 
@@ -61,7 +62,7 @@ module.exports = function(context, msg){
 							saveActivity();
 							GraphAPI.sendPlainMessage(recipientId, 'Activity added successfully!')
 							console.log('saving to the database.....',JSON.stringify(context.current));
-							context.current = {}
+							
 						}
 					}
 				}
