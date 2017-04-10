@@ -9,4 +9,6 @@ module.exports = function(context, msg){
 	context.first.main.addingActivity = true
 
 	console.log('context in addActivity ', JSON.stringify(context));
+
+	context.first.main = {};
 }

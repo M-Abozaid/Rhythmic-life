@@ -1,9 +1,9 @@
 'use strict';
 const platformHelpers = require('../platformHelpers');
 const sessionStore = require('../sessionStore');
-const wit = require('../wit');
+//const wit = require('../wit');
 const GraphAPI = require('../graphAPI');
-const addActivity = require('../actions/addActivity')
+const takeAction require('../takeAction')
 
 module.exports = function handleTextMessage (sessionId, session, msg) {
 	const recipientId = session.fbid;
@@ -15,23 +15,9 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 
 	if (!context.first) { context.first = {main:{},sub:{}}};  
 	if (!context.second) { context.second = {main:{},sub:{}}};
-	if (Object.keys(context.first.main).length == 0){ // if No context 
-
-		if (msg == "add activity"){
-			addActivity(context,msg);
-		}
-
-		if(msg == 'hi'){
-		let data = platformHelpers.generateQuickReplies('Would you like to add new activity', {0:'yes',1:'no'});
-		GraphAPI.sendPlainMessage(recipientId, 'Hello! ').then(  //+context.userData.first_name).then()
-		()=>{GraphAPI.sendTemplateMessage(recipientId, data)})
-	}
-	}else {
-
-	}
-
+	takeAction(context, msg).then((context)=>{sessionStore.saveSession(sessionId, session)})
 	
-	sessionStore.saveSession(sessionId, session)
+
 	console.log('context inside  handleTextMessage ',JSON.stringify(context));
 	console.log('messeging  ',msg);
 	console.log('session  ',JSON.stringify(session));
