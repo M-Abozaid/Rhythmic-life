@@ -8,7 +8,7 @@ module.exports = function(context, msg){
 
 	context.first.main.addingActivity = true
 
-	if(Object.keys(context.first.sub)length == 0){ //  there is no subcontext
+	if(Object.keys(context.first.sub).length == 0){ //  there is no subcontext
 		//context.first.sub.activityName = true
 		GraphAPI.sendPlainMessage(recipientId, 'Ok tell me the name of the activity! ')
 		context.first.sub.activityType = true
