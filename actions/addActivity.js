@@ -12,7 +12,7 @@ module.exports = function(context, msg){
 
 		User.findOne({recipientId : recipientId},(err,user)=>{
 			if (err) throw err;
-			user.activitie.push({
+			user.activities.push({
 				name: activityName,
 				type: activityType,
 				positivity: positivity,
