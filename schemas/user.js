@@ -2,6 +2,26 @@
 
 const mongoose = require('mongoose-q')(require('mongoose'));
 const Schema = mongoose.Schema;
+const ActivitySchema = new Schema({
+    name:{
+        type: String,
+        required: true,
+    },
+    type:{
+        type: String
+    },
+    positivity:{
+        type: Boolean
+    },
+    // period:{
+    //     type: Number,
+    //     required: true
+    // },
+    hebitual:{
+        type: Boolean
+    },
+
+});
 
 const UserSchema = new Schema({
 
@@ -29,6 +49,7 @@ const UserSchema = new Schema({
             when: Date
         }    
     ],
+    activities:[ActivitySchema],
     
 
     lastActivity: {type: Date, default: Date.now, index: true},

@@ -1,12 +1,32 @@
 const platformHelpers = require('../platformHelpers');
 const GraphAPI = require('../graphAPI');
+const mongoose = require('mongoose');
+const User = require('../schemas/user');
 
 
 module.exports = function(context, msg){
 
 	console.log('done');
 	let recipientId = context.userData.recipientId;
-	
+	let saveActivity = function(){
+
+		User.find({'recipientId' : recipientId},(err,user)=>{
+			if (err) throw err;
+			user.activitie.push({
+				name: activityName,
+				type: activityType,
+				positivity: positivity,
+				hebitual: hebitual
+			})
+
+			user.save(function (err, user) {
+                        if (err) throw err;
+                        //res.json(user);
+                        console.log('saved to the database');
+                    });
+		})
+
+	}
 
 	if(Object.keys(context.current).length == 0){ //  there is no current context 
 		//context.first.sub.activityName = true
@@ -20,8 +40,7 @@ module.exports = function(context, msg){
 			if(context.current.main && !context.current.activityType){
 			context.current.activityType = msg	
 			GraphAPI.sendPlainMessage(recipientId, 'Ok tell me the name of the activity! ')
-			//return
-			}else{
+		 	}else{
 				if(context.current.activityType && !context.current.activityName){
 					context.current.activityName = msg
 					console.log('activity type ',msg,' saved');
@@ -35,15 +54,16 @@ module.exports = function(context, msg){
 						GraphAPI.sendTemplateMessage(recipientId, data)
 					}else{
 						if(context.current.positivity && !context.current.hebitual){
-						context.current.hebitual = msg
-						GraphAPI.sendPlainMessage(recipientId, 'Activity added successfully!')
-						console.log('saving to the database.....',JSON.stringify(context.current));
-						context.current = {}
+							context.current.hebitual = msg
+							saveActivity();
+							GraphAPI.sendPlainMessage(recipientId, 'Activity added successfully!')
+							console.log('saving to the database.....',JSON.stringify(context.current));
+							context.current = {}
 						}
 					}
 				}
 			}
-	}
+		}
 	console.log('context in addActivity ', JSON.stringify(context));
 
 
