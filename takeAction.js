@@ -55,7 +55,7 @@ let takeAction = function(context,msg){
 			addActivity(context,msg);
 		}
 		if(context.current.main == 'addingLog'){
-			addingLog(context,msg)
+			addLog(context,msg)
 		}
 		
 
