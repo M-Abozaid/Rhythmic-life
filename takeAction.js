@@ -14,22 +14,23 @@ let takeAction = function(context,msg){
 	}
 
 	
-	if(msg == 'hi'){
-		context.current = {};
-		context.current.main = 'offered'
-		//context.current.sub = {};
-		GraphAPI.sendPlainMessage(recipientId, 'Hello! '+context.userData.first_name+' 😍😍😍').then(()=>{offer()})
-	}
+	
 
 	if (Object.keys(context.current).length == 0){ // if No context 
-
-		if (msg == "add activity"){
-			context.current.main = 'addingActivity';
-			addActivity(context,msg).then((cont)=>{resolve(cont)});
-
+		if(msg == 'hi'){
+			context.current = {};
+			context.current.main = 'offered'
+			//context.current.sub = {};
+			GraphAPI.sendPlainMessage(recipientId, 'Hello! '+context.userData.first_name+' 😍😍😍').then(()=>{offer()})
 		}else{
-			GraphAPI.sendPlainMessage(recipientId, 'I\'m sorry I don\'t understant! 😐😕 try typing help or you could keep a diry log of what you\'re doing right now.')
-			.then(()=>{resolve(context)})
+			if (msg == "add activity"){
+				context.current.main = 'addingActivity';
+				addActivity(context,msg).then((cont)=>{resolve(cont)});
+
+			}else{
+				GraphAPI.sendPlainMessage(recipientId, 'I\'m sorry I don\'t understant! 😐😕 try typing help or you could keep a diry log of what you\'re doing right now.')
+				.then(()=>{resolve(context)})
+			}
 		}
 
 		
