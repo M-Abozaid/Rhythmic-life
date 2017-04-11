@@ -8,6 +8,8 @@ module.exports = function(context, msg){
 
 	console.log('done');
 	let recipientId = context.userData.recipientId;
+
+	
 	let saveActivity = function(){
 		User.findOne({recipientId : recipientId},(err,user)=>{
 			if (err) throw err;
@@ -60,7 +62,9 @@ module.exports = function(context, msg){
 					}else{
 						if(context.current.positivity && !context.current.hebitual){
 							context.current.hebitual = msg
-							saveActivity();
+							saveActivity().then(()=>{
+								context.current = {}
+							})
 							GraphAPI.sendPlainMessage(recipientId, 'Activity added successfully!  ✌️')
 							//console.log('saving to the database.....',JSON.stringify(context.current));
 							
