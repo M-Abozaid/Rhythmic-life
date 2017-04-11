@@ -9,7 +9,7 @@ module.exports = function(context, msg){
 	console.log('done');
 	let recipientId = context.userData.recipientId;
 
-	
+
 	let saveActivity = function(){
 		User.findOne({recipientId : recipientId},(err,user)=>{
 			if (err) throw err;
@@ -26,9 +26,9 @@ module.exports = function(context, msg){
 			user.save(function (err, user) {
                         if (err) throw err;
                         //res.json(user);
-                        console.log('saved to the database');
-                        context.current = {}
-                        console.log('After cleaning the context --- ',context.current);
+                        return new Promise(function(resolve, reject){
+						resolve()
+						})
                     });
 		})
 
