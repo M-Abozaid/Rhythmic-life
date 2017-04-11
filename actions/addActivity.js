@@ -26,7 +26,7 @@ module.exports = function(context, msg){
                         //res.json(user);
                         console.log('saved to the database');
                         context.current = {}
-                        console.log('After cleaning the context --- 'context.current);
+                        console.log('After cleaning the context --- ',context.current);
                     });
 		})
 
