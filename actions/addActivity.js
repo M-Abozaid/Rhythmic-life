@@ -11,25 +11,27 @@ module.exports = function(context, msg){
 
 
 	let saveActivity = function(){
-		User.findOne({recipientId : recipientId},(err,user)=>{
-			if (err) throw err;
-			console.log('the user  ',JSON.stringify(user));
-			let obj = {
-				name: context.current.activityName,
-				type: context.current.activityType,
-				positivity: context.current.positivity,
-				hebitual: context.current.hebitual
-			}
-			console.log('Obj  ', JSON.stringify(obj))
-			user.activities.push(obj)
-			console.log('Pushed ', JSON.stringify(user),' user.activities ',JSON.stringify(user.activities));
-			user.save(function (err, user) {
-                        if (err) throw err;
-                        //res.json(user);
-                        return new Promise(function(resolve, reject){
-						resolve()
-						})
-                    });
+		return new Promise(function(resolve, reject){
+			User.findOne({recipientId : recipientId},(err,user)=>{
+				if (err) throw err;
+				console.log('the user  ',JSON.stringify(user));
+				let obj = {
+					name: context.current.activityName,
+					type: context.current.activityType,
+					positivity: context.current.positivity,
+					hebitual: context.current.hebitual
+				}
+				console.log('Obj  ', JSON.stringify(obj))
+				user.activities.push(obj)
+				console.log('Pushed ', JSON.stringify(user),' user.activities ',JSON.stringify(user.activities));
+				user.save(function (err, user) {
+	                        if (err) throw err;
+	                        //res.json(user);
+	                        
+							resolve()
+							
+	                    });
+			})
 		})
 
 	}
