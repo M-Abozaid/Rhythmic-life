@@ -5,6 +5,7 @@ const platformHelpers = require('./platformHelpers');
 const GraphAPI = require('./graphAPI');
 
 let takeAction = function(context,msg){
+	return new Promise(function(resolve, reject){
 	let recipientId = context.userData.recipientId;
 
 	let offer = function(){
@@ -14,7 +15,7 @@ let takeAction = function(context,msg){
 
 	
 	if(msg == 'hi'){
-		context.current = {}
+		context.current = {};
 		context.current.main = 'offered'
 		//context.current.sub = {};
 		GraphAPI.sendPlainMessage(recipientId, 'Hello! '+context.userData.first_name+' 😍😍😍').then(()=>{offer()})
@@ -62,7 +63,7 @@ let takeAction = function(context,msg){
 		
 
 	}
-	return new Promise(function(resolve, reject){
+	
 	resolve(context)
 	})
 }
