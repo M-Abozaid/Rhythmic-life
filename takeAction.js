@@ -52,10 +52,10 @@ let takeAction = function(context,msg){
 			//  there is a context going on
 			if(context.current.main == 'addingActivity'){
 				addActivity(context,msg);
-			}
-		}else{
-			if(context.current.main == 'addingLog'){
-				addLog(context,msg)
+			}else{
+				if(context.current.main == 'addingLog'){
+					addLog(context,msg)
+				}
 			}
 		}
 		
