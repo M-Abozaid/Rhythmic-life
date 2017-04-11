@@ -7,6 +7,7 @@ module.exports = function(context, msg){
 
 	//context.current.main = 'addingLog'
 	console.log("adding logs");
+	let recipientId = context.userData.recipientId;
 	User.findOne({recipientId : recipientId},(err,user)=>{
 		if (err) throw err;
 		let data = platformHelpers.generateQuickReplies('Choose the activity ', map(user.activities,(elem)=>{return elem.name}));
