@@ -23,7 +23,7 @@ module.exports = function(context, msg){
 				}
 				console.log('Obj  ', JSON.stringify(obj))
 				user.activities.push(obj)
-				console.log('Pushed ', JSON.stringify(user),' user.activities ',JSON.stringify(user.activities));
+				//console.log('Pushed ', JSON.stringify(user),' user.activities ',JSON.stringify(user.activities));
 				user.save(function (err, user) {
 	                        if (err) throw err;
 	                        //res.json(user);
