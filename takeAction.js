@@ -14,6 +14,7 @@ let takeAction = function(context,msg){
 
 	
 	if(msg == 'hi'){
+		context.current = {}
 		context.current.main = 'offered'
 		//context.current.sub = {};
 		GraphAPI.sendPlainMessage(recipientId, 'Hello! '+context.userData.first_name+' 😍😍😍').then(()=>{offer()})
