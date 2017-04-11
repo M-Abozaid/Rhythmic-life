@@ -60,7 +60,7 @@ module.exports = function(context, msg){
 						if(context.current.positivity && !context.current.hebitual){
 							context.current.hebitual = msg
 							saveActivity();
-							GraphAPI.sendPlainMessage(recipientId, 'Activity added successfully!')
+							GraphAPI.sendPlainMessage(recipientId, 'Activity added successfully!  ✌️')
 							console.log('saving to the database.....',JSON.stringify(context.current));
 							
 						}
