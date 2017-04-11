@@ -31,16 +31,17 @@ module.exports = function(context, msg){
 
 	}
 
-	if(Object.keys(context.current).length == 0){ //  there is no current context 
+	if(Object.keys(context.current).length == 1){ //  there is only main context 
 		//context.first.sub.activityName = true
+		context.current.choose = true ;
 		console.log('activity ',msg,' saved');
 		let data = platformHelpers.generateQuickReplies('Choose the Type ', {0:'work',1:'study',2:'entertainment'});
 		GraphAPI.sendTemplateMessage(recipientId, data)
-		context.current.main = 'addingActivity' ;
+		context.current.choose = true ;
 		
 
 	}else {
-			if(context.current.main && !context.current.activityType){
+			if(context.current.choose && !context.current.activityType){
 			context.current.activityType = msg	
 			GraphAPI.sendPlainMessage(recipientId, 'Ok tell me the name of the activity! ')
 		 	}else{

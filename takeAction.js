@@ -48,14 +48,15 @@ let takeAction = function(context,msg){
 				default:
 				GraphAPI.sendPlainMessage(recipientId, 'I\'m sorry I don\'t understant! 😐😕 try typing help or you could keep a diry log of what you\'re doing right now.')
 			}
-		}
-
-		//  there is a context going on
-		if(context.current.main == 'addingActivity'){
-			addActivity(context,msg);
-		}
-		if(context.current.main == 'addingLog'){
-			addLog(context,msg)
+		}else{
+			//  there is a context going on
+			if(context.current.main == 'addingActivity'){
+				addActivity(context,msg);
+			}
+		}else{
+			if(context.current.main == 'addingLog'){
+				addLog(context,msg)
+			}
 		}
 		
 
