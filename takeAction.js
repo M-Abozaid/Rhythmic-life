@@ -32,12 +32,13 @@ let takeAction = function(context,msg){
 		}
 
 		
-	}else {
+	}else {   // if context 
 		if(context.current.main == 'offered'){
 			switch(msg){
 				case 'Add diary log': 
 				context.current.main = 'addingLog';
-				addLog(context,msg).then((cont)=>{context = cont});
+				addLog(context,msg).then((cont)=>{context = cont
+				resolve(context)});
 				break;
 				case 'See you diary': 
 				context.current.main = 'gettingLogs';
@@ -45,7 +46,8 @@ let takeAction = function(context,msg){
 				break;
 				case 'Add a new activity': 
 				context.current.main = 'addingActivity';
-				addActivity(context,msg).then((cont)=>{context = cont});;
+				addActivity(context,msg).then((cont)=>{context = cont
+				resolve(context)});;
 				break;
 				default:
 				GraphAPI.sendPlainMessage(recipientId, 'I\'m sorry I don\'t understant! 😐😕 try typing help or you could keep a diry log of what you\'re doing right now.')
@@ -53,10 +55,14 @@ let takeAction = function(context,msg){
 		}else{
 			//  there is a context going on
 			if(context.current.main == 'addingActivity'){
-				addActivity(context,msg).then((cont)=>{context = cont});
+				addActivity(context,msg).then((cont)=>{context = cont
+				resolve(context)});
 			}else{
 				if(context.current.main == 'addingLog'){
-					addLog(context,msg).then((cont)=>{context = cont});
+					addLog(context,msg).then((cont)=>{
+						context = cont
+						resolve(context)
+					});
 				}
 			}
 		}
@@ -64,7 +70,7 @@ let takeAction = function(context,msg){
 
 	}
 	
-	resolve(context)
+	//resolve(context)
 	})
 }
 
