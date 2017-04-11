@@ -53,10 +53,10 @@ let takeAction = function(context,msg){
 		}else{
 			//  there is a context going on
 			if(context.current.main == 'addingActivity'){
-				addActivity(context,msg).then((cont)=>{context = cont});;
+				addActivity(context,msg).then((cont)=>{context = cont});
 			}else{
 				if(context.current.main == 'addingLog'){
-					addLog(context,msg)
+					addLog(context,msg).then((cont)=>{context = cont});
 				}
 			}
 		}
