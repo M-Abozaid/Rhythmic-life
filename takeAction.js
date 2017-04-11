@@ -10,7 +10,7 @@ let takeAction = function(context,msg){
 
 	let offer = function(){
 		let data = platformHelpers.generateQuickReplies('What would you like to do? ', ['Add diary log','See you diary','Add a new activity']);
-		GraphAPI.sendTemplateMessage(recipientId, data)
+		GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{resolve(context)})
 	}
 
 	
@@ -25,10 +25,11 @@ let takeAction = function(context,msg){
 
 		if (msg == "add activity"){
 			context.current.main = 'addingActivity';
-			addActivity(context,msg);
+			addActivity(context,msg).then((cont)=>{resolve(cont)});
 
 		}else{
 			GraphAPI.sendPlainMessage(recipientId, 'I\'m sorry I don\'t understant! 😐😕 try typing help or you could keep a diry log of what you\'re doing right now.')
+			.then(()=>{resolve(context)})
 		}
 
 		
