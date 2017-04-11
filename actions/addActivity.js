@@ -26,6 +26,7 @@ module.exports = function(context, msg){
                         //res.json(user);
                         console.log('saved to the database');
                         context.current = {}
+                        console.log('After cleaning the context --- 'context.current);
                     });
 		})
 
@@ -61,7 +62,7 @@ module.exports = function(context, msg){
 							context.current.hebitual = msg
 							saveActivity();
 							GraphAPI.sendPlainMessage(recipientId, 'Activity added successfully!  ✌️')
-							console.log('saving to the database.....',JSON.stringify(context.current));
+							//console.log('saving to the database.....',JSON.stringify(context.current));
 							
 						}
 					}

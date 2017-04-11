@@ -10,7 +10,7 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 	const context = session.context;
 	let mesLog = session.mesLog || [];
 	mesLog.push(msg)
-	session.mesLog = mesLog
+	session.mesLog = [] //mesLog
 
 
 	if (!context.current) { context.current = {}};  
