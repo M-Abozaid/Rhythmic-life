@@ -37,7 +37,7 @@ let takeAction = function(context,msg){
 			switch(msg){
 				case 'Add diary log': 
 				context.current.main = 'addingLog';
-				addLog(context,msg);
+				addLog(context,msg).then((cont)=>{context = cont});
 				break;
 				case 'See you diary': 
 				context.current.main = 'gettingLogs';
@@ -45,7 +45,7 @@ let takeAction = function(context,msg){
 				break;
 				case 'Add a new activity': 
 				context.current.main = 'addingActivity';
-				addActivity(context,msg);
+				addActivity(context,msg).then((cont)=>{context = cont});;
 				break;
 				default:
 				GraphAPI.sendPlainMessage(recipientId, 'I\'m sorry I don\'t understant! 😐😕 try typing help or you could keep a diry log of what you\'re doing right now.')
@@ -53,7 +53,7 @@ let takeAction = function(context,msg){
 		}else{
 			//  there is a context going on
 			if(context.current.main == 'addingActivity'){
-				addActivity(context,msg);
+				addActivity(context,msg).then((cont)=>{context = cont});;
 			}else{
 				if(context.current.main == 'addingLog'){
 					addLog(context,msg)

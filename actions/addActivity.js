@@ -5,13 +5,13 @@ const User = require('../schemas/user');
 
 
 module.exports = function(context, msg){
-
+return new Promise(function(resolve, reject){
 	console.log('done');
 	let recipientId = context.userData.recipientId;
 
 
 	let saveActivity = function(){
-		return new Promise(function(resolve, reject){
+		
 			User.findOne({recipientId : recipientId},(err,user)=>{
 				if (err) throw err;
 				console.log('the user  ',JSON.stringify(user));
@@ -28,11 +28,11 @@ module.exports = function(context, msg){
 	                        if (err) throw err;
 	                        //res.json(user);
 	                        
-							resolve()
+							resolve(context)
 							
 	                    });
 			})
-		})
+		
 
 	}
 
@@ -81,6 +81,6 @@ module.exports = function(context, msg){
 	console.log('context in addActivity ', JSON.stringify(context));
 
 
-	
+	})
 	//  context.first.main = {};
 }
