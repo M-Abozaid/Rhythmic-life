@@ -10,7 +10,7 @@ module.exports = function(context, msg){
 	let recipientId = context.userData.recipientId;
 	User.findOne({recipientId : recipientId},(err,user)=>{
 		if (err) throw err;
-		let data = platformHelpers.generateQuickReplies('Choose the activity ', _map(user.activities,(elem)=>{return elem.name}));
+		let data = platformHelpers.generateQuickReplies('Choose the activity ', _.map(user.activities,(elem)=>{return elem.name}));
 		GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
 			context.current = {} 
 		})
