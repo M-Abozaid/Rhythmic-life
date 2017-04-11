@@ -8,7 +8,7 @@ let takeAction = function(context,msg){
 		context.current = {};
 		//context.current.sub = {};
 		let data = platformHelpers.generateQuickReplies('Would you like to add new activity', {0:'yes',1:'no'});
-		GraphAPI.sendPlainMessage(recipientId, 'Hello! ').then(  //+context.userData.first_name).then()
+		GraphAPI.sendPlainMessage(recipientId, 'Hello! 😍😍😍').then(  //+context.userData.first_name).then()
 		()=>{GraphAPI.sendTemplateMessage(recipientId, data)})
 	}
 
