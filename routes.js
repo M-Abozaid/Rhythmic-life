@@ -139,8 +139,8 @@ function processMessage(messaging) {
 
 			const quickReply = messaging.message && messaging.message.quick_reply;
 			if (quickReply) {
-				let payloadTokens = quickReply.payload.split(':');
-				const msg = payloadTokens[0];
+				//let payloadTokens = quickReply.payload.split(':');
+				const msg = messaging.message.text
 				//return handleQuickReply(sender, sessionId, session.context, quickReply.payload);
 				console.log('handling quickreply');
 				return handleTextMessage(sessionId, session, msg);
