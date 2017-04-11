@@ -1,33 +1,65 @@
 const addActivity = require('./actions/addActivity')
+const addingLog = require('./actions/addLog')
+const addingLog = require('./actions/getLogs')
 const platformHelpers = require('./platformHelpers');
 const GraphAPI = require('./graphAPI');
 
 let takeAction = function(context,msg){
 	let recipientId = context.userData.recipientId;
+
+	let offer = function(){
+		let data = platformHelpers.generateQuickReplies('What would you like to do? ', ['Add diary log','See you diary','Add a new activity']);
+		GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
+			context.current.main = 'offered'
+		})
+	}
+
+	
 	if(msg == 'hi'){
 		context.current = {};
 		//context.current.sub = {};
-		let data = platformHelpers.generateQuickReplies('Would you like to keep a note of what you\'re doning right now.✍️', ['Yes','No']);
-		GraphAPI.sendPlainMessage(recipientId, 'Hello! 😍😍😍').then(  //+context.userData.first_name).then()
-		()=>{GraphAPI.sendTemplateMessage(recipientId, data)})
+		GraphAPI.sendPlainMessage(recipientId, 'Hello! '+context.userData.first_name+' 😍😍😍').then(()=>{offer()})
 	}
 
 	if (Object.keys(context.current).length == 0){ // if No context 
 
 		if (msg == "add activity"){
+			context.current.main = 'addingActivity';
 			addActivity(context,msg);
 
 		}else{
-			GraphAPI.sendPlainMessage(recipientId, 'I don\'t understant! ')
+			GraphAPI.sendPlainMessage(recipientId, 'I\'m sorry I don\'t understant! 😐😕 try typing help or you could keep a diry log of what you\'re doing right now.')
 		}
 
 		
 	}else {
+		if(context.current.main == 'offered'){
+			switch(msg){
+				case 'Add diary log': 
+				context.current.main = 'addingLog';
+				addLog(context,msg);
+				break;
+				case 'See you diary': 
+				context.current.main = 'gettingLogs';
+				getLogs(context,msg);
+				break;
+				case 'Add a new activity': 
+				context.current.main = 'addingActivity';
+				addActivity(context,msg);
+				break;
+				default:
+				GraphAPI.sendPlainMessage(recipientId, 'I\'m sorry I don\'t understant! 😐😕 try typing help or you could keep a diry log of what you\'re doing right now.')
+			}
+		}
+
+		//  there is a context going on
 		if(context.current.main == 'addingActivity'){
 			addActivity(context,msg);
-		}else{
-			GraphAPI.sendPlainMessage(recipientId, 'I\'m sorry I don\'t understant! 😐😕 try typing help or you could keep a diry log of what you\'re doing right now.')
 		}
+		if(context.current.main == 'addingLog'){
+			addingLog(context,msg)
+		}
+		
 
 	}
 	return new Promise(function(resolve, reject){

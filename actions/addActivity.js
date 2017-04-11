@@ -9,7 +9,6 @@ module.exports = function(context, msg){
 	console.log('done');
 	let recipientId = context.userData.recipientId;
 	let saveActivity = function(){
-
 		User.findOne({recipientId : recipientId},(err,user)=>{
 			if (err) throw err;
 			console.log('the user  ',JSON.stringify(user));
