@@ -9,14 +9,12 @@ let takeAction = function(context,msg){
 
 	let offer = function(){
 		let data = platformHelpers.generateQuickReplies('What would you like to do? ', ['Add diary log','See you diary','Add a new activity']);
-		GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
-			context.current.main = 'offered'
-		})
+		GraphAPI.sendTemplateMessage(recipientId, data)
 	}
 
 	
 	if(msg == 'hi'){
-		context.current = {};
+		context.current.main = 'offered'
 		//context.current.sub = {};
 		GraphAPI.sendPlainMessage(recipientId, 'Hello! '+context.userData.first_name+' 😍😍😍').then(()=>{offer()})
 	}
