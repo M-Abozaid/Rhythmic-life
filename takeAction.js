@@ -1,6 +1,6 @@
 const addActivity = require('./actions/addActivity')
-const addingLog = require('./actions/addLog')
-const addingLog = require('./actions/getLogs')
+const addLog = require('./actions/addLog')
+const getLogs = require('./actions/getLogs')
 const platformHelpers = require('./platformHelpers');
 const GraphAPI = require('./graphAPI');
 
