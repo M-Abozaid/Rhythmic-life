@@ -3,6 +3,7 @@ const GraphAPI = require('../graphAPI');
 const mongoose = require('mongoose');
 const User = require('../schemas/user');
 const _ = require('lodash');
+const addingActivity = require('./addActivity');
 
 module.exports = function(context, msg){
 let recipientId = context.userData.recipientId; // here because it was not accessble at saveLog
@@ -60,7 +61,7 @@ let recipientId = context.userData.recipientId; // here because it was not acces
 					context.current = {}
 					context.current.main = 'addingActivity';
 					context.current.nextAddLog = true;
-					resolve(context);
+					addingActivity(context,msg);
 				}else{
 					let data = platformHelpers.generateQuickReplies('Type a note to be included if you like.', ['No thats it']);
 					GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{

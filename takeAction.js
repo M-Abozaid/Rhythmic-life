@@ -54,7 +54,7 @@ let takeAction = function(context,msg){
 			}
 		}else{
 			//  there is a context going on
-			console.log('inside the last else n take action',context.current.main);
+			console.log('inside the last else n take action',JSON.stringify(context));
 			if(context.current.main == 'addingActivity'){
 				addActivity(context,msg).then((cont)=>{resolve(cont)});
 			}else{
