@@ -68,7 +68,7 @@ return new Promise(function(resolve, reject){
 						if(context.current.positivity && !context.current.hebitual){
 							context.current.hebitual = msg
 							saveActivity().then(()=>{
-								GraphAPI.sendPlainMessage(recipientId, 'Activity added successfully!  ✌️')
+								GraphAPI.sendPlainMessage(recipientId, 'Activity added successfully!  ✌️').then(()=>{
 								if (context.current.nextAddLog){
 									msg =  context.current.activityName
 									context.current = {}
@@ -79,6 +79,7 @@ return new Promise(function(resolve, reject){
 									context.current = {}
 									resolve(context)
 								}
+							})
 							})
 							
 							//console.log('saving to the database.....',JSON.stringify(context.current));
