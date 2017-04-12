@@ -9,22 +9,17 @@ let recipientId = context.userData.recipientId; // here because it was not acces
 	return new Promise(function(resolve, reject){
 	let saveLog = function(){
 
-			let query = User.findOne({recipientId : recipientId})
 
 			User.findOne({recipientId : recipientId},(err,user)=>{
 				if (err) throw err;
 				console.log('the user  ',JSON.stringify(user));
 
-				query.findOne({'activities.name':context.current.logName},(err,activity)=>{
-					if (err) throw err;
-					console.log('found acitvity....  ',JSON.stringify(activity));
-					context.current.activityId = activity._id
-				})
+				
 
 				let obj = {
 					logName: context.current.logName,
 					note: context.current.note,
-					activityId: context.current.activityId,
+					activityId: user.activities.find((elem)=>{return elem.name == context.current.logName })._id,
 				}
 
 				console.log('Obj  ', JSON.stringify(obj))
