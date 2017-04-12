@@ -29,7 +29,7 @@ const LogsSchema = new Schema({
         type: String,
     },
     activityId:{
-        type: ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref:'User'
     },
     note:{
