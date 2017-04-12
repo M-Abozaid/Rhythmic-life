@@ -43,7 +43,11 @@ let recipientId = context.userData.recipientId; // here because it was not acces
 		if(Object.keys(context.current).length == 1){
 			User.findOne({recipientId : recipientId},(err,user)=>{
 				if (err) throw err;
-				let data = platformHelpers.generateQuickReplies('Choose the activity ', _.map(user.activities,(elem)=>{return elem.name}).push('New activity'));
+				list = _.map(user.activities,(elem)=>{return elem.name})
+				console.log('list first  ', JSON.stringify(list))
+				opt = list.push('New activity')
+				console.log('opt ', JSON.stringify(opt));
+				let data = platformHelpers.generateQuickReplies('Choose the activity ', opt);
 				GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
 					context.current.choose = true;
 					resolve(context)
