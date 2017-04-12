@@ -74,7 +74,7 @@ return new Promise(function(resolve, reject){
 									context.current = {}
 									context.current.main = 'addingLog';
 									context.current.chooseLog = true;
-									addingLog(context,msg).then(()=>{resolve(context)})
+									addingLog(context,msg).then((cont)=>{resolve(cont)})
 								}else{
 									context.current = {}
 									resolve(context)
