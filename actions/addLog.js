@@ -40,7 +40,7 @@ let recipientId = context.userData.recipientId; // here because it was not acces
 		//context.current.main = 'addinnissangLog'
 		console.log("adding logs");
 
-		if(Object.keys(context.current).length == 1){
+		if(context.current.main && !context.current.chooseLog ){
 			User.findOne({recipientId : recipientId},(err,user)=>{
 				if (err) throw err;
 				list = _.map(user.activities,(elem)=>{return elem.name})
@@ -49,16 +49,17 @@ let recipientId = context.userData.recipientId; // here because it was not acces
 				console.log('list sec ', JSON.stringify(list));
 				let data = platformHelpers.generateQuickReplies('Choose the activity ', list);
 				GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
-					context.current.choose = true;
+					context.current.chooseLog = true;
 					resolve(context)
 				})
 
 			})
 		}else{
-			if(context.current.choose && !context.current.logName){
+			if(context.current.chooseLog && !context.current.logName){
 				if(msg == 'New activity'){
 					context.current = {}
 					context.current.main = 'addingActivity';
+					context.current.nextAddLog = true;
 					resolve(context);
 				}else{
 					let data = platformHelpers.generateQuickReplies('Type a note to be included if you like.', ['No thats it']);

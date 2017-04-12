@@ -33,18 +33,17 @@ return new Promise(function(resolve, reject){
 		})
 	}
 
-	if(Object.keys(context.current).length == 1){ //  there is only main context 
+	if(context.current.main && !context.current.chooseActivity){ //  there is only main context 
 		//context.first.sub.activityName = true
-		context.current.choose = true ;
 		resolve(context)
 		console.log('activity ',msg,' saved');
 		let data = platformHelpers.generateQuickReplies('Choose the Type ', {0:'work',1:'study',2:'entertainment'});
 		GraphAPI.sendTemplateMessage(recipientId, data)
-		context.current.choose = true ;
+		context.current.chooseActivity = true ;
 		
 
 	}else {
-			if(context.current.choose && !context.current.activityType){
+			if(context.current.chooseActivity && !context.current.activityType){
 			context.current.activityType = msg	
 			resolve(context)
 			GraphAPI.sendPlainMessage(recipientId, 'Ok tell me the name of the activity! ')
@@ -67,8 +66,17 @@ return new Promise(function(resolve, reject){
 							context.current.hebitual = msg
 							saveActivity().then(()=>{
 								GraphAPI.sendPlainMessage(recipientId, 'Activity added successfully!  ✌️')
-								context.current = {}
-								resolve(context)
+								if (context.current.nextAddLog){
+									let name =  context.current.activityName
+									context.current = {}
+									context.current.main = 'addingLog';
+									context.current.chooseLog = true;
+									context.current.logName = name;
+									resolve(context)
+								}else{
+									context.current = {}
+									resolve(context)
+								}
 							})
 							
 							//console.log('saving to the database.....',JSON.stringify(context.current));
