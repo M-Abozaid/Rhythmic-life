@@ -2,6 +2,7 @@ const platformHelpers = require('../platformHelpers');
 const GraphAPI = require('../graphAPI');
 const mongoose = require('mongoose');
 const User = require('../schemas/user');
+const addingLog = require('./addLog');
 
 
 module.exports = function(context, msg){
@@ -74,7 +75,7 @@ return new Promise(function(resolve, reject){
 									context.current.main = 'addingLog';
 									context.current.chooseLog = true;
 									context.current.logName = name;
-									resolve(context)
+									addingLog(context,msg).then(()=>{resolve(context)})
 								}else{
 									context.current = {}
 									resolve(context)
