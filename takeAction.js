@@ -47,7 +47,6 @@ let takeAction = function(context,msg){
 				break;
 				case 'Add a new activity': 
 				context.current.main = 'addingActivity';
-				console.log('addActivity ', addActivity);
 				addActivity(context,msg).then((cont)=>{resolve(cont)});
 				break;
 				default:
