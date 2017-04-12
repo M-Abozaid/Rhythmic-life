@@ -70,11 +70,10 @@ return new Promise(function(resolve, reject){
 							saveActivity().then(()=>{
 								GraphAPI.sendPlainMessage(recipientId, 'Activity added successfully!  ✌️')
 								if (context.current.nextAddLog){
-									let name =  context.current.activityName
+									msg =  context.current.activityName
 									context.current = {}
 									context.current.main = 'addingLog';
 									context.current.chooseLog = true;
-									context.current.logName = name;
 									addingLog(context,msg).then(()=>{resolve(context)})
 								}else{
 									context.current = {}
