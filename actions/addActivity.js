@@ -67,6 +67,7 @@ return new Promise(function(resolve, reject){
 							context.current.hebitual = msg
 							saveActivity().then(()=>{
 								GraphAPI.sendPlainMessage(recipientId, 'Activity added successfully!  ✌️')
+								context.current = {}
 								resolve(context)
 							})
 							
