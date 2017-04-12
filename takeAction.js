@@ -7,7 +7,7 @@ const GraphAPI = require('./graphAPI');
 let takeAction = function(context,msg){
 	return new Promise(function(resolve, reject){
 	let recipientId = context.userData.recipientId;
-
+	console.log('inside takeAction() ---- ');
 	let offer = function(){
 		let data = platformHelpers.generateQuickReplies('What would you like to do? ', ['Add diary log','See you diary','Add a new activity']);
 		GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{resolve(context)})
@@ -54,6 +54,7 @@ let takeAction = function(context,msg){
 			}
 		}else{
 			//  there is a context going on
+			console.log('inside the last else n take action');
 			if(context.current.main == 'addingActivity'){
 				addActivity(context,msg).then((cont)=>{resolve(cont)});
 			}else{
