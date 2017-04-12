@@ -62,11 +62,11 @@ module.exports = function(context, msg){
 					resolve(context)
 				})
 			}else{
-				if(context.current.logName && !contxt.current.note){
+				if(context.current.logName && !context.current.note){
 					if(msg == "No thats it"){
-						contxt.current.note = " ";
+						context.current.note = " ";
 					}else{
-						contxt.current.note = msg;
+						context.current.note = msg;
 					}
 
 					saveLog();

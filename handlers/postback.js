@@ -10,7 +10,7 @@ module.exports = function handlePostback(sender, sessionId, context, payload) {
 	const data = payloadTokens[1];
 
 	switch(action) {
-		case 'showSamples':
+		case 'get started':
 			return sendSamplesQuickReplies(sender);
 			break;
 		case 'somepostback':
