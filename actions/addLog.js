@@ -40,7 +40,7 @@ let recipientId = context.userData.recipientId; // here because it was not acces
 		//context.current.main = 'addinnissangLog'
 		console.log("adding logs");
 
-		if(context.current.main && !context.current.chooseLog ){
+		if(context.current.main && !context.current.chooseLog){
 			User.findOne({recipientId : recipientId},(err,user)=>{
 				if (err) throw err;
 				list = _.map(user.activities,(elem)=>{return elem.name})

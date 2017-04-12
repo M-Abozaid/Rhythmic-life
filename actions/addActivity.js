@@ -32,7 +32,7 @@ return new Promise(function(resolve, reject){
 		
 		})
 	}
-
+	console.log('inside  --- addActivity ---');
 	if(context.current.main && !context.current.chooseActivity){ //  there is only main context 
 		//context.first.sub.activityName = true
 		resolve(context)
