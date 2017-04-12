@@ -11,7 +11,7 @@ return new Promise(function(resolve, reject){
 
 
 	let saveActivity = function(){
-		
+		return new Promise(function(resolve, reject){
 			User.findOne({recipientId : recipientId},(err,user)=>{
 				if (err) throw err;
 				console.log('the user  ',JSON.stringify(user));
@@ -26,14 +26,11 @@ return new Promise(function(resolve, reject){
 				//console.log('Pushed ', JSON.stringify(user),' user.activities ',JSON.stringify(user.activities));
 				user.save(function (err, user) {
 	                        if (err) throw err;
-	                        //res.json(user);
-	                        
-							context.current = {}
-							
+	                        resolve()
 	                    });
 			})
 		
-
+		})
 	}
 
 	if(Object.keys(context.current).length == 1){ //  there is only main context 
