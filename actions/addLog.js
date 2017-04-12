@@ -43,7 +43,7 @@ let recipientId = context.userData.recipientId; // here because it was not acces
 		if(Object.keys(context.current).length == 1){
 			User.findOne({recipientId : recipientId},(err,user)=>{
 				if (err) throw err;
-				let data = platformHelpers.generateQuickReplies('Choose the activity ', _.map(user.activities,(elem)=>{return elem.name}));
+				let data = platformHelpers.generateQuickReplies('Choose the activity ', _.map(user.activities,(elem)=>{return elem.name}).push('New activity'));
 				GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
 					context.current.choose = true;
 					resolve(context)
@@ -52,12 +52,16 @@ let recipientId = context.userData.recipientId; // here because it was not acces
 			})
 		}else{
 			if(context.current.choose && !context.current.logName){
-				
-				let data = platformHelpers.generateQuickReplies('Type a note to be included if you like.', ['No thats it']);
-				GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
-					context.current.logName = msg;
-					resolve(context)
-				})
+				if(msg == 'New activity'){
+					context.current.main = 'addingActivity';
+					resolve(context);
+				}else{
+					let data = platformHelpers.generateQuickReplies('Type a note to be included if you like.', ['No thats it']);
+					GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
+						context.current.logName = msg;
+						resolve(context)
+					})
+				}
 			}else{
 				if(context.current.logName && !context.current.note){
 					if(msg == "No thats it"){
