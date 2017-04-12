@@ -61,7 +61,7 @@ let recipientId = context.userData.recipientId; // here because it was not acces
 					context.current = {}
 					context.current.main = 'addingActivity';
 					context.current.nextAddLog = true;
-					addingActivity(context,msg);
+					addingActivity(context,msg).then(()=>{resolve(context)});
 				}else{
 					let data = platformHelpers.generateQuickReplies('Type a note to be included if you like.', ['No thats it']);
 					GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
