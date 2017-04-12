@@ -15,8 +15,9 @@ let recipientId = context.userData.recipientId; // here because it was not acces
 				if (err) throw err;
 				console.log('the user  ',JSON.stringify(user));
 
-				query.find({'activities.name':context.current.logName},(err,activity)=>{
+				query.findOne({'activities.name':context.current.logName},(err,activity)=>{
 					if (err) throw err;
+					console.log('found acitvity....  ',JSON.stringify(activity));
 					context.current.activityId = activity._id
 				})
 
@@ -33,6 +34,7 @@ let recipientId = context.userData.recipientId; // here because it was not acces
 							if (err) throw err;
 							context.current = {}
 							resolve(context)
+							GraphAPI.sendPlainMessage(recipientId, 'Log added successfully!  ✌️')
 				});
 			})
 		
