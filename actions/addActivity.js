@@ -35,11 +35,13 @@ return new Promise(function(resolve, reject){
 	console.log('inside  --- addActivity ---');
 	if(context.current.main && !context.current.chooseActivity){ //  there is only main context 
 		//context.first.sub.activityName = true
-		resolve(context)
+		
 		console.log('activity ',msg,' saved');
 		let data = platformHelpers.generateQuickReplies('Choose the Type ', {0:'work',1:'study',2:'entertainment'});
-		GraphAPI.sendTemplateMessage(recipientId, data)
+		GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
 		context.current.chooseActivity = true ;
+		resolve(context)
+		})
 		
 
 	}else {
