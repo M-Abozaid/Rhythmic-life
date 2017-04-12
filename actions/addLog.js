@@ -5,7 +5,8 @@ const User = require('../schemas/user');
 const _ = require('lodash');
 
 module.exports = function(context, msg){
-
+let recipientId = context.userData.recipientId; // here because it was not accessble at saveLog
+	
 	let saveLog = function(){
 
 			let query = User.findOne({recipientId : recipientId})
@@ -41,7 +42,6 @@ module.exports = function(context, msg){
 	return new Promise(function(resolve, reject){
 		//context.current.main = 'addingLog'
 		console.log("adding logs");
-		let recipientId = context.userData.recipientId;
 
 		if(Object.keys(context.current).length == 1){
 			User.findOne({recipientId : recipientId},(err,user)=>{
