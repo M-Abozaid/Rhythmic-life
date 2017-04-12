@@ -19,9 +19,27 @@ const ActivitySchema = new Schema({
     // },
     hebitual:{
         type: String
-    },
-
+    }
+},{
+    timestamps: true
 });
+
+const LogsSchema = new Schema({
+    logName:{
+        type: String,
+    },
+    activityId:{
+        type: ObjectId,
+        ref:'User'
+    },
+    note:{
+        type: String,
+        default: " "  
+    }
+},{
+    timestamps: true
+
+})
 
 const UserSchema = new Schema({
 
@@ -50,7 +68,7 @@ const UserSchema = new Schema({
         }    
     ],
     activities:[ActivitySchema],
-    
+    activityLogs:[LogsSchema],
 
     lastActivity: {type: Date, default: Date.now, index: true},
 

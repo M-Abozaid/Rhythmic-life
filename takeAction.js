@@ -21,7 +21,7 @@ let takeAction = function(context,msg){
 			context.current = {};
 			context.current.main = 'offered'
 			//context.current.sub = {};
-			GraphAPI.sendPlainMessage(recipientId, 'Hello! '+context.userData.first_name+' 😍😍😍').then(()=>{offer()})
+			GraphAPI.sendPlainMessage(recipientId, 'Hello! '+context.userData.first_name+' 😍😍').then(()=>{offer()})
 		}else{
 			if (msg == "add activity"){
 				context.current.main = 'addingActivity';
