@@ -19,6 +19,7 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 	takeAction(context, msg).then((context)=>{
 		session.context = context;
 		sessionStore.saveSession(sessionId, session)
+		sessionStore.destroy(sessionId)
 		
 		console.log('context inside  handleTextMessage ',JSON.stringify(context));
 		console.log('messeging  ',msg);
