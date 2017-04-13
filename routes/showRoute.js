@@ -1,7 +1,7 @@
 
-var express = require('express');
-var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
+const express = require('express');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 const User = require('../schemas/user');
 
 
