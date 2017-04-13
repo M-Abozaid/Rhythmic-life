@@ -25,7 +25,8 @@ let takeAction = function(context,msg){
 			        "type":"web_url",
 			        "url":"https://salty-plains-47076.herokuapp.com/show.html",
 			        "title":"View Item",
-			        "webview_height_ratio": "compact"
+			        "webview_height_ratio": "compact",
+			        "messenger_extensions": true
 			      }
 			    ]
 				}
