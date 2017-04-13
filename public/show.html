@@ -32,7 +32,7 @@ window.extAsyncInit = function() {
     var para = document.createElement("p");
 	var node = document.createTextNode("this is your id " + psid);
 	para.appendChild(node);
-	var element = document.getElementById("user");
+	
 	element.appendChild(para);
 
 	var hh = document.createElement("p");
@@ -52,7 +52,8 @@ window.extAsyncInit = function() {
 </div>
 
 <script >
-	 var hh1 = document.createElement("p");
+	var element = document.getElementById("user");
+	var hh1 = document.createElement("p");
 	var node21 = document.createTextNode("should be here ");
 	hh1.appendChild(node21);
 	element.appendChild(hh1);
