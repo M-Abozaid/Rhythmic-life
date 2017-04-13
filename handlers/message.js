@@ -11,7 +11,7 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 	let mesLog = session.mesLog || [];
 	mesLog.push(msg)
 	session.mesLog = [] //mesLog
-
+	context.msg = msg
 
 	if (!context.current) { context.current = {}};  
 	//if (!context.second) { context.second = {main:{},sub:{}}};

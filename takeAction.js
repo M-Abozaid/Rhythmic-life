@@ -13,7 +13,7 @@ let takeAction = function(context,msg){
 		GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{resolve(context)})
 	}
 
-	if(msg == 'show'){
+	if(context.msg == 'show'){
 		data = {
 			"attachment":{
 		      "type":"template",
@@ -36,7 +36,7 @@ let takeAction = function(context,msg){
 		GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{resolve(context)})
 
 	}
-	if(msg == 'hi'){
+	if(context.msg == 'hi'){
 			context.current = {};
 			context.current.main = 'offered'
 			//context.current.sub = {};
@@ -46,7 +46,7 @@ let takeAction = function(context,msg){
 
 	if (Object.keys(context.current).length == 0){ // if No context 
 		
-			if (msg == "add activity"){
+			if (context.msg == "add activity"){
 				context.current.main = 'addingActivity';
 				addActivity(context,msg).then((cont)=>{resolve(cont)});
 
@@ -59,7 +59,7 @@ let takeAction = function(context,msg){
 		
 	}else {   // if context 
 		if(context.current.main == 'offered'){
-			switch(msg){
+			switch(context.msg){
 				case 'Add diary log': 
 				context.current.main = 'addingLog';
 				addLog(context,msg).then((cont)=>{resolve(cont)});

@@ -36,7 +36,7 @@ return new Promise(function(resolve, reject){
 	if(context.current.main && !context.current.chooseActivity){ //  there is only main context 
 		//context.first.sub.activityName = true
 		
-		console.log('activity ',msg,' saved');
+		console.log('activity ',context.msg,' saved');
 		let data = platformHelpers.generateQuickReplies('Choose the Type ', {0:'work',1:'study',2:'entertainment'});
 		GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
 		context.current.chooseActivity = true ;
@@ -46,28 +46,28 @@ return new Promise(function(resolve, reject){
 
 	}else {
 			if(context.current.chooseActivity && !context.current.activityType){
-			context.current.activityType = msg	
+			context.current.activityType = context.msg	
 			resolve(context)
 			GraphAPI.sendPlainMessage(recipientId, 'Ok tell me the name of the activity! ')
 		 	}else{
 				if(context.current.activityType && !context.current.activityName){
-					context.current.activityName = msg
-					console.log('activity type ',msg,' saved');
+					context.current.activityName = context.msg
+					console.log('activity type ',context.msg,' saved');
 					let data = platformHelpers.generateQuickReplies('is is positve or ngative', {0:'positive',1:'ngative',2:'other'});
 					GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{resolve(context)})
 					
 				}else{
 					if(context.current.activityName && !context.current.positivity){
-						context.current.positivity = msg
+						context.current.positivity = context.msg
 						let data = platformHelpers.generateQuickReplies('Is it a habit ', {0:'Yes',1:'NO'});
 						GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{resolve(context)})
 					}else{
 						if(context.current.positivity && !context.current.hebitual){
-							context.current.hebitual = msg
+							context.current.hebitual = context.msg
 							saveActivity().then(()=>{
 								GraphAPI.sendPlainMessage(recipientId, 'Activity added successfully!  ✌️').then(()=>{
 								if (context.current.nextAddLog){
-									msg =  context.current.activityName
+									context.msg =  context.current.activityName //  messge is only chnged here in this module its no passed as context 
 									context.current = {}
 									context.current.main = 'addingLog';
 									context.current.chooseLog = true;

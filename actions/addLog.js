@@ -57,7 +57,7 @@ let recipientId = context.userData.recipientId; // here because it was not acces
 			})
 		}else{
 			if(context.current.chooseLog && !context.current.logName){
-				if(msg == 'New activity'){
+				if(context.msg == 'New activity'){
 					context.current = {}
 					context.current.main = 'addingActivity';
 					context.current.nextAddLog = true;
@@ -66,16 +66,16 @@ let recipientId = context.userData.recipientId; // here because it was not acces
 				}else{
 					let data = platformHelpers.generateQuickReplies('Type a note to be included if you like.', ['No thats it']);
 					GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
-						context.current.logName = msg;
+						context.current.logName = context.msg;
 						resolve(context)
 					})
 				}
 			}else{
 				if(context.current.logName && !context.current.note){
-					if(msg == "No thats it"){
+					if(context.msg == "No thats it"){
 						context.current.note = " ";
 					}else{
-						context.current.note = msg;
+						context.current.note = context.msg;
 					}
 
 					saveLog();
