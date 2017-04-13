@@ -17,7 +17,7 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 	//if (!context.second) { context.second = {main:{},sub:{}}};
 
 	takeAction(context, msg).then((context)=>{
-		if(context.current.continue){takeAction(context, msg)}
+		if(context.current.continue){takeAction(context, msg).then(()=>{context.current.continue = false})}
 		session.context = context;
 		sessionStore.saveSession(sessionId, session)
 		//sessionStore.destroy(sessionId)

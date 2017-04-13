@@ -2,7 +2,6 @@ const platformHelpers = require('../platformHelpers');
 const GraphAPI = require('../graphAPI');
 const mongoose = require('mongoose');
 const User = require('../schemas/user');
-const addingLog = require('./addLog');
 
 
 module.exports = function(context, msg){
@@ -53,17 +52,15 @@ return new Promise(function(resolve, reject){
 		 	}else{
 				if(context.current.activityType && !context.current.activityName){
 					context.current.activityName = msg
-					resolve(context)
 					console.log('activity type ',msg,' saved');
 					let data = platformHelpers.generateQuickReplies('is is positve or ngative', {0:'positive',1:'ngative',2:'other'});
-					GraphAPI.sendTemplateMessage(recipientId, data)
+					GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{resolve(context)})
 					
 				}else{
 					if(context.current.activityName && !context.current.positivity){
 						context.current.positivity = msg
-						resolve(context)
 						let data = platformHelpers.generateQuickReplies('Is it a habit ', {0:'Yes',1:'NO'});
-						GraphAPI.sendTemplateMessage(recipientId, data)
+						GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{resolve(context)})
 					}else{
 						if(context.current.positivity && !context.current.hebitual){
 							context.current.hebitual = msg
