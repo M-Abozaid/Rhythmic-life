@@ -18,13 +18,15 @@
 }(document, 'script', 'Messenger'));
 
 window.extAsyncInit = function() {
+	console.log("done loading ");
     // the Messenger Extensions JS SDK is done loading 
     MessengerExtensions.getUserID(function success(uids) {
   	// User ID was successfully obtained. 
       	var psid = uids.psid;
-  		console.log("your id is ",psid);
+  		console.log("your id is ");
     }, function error(err, errorMessage) {      
   	// Error handling code
+  	console.log(err,' and errmess ',errorMessage);
     });  
 
     var para = document.createElement("p");
