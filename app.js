@@ -32,6 +32,7 @@ const botRoutes = require('./routes');
 app.get('/bot', botRoutes.get);
 app.post('/bot', botRoutes.receive);
 
+/*
 app.get('/show',function (req, res, next) {
   console.log('get request recieved -------',req.headers);
 
@@ -39,7 +40,7 @@ app.get('/show',function (req, res, next) {
   res.end('<html><body><h1>Hello World</h1></body></html>');
 
 });
-
+*/
 app.use(express.static('public'))
 const server = app.listen(app.get('port'), function () {
     console.log('express server listening on port ' + server.address().port);
