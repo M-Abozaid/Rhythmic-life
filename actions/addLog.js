@@ -50,6 +50,16 @@ let recipientId = context.userData.recipientId; // here because it was not acces
 				console.log('list sec ', JSON.stringify(list));
 				//let data = platformHelpers.generateQuickReplies('Choose the activity ', list);
 				let data = {
+
+		    "text": "texsdft",
+		    "quick_replies": [
+					    	 {
+						        "content_type":"text",
+						        "title": "fsda",
+						        "payload": 4
+						      }	
+					    ],
+		
 					"attachment":{
 				      "type":"template",
 				      "payload":{
