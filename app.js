@@ -6,6 +6,7 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 var path = require('path');
+var showRouter = require('./routes/showRoute')
 
 debug('loading configuration');
 const config = require('./config');
@@ -32,13 +33,8 @@ const botRoutes = require('./routes');
 
 app.get('/bot', botRoutes.get);
 app.post('/bot', botRoutes.receive);
+app.use('/show',showRouter)
 
-app.get('/show/:id',  function(req, res, next) {
-	let idi = req.params.id
-  res.render('show', { userId: idi });
-  console.log("id ",idi)
-  console.log("req.param.id  ",req.param.id)
-});
 console.log('port -  ',process.env.PORT);
 
 
