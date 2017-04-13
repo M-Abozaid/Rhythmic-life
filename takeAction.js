@@ -12,16 +12,19 @@ let takeAction = function(context,msg){
 		let data = platformHelpers.generateQuickReplies('What would you like to do? ', ['Add diary log','See you diary','Add a new activity']);
 		GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{resolve(context)})
 	}
+
 	if(msg == 'show'){
 		data = {
-			"buttons":[
-		      {
-		        "type":"web_url",
-		        "url":"https://mabozaid.tk",
-		        "title":"View Item",
-		        "webview_height_ratio": "compact"
-		      }
-		    ]
+			"payload":{
+				"buttons":[
+			      {
+			        "type":"web_url",
+			        "url":"https://mabozaid.tk",
+			        "title":"View Item",
+			        "webview_height_ratio": "compact"
+			      }
+			    ]
+			}
 		}
 
 		GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{resolve(context)})
