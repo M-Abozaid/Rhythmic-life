@@ -34,7 +34,7 @@ app.get('/bot', botRoutes.get);
 app.post('/bot', botRoutes.receive);
 
 app.get('/show/:id',  function(req, res, next) {
-	let idi = req.param.id
+	let idi = req.params.id
   res.render('show', { userId: idi });
   console.log("id ",idi)
   console.log("req.param.id  ",req.param.id)
