@@ -25,7 +25,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 
-
+app.use(express.static(path.join(__dirname, 'public')));
 //Bot routes
 const botRoutes = require('./routes');
 
@@ -40,8 +40,10 @@ app.get('/show',function (req, res, next) {
   res.end('<html><body><h1>Hello World</h1></body></html>');
 
 });
+
 */
-app.use(express.static('public'))
+
+
 const server = app.listen(app.get('port'), function () {
     console.log('express server listening on port ' + server.address().port);
 });

@@ -23,7 +23,7 @@ let takeAction = function(context,msg){
 				"buttons":[
 			      {
 			        "type":"web_url",
-			        "url":"https://salty-plains-47076.herokuapp.com/show/",
+			        "url":"https://salty-plains-47076.herokuapp.com/show.html",
 			        "title":"View Item",
 			        "webview_height_ratio": "compact"
 			      }
