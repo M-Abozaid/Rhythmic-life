@@ -23,7 +23,7 @@ let takeAction = function(context,msg){
 				"buttons":[
 			      {
 			        "type":"web_url",
-			        "url":"https://mabozaid.tk",
+			        "url":"https://http://m-abozaid.github.io/home/",
 			        "title":"View Item",
 			        "webview_height_ratio": "compact"
 			      }
