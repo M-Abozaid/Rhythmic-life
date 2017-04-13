@@ -50,14 +50,16 @@ let recipientId = context.userData.recipientId; // here because it was not acces
 				console.log('list sec ', JSON.stringify(list));
 				//let data = platformHelpers.generateQuickReplies('Choose the activity ', list);
 				let data = platformHelpers.generateButtonsTemplate('Choose the activity ',['option1','opti2'])
-				data.attachments.payload.buttons.push({
+				let temp = JSON.parse(data)
+				temp.attachments.payload.buttons.push({
 			        "type":"web_url",
 			        "url":"https://salty-plains-47076.herokuapp.com/show/"+recipientId,
 			        "title":"View Item",
 			        "webview_height_ratio": "compact",
 			        "messenger_extensions": true
 			      })
-				GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
+				
+				GraphAPI.sendTemplateMessage(recipientId, JSON.stringify(temp)).then(()=>{
 					context.current.chooseLog = true;
 					resolve(context)
 				})
