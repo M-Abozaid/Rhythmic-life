@@ -32,16 +32,7 @@ const botRoutes = require('./routes');
 app.get('/bot', botRoutes.get);
 app.post('/bot', botRoutes.receive);
 
-/*
-app.get('/show',function (req, res, next) {
-  console.log('get request recieved -------',req.headers);
-
-  res.writeHead(200, { 'Content-Type': 'text/html' });
-  res.end('<html><body><h1>Hello World</h1></body></html>');
-
-});
-
-*/
+console.log('port -  ',process.env.PORT);
 
 
 const server = app.listen(app.get('port'), function () {
