@@ -1,4 +1,4 @@
-
+let addActivity = require('./addActivity')
 const platformHelpers = require('../platformHelpers');
 const GraphAPI = require('../graphAPI');
 const mongoose = require('mongoose');
