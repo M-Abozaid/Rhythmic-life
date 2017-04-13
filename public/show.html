@@ -2,6 +2,9 @@
 <html lang="en">
 
 <head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Your Logs </title>
 </head>
 <body>
@@ -25,7 +28,9 @@ MessengerExtensions.getUserID(function success(uids) {
 </script>
 
 <h1>Hello there</h1>
-<div id="user"></div>
+<div id="user">
+	<h1>here it is</h1>
+</div>
 
 <script >
 	window.extAsyncInit = function() {
@@ -43,11 +48,10 @@ MessengerExtensions.getUserID(function success(uids) {
 	para.appendChild(node);
 	var element = document.getElementById("user");
 	element.appendChild(para);
-	
+
   };
 
 	
-
 </script>
 </body>
 
