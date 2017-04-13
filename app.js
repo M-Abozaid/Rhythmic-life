@@ -19,7 +19,7 @@ app.set('port', process.env.PORT || 3000);
 if (app.get('env') !== 'testing') {
     app.use(logger('dev'));
 }
-
+app.set('view engine', 'html')
 app.use(bodyParser.json({limit: '10mb'}));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
