@@ -5,6 +5,7 @@ const express = require('express');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+var path = require('path');
 
 debug('loading configuration');
 const config = require('./config');
@@ -39,7 +40,7 @@ app.get('/show',function (req, res, next) {
 
 });
 
-
+app.use(express.static('public'))
 const server = app.listen(app.get('port'), function () {
     console.log('express server listening on port ' + server.address().port);
 });
