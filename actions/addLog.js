@@ -49,7 +49,7 @@ let recipientId = context.userData.recipientId; // here because it was not acces
 				list.push('New activity')
 				console.log('list sec ', JSON.stringify(list));
 				//let data = platformHelpers.generateQuickReplies('Choose the activity ', list);
-				let data = platformHelpers.generateButtonsTemplate('Choose the activity ',list)
+				let data = platformHelpers.generateButtonsTemplate('Choose the activity ',['option1','opti2'])
 				GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
 					context.current.chooseLog = true;
 					resolve(context)
