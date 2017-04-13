@@ -72,7 +72,7 @@ return new Promise(function(resolve, reject){
 									context.current.main = 'addingLog';
 									context.current.chooseLog = true;
 									context.current.continue = true;
-									resolve(conttext)
+									resolve(context)
 								}else{
 									context.current = {}
 									resolve(context)
