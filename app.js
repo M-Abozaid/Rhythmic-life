@@ -14,8 +14,8 @@ require('./init')(config);
 const app = express();
 
 app.enable('trust proxy');
-app.set('port', process.env.PORT || 3000);
-
+app.set('port', 443);
+//process.env.PORT || 3000
 if (app.get('env') !== 'testing') {
     app.use(logger('dev'));
 }
