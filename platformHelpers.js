@@ -23,9 +23,11 @@ exports.generateSendLocation = function (text) {
 
 exports.generateButtonsTemplate = function (text, buttons) {
 
-		return {
-		
-			     
+return {
+		"attachment":{
+			      "type":"template",
+			      "payload":{
+			        "template_type":"button",
 			        "text":text,
 					"buttons": _.map(Object.keys(buttons), key => {
 					     return {
@@ -35,12 +37,7 @@ exports.generateButtonsTemplate = function (text, buttons) {
 					        "payload":key
 					      }
 				   	   })
-					
+					}
 				}
-		
+		}
 }
-
-//"attachment":{
- // "type":"template",
-	// 		      "payload":{
-	// 		        "template_type":"button",
