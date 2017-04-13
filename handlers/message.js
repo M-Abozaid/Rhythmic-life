@@ -19,15 +19,17 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 	takeAction(context, msg).then((context)=>{
 		if(context.current.continue){takeAction(context, msg).then(()=>{
 			console.log(' inside if in continue');
-			context.current.continue = false})}else{
+			context.current.continue = false
+			session.context = context;
+			sessionStore.saveSession(sessionId, session)
+		})}else{
 			session.context = context;
 			sessionStore.saveSession(sessionId, session)
 			//sessionStore.destroy(sessionId)
 			}
 
-			session.context = context;
-			sessionStore.saveSession(sessionId, session)
 			
+
 		console.log('context inside  handleTextMessage ',JSON.stringify(context));
 		console.log('messeging  ',msg);
 		console.log('session  inside  handleTextMessage',JSON.stringify(session));
