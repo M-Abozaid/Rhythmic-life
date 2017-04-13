@@ -14,6 +14,7 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'Messenger'));
 
+
 MessengerExtensions.getUserID(function success(uids) {
   	// User ID was successfully obtained. 
       	var psid = uids.psid;
@@ -24,11 +25,29 @@ MessengerExtensions.getUserID(function success(uids) {
 </script>
 
 <h1>Hello there</h1>
-<div id="uer"></div>
+<div id="user"></div>
 
 <script >
+	window.extAsyncInit = function() {
+    // the Messenger Extensions JS SDK is done loading 
+    MessengerExtensions.getUserID(function success(uids) {
+  	// User ID was successfully obtained. 
+      	var psid = uids.psid;
+  
+    }, function error(err, errorMessage) {      
+  	// Error handling code
+    });  
+
+    var para = document.createElement("p");
+	var node = document.createTextNode("this is your id " + psid);
+	para.appendChild(node);
+	var element = document.getElementById("user");
+	element.appendChild(para);
 	
-	 alert("Game Over! your id is ",psid );
+  };
+
+	
+
 </script>
 </body>
 
