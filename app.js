@@ -24,24 +24,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 
-function extractMessagingObjects(body) {
-	var messages = [];
-
-	for (var i = 0; i < body.entry.length; i++) {
-		console.log('inside the for loop for body.entry ');
-		var eventEntry = body.entry[i];
-		if (eventEntry.id.toString() === FB_PAGE_ID){
-			var recievedMessages = _.filter(eventEntry.messaging, function(msg) {
-				return !!(msg.message || msg.postback);
-			})
-			messages = messages.concat(recievedMessages);
-			console.log('messages in extract '+JSON.stringify(messages));
-		}
-	}
-	console.log("messages obj" +JSON.stringify(messages));
-	return messages;
-}
-
 
 //Bot routes
 const botRoutes = require('./routes');
@@ -52,8 +34,7 @@ app.post('/bot', botRoutes.receive);
 app.get('/show',function (req, res, next) {
   console.log('get request recieved -------',req.headers);
 
-  extractMessagingObjects(req.body)
-    res.writeHead(200, { 'Content-Type': 'text/html' });
+  res.writeHead(200, { 'Content-Type': 'text/html' });
   res.end('<html><body><h1>Hello World</h1></body></html>');
 
 });
