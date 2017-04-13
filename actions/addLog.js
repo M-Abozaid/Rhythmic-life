@@ -1,4 +1,4 @@
-const addActivity = require('./addActivity')
+let addActivity = require('./addActivity')
 const platformHelpers = require('../platformHelpers');
 const GraphAPI = require('../graphAPI');
 const mongoose = require('mongoose');
@@ -62,7 +62,6 @@ let recipientId = context.userData.recipientId; // here because it was not acces
 					context.current = {}
 					context.current.main = 'addingActivity';
 					context.current.nextAddLog = true;
-					const addActivity = require('./addActivity')
 					console.log('addActivity ', addActivity);
 					addActivity(context,msg).then((cont)=>{resolve(cont)});
 				}else{
