@@ -19,6 +19,7 @@ app.set('port', process.env.PORT || 3000);
 if (app.get('env') !== 'testing') {
     app.use(logger('dev'));
 }
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade')
 app.use(bodyParser.json({limit: '10mb'}));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -34,7 +35,7 @@ app.post('/bot', botRoutes.receive);
 
 app.get('/show/:id',  function(req, res, next) {
 	let userId = req.param.id
-  res.render('./public/show.jade', { id: userId });
+  res.render('show', { id: userId });
 });
 console.log('port -  ',process.env.PORT);
 
