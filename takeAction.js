@@ -23,7 +23,7 @@ let takeAction = function(context,msg){
 				"buttons":[
 			      {
 			        "type":"web_url",
-			        "url":"https://m-abozaid.github.io/home/",
+			        "url":"https://salty-plains-47076.herokuapp.com/show/",
 			        "title":"View Item",
 			        "webview_height_ratio": "compact"
 			      }
