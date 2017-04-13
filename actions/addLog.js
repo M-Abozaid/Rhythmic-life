@@ -51,7 +51,7 @@ let recipientId = context.userData.recipientId; // here because it was not acces
 				//let data = platformHelpers.generateQuickReplies('Choose the activity ', list);
 				let data = {
 
-		    "text": "texsdft",
+		    
 		    "quick_replies": [
 					    	 {
 						        "content_type":"text",
