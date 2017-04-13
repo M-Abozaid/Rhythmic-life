@@ -15,7 +15,11 @@ let takeAction = function(context,msg){
 
 	if(msg == 'show'){
 		data = {
-			"payload":{
+			"attachment":{
+		      "type":"template",
+		      "payload":{
+		        "template_type":"button",
+		        "text":"What do you want to do next?",
 				"buttons":[
 			      {
 			        "type":"web_url",
@@ -24,6 +28,7 @@ let takeAction = function(context,msg){
 			        "webview_height_ratio": "compact"
 			      }
 			    ]
+				}
 			}
 		}
 
