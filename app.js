@@ -34,8 +34,8 @@ app.get('/bot', botRoutes.get);
 app.post('/bot', botRoutes.receive);
 
 app.get('/show/:id',  function(req, res, next) {
-	let userId = req.param.id
-  res.render('show', { id: userId });
+	
+  res.render('show', { userId: req.param.id });
 });
 console.log('port -  ',process.env.PORT);
 

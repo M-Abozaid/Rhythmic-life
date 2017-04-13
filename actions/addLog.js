@@ -40,7 +40,7 @@ let recipientId = context.userData.recipientId; // here because it was not acces
 
 	
 		//context.current.main = 'addinnissangLog'
-		console.log("adding logs");
+		console.log("adding logs %j");
 
 		if(context.current.main && !context.current.chooseLog){
 			User.findOne({recipientId : recipientId},(err,user)=>{
