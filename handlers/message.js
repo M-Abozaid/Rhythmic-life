@@ -16,8 +16,8 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 	if (!context.current) { context.current = {}};  
 	//if (!context.second) { context.second = {main:{},sub:{}}};
 
-	takeAction(context, msg).then((context)=>{
-		if(context.current.continue){takeAction(context, msg).then(()=>{
+	takeAction(context).then((context)=>{
+		if(context.current.continue){takeAction(context).then(()=>{
 			console.log(' inside if in continue');
 			context.current.continue = false
 			session.context = context;

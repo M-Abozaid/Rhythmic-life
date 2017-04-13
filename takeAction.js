@@ -4,7 +4,7 @@ const getLogs = require('./actions/getLogs')
 const platformHelpers = require('./platformHelpers');
 const GraphAPI = require('./graphAPI');
 
-let takeAction = function(context,msg){
+let takeAction = function(context){
 	return new Promise(function(resolve, reject){
 	let recipientId = context.userData.recipientId;
 	console.log('inside takeAction() ---- ');
@@ -48,7 +48,7 @@ let takeAction = function(context,msg){
 		
 			if (context.msg == "add activity"){
 				context.current.main = 'addingActivity';
-				addActivity(context,msg).then((cont)=>{resolve(cont)});
+				addActivity(context).then((cont)=>{resolve(cont)});
 
 			}else{
 				GraphAPI.sendPlainMessage(recipientId, 'I\'m sorry I don\'t understant! 😐😕 try typing help or you could keep a diry log of what you\'re doing right now.')
@@ -62,15 +62,15 @@ let takeAction = function(context,msg){
 			switch(context.msg){
 				case 'Add diary log': 
 				context.current.main = 'addingLog';
-				addLog(context,msg).then((cont)=>{resolve(cont)});
+				addLog(context).then((cont)=>{resolve(cont)});
 				break;
 				case 'See you diary': 
 				context.current.main = 'gettingLogs';
-				getLogs(context,msg);
+				getLogs(context);
 				break;
 				case 'Add a new activity': 
 				context.current.main = 'addingActivity';
-				addActivity(context,msg).then((cont)=>{resolve(cont)});
+				addActivity(context).then((cont)=>{resolve(cont)});
 				break;
 				default:
 				GraphAPI.sendPlainMessage(recipientId, 'I\'m sorry I don\'t understant! 😐😕 try typing help or you could keep a diry log of what you\'re doing right now.')
@@ -79,10 +79,10 @@ let takeAction = function(context,msg){
 			//  there is a context going on
 			console.log('inside the last else n take action',JSON.stringify(context));
 			if(context.current.main == 'addingActivity'){
-				addActivity(context,msg).then((cont)=>{resolve(cont)});
+				addActivity(context).then((cont)=>{resolve(cont)});
 			}else{
 				if(context.current.main == 'addingLog'){
-					addLog(context,msg).then((cont)=>{resolve(cont)});
+					addLog(context).then((cont)=>{resolve(cont)});
 				}
 			}
 		}
