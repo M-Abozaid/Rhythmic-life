@@ -36,7 +36,7 @@ return {
 					        "webview_height_ratio": "compact",
 					        "payload":key
 					      }
-				   	   }
+				   	   })
 					}
 				}
 		}
