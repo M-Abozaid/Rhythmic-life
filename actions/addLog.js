@@ -61,7 +61,6 @@ let recipientId = context.userData.recipientId; // here because it was not acces
 					context.current = {}
 					context.current.main = 'addingActivity';
 					context.current.nextAddLog = true;
-					console.log('addActivity ', addActivity);
 					context.current.continue = true
 					resolve(context);
 				}else{
