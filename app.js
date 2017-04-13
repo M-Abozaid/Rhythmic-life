@@ -32,7 +32,7 @@ const botRoutes = require('./routes');
 app.get('/bot', botRoutes.get);
 app.post('/bot', botRoutes.receive);
 
-app.get('show/:id',  function(req, res, next) {
+app.get('/show/:id',  function(req, res, next) {
 	let userId = req.param.id
   res.render('./public/show.html', { id: userId });
 });
