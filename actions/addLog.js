@@ -49,13 +49,13 @@ let recipientId = context.userData.recipientId; // here because it was not acces
 				list.push('New activity')
 				let numOfQuick = list.length 
 				if(numOfQuick>11){
-					let numOfVeiws = Math.floor(numOfVeiws/10) 
+					let numOfVeiws = Math.floor(numOfQuick/10) 
 					context.current.thisVeiw = context.current.thisVeiw || 0
 					let view = list.splice(context.current.thisVeiw * 10 ,10)
 					view.push("See more!")
 					let data = platformHelpers.generateQuickReplies('Choose the activity ', view);
 					GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
-						if(context.current.thisVeiw!=numOfVeiws){context.current.thisVeiw += 1}else{context.current.thisVeiw = 0}
+						if(context.current.thisVeiw != numOfVeiws ){context.current.thisVeiw += 1}else{context.current.thisVeiw = 0}
 						context.current.chooseLog = true;
 						resolve(context)
 					})
