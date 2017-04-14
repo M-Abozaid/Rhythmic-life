@@ -21,7 +21,7 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 			console.log(' inside if in continue');
 			context.current.continue = false
 			session.context = context;
-			sessionStores.saveSession(sessionId, session)
+			sessionStore.saveSession(sessionId, session)
 		})}else{
 			session.context = context;
 			sessionStore.saveSession(sessionId, session)
