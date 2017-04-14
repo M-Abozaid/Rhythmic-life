@@ -48,46 +48,7 @@ let recipientId = context.userData.recipientId; // here because it was not acces
 				console.log('list first  ', JSON.stringify(list))
 				list.push('New activity')
 				console.log('list sec ', JSON.stringify(list));
-				//let data = platformHelpers.generateQuickReplies('Choose the activity ', list);
-				let data = {
-
-		    
-		    "quick_replies": [
-					    	 {
-						        "content_type":"text",
-						        "title": "fsda",
-						        "payload": 4
-						      }	
-					    ],
-		
-					"attachment":{
-				      "type":"template",
-				      "payload":{
-				        "template_type":"button",
-				        "text":"what do you want?",
-						"buttons": [
-				     			{
-						        "type":"postback",
-						        "title":"opt1",
-						        "webview_height_ratio": "compact",
-						        "payload":0
-						      },{
-						        "type":"postback",
-						        "title":"opt2",
-						        "webview_height_ratio": "compact",
-						        "payload":1
-						      },{
-						        "type":"web_url",
-						        "url":"https://salty-plains-47076.herokuapp.com/show/"+recipientId,
-						        "title":"View Item",
-						        "webview_height_ratio": "compact",
-						        "messenger_extensions": true
-						      }
-						   ]
-					   	   
-						}
-					}	
-				}	
+				let data = platformHelpers.generateQuickReplies('Choose the activity ', list);
 				//platformHelpers.generateButtonsTemplate('Choose the activity ',[{butn:'option1',},{butn:'opti2'}])
 				GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
 					context.current.chooseLog = true;
