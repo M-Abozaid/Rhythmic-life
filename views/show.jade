@@ -1,21 +1,28 @@
 doctype
-html
+html(ng-app="MyBot")
     head
-        title shit
+        title Your Logs
+
+        link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous")
+
+        link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous")
     body
 
         div
-            p first
-            p
-                |laslfjnb va aif oj affdsaffff vvvvvvvvvvvvvvvvvvvvvsfsfg grg regear gg afg aga g  gaf
+                |<h1>Hello! </h1>
+                h1 #{cUser.firstName}
+                            
+            div(class='container',ng-controller='controller')
+                ul
+                    li(ng-repeat='log in logs') {{log.logName}}
+                        span.label {{log.logName}}
 
-            p.
 
-            p(id= "5th",
-            class="afhfdh")
+        script(src= 'https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js')
+        script(src= '../public/angular-resource.min.js')
+        script(src= '../public/app.js')
+        script(src= '../public/controller.js')
+        script(src= '../public/service.js')
 
-            p Welcome to #{userId}
-
-            - console.log("id ",userId)
 
 

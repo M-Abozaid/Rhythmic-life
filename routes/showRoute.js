@@ -15,11 +15,22 @@ showRouter.get('/:id',  function(req, res, next) {
 	User.findOne({recipientId : recipientId},(err,user)=>{
 		if (err) throw err;
 
-		res.render('show', { userId: user });
+		res.render('show', { cUser: user });
 		console.log("id ",recipientId)
 
 	})
 	
 });
+
+showRouter.get('/logs/:id',function(req, res, next){
+	let recipientId = req.params.id
+	User.findOne({recipientId : recipientId},(err,user)=>{
+		if (err) throw err;
+
+		res.json(user.activityLogs);
+		console.log("id ",recipientId)
+
+	})
+})
 
 module.exports = showRouter
