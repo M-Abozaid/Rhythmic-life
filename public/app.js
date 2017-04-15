@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('MyBot', ['ui.router','ngResource'])
+angular.module('MyBot', ['ngRoute','ui.router','ngResource'])
 .config(function($stateProvider, $urlRouterProvider) {
         $stateProvider
         
