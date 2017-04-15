@@ -12,7 +12,7 @@ html(ng-app="MyBot")
                 |<h1>Hello! </h1>
                 h1 #{cUser.firstName}
                             
-            div(class='container',ng-controller='controller')
+            div(class='container',ng-controller='LogsController')
                 ul
                     li(ng-repeat='log in logs') {{log.logName}}
                         span.label {{log.logName}}
