@@ -17,6 +17,6 @@ console.log('user ')  ;
 console.log('user ') ;
         
         console.log('hslhs ');
-       let this.shit = 3234534;
+        this.shitty = 3234534;
         console.log('hslhs ',shit);
 }])
