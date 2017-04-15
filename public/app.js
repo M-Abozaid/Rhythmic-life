@@ -6,10 +6,7 @@ angular.module('MyBot', ['ngRoute','ui.router','ngResource'])
         
             // route for the home page
             .state('app', {
-                url:'/:id',
-                views: {
-                    templateUrl : 'views/show.html'
-                }
+                url:'/:id'
 
             })
 })
