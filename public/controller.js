@@ -4,6 +4,8 @@
 angular.module('MyBot')
 
 .controller('LogsController', ['$scope', 'LogsFactory', function ($scope, LogsFactory) {
+
+$scope.message = 'Loading...'
 LogsFactory.query(
         function (response) {
             $scope.logs = response;
