@@ -31,6 +31,7 @@ showRouter.get('/logs/:id',function(req, res, next){
 			elem.activity = user.activities.id(elem.activityId)
 			return elem;
 		})
+		console.log('arrayyy ',JSON.stringify(array));
 		  user.activityLogs = array
 		
 		res.json(user);
