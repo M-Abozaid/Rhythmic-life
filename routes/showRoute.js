@@ -29,6 +29,7 @@ showRouter.get('/logs/:id',function(req, res, next){
 		if (err) throw err;
 		let array  = _.map(user.activityLogs,(elem)=>{
 			elem.activity = user.activities.id(elem.activityId)
+			elem.ffff = 34;
 			return elem;
 		})
 		console.log('arrayyy ',JSON.stringify(array));
