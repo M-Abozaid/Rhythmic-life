@@ -7,11 +7,12 @@ html(ng-app="MyBot")
 
         link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous")
     body
-
+- console.log('user ',cUser)  
+- console.log('user ')  
         div
                 |<h1>Hello! </h1>
                 h1 #{cUser.firstName}
-                - console.log('user ',cUser)            
+          
             div(class='container',ng-controller='LogsController')
                 ul
                     li(ng-repeat='log in logs') {{log.logName}}
