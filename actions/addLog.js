@@ -15,8 +15,6 @@ let recipientId = context.userData.recipientId; // here because it was not acces
 				if (err) throw err;
 				console.log('the user  ',JSON.stringify(user));
 
-				
-
 				let obj = {
 					logName: context.current.logName,
 					note: context.current.note,
