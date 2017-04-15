@@ -1,7 +1,7 @@
 
 
 angular.module('MyBot')
-.controller('LogsController', ['$scope', 'menuFactory', 'favoriteFactory', function ($scope, menuFactory, favoriteFactory) {
+.controller('LogsController', ['$scope', 'LogsFctory', function ($scope, LogsFctory) {
 
 LogsFactory.query(
         function (response) {
