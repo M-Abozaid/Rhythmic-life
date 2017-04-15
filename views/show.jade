@@ -8,7 +8,9 @@ html(ng-app="MyBot")
         link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous")
     body
 - console.log('user ',cUser)  
-- console.log('user ')  
+- console.log('user ') 
+        - var cUser =  #{cUser}
+        - console.log('hslhs ',cUser)
         div
                 |<h1>Hello! </h1>
                 h1 #{cUser.firstName}
