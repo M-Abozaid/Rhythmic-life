@@ -24,7 +24,9 @@ showRouter.get('/:id',  function(req, res, next) {
 
 showRouter.get('/logs/:id',function(req, res, next){
 	let recipientId = req.params.id
-	User.findOne({recipientId : recipientId},(err,user)=>{
+	User.findOne({recipientId : recipientId})
+	.populate('activityId')
+	.exec((err,user)=>{
 		if (err) throw err;
 
 		res.json(user.activityLogs);

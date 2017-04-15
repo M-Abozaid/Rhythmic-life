@@ -18,8 +18,11 @@ html(ng-app="MyBot", ng-cloak)
                 |<h1>{{message}} </h1>
             div(class='container',ng-if="showMenu")
                 ul
-                    li(ng-repeat='log in logs') {{log.logName}}
-                        span.label {{log.logName}}
+                    li(ng-repeat='log in logs') 
+                        blockquote
+                            h2 {{log.logName}}
+                            p {{log.activityId.type}}
+                            footer {{log.note}}, {{log.time | date:'MMM. dd, yyyy'}}
 
 
         script(src= 'https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js')
