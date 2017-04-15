@@ -13,5 +13,10 @@ LogsFactory.query(
             $scope.message = "Error: " + response.status + " " + response.statusText;
         });
 
-
+console.log('user ')  ;
+console.log('user ') ;
+        
+        console.log('hslhs ');
+        this.shit = 3234534;
+        console.log('hslhs ',shit);
 }])
