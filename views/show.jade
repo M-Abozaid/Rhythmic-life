@@ -11,7 +11,7 @@ html(ng-app="MyBot")
         div
                 |<h1>Hello! </h1>
                 h1 #{cUser.firstName}
-                            
+                - console.log('user ',cUser)            
             div(class='container',ng-controller='LogsController')
                 ul
                     li(ng-repeat='log in logs') {{log.logName}}
