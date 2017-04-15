@@ -35,7 +35,8 @@ const LogsSchema = new Schema({
     note:{
         type: String,
         default: " "  
-    }
+    },
+    time:{ type: Number, default: Date.now },
 },{
     timestamps: true
 
