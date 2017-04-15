@@ -1,8 +1,9 @@
 
+'use strict';
 
 angular.module('MyBot')
-.controller('LogsController', ['$scope', 'LogsFctory', function ($scope, LogsFctory) {
 
+.controller('LogsController', ['$scope', 'LogsFactory', function ($scope, LogsFactory) {
 LogsFactory.query(
         function (response) {
             $scope.logs = response;
