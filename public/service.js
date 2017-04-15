@@ -4,7 +4,7 @@ angular.module('MyBot')
 .constant("baseURL", "https://salty-plains-47076.herokuapp.com/")
 .factory('LogsFactory', ['$resource', 'baseURL', function ($resource, baseURL) {
 		
-		let parts = document.URL.splet(/)
+		let parts = document.URL.splet('/')
 		console.log('parts ', parts);
 		let Id = parts[parts.length - 1 ]
         
