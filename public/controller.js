@@ -9,7 +9,7 @@ $scope.showMenu = false;
 
 LogsFactory.query(
         function (response) {
-            $scope.logs = response;
+            $scope.logs = response.activityLogs;
             $scope.logs.sort(function(a, b){
                 return b.time - a.time
             })
@@ -20,8 +20,8 @@ LogsFactory.query(
             $scope.message = "Error: " + response.status + " " + response.statusText;
         });
 
-console.log('user ')  ;
-console.log('user ') ;
+        console.log('user ')  ;
+        console.log('user ') ;
         
         console.log('hslhs ');
         //this.shitty = 3234534;

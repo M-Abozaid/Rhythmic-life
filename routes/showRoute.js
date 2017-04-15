@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const User = require('../schemas/user');
+const _ = require('lodash');
 
 
 let showRouter = express.Router();
@@ -24,12 +25,15 @@ showRouter.get('/:id',  function(req, res, next) {
 
 showRouter.get('/logs/:id',function(req, res, next){
 	let recipientId = req.params.id
-	User.findOne({recipientId : recipientId})
-	.populate('activityId')
-	.exec((err,user)=>{
+	User.findOne({recipientId : recipientId},(err,user)=>{
 		if (err) throw err;
-
-		res.json(user.activityLogs);
+		let array  = _.map(user.activityLogs,(elem)=>{
+			elem.activity = user.activities.id(elem.activityId)
+			return elem;
+		})
+		  user.activityLogs = array
+		
+		res.json(user);
 		console.log("id ",recipientId)
 		console.log("logs ",JSON.stringify(user.activityLogs))
 
