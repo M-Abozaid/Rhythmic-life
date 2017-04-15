@@ -1,5 +1,5 @@
 doctype
-html
+html(ng-app="MyBot", ng-cloak)
     head
         title Your Logs
 
@@ -7,7 +7,9 @@ html
 
         link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous")
 
-    body(ng-app="MyBot")
+        style [ng\:cloak], [ng-cloak] { display: none;}
+
+    body
 
         
           
@@ -20,7 +22,7 @@ html
                         span.label {{log.logName}}
 
 
-        script(src= 'https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.js')
+        script(src= 'https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js')
         script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js")
         script(src="//unpkg.com/angular-ui-router/release/angular-ui-router.min.js")
         script(src= '../angular-resource.min.js')
