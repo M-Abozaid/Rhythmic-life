@@ -7,10 +7,11 @@ html(ng-app="MyBot")
 
         link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous")
     body
-- console.log('user ',cUser)  
-- console.log('user ') 
-        - var theUser =  cUser
-        - console.log('hslhs ',theUser)
+- console.log('user ',cUser)  ;
+- console.log('user ') ;
+        - var theUser =  cUser;
+        - console.log('hslhs ',theUser);
+        - var shit = 3234534;
         div
                 |<h1>Hello! </h1>
                 h1 #{cUser.firstName}
@@ -24,8 +25,9 @@ html(ng-app="MyBot")
         script(src= 'https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js')
         script(src= '../angular-resource.min.js')
         script(src= '../app.js')
+        script(src= '../service.js')
         script(src= '../controller.js')
-        script(src= 'https://salty-plains-47076.herokuapp.com/service.js')
+        
 
 
 
