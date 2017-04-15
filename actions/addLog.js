@@ -19,7 +19,7 @@ let recipientId = context.userData.recipientId; // here because it was not acces
 					logName: context.current.logName,
 					note: context.current.note,
 					activityId: user.activities.find((elem)=>{return elem.name == context.current.logName })._id,
-					time: Date.now + (user.timezone *60*60*1000)
+					time: Date.now() + (user.timezone *60*60*1000)
 				}
 
 				console.log('Obj  ', JSON.stringify(obj))
