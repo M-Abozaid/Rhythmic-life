@@ -15,7 +15,7 @@ showRouter.get('/:id',  function(req, res, next) {
 	User.findOne({recipientId : recipientId},(err,user)=>{
 		if (err) throw err;
 
-		res.render('show', { cUser: user });
+		res.render('show', {cUser:user});
 		console.log("id ",recipientId)
 
 	})
