@@ -2,8 +2,12 @@
 
 angular.module('MyBot')
 .constant("baseURL", "https://salty-plains-47076.herokuapp.com/")
-.factory('LogsFactory', ['$resource','$stateParams', 'baseURL', function ($resource, $stateParams,baseURL) {
-		var Id = $stateParams.id
+.factory('LogsFactory', ['$resource', 'baseURL', function ($resource, baseURL) {
+		
+		let parts = document.URL.splet(/)
+		console.log('parts ', parts);
+		let Id = parts[parts.length - 1 ]
+        
         return $resource(baseURL + "show/logs/"+ Id, null, {
             'update': {
                 method: 'PUT'
