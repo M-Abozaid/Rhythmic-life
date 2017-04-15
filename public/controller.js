@@ -4,11 +4,16 @@
 angular.module('MyBot')
 
 .controller('LogsController', ['$scope', 'LogsFactory', function ($scope, LogsFactory) {
+$scope.message = 'Loading...';
+$scope.showMenu = false;
 
-$scope.message = 'Loading...'
 LogsFactory.query(
         function (response) {
             $scope.logs = response;
+            $scope.logs.sort(function(a, b){
+                return b.time - a.time
+            })
+            
             $scope.showMenu = true;
         },
         function (response) {
