@@ -43,10 +43,10 @@ showRouter.get('/logs/:id',function(req, res, next){
 			console.log('elem keys = ',Object.keys(vv));
 			return vv;
 		})
-		
+		console.log("logsss ",user.activityLogs)
 		res.json(user);
 		console.log("id ",recipientId)
-		//console.log("logsss ",user.activityLogs)
+		
 
 	})
 })
