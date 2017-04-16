@@ -28,7 +28,7 @@ showRouter.get('/logs/:id',function(req, res, next){
 	User.findOne({recipientId : recipientId},(err,user)=>{
 		if (err) throw err;
 		_.map(user.activityLogs,(elem)=>{
-			elem.activity = user.activities.id(elem.activityId)
+			
 			elem.ffff = 34;
 			return elem;
 		})
