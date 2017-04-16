@@ -18,8 +18,8 @@ html(ng-app="MyBot", ng-cloak)
                 |<h1>{{message}} </h1>
 
             div(class='container',ng-if="showMenu")
-                ul
-                    span(class=("label"),ng-repeat='log in logs', style="padding: 10px 10px 10px 10px;  background-color:##BEE8E5;")
+                ul(class=("list-group"))
+                    li(class=("list-group-item"),ng-repeat='log in logs', style="padding: 10px 10px 10px 10px;  background-color:##BEE8E5;")
                         div(class="container")
                             div(class="row row-header",style=("background-color: ##C2E3AB; padding-right: 10px;") )
                                 div(class="col-xs-12 col-sm-8 col-lg-8")
@@ -28,7 +28,7 @@ html(ng-app="MyBot", ng-cloak)
                                          
                                 div(class="col-xs-12 col-sm-4 col-lg-4")
                                     h4
-                                        span {{log.time | date:'hh: mm - dd, MMM, yyyy'}}
+                                        span(class="badge") {{log.time | date:'hh: mm - dd, MMM, yyyy'}}
                             div(class="row")
                                 h3 {{log.note}}
                             div(class="row")
