@@ -19,7 +19,7 @@ const ActivitySchema = new Schema({
     // },
     hebitual:{
         type: String
-    }activityId
+    }
 },{
     timestamps: true
 });
