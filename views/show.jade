@@ -16,17 +16,18 @@ html(ng-app="MyBot", ng-cloak)
         div(class='container',ng-controller='LogsController')
             div(ng-if="!showMenu")
                 |<h1>{{message}} </h1>
+
             div(class='container',ng-if="showMenu")
                 ul
-                    li(ng-repeat='log in logs')
+                    li(ng-repeat='log in logs', style="padding: 40px 10px;")
                         div(class="container")
                             div(class="row row-header" )
                                 div(class="col-xs-12 col-sm-8 col-lg-8")
                                     h2
-                                        span(class="label",class=("label-danger")) {{log.logName}}
+                                        span(class="label",class=("nav-tabs")) {{log.logName}}
                                          
                                 div(class="col-xs-12 col-sm-4 col-lg-4")
-                                    h3
+                                    h4
                                         span {{log.time | date:'hh: mm - dd, MMM, yyyy'}}
                             div(class="row")
                                 h3 {{log.note}}
