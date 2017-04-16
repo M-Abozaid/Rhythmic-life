@@ -53,7 +53,7 @@ return new Promise(function(resolve, reject){
 				if(context.current.activityType && !context.current.activityName){
 					context.current.activityName = context.msg
 					console.log('activity type ',context.msg,' saved');
-					let data = platformHelpers.generateQuickReplies('is is positve or ngative', {0:'positive',1:'ngative',2:'other'});
+					let data = platformHelpers.generateQuickReplies('is it positve or ngative', {0:'positive',1:'ngative',2:'other'});
 					GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{resolve(context)})
 					
 				}else{
