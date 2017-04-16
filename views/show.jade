@@ -23,7 +23,7 @@ html(ng-app="MyBot", ng-cloak)
                             div(class="row row-header" )
                                 div(class="col-xs-12 col-sm-8 col-lg-8")
                                     h2
-                                        span(class="label",ng-class="{label-danger:{{log.activity.positivity == 'positive'}}}") {{log.logName}}
+                                        span(class="label",class=("label-danger")) {{log.logName}}
                                          
                                 div(class="col-xs-12 col-sm-4 col-lg-4")
                                     {{log.time | date:'hh: mm - dd, MMM, yyyy'}}
@@ -37,7 +37,7 @@ html(ng-app="MyBot", ng-cloak)
                                     span(class="label label-success") Habit: {{log.activity.habit}}
 
 
-        script(src= 'https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js')
+        script(src= 'https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.js')
         script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js")
         script(src="//unpkg.com/angular-ui-router/release/angular-ui-router.min.js")
         script(src= '../angular-resource.min.js')
