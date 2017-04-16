@@ -23,7 +23,7 @@ html(ng-app="MyBot", ng-cloak)
                             div(class="row row-header" )
                                 div(class="col-xs-12 col-sm-8 col-lg-8")
                                     h2
-                                        span(class="label",ng-class="{label-danger:ngative, label-success:positive}") {{log.logName}}
+                                        span(class="label",ng-class="{label-danger:{{log.activity.positivity == 'positive'}}}") {{log.logName}}
                                          
                                 div(class="col-xs-12 col-sm-4 col-lg-4")
                                     {{log.time | date:'hh: mm - dd, MMM, yyyy'}}
