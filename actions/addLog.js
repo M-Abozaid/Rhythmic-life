@@ -14,12 +14,42 @@ let recipientId = context.userData.recipientId; // here because it was not acces
 			User.findOne({recipientId : recipientId},(err,user)=>{
 				if (err) throw err;
 				console.log('the user  ',JSON.stringify(user));
-
+				let howLongInMil 
+				switch(context.current.howLong){
+					case '30 min':
+					howLongInMil = 30 * 60 *1000
+					break;
+					case '1 hr':
+					howLongInMil = 1   * 60 * 60 *1000
+					break;
+					case '1.5 hr':
+					howLongInMil = 1.5 * 60 * 60 *1000
+					break;
+					case '2 hr':
+					howLongInMil = 2   * 60 * 60 *1000
+					break;
+					case '2.5 hr':
+					howLongInMil = 2.5 * 60 * 60 *1000
+					break;
+					case '3 hr':
+					howLongInMil = 3   * 60 * 60 *1000
+					break;
+					case '3.5 hr':
+					howLongInMil = 3.5 * 60 * 60 *1000
+					break;
+					case '4 hr':
+					howLongInMil = 4   * 60 * 60 *1000
+					break;
+					case '5 hr':
+					howLongInMil = 5   * 60 * 60 *1000
+					break;
+				}
 				let obj = {
 					logName: context.current.logName,
 					note: context.current.note,
 					activityId: user.activities.find((elem)=>{return elem.name == context.current.logName })._id,
-					time: Date.now() + (user.timezone *60*60*1000)
+					time: Date.now() + (user.timezone *60*60*1000),
+					span: howLongInMil
 				}
 
 				console.log('Obj  ', JSON.stringify(obj))
@@ -71,7 +101,7 @@ let recipientId = context.userData.recipientId; // here because it was not acces
 
 			})
 		}else{
-			if(context.current.chooseLog && !context.current.logName){
+			if(context.current.chooseLog && !context.current.howLong){
 				if(context.msg == 'New activity'){
 					context.current = {}
 					context.current.main = 'addingActivity';
@@ -84,7 +114,7 @@ let recipientId = context.userData.recipientId; // here because it was not acces
 						context.current.continue = true;
 						resolve(context)
 					}else{
-						let data = platformHelpers.generateQuickReplies('Type a note to be included if you like.', ['No thats it']);
+						let data = platformHelpers.generateQuickReplies('For how long do you intend to do this activity. Choose or type the exact time in minutes.', ['30 min','1 hr','1.5 hr','2 hr','2.5 hr','3 hr','3.5 hr','4 hr','5 hr']);
 						GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
 							context.current.logName = context.msg;
 							resolve(context)
@@ -92,14 +122,22 @@ let recipientId = context.userData.recipientId; // here because it was not acces
 					}
 				}
 			}else{
-				if(context.current.logName && !context.current.note){
-					if(context.msg == "No thats it"){
-						context.current.note = " ";
-					}else{
-						context.current.note = context.msg;
-					}
+				if(context.current.howLong && !context.current.howLong){
+					let data = platformHelpers.generateQuickReplies('Type a note to be included if you like.', ['No thats it']);
+						GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
+							context.current.howLong = context.msg;
+							resolve(context)
+						})
+				}else{
+					if(context.current.howLong && !context.current.note){
+						if(context.msg == "No thats it"){
+							context.current.note = " ";
+						}else{
+							context.current.note = context.msg;
+						}
 
-					saveLog();
+						saveLog();
+					}
 				}
 			}
 		}
