@@ -37,7 +37,7 @@ showRouter.get('/logs/:id',function(req, res, next){
 		
 		res.json(user);
 		console.log("id ",recipientId)
-		console.log("logs ",JSON.stringify(user.activityLogs))
+		console.log("logs ",user.activityLogs)
 
 	})
 })
