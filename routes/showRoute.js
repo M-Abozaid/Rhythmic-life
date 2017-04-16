@@ -27,11 +27,12 @@ showRouter.get('/logs/:id',function(req, res, next){
 	let recipientId = req.params.id
 	User.findOne({recipientId : recipientId},(err,user)=>{
 		if (err) throw err;
+		console.log("logs ",JSON.stringify(user.activityLogs))
 		_.map(user.activityLogs,(elem)=>{
 			let vv = elem
 			vv.activity = user.activities.id(elem.activityId)
 			vv.ffff = 34;
-			console.log('elem = ',vv);
+			//console.log('elem = ',vv);
 			return vv;
 		})
 		
