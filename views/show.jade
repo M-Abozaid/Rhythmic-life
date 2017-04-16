@@ -19,9 +19,9 @@ html(ng-app="MyBot", ng-cloak)
 
             div(class='container',ng-if="showMenu")
                 ul(class=("list-group"))
-                    li(class=("list-group-item"),ng-repeat='log in logs')
-                        div(class="container", style="padding: 10px 10px 10px 10px;  background-color:#D1F8B6;")
-                            div(class="row row-header",style=("background-color: #C2E3AB; padding-right: 10px;") )
+                    li(class=("list-group-item"),ng-repeat='log in logs', style="padding: 10px 10px 10px 10px;  background-color:#D1F8B6;")
+                        div(class="container")
+                            div(class="row row-header",style=("padding-right: 10px;") )
                                 div(class="col-xs-12 col-sm-8 col-lg-8")
                                     h2
                                         span(class="label",class=("label-danger")) {{log.logName}}
