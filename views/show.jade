@@ -19,7 +19,7 @@ html(ng-app="MyBot", ng-cloak)
 
             div(class='container',ng-if="showMenu")
                 ul
-                    li(class=("label"),ng-repeat='log in logs', style="padding: 10px 10px 10px 10px;  background-color:##BEE8E5;")
+                    li(ng-repeat='log in logs', style="padding: 10px 10px 10px 10px;  background-color:##BEE8E5;")
                         div(class="container")
                             div(class="row row-header",style=("background-color: ##C2E3AB; padding-right: 10px;") )
                                 div(class="col-xs-12 col-sm-8 col-lg-8")
