@@ -12,8 +12,8 @@ LogsFactory.query(
             $scope.logs = response;
             $scope.ngative = false
             $scope.positive = false
-            if(logs.activity.positivity == 'ngative' ){$scope.ngative = true} 
-            if(logs.activity.positivity == 'positive' ){$scope.positive = true} 
+            if($scope.logs.activity.positivity == 'ngative' ){$scope.ngative = true} 
+            if($scope.logs.activity.positivity == 'positive' ){$scope.positive = true} 
             $scope.logs.sort(function(a, b){
                 return b.time - a.time
             })
