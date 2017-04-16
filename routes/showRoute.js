@@ -32,8 +32,8 @@ showRouter.get('/logs/:id',function(req, res, next){
 			//console.log('elem = ',elem);
 			let vv = elem
 			//vv.activity = user.activities.id(elem.activityId)
-			vv.ffff = 34;
-			console.log('elem = ',vv);
+			vv.hh = 34;
+			console.log('elem = ',vv.hh);
 			return vv;
 		})
 		
