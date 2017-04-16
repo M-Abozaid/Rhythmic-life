@@ -31,13 +31,13 @@ showRouter.get('/logs/:id',function(req, res, next){
 			let vv = elem
 			vv.activity = user.activities.id(elem.activityId)
 			vv.ffff = 34;
-			//console.log('elem = ',vv);
+			console.log('elem = ',vv);
 			return vv;
 		})
 		
 		res.json(user);
 		console.log("id ",recipientId)
-		console.log("logs ",user.activityLogs)
+		//console.log("logs ",user.activityLogs)
 
 	})
 })
