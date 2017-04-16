@@ -28,7 +28,7 @@ showRouter.get('/logs/:id',function(req, res, next){
 	User.findOne({recipientId : recipientId},(err,user)=>{
 		if (err) throw err;
 		
-		_.map( user.activityLogs ,(elem)=>{
+		user.Logs = _.map( user.activityLogs ,(elem)=>{
 			//console.log('elem = ',elem);
 			let vv ={ 
 				logName: elem.logName,
@@ -43,7 +43,7 @@ showRouter.get('/logs/:id',function(req, res, next){
 			console.log('elem keys = ',Object.keys(vv));
 			return vv;
 		})
-		console.log("logsss ",user.activityLogs)
+		console.log("logsss ",user.Logs)
 		res.json(user);
 		console.log("id ",recipientId)
 		
