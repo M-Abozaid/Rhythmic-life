@@ -81,6 +81,7 @@ const UserSchema = new Schema({
 
 let User = mongoose.model('User', UserSchema);
 let LogsModel = mongoose.model('LogsModel', LogsSchema);
+let ActivityModel = mongoose.model('ActivityModel', ActivitySchema);
 
 module.exports = User;
 
