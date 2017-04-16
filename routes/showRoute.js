@@ -29,6 +29,7 @@ showRouter.get('/logs/:id',function(req, res, next){
 		if (err) throw err;
 		console.log("logs ",JSON.stringify(user.activityLogs))
 		_.map(user.activityLogs,(elem)=>{
+			console.log('elem = ',elem);
 			let vv = elem
 			vv.activity = user.activities.id(elem.activityId)
 			vv.ffff = 34;
