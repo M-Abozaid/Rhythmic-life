@@ -19,7 +19,7 @@ const ActivitySchema = new Schema({
     // },
     hebitual:{
         type: String
-    }
+    }activityId
 },{
     timestamps: true
 });
@@ -30,7 +30,7 @@ const LogsSchema = new Schema({
     },
     activityId:{
         type: mongoose.Schema.Types.ObjectId,
-        ref:'User'
+        ref:'User.activities'
     },
     note:{
         type: String,

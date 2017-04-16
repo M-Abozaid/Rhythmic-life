@@ -21,7 +21,7 @@ html(ng-app="MyBot", ng-cloak)
                     li(ng-repeat='log in logs') 
                         blockquote
                             h2 {{log.logName}}
-                            p {{log.activity.type}}
+                            p {{log.activityId.type}}
                             footer {{log.note}}, {{log.time | date:'MMM. dd, yyyy'}}
 
 

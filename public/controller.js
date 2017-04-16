@@ -9,7 +9,7 @@ $scope.showMenu = false;
 
 LogsFactory.query(
         function (response) {
-            $scope.logs = response//.Logs;
+            $scope.logs = response.activityLogs;
             $scope.logs.sort(function(a, b){
                 return b.time - a.time
             })

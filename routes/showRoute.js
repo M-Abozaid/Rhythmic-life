@@ -25,9 +25,17 @@ showRouter.get('/:id',  function(req, res, next) {
 
 showRouter.get('/logs/:id',function(req, res, next){
 	let recipientId = req.params.id
-	User.findOne({recipientId : recipientId},(err,user)=>{
+	User.findOne({recipientId : recipientId})
+	.populate('activityLogs.activityId')
+	.exec((err,user)=>{
 		if (err) throw err;
-		
+		res.json(user)
+	})
+})
+
+module.exports = showRouter
+
+		/*
 		let Logs = _.map( user.activityLogs ,(elem)=>{
 			//console.log('elem = ',elem);
 			let vv ={ 
@@ -47,8 +55,4 @@ showRouter.get('/logs/:id',function(req, res, next){
 		res.json(Logs);
 		console.log("id ",recipientId)
 		
-
-	})
-})
-
-module.exports = showRouter
+*/
