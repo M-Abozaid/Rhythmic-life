@@ -30,7 +30,12 @@ showRouter.get('/logs/:id',function(req, res, next){
 		
 		_.map( user.activityLogs ,(elem)=>{
 			//console.log('elem = ',elem);
-			let vv = elem
+			let vv ={ 
+				logName: elem.logName,
+				note: elem.note,
+				activity: user.activities.id(elem.activityId),
+				time: elem.time || 0
+				}
 			//vv.activity = user.activities.id(elem.activityId)
 			vv.hh = '34';
 			console.log('elem = ',vv.hh);
