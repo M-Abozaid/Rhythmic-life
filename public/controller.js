@@ -27,13 +27,13 @@ LogsFactory.query(
         $scope.message = "Error: " + response.status + " " + response.statusText;
     });
 
+    $scope.setDay = function(day){
+    let thisDay = day;
+    }
+
+    $scope.filterFn = function(lo){
+        return moment(thisDay).isSame(lo.time , 'day');
+    }
  
 }])
 
-$scope.setDay = function(day){
-let thisDay = day;
-}
-
-$scope.filterFn = function(lo){
-    return moment(thisDay).isSame(lo.time , 'day');
-}
