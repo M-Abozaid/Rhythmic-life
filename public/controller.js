@@ -13,11 +13,11 @@ LogsFactory.query(
         $scope.logs = response;
         $scope.days = [];
 
-        for (var i = 0; i <= moment.duration($scope.logs[$scope.logs.length -1].time - $scope.logs[0].time).days() - 1; i++) {
+        for (var i = 0; i <= Math.floor(moment.duration($scope.logs[$scope.logs.length -1].time - $scope.logs[0].time).asDays()) + 1; i++) {
             $scope.days.push(moment($scope.logs[0].time).add(i, 'days'));
         }
         console.log('days ',$scope.days);
-        
+
         $scope.logs.sort(function(a, b){
             return b.time - a.time
         })
