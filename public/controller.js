@@ -19,8 +19,8 @@ LogsFactory.query(
         $scope.logs.sort(function(a, b){
             return b.time - a.time
         })
-        
-        for (var i = 0; i <= Math.floor(moment.duration($scope.logs[$scope.logs.length -1].time - $scope.logs[0].time).asDays()) ; i++) {
+
+        for (var i = 0; i <= Math.floor( moment.duration($scope.logs[0].time - $scope.logs[$scope.logs.length -1].time).asDays()) ; i++) {
             $scope.days.push(moment($scope.logs[0].time).add(i, 'days'));
         }
 
