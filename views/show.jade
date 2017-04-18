@@ -160,7 +160,7 @@ html(ng-app="MyBot", ng-cloak)
       .Mmenu
         ul(style='padding-left: 10px;  ')
           li.m-day
-            span(style='padding: 8px; text-align: center; font-size: 24px; display: block;') All time
+            a(ng-click='allTime()' style='padding: 8px; text-align: center; font-size: 24px; display: block;') All time
           |                               
           |                                
           li.m-day(ng-repeat='day in days')

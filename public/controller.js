@@ -21,7 +21,7 @@ LogsFactory.query(
         })
 
         for (var i = 0; i <= Math.floor( moment.duration($scope.logs[0].time - $scope.logs[$scope.logs.length -1].time).asDays()) ; i++) {
-            $scope.days.push(moment($scope.logs[0].time).add(i, 'days'));
+            $scope.days.push(moment($scope.logs[0].time).subtract(i, 'days'));
         }
 
         $scope.showMenu = true;
@@ -32,10 +32,19 @@ LogsFactory.query(
 
     $scope.setDay = function(day){
     $scope.thisDay = day;
+    $scope.all = false;
+    }
+
+    $scope.allTime = function(){
+        $scope.all = true;
     }
 
     $scope.filterFn = function(lo){
+        if($scope.all){
+            return true;
+        }else{
         return moment($scope.thisDay).isSame(lo.time , 'day');
+    }
     }
  
 }])
