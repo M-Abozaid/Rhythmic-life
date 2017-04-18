@@ -21,11 +21,13 @@ LogsFactory.query(
         })
 
         var lastDay = moment($scope.logs[0].time).startOf('day');
+        var firstDay = moment($scope.logs[$scope.logs.length -1].time).endOf('day')
         // lastDay.subtract(moment($scope.logs[0].time).hours(),'hours')
         // .subtract(moment($scope.logs[0].time).minute(),'minuts')
         // .subtract(moment($scope.logs[0].time).seconds(),'seconds') 
-
-        for (var i = 0; i <= Math.floor( moment.duration(lastDay.valueOf() - $scope.logs[$scope.logs.length -1].time).asDays()) ; i++) {
+        console.log('num of days --',moment.duration(lastDay - firstDay).asDays());
+        for (var i = 0; i <=  moment.duration(lastDay - firstDay).asDays() ; i++) {
+            
             $scope.days.push(moment($scope.logs[0].time).subtract(i, 'days').valueOf());
         }
 
