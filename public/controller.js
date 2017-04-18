@@ -21,7 +21,7 @@ LogsFactory.query(
         })
 
         for (var i = 0; i <= Math.floor( moment.duration($scope.logs[0].time - $scope.logs[$scope.logs.length -1].time).asDays()) ; i++) {
-            $scope.days.push(moment($scope.logs[0].time).subtract(i, 'days'));
+            $scope.days.push(moment($scope.logs[0].time).subtract(i, 'days').valueOf());
         }
 
         $scope.showMenu = true;
@@ -29,6 +29,8 @@ LogsFactory.query(
     function (response) {
         $scope.message = "Error: " + response.status + " " + response.statusText;
     });
+
+    $scope.all = true;
 
     $scope.setDay = function(day){
     $scope.thisDay = day;
