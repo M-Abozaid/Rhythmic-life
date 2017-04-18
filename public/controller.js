@@ -19,10 +19,11 @@ LogsFactory.query(
         $scope.logs.sort(function(a, b){
             return b.time - a.time
         })
-        var lastDay = moment($scope.logs[0].time);
-        lastDay.subtract(moment($scope.logs[0].time).hours(),'hours')
-        .subtract(moment($scope.logs[0].time).minuts(),'minuts')
-        .subtract(moment($scope.logs[0].time).seconds(),'seconds') 
+
+        var lastDay = moment($scope.logs[0].time).startOf('day');
+        // lastDay.subtract(moment($scope.logs[0].time).hours(),'hours')
+        // .subtract(moment($scope.logs[0].time).minute(),'minuts')
+        // .subtract(moment($scope.logs[0].time).seconds(),'seconds') 
 
         for (var i = 0; i <= Math.floor( moment.duration(lastDay.valueOf() - $scope.logs[$scope.logs.length -1].time).asDays()) ; i++) {
             $scope.days.push(moment($scope.logs[0].time).subtract(i, 'days').valueOf());
