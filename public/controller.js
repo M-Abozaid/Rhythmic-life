@@ -28,11 +28,11 @@ LogsFactory.query(
     });
 
     $scope.setDay = function(day){
-    let thisDay = day;
+    $scope.thisDay = day;
     }
 
     $scope.filterFn = function(lo){
-        return moment(thisDay).isSame(lo.time , 'day');
+        return moment($scope.thisDay).isSame(lo.time , 'day');
     }
  
 }])
