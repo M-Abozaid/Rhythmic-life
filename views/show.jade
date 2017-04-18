@@ -1,53 +1,198 @@
-doctype
+doctype html
 html(ng-app="MyBot", ng-cloak)
-    head
-        title Your Logs
-
-        link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous")
-
-        link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous")
-
-        style [ng\:cloak], [ng-cloak] { display: none;}
-
-    body
-
-        
-          
-        div(class='container',ng-controller='LogsController')
-            div(ng-if="!showMenu")
-                |<h1>{{message}} </h1>
-
-            div(class='container',ng-if="showMenu")
-                ul(class=("list-group"))
-                    li(class=("list-group-item list-group-item-success"),ng-repeat='log in logs', style="padding: 10px 10px 10px 10px;  background-color:#D1F8B6;")
-                        div(class="container")
-                            div(class="row row-header",style=("padding-right: 10px;") )
-                                div(class="col-xs-12 col-sm-8 col-lg-8")
-                                    h2
-                                        span(class="label",class=("label-danger"),style=("width:10 px; height:50px")) {{log.logName}}
-                                         
-                                div(class="col-xs-12 col-sm-4 col-lg-4")
-                                    h3
-                                        span(class="badge") {{log.time | date:'hh: mm - dd, MMM, yyyy'}}
-                            div(class="row")
-                                h3 {{log.note}}
-                            div(class="row")
-                                div(class="col-xs-12 col-sm-8 col-lg-8")
-                                    h3
-                                        span(class="label label-primary") {{log.activity.type}}
-                                div(class="col-xs-12 col-sm-8 col-lg-8")
-                                    span(class="label label-success") Habit: {{log.activity.habit}}
-
-
-        script(src= 'https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.js')
-        script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js")
-        script(src="//unpkg.com/angular-ui-router/release/angular-ui-router.min.js")
-        script(src= '../angular-resource.min.js')
-        script(src= '../app.js')
-        script(src= '../service.js')
-        script(src= '../controller.js')
-        
-        
-
-
-
+  head
+    meta(charset='utf-8')
+    |       
+    title Your Logs
+    |       
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', crossorigin='anonymous')
+    |       
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css', integrity='sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp', crossorigin='anonymous')
+    |       
+    link(href='http://fonts.googleapis.com/css?family=Lato:300,400,700', rel='stylesheet', type='text/css')
+    |    
+    style [ng\:cloak], [ng-cloak] { display: none;}    
+    style.
+      div {
+      /*  overflow: hidden;*/
+      color: white;
+      }
+      li {
+      list-style: none;
+      }
+      .Mnav-tab {
+      background-color: rgb(37,108,228);
+      margin-top: 0px;
+      padding-top: 0px;
+      height: 80px;
+      color:white;
+      margin-left: 0px;
+      position: fixed;
+      z-index: 900;
+      width: 100%;
+      display: inline;
+      }
+      .Mcontainer {
+      background-color: silver;
+      border-style:none;
+      margin-left: auto;
+      margin-right: auto;
+      }
+      .Mrow {
+      margin-left: auto;
+      margin-right: auto;
+      }
+      .Mmenu {
+      position: fixed;
+      width: 33.3333%;
+      left: 66.666667%;
+      height: 100%;
+      margin-top: 81px;
+      overflow:scroll;
+      z-index: 1000;
+      padding-right: 10px;
+      }
+      /*  @media (min-width: 768px) {
+      .Mmenu {
+      width: 27.7777%;
+      left: 63.888%;
+      }
+      .Mnav-tab {
+      width: 83.3333%;
+      left: 8.333%;
+      }
+      }*/
+      @media (min-width: 992px) {
+      .Mmenu {
+      left: 61.0455%;
+      width: 22.1977%;
+      }
+      .Mnav-tab {
+      left: 16.666%;
+      width: 66.6666%;
+      }
+      }
+      @media (min-width: 1200px) {
+      .Mmenu {
+      width: 16.666%;
+      left: 58.33333%;
+      }
+      .Mnav-tab {
+      left: 25%;
+      width: 50%;
+      }
+      }
+      .row {
+      padding: 0px;
+      margin: 0px;
+      }
+      .m-log {
+      height: 15%;
+      background-color: rgb(191,228,93);
+      border-radius: 55px;
+      margin-top: 4px;
+      }
+      .m-activity-name {
+      border-radius: 20px;
+      background-color: rgb(164,100,90);
+      float: left;
+      position: relative;
+      margin-left: 15px;
+      margin-right: 5px;
+      padding-right: 10px;
+      padding-left:10px;
+      margin-bottom:10px;
+      padding-top:10px;
+      padding-bottom: 10px;
+      font-size: 22px;
+      overflow: hidden;
+      margin-top: 8px
+      }
+      .m-date {
+      font-size: 18px;
+      }
+      .m-note {
+      margin: 2px 3px 3px 2px;
+      color: rgb(83,100,90);
+      font-size: 20px;
+      padding-top: 5px;
+      padding-right: 10px;
+      padding-left:6px;
+      overflow: visible;
+      }
+      .m-type {
+      overflow: hidden;
+      background-color: rgb(90,135,264);
+      border-radius: 20px;
+      font-size: 24px;
+      margin-left: 30px;
+      width: 15%;
+      color: white;
+      text-align: center;
+      padding-top: 4px;
+      padding-bottom: 4px;
+      }
+      .m-day {
+      background-color: rgb(58,60,58);
+      border-top: 5px rgb(154,158,155) solid;
+      }
+      li span {
+      font-size: 24px;
+      }
+      a {
+      list-style: none;
+      text-decoration-style:  none;
+      color: white;
+      }
+      a:hover {
+      color: white;
+      text-decoration-style:  none;
+      text-decoration-line: none;
+      }
+  |   
+  body(ng-controller='LogsController')
+    .Mnav-tab
+      h2(style='text-align: center;') Your diary logs
+    |     
+    div(ng-if="!showMenu")
+                |<h1>{{message}} </h1>   
+    .container(style='margin: 0px; padding: 0px; width: 100%;position: static; ',class='container',ng-if="showMenu")
+      .Mmenu
+        ul(style='padding-left: 10px;  ')
+          li.m-day
+            span(style='padding: 8px; text-align: center; font-size: 24px; display: block;') All time
+          |                               
+          |                                
+          li.m-day(ng-repeat='day in days')
+            a(ng-click='setDay({{day}})', style='padding: 8px; text-align: center; font-size: 24px; display: block;') {{day | |  dd, MMM, yyyy&apos;}}
+      |           
+      div(style=' top: 80px;position: relative;')
+        .col-lg-6.col-lg-push-3.col-md-8.col-md-push-2.col-sm-12.col-xs-12(style='padding: 0px;')
+          .row
+            .Mrow.col-lg-8.col-md-8.col-sm-8.col-xs-8
+              ul(style='padding-left: 0px;')
+                li.m-log(ng-repeat='log in logs |filter: filterFn')
+                  .row.m-header
+                    .col-lg-9
+                      h3.m-activity-name {{log.logName}}
+                    |                                  
+                    .col-lg-3(style='padding-left: 0;')
+                      h5.m-date
+                        | {{log.time | date:&apos;hh: mm&apos; }}
+                        br
+                        |  {{log.time| date:&apos; dd, MMM, yyyy&apos;}}
+                  |                                 
+                  .row.m-body
+                    h5.m-note
+                      span(style='font-size: 28px;')  Note: 
+                      |  {{log.note}}
+                  |                                 
+                  .row.m-footer
+                    h4.m-type {{log.type}}
+    |                     
+    |     
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+    |     
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js')
+    |     
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', integrity='sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa', crossorigin='anonymous')

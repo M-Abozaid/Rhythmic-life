@@ -8,26 +8,31 @@ $scope.message = 'Loading...';
 $scope.showMenu = false;
 
 LogsFactory.query(
-        function (response) {
-            $scope.logs = response;
-            //$scope.ngative = false
-            //$scope.positive = false
-            //if($scope.logs.activity.positivity == 'ngative' ){$scope.ngative = true} 
-            //if($scope.logs.activity.positivity == 'positive' ){$scope.positive = true} 
-            $scope.logs.sort(function(a, b){
-                return b.time - a.time
-            })
-            
-            $scope.showMenu = true;
-        },
-        function (response) {
-            $scope.message = "Error: " + response.status + " " + response.statusText;
-        });
+    function (response) {
+        $scope.logs = response;
+        let days = [];
 
-        console.log('user ')  ;
-        console.log('user ') ;
+        for (var i = 0; i <= moment.duration(log[logs.length -1].time - logs[0].time).days() - 1; i++) {
+            days.push(moment(logs[0].time).add(i, 'days'));
+        }
+
+        $scope.logs.sort(function(a, b){
+            return b.time - a.time
+        })
         
-        console.log('hslhs ');
-        //this.shitty = 3234534;
-        //console.log('hslhs ',shit);
+        $scope.showMenu = true;
+    },
+    function (response) {
+        $scope.message = "Error: " + response.status + " " + response.statusText;
+    });
+
+ 
 }])
+
+$scope.setDay = function(day){
+let thisDay = day;
+}
+
+$scope.filterFn = function(lo){
+    return moment(thisDay).isSame(lo.time , 'day');
+}
