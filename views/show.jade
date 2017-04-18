@@ -164,7 +164,7 @@ html(ng-app="MyBot", ng-cloak)
           |                               
           |                                
           li.m-day(ng-repeat='day in days')
-            a(ng-click='setDay({{day}})', style='padding: 8px; text-align: center; font-size: 24px; display: block;') {{day | date:  dd, MMM, yyyy&apos;}}
+            a(ng-click='setDay(day)', style='padding: 8px; text-align: center; font-size: 24px; display: block;') {{day | date:  dd, MMM, yyyy&apos;}}
       |           
       div(style=' top: 80px;position: relative;')
         .col-lg-6.col-lg-push-3.col-md-8.col-md-push-2.col-sm-12.col-xs-12(style='padding: 0px;')
