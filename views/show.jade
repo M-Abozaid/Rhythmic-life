@@ -1,8 +1,8 @@
 
 div
     .Mnav-tab
-      h2(style='text-align: center;') Your diary logs
-      a( ui-sref="app.statistics") Statistics
+      h2(style='text-align: right; float:left; width: 80%;') Your diary logs
+      a(id='m-statistics' ui-sref="app.statistics") Statistics
     |     
     div(ng-if="!showMenu")
                 |<h1>{{message}} </h1>   
