@@ -99,7 +99,8 @@ LogsFactory.query(
         data.addRows(rows);
 
         var formatter = new google.visualization.DateFormat({formatType: 'medium'});
-        formatter.formate(data,1)
+        
+        formatter.format(data,1);
         // Set chart options
         var options = {'title':'Work',
                        curveType: 'function',
