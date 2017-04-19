@@ -74,11 +74,12 @@ LogsFactory.query(
     
     $scope.work = $scope.logs.reduce(function(dataset1,log){
         if(log.activity.type == 'work'){
-            dataset1.push(log)
+            return log
         }
     },[]);
 
     $scope.mdata.dataset1 = $scope.work
+    console.log(" work ",$scope.work);
 
      $scope.data = {
         dataset0: [
