@@ -6,7 +6,7 @@ angular.module('MyBot')
 		
 		let parts = document.URL.split('/')
 		console.log('parts ', parts);
-		let Id = parts[parts.length - 3 ]
+		let Id = parts[4]
         
         return $resource(baseURL + "show/logs/"+ Id, null, {
             'update': {
@@ -15,3 +15,4 @@ angular.module('MyBot')
         });
 
 }])
+

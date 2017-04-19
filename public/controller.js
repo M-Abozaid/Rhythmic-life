@@ -12,6 +12,7 @@ LogsFactory.query(
         $scope.logs = response;
         $scope.days = [];
 
+        var glog = $scope.logs;
         
         console.log('days ',$scope.days);
 
@@ -66,6 +67,20 @@ LogsFactory.query(
 .controller('StatisticsController', ['$scope', function($scope){
 
     console.log('statistics controller starts');
+
+    
+
+    $scope.logs = glog;
+
+    $scope.work = $scope.logs.reduce(function(dataset1,log){
+        if(log.activity.type == 'work'){
+            dataset1.push(log)
+        }
+    },[]);
+
+    $scope.mdata = {
+        dataset1: $scope.work
+    }
      $scope.data = {
         dataset0: [
           {x: 0, val_0: 0, val_1: 0, val_2: 0, val_3: 0},
@@ -76,7 +91,7 @@ LogsFactory.query(
           {x: 5, val_0: 4.207, val_1: 9.093, val_2: 2.117, val_3: -15.136},
           {x: 6, val_0: 4.66, val_1: 6.755, val_2: -6.638, val_3: -19.923},
           {x: 7, val_0: 4.927, val_1: 3.35, val_2: -13.074, val_3: -12.625}
-        ]
+        ],
       };
 
     $scope.options = {
@@ -84,7 +99,7 @@ LogsFactory.query(
         {
           axis: "y",
           dataset: "dataset0",
-          key: "val_0",
+          key: "val_1",
           label: "An area series",
           color: "#1f77b4",
           type: ['line', 'dot', 'area'],
@@ -93,5 +108,20 @@ LogsFactory.query(
       ],
       axes: {x: {key: "x"}}
     };
+
+    $scope.moptions = {
+        series: [
+        {
+          axis: "y",
+          dataset: "dataset1",
+          key: "span",
+          label: "An area series",
+          color: "#1f77b4",
+          type: ['line', 'dot', 'area'],
+          id: 'mySeries1'
+        }
+      ],
+      axes: {x: {key: "time"}}
+    }
 }])
 
