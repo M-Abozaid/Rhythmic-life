@@ -17,16 +17,15 @@ angular.module('MyBot', ['n3-line-chart','ui.router','ngResource'])
 
             })
         
-            // // route for the aboutus page
-            // .state('app.aboutus', {
-            //     url:'aboutus',
-            //     views: {
-            //         'content@': {
-            //             templateUrl : 'views/aboutus.html',
-            //             controller  : 'AboutController'                  
-            //         }
-            //     }
-            // })
+            .state('app.statistics', {
+                url:'statistics',
+                views: {
+                    'content@': {
+                        templateUrl : 'https://salty-plains-47076.herokuapp.com/statistics.html',
+                        controller  : 'StatisticsController'                  
+                    }
+                }
+            })
 
               $urlRouterProvider.otherwise('/');
 })
