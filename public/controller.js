@@ -127,15 +127,15 @@ LogsFactory.query(
                                        },
                         pointSize:5
                        };
-                       
-      var formatter = new google.visualization.DateFormat({formatType: 'medium'});
+
+      
 
       function drawChart1() {
         let data = new google.visualization.DataTable();
         data.addColumn('date', 'time');
         data.addColumn('number', 'time spent (min)');
         data.addRows(workRows);
-
+        let formatter = new google.visualization.DateFormat({formatType: 'medium'});
         formatter.format(data,1);
         
         let chart = new google.visualization.LineChart(document.getElementById('curve_chart1'));
@@ -148,7 +148,7 @@ LogsFactory.query(
         data.addColumn('date', 'time');
         data.addColumn('number', 'time spent (min)');
         data.addRows(entertainmentRows);
-
+        let formatter = new google.visualization.DateFormat({formatType: 'medium'});
         formatter.format(data,1);
         let chart = new google.visualization.LineChart(document.getElementById('curve_chart2'));
         chart.draw(data, options);
@@ -159,7 +159,7 @@ LogsFactory.query(
         data.addColumn('date', 'time');
         data.addColumn('number', 'time spent (min)');
         data.addRows(studyRows);
-
+        let formatter = new google.visualization.DateFormat({formatType: 'medium'});
         formatter.format(data,1);
 
         let chart = new google.visualization.LineChart(document.getElementById('curve_chart3'));
