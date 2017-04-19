@@ -105,13 +105,14 @@ LogsFactory.query(
         var options = {'title':'Work',
                        curveType: 'none',
                        legend: { position: 'bottom' },
-                       font:22,
+                       fontSize:12,
                        backgroundColor:'#d7d9d0',
                        chartArea:{height: 225},
                        titleTextStyle:{ 
                                       fontSize: 18,
                                       bold: true
-                                       }
+                                       },
+                        pointSize:5
                        };
 
         // Instantiate and draw our chart, passing in some options.
