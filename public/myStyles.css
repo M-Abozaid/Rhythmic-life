@@ -74,7 +74,7 @@ margin: 0px;
 }
 .m-log {
 height: 15%;
-background-color: rgb(191,228,93);
+background-color: rgb(215,217,208);
 border-radius: 55px;
 margin-top: 4px;
 }
@@ -95,7 +95,8 @@ overflow: hidden;
 margin-top: 8px
 }
 .m-date {
-font-size: 18px;
+font-size: 22px;
+color: black;
 }
 .m-note {
 margin: 2px 3px 3px 2px;
@@ -106,6 +107,7 @@ padding-right: 10px;
 padding-left:6px;
 overflow: visible;
 }
+
 .m-type {
 overflow: visible;
 background-color: rgb(90,135,264);
@@ -116,8 +118,11 @@ color: white;
 text-align: center;
 padding-top: 4px;
 padding-bottom: 4px;
+padding-left: 4px;
+padding-right: 4px;
 float:left;
 }
+
 .m-day {
 background-color: rgb(58,60,58);
 border-top: 5px rgb(154,158,155) solid;
@@ -126,6 +131,10 @@ li span {
 font-size: 24px;
 }
 a {
+padding: 8px;
+text-align: center;
+font-size: 24px; 
+display: block;
 list-style: none;
 text-decoration-style:  none;
 color: white;
@@ -141,3 +150,9 @@ cursor:pointer
       background-color: white;
       color: black;
 }
+
+.active:hover {
+      background-color: gray;
+      color: black;
+}
+
