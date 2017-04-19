@@ -107,7 +107,7 @@ LogsFactory.query(
                        legend: { position: 'bottom' },
                        font:20,
                        backgroundColor:'#d7d9d0',
-                       chartArea:{height: 260}
+                       chartArea:{height: 240}
                    };
 
         // Instantiate and draw our chart, passing in some options.
