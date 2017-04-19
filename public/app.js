@@ -11,7 +11,7 @@ angular.module('MyBot', ['n3-line-chart','ui.router','ngResource'])
                     
                     'content': {
                         templateUrl : 'https://salty-plains-47076.herokuapp.com/show/show.html',
-                        controller  : 'LogController'
+                        controller  : 'LogsController'
                     }
                 }
 
