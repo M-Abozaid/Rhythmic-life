@@ -160,10 +160,11 @@ cursor:pointer
 }
 
 #m-statistics {
+      width: 18%;
       float: right;
       padding-top: 10px;
       padding-right: 15px;
-      font-size: 25px;
+      font-size: 18px;
       display: inline;
       color: rgb(125,130,145);
 }
