@@ -71,10 +71,12 @@ LogsFactory.query(
     LogsFactory.query(
     function (response) {
         $scope.logs = response;     
-    
+        console.log('logs ',$scope.logs);
     $scope.work = $scope.logs.reduce(function(dataset1,log){
         if(log.activity.type == 'work'){
-            return log
+            console.log('match');
+            return dataset1.push(log)
+
         }
     },[]);
 
