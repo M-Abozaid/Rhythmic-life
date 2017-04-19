@@ -44,11 +44,7 @@ LogsFactory.query(
     }
 
     $scope.isSelected = function(day){
-        if(day==$scope.thisDay){
-            return true;
-        }else{
-            return false;
-        }
+        return (day==$scope.thisDay)
     }
 
     $scope.allTime = function(){

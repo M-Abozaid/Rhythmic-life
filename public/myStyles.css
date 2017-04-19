@@ -136,3 +136,8 @@ text-decoration-style:  none;
 text-decoration: none;
 cursor:pointer
 }
+
+.active {
+      background-color: white;
+      color: black;
+}
