@@ -22,9 +22,7 @@ LogsFactory.query(
 
         var lastDay = moment($scope.logs[0].time).startOf('day');
         var firstDay = moment($scope.logs[$scope.logs.length -1].time).startOf('day')
-        // lastDay.subtract(moment($scope.logs[0].time).hours(),'hours')
-        // .subtract(moment($scope.logs[0].time).minute(),'minuts')
-        // .subtract(moment($scope.logs[0].time).seconds(),'seconds') 
+
         console.log('num of days --',moment.duration(lastDay - firstDay).asDays());
         for (var i = 0; i <=  moment.duration(lastDay - firstDay).asDays() ; i++) {
 
@@ -96,10 +94,12 @@ LogsFactory.query(
 
         // Create the data table.
         var data = new google.visualization.DataTable();
-        data.addColumn('datetime', 'time');
+        data.addColumn('date', 'time');
         data.addColumn('number', 'time spent (min)');
         data.addRows(rows);
 
+        var formatter = new google.visualization.DateFormat({formatType: 'medium'});
+        formatter.formate(data,1)
         // Set chart options
         var options = {'title':'Work',
                        curveType: 'function',
