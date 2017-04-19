@@ -65,44 +65,56 @@ LogsFactory.query(
 .controller('StatisticsController', ['$scope', 'LogsFactory', function ($scope, LogsFactory){
 
     console.log('statistics controller starts');
+    $scope.showChart = false;
+    $scope.message = 'Loading...';
 
     LogsFactory.query(
     function (response) {
         $scope.logs = response;     
         console.log('logs ',$scope.logs);
 
-    $scope.work = $scope.logs.filter(function(log){
+        $scope.work = $scope.logs.filter(function(log){
         return log.activity.type == "work";
         
     });
+    $scope.entertainment = $scope.logs.filter(function(log){
+        return log.activity.type == "entertainment";
+        
+    });
+    $scope.study = $scope.logs.filter(function(log){
+        return log.activity.type == "study";
+        
+    });
 
-    let rows = $scope.work.map(function(elem){
+    let workRows = $scope.work.map(function(elem){
         let temp = [new Date(elem.time) , (elem.span || 0) / (1000*60)];
         console.log('temp ',temp);
         return temp;
     })
-    console.log(' work -- ', $scope.work);
+
+    let entertainmentRows = $scope.work.map(function(elem){
+        let temp = [new Date(elem.time) , (elem.span || 0) / (1000*60)];
+        console.log('temp ',temp);
+        return temp;
+    })
+
+    let studyRows = $scope.work.map(function(elem){
+        let temp = [new Date(elem.time) , (elem.span || 0) / (1000*60)];
+        console.log('temp ',temp);
+        return temp;
+    })
+
      google.charts.load('current', {'packages':['corechart']});
 
       // Set a callback to run when the Google Visualization API is loaded.
-      google.charts.setOnLoadCallback(drawChart);
+      google.charts.setOnLoadCallback(drawChart1);
+      google.charts.setOnLoadCallback(drawChart2);
+      google.charts.setOnLoadCallback(drawChart3);
 
       // Callback that creates and populates a data table,
       // instantiates the pie chart, passes in the data and
       // draws it.
-      function drawChart() {
-
-        // Create the data table.
-        var data = new google.visualization.DataTable();
-        data.addColumn('date', 'time');
-        data.addColumn('number', 'time spent (min)');
-        data.addRows(rows);
-
-        var formatter = new google.visualization.DateFormat({formatType: 'medium'});
-
-        formatter.format(data,1);
-        // Set chart options
-        var options = {'title':'Work',
+      var options = {'title':'Work',
                        curveType: 'none',
                        legend: { position: 'in',
                                 alignment:'center' },
@@ -115,58 +127,46 @@ LogsFactory.query(
                                        },
                         pointSize:5
                        };
+                       
+      var formatter = new google.visualization.DateFormat({formatType: 'medium'});
 
-        // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+      function drawChart1() {
+        let data = new google.visualization.DataTable();
+        data.addColumn('date', 'time');
+        data.addColumn('number', 'time spent (min)');
+        data.addRows(workRows);
+
+        formatter.format(data,1);
+        
+        let chart = new google.visualization.LineChart(document.getElementById('curve_chart1'));
+        $scope.showChart = true;
         chart.draw(data, options);
       }
 
-    // $scope.mdata = {}
-    // $scope.mdata.dataset1 = $scope.work
-    // console.log(" work ",$scope.work);
+      function drawChart2() {
+        let data = new google.visualization.DataTable();
+        data.addColumn('date', 'time');
+        data.addColumn('number', 'time spent (min)');
+        data.addRows(entertainmentRows);
 
-    //  $scope.data = {
-    //     dataset0: [
-    //       {x: 0, val_0: 0, val_1: 0, val_2: 0, val_3: 0},
-    //       {x: 1, val_0: 0.993, val_1: 3.894, val_2: 8.47, val_3: 14.347},
-    //       {x: 2, val_0: 1.947, val_1: 7.174, val_2: 13.981, val_3: 19.991},
-    //       {x: 3, val_0: 2.823, val_1: 9.32, val_2: 14.608, val_3: 13.509},
-    //       {x: 4, val_0: 3.587, val_1: 9.996, val_2: 10.132, val_3: -1.167},
-    //       {x: 5, val_0: 4.207, val_1: 9.093, val_2: 2.117, val_3: -15.136},
-    //       {x: 6, val_0: 4.66, val_1: 6.755, val_2: -6.638, val_3: -19.923},
-    //       {x: 7, val_0: 4.927, val_1: 3.35, val_2: -13.074, val_3: -12.625}
-    //     ]
-    //   };
+        formatter.format(data,1);
+        let chart = new google.visualization.LineChart(document.getElementById('curve_chart2'));
+        chart.draw(data, options);
+      }
 
-    // $scope.options = {
-    //   series: [
-    //     {
-    //       axis: "y",
-    //       dataset: "dataset0",
-    //       key: "val_1",
-    //       label: "An area series",
-    //       color: "#1f77b4",
-    //       type: ['line', 'dot', 'area'],
-    //       id: 'mySeries0'
-    //     }
-    //   ],
-    //   axes: {x: {key: "x"}}
-    // };
+      function drawChart3() {
+        let data = new google.visualization.DataTable();
+        data.addColumn('date', 'time');
+        data.addColumn('number', 'time spent (min)');
+        data.addRows(studyRows);
 
-    // $scope.moptions = {
-    //     series: [
-    //     {
-    //       axis: "y",
-    //       dataset: "dataset1",
-    //       key: "span",
-    //       label: "An area series",
-    //       color: "#1f77b4",
-    //       type: ['line', 'dot', 'area'],
-    //       id: 'mySeries1'
-    //     }
-    //   ],
-    //   axes: {x: {key: "time"}}
-    // }
+        formatter.format(data,1);
+
+        let chart = new google.visualization.LineChart(document.getElementById('curve_chart3'));
+        chart.draw(data, options);
+      }
+
+    
 
     },
     function (response) {
