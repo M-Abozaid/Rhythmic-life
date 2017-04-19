@@ -78,9 +78,8 @@ LogsFactory.query(
         }
     },[]);
 
-    $scope.mdata = {
-        dataset1: $scope.work
-    }
+    $scope.mdata.dataset1 = $scope.work
+
      $scope.data = {
         dataset0: [
           {x: 0, val_0: 0, val_1: 0, val_2: 0, val_3: 0},
