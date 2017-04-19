@@ -64,13 +64,18 @@ LogsFactory.query(
  
 }])
 
-.controller('StatisticsController', ['$scope', function($scope){
+.controller('StatisticsController', ['$scope', 'LogsFactory', function ($scope, LogsFactory){
 
     console.log('statistics controller starts');
 
-    
+    LogsFactory.query(
+    function (response) {
+        $scope.logs = response;     
+    },
+    function (response) {
+        $scope.message = "Error: " + response.status + " " + response.statusText;
+    });
 
-    $scope.logs = glog;
 
     $scope.work = $scope.logs.reduce(function(dataset1,log){
         if(log.activity.type == 'work'){
@@ -91,7 +96,7 @@ LogsFactory.query(
           {x: 5, val_0: 4.207, val_1: 9.093, val_2: 2.117, val_3: -15.136},
           {x: 6, val_0: 4.66, val_1: 6.755, val_2: -6.638, val_3: -19.923},
           {x: 7, val_0: 4.927, val_1: 3.35, val_2: -13.074, val_3: -12.625}
-        ],
+        ]
       };
 
     $scope.options = {
