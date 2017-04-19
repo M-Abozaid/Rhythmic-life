@@ -96,13 +96,13 @@ LogsFactory.query(
         return temp;
     })
 
-    let entertainmentRows = $scope.work.map(function(elem){
+    let entertainmentRows = $scope.entertainment.map(function(elem){
         let temp = [new Date(elem.time) , (elem.span || 0) / (1000*60)];
         console.log('temp2 ',temp);
         return temp;
     })
 
-    let studyRows = $scope.work.map(function(elem){
+    let studyRows = $scope.study.map(function(elem){
         let temp = [new Date(elem.time) , (elem.span || 0) / (1000*60)];
         console.log('temp3 ',temp);
         return temp;
