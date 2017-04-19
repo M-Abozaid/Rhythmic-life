@@ -1,19 +1,39 @@
-doctype
-	html
-		head
-			title shit
-		body
-
-			div
-				p first
-				p
-					|laslfjnb va aif oj affdsaffff vvvvvvvvvvvvvvvvvvvvvsfsfg grg regear gg afg aga g  gaf
-
-				p.
-
-				p(id= "5th",
-				class="afhfdh")
-
-				p Welcome to #{userId}
-
-
+body(ng-controller='LogsController')
+    .Mnav-tab
+      h2(style='text-align: center;') Your diary logs
+    |     
+    div(ng-if="!showMenu")
+                |<h1>{{message}} </h1>   
+    .container(style='margin: 0px; padding: 0px; width: 100%;position: static; ',class='container',ng-if="showMenu")
+      .Mmenu
+        ul(style='padding-left: 10px;  ')
+          li.m-day
+            a(ng-click='allTime()' ng-class='{active: isSelected()}' style='padding: 8px; text-align: center; font-size: 24px; display: block;') All time
+          |                               
+          |                                
+          li.m-day(ng-repeat='day in days')
+            a(ng-click='setDay(day)' ,ng-class='{active: isSelected(day)}', style='') {{day | date:  'dd MMM yyyy'}}
+      |           
+      div(style=' top: 80px;position: relative;')
+        .col-lg-6.col-lg-push-3.col-md-8.col-md-push-2.col-sm-12.col-xs-12(style='padding: 0px;')
+          .row
+            .Mrow.col-lg-8.col-md-8.col-sm-8.col-xs-8
+              ul(style='padding-left: 0px;')
+                li.m-log(ng-repeat='log in logs |filter: filterFn')
+                  .row.m-header
+                    .col-xs-9.col-sm-9.col-md-9.col-lg-9
+                      h3.m-activity-name {{log.logName}}
+                    |                                  
+                    .col-xs-3.col-sm-3.col-md-3.col-lg-3(style='padding-left: 0;')
+                      h5.m-date
+                        | {{log.time | date: 'hh:mm a' }}
+                        br
+                        |  {{log.time| date: ' dd MMM yyyy'}}
+                  |                                 
+                  .row.m-body
+                    h5.m-note
+                      span(style='font-size: 28px;')  Note: 
+                      |  {{log.note}}
+                  |                                 
+                  .row.m-footer
+                    h4.m-type {{log.activity.type}}
