@@ -95,7 +95,7 @@ overflow: hidden;
 margin-top: 8px
 }
 .m-date {
-font-size: 22px;
+font-size: 20px;
 color: black;
 }
 .m-note {
@@ -116,10 +116,10 @@ font-size: 24px;
 margin-left: 30px;
 color: white;
 text-align: center;
-padding-top: 4px;
-padding-bottom: 4px;
-padding-left: 4px;
-padding-right: 4px;
+padding-top: 7px;
+padding-bottom:7px;
+padding-left: 7px;
+padding-right: 7px;
 float:left;
 }
 
