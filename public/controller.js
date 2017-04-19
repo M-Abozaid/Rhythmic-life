@@ -6,7 +6,7 @@ angular.module('MyBot')
 .controller('LogsController', ['$scope', 'LogsFactory', function ($scope, LogsFactory) {
 $scope.message = 'Loading...';
 $scope.showMenu = false;
-
+console.log(' controller starts');
 LogsFactory.query(
     function (response) {
         $scope.logs = response;

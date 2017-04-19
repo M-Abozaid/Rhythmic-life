@@ -3,7 +3,7 @@
 angular.module('MyBot', ['n3-line-chart','ui.router','ngResource'])
 .config(function($stateProvider, $urlRouterProvider) {
         $stateProvider
-        
+        	console.log(' app starts');
             // route for the home page
             .state('app', {
                 url:'/',
@@ -28,4 +28,5 @@ angular.module('MyBot', ['n3-line-chart','ui.router','ngResource'])
             //     }
             // })
 
+              $urlRouterProvider.otherwise('/');
 })
