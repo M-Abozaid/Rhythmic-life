@@ -71,12 +71,7 @@ LogsFactory.query(
     LogsFactory.query(
     function (response) {
         $scope.logs = response;     
-    },
-    function (response) {
-        $scope.message = "Error: " + response.status + " " + response.statusText;
-    });
-
-
+    
     $scope.work = $scope.logs.reduce(function(dataset1,log){
         if(log.activity.type == 'work'){
             dataset1.push(log)
@@ -128,5 +123,10 @@ LogsFactory.query(
       ],
       axes: {x: {key: "time"}}
     }
+
+    },
+    function (response) {
+        $scope.message = "Error: " + response.status + " " + response.statusText;
+    });
 }])
 
