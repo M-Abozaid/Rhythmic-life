@@ -99,12 +99,14 @@ LogsFactory.query(
         data.addRows(rows);
 
         var formatter = new google.visualization.DateFormat({formatType: 'medium'});
-        
+
         formatter.format(data,1);
         // Set chart options
         var options = {'title':'Work',
                        curveType: 'function',
-                       legend: { position: 'bottom' }
+                       legend: { position: 'bottom' },
+                       font:14,
+                       backgroundColor:'#d7d9d0'
                    };
 
         // Instantiate and draw our chart, passing in some options.
