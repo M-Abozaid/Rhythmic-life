@@ -79,7 +79,7 @@ LogsFactory.query(
     });
 
     $scope.work.map(function(elem){
-        let temp = [new Date(elem.time) , (elem.span || 0)/ (1000*60)]
+        let temp = [new Date(elem.time) , (elem.span || 0)/ (1000*60)];
         return temp;
     })
     console.log(' work -- ', $scope.work);
