@@ -131,13 +131,14 @@ LogsFactory.query(
       
 
       function drawChart1() {
+        $scope.showChart = true;
         let data = new google.visualization.DataTable();
         data.addColumn('date', 'time');
         data.addColumn('number', 'time spent (min)');
         data.addRows(workRows);
         let formatter = new google.visualization.DateFormat({formatType: 'medium'});
         formatter.format(data,1);
-        $scope.showChart = true;
+        
         let chart = new google.visualization.LineChart(document.getElementById('curve_chart1'));
         
         chart.draw(data, options);
