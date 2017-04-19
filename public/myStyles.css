@@ -68,10 +68,12 @@ left: 25%;
 width: 50%;
 }
 }
-.row {
+
+/*.row {
 padding: 0px;
 margin: 0px;
-}
+}*/
+
 .m-log {
 height: 15%;
 background-color: rgb(215,217,208);
