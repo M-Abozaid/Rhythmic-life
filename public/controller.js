@@ -79,9 +79,9 @@ LogsFactory.query(
     });
 
     $scope.work.map(function(elem){
-        return [new Date(elem.time) , elem.span / (1000*60)]
+        return [new Date(elem.time) , (elem.span || 0)/ (1000*60)];
     })
-
+    console.log(' work -- ', $scope.work);
      google.charts.load('current', {'packages':['corechart']});
 
       // Set a callback to run when the Google Visualization API is loaded.
