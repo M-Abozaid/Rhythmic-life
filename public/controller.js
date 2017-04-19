@@ -75,11 +75,12 @@ LogsFactory.query(
 
     $scope.work = $scope.logs.filter(function(log){
         return log.activity.type == "work";
-        console.log('filt');
+        
     });
 
-    $scope.work.map(function(elem){
-        let temp = [new Date(elem.time) , (elem.span || 0)/ (1000*60)];
+    let rows = $scope.work.map(function(elem){
+        let temp = [new Date(elem.time) , (elem.span || 0) / (1000*60)];
+        console.log('temp ',temp);
         return temp;
     })
     console.log(' work -- ', $scope.work);
@@ -97,7 +98,7 @@ LogsFactory.query(
         var data = new google.visualization.DataTable();
         data.addColumn('datetime', 'time');
         data.addColumn('number', 'time spent (min)');
-        data.addRows($scope.work);
+        data.addRows(rows);
 
         // Set chart options
         var options = {'title':'Work',
