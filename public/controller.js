@@ -8,7 +8,6 @@ $scope.message = 'Loading...';
 $scope.showMenu = false;
 
 LogsFactory.query(
-
     function (response) {
         $scope.logs = response;
         $scope.days = [];
@@ -44,6 +43,14 @@ LogsFactory.query(
     $scope.all = false;
     }
 
+    $scope.isSelected() = function(day){
+        if(day==$scope.thisDay){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    
     $scope.allTime = function(){
         $scope.all = true;
     }
