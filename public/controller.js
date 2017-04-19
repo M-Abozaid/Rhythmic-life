@@ -105,7 +105,8 @@ LogsFactory.query(
         var options = {'title':'Work',
                        curveType: 'function',
                        legend: { position: 'bottom' },
-                       font:20
+                       font:20,
+                       backgroundColor:'#d7d9d0'
                    };
 
         // Instantiate and draw our chart, passing in some options.
