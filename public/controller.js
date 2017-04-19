@@ -73,8 +73,8 @@ LogsFactory.query(
         $scope.logs = response;     
         console.log('logs ',$scope.logs);
     $scope.work = $scope.logs.filter(function(log){
-        return log.activity.type == 'work'
-        
+        return log.activity.type == "work";
+        console.log('filt');
     });
 
     $scope.mdata.dataset1 = $scope.work
