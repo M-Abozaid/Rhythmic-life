@@ -118,7 +118,7 @@ LogsFactory.query(
       // Callback that creates and populates a data table,
       // instantiates the pie chart, passes in the data and
       // draws it.
-      var options = {'title':'Work',
+      let options = {'title':'Work',
                        curveType: 'none',
                        legend: { position: 'in',
                                 alignment:'center' },
@@ -142,7 +142,19 @@ LogsFactory.query(
         data1.addRows(workRows);
         let formatter1 = new google.visualization.DateFormat({formatType: 'medium'});
         formatter1.format(data1,1);
-        
+         let options = {'title':'Work',
+                       curveType: 'none',
+                       legend: { position: 'in',
+                                alignment:'center' },
+                       fontSize:14,
+                       backgroundColor:'#d7d9d0',
+                       chartArea:{height: 225},
+                       titleTextStyle:{ 
+                                      fontSize: 21,
+                                      bold: true
+                                       },
+                        pointSize:5
+                       };
         let chart1 = new google.visualization.LineChart(document.getElementById('curve_chart1'));
         
         chart1.draw(data1, options);
@@ -155,8 +167,20 @@ LogsFactory.query(
         data2.addRows(entertainmentRows);
         let formatter2 = new google.visualization.DateFormat({formatType: 'medium'});
         formatter2.format(data2,1);
+         let options = {'title':'Entertainment',
+                       curveType: 'none',
+                       legend: { position: 'in',
+                                alignment:'center' },
+                       fontSize:14,
+                       backgroundColor:'#d7d9d0',
+                       chartArea:{height: 225},
+                       titleTextStyle:{ 
+                                      fontSize: 21,
+                                      bold: true
+                                       },
+                        pointSize:5
+                       };
         let chart2 = new google.visualization.LineChart(document.getElementById('curve_chart2'));
-        options.'title' = 'Entertainment';
         chart2.draw(data2, options);
       }
 
@@ -167,7 +191,19 @@ LogsFactory.query(
         data3.addRows(studyRows);
         let formatter3 = new google.visualization.DateFormat({formatType: 'medium'});
         formatter3.format(data3,1);
-        options.'title' = 'Stydy';
+         let options = {'title':'Study',
+                       curveType: 'none',
+                       legend: { position: 'in',
+                                alignment:'center' },
+                       fontSize:14,
+                       backgroundColor:'#d7d9d0',
+                       chartArea:{height: 225},
+                       titleTextStyle:{ 
+                                      fontSize: 21,
+                                      bold: true
+                                       },
+                        pointSize:5
+                       };
         let chart3 = new google.visualization.LineChart(document.getElementById('curve_chart3'));
         chart3.draw(data3, options);
       }
