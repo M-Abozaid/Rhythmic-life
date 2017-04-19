@@ -108,7 +108,7 @@ LogsFactory.query(
                                 alignment:'center' },
                        fontSize:14,
                        backgroundColor:'#d7d9d0',
-                       chartArea:{height: 225},
+                       chartArea:{height: 220},
                        titleTextStyle:{ 
                                       fontSize: 21,
                                       bold: true
