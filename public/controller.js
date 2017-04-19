@@ -156,6 +156,7 @@ LogsFactory.query(
         let formatter2 = new google.visualization.DateFormat({formatType: 'medium'});
         formatter2.format(data2,1);
         let chart2 = new google.visualization.LineChart(document.getElementById('curve_chart2'));
+        options.'title' = 'Entertainment';
         chart2.draw(data2, options);
       }
 
@@ -166,7 +167,7 @@ LogsFactory.query(
         data3.addRows(studyRows);
         let formatter3 = new google.visualization.DateFormat({formatType: 'medium'});
         formatter3.format(data3,1);
-
+        options.'title' = 'Stydy';
         let chart3 = new google.visualization.LineChart(document.getElementById('curve_chart3'));
         chart3.draw(data3, options);
       }
