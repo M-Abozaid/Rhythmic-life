@@ -162,9 +162,9 @@ cursor:pointer
 #m-statistics {
       width: 18%;
       float: right;
-      padding-top: 10px;
+      padding-top: 15px;
       padding-right: 15px;
-      font-size: 20px;
+      font-size: 22px;
       display: inline;
-      color: rgb(194,202,224);
+      color: white;
 }
