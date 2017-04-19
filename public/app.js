@@ -10,7 +10,7 @@ angular.module('MyBot', ['n3-line-chart','ui.router','ngResource'])
                 views: {
                     
                     'content': {
-                        templateUrl : 'https://salty-plains-47076.herokuapp.com/show/show.html',
+                        templateUrl : 'https://salty-plains-47076.herokuapp.com/show/',
                         controller  : 'LogsController'
                     }
                 }

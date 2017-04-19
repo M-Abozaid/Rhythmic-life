@@ -16,24 +16,21 @@ showRouter.get('/:id',  function(req, res, next) {
 	User.findOne({recipientId : recipientId},(err,user)=>{
 		if (err) throw err;
 
-		res.render('./views/index', {cUser:user});
+		res.render('index', {cUser:user});
 		console.log("id ",recipientId)
 
 	})
 	
 });
 
-showRouter.get('/show.html',  function(req, res, next) {
-	let recipientId = req.params.id
-	User.findOne({recipientId : recipientId},(err,user)=>{
-		if (err) throw err;
+showRouter.get('/',  function(req, res, next) {
 
-		res.render('./views/show', {cUser:user});
+		res.render('show', {cUser:user});
 		console.log("id ",recipientId)
 
 	})
 	
-});
+
 
 showRouter.get('/logs/:id',function(req, res, next){
 	let recipientId = req.params.id
