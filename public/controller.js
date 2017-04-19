@@ -77,30 +77,34 @@ LogsFactory.query(
         return log.activity.type == "work";
         
     });
+        console.log('work ',$scope.work);
     $scope.entertainment = $scope.logs.filter(function(log){
         return log.activity.type == "entertainment";
         
     });
+    console.log('enter ',$scope.entertainment);
     $scope.study = $scope.logs.filter(function(log){
         return log.activity.type == "study";
         
     });
+    console.log('study ',$scope.study);
+
 
     let workRows = $scope.work.map(function(elem){
         let temp = [new Date(elem.time) , (elem.span || 0) / (1000*60)];
-        console.log('temp ',temp);
+        console.log('temp1 ',temp);
         return temp;
     })
 
     let entertainmentRows = $scope.work.map(function(elem){
         let temp = [new Date(elem.time) , (elem.span || 0) / (1000*60)];
-        console.log('temp ',temp);
+        console.log('temp2 ',temp);
         return temp;
     })
 
     let studyRows = $scope.work.map(function(elem){
         let temp = [new Date(elem.time) , (elem.span || 0) / (1000*60)];
-        console.log('temp ',temp);
+        console.log('temp3 ',temp);
         return temp;
     })
 
