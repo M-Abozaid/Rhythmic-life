@@ -16,7 +16,7 @@ showRouter.get('/:id',  function(req, res, next) {
 	User.findOne({recipientId : recipientId},(err,user)=>{
 		if (err) throw err;
 
-		res.render('index', {cUser:user});
+		res.render('./views/index', {cUser:user});
 		console.log("id ",recipientId)
 
 	})
@@ -28,7 +28,7 @@ showRouter.get('/show.html',  function(req, res, next) {
 	User.findOne({recipientId : recipientId},(err,user)=>{
 		if (err) throw err;
 
-		res.render('show', {cUser:user});
+		res.render('./views/show', {cUser:user});
 		console.log("id ",recipientId)
 
 	})
