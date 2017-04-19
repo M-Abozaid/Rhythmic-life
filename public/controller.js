@@ -103,11 +103,11 @@ LogsFactory.query(
         formatter.format(data,1);
         // Set chart options
         var options = {'title':'Work',
-                       curveType: 'function',
+                       curveType: 'none',
                        legend: { position: 'bottom' },
                        font:20,
                        backgroundColor:'#d7d9d0',
-                       chartArea:{height: 280}
+                       chartArea:{height: 260}
                    };
 
         // Instantiate and draw our chart, passing in some options.
