@@ -43,14 +43,14 @@ LogsFactory.query(
     $scope.all = false;
     }
 
-    $scope.isSelected() = function(day){
+    $scope.isSelected = function(day){
         if(day==$scope.thisDay){
             return true;
         }else{
             return false;
         }
     }
-    
+
     $scope.allTime = function(){
         $scope.all = true;
     }
