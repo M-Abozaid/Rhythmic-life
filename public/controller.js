@@ -137,9 +137,9 @@ LogsFactory.query(
         data.addRows(workRows);
         let formatter = new google.visualization.DateFormat({formatType: 'medium'});
         formatter.format(data,1);
-        
-        let chart = new google.visualization.LineChart(document.getElementById('curve_chart1'));
         $scope.showChart = true;
+        let chart = new google.visualization.LineChart(document.getElementById('curve_chart1'));
+        
         chart.draw(data, options);
       }
 
