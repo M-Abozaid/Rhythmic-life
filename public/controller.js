@@ -136,12 +136,12 @@ LogsFactory.query(
         data1.addColumn('date', 'time');
         data1.addColumn('number', 'time spent (min)');
         data1.addRows(workRows);
-        let formatter = new google.visualization.DateFormat({formatType: 'medium'});
-        formatter.format(data1,1);
+        let formatter1 = new google.visualization.DateFormat({formatType: 'medium'});
+        formatter1.format(data1,1);
         
-        let chart = new google.visualization.LineChart(document.getElementById('curve_chart1'));
+        let chart1 = new google.visualization.LineChart(document.getElementById('curve_chart1'));
         
-        chart.draw(data1, options);
+        chart1.draw(data1, options);
       }
 
       function drawChart2() {
@@ -149,10 +149,10 @@ LogsFactory.query(
         data2.addColumn('date', 'time');
         data2.addColumn('number', 'time spent (min)');
         data2.addRows(entertainmentRows);
-        let formatter = new google.visualization.DateFormat({formatType: 'medium'});
-        formatter.format(data2,1);
-        let chart = new google.visualization.LineChart(document.getElementById('curve_chart2'));
-        chart.draw(data2, options);
+        let formatter2 = new google.visualization.DateFormat({formatType: 'medium'});
+        formatter2.format(data2,1);
+        let chart2 = new google.visualization.LineChart(document.getElementById('curve_chart2'));
+        chart2.draw(data2, options);
       }
 
       function drawChart3() {
@@ -160,11 +160,11 @@ LogsFactory.query(
         data3.addColumn('date', 'time');
         data3.addColumn('number', 'time spent (min)');
         data3.addRows(studyRows);
-        let formatter = new google.visualization.DateFormat({formatType: 'medium'});
-        formatter.format(data3,1);
+        let formatter3 = new google.visualization.DateFormat({formatType: 'medium'});
+        formatter3.format(data3,1);
 
-        let chart = new google.visualization.LineChart(document.getElementById('curve_chart3'));
-        chart.draw(data3, options);
+        let chart3 = new google.visualization.LineChart(document.getElementById('curve_chart3'));
+        chart3.draw(data3, options);
       }
 
     
