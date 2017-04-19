@@ -25,10 +25,9 @@ showRouter.get('/:id',  function(req, res, next) {
 
 showRouter.get('/',  function(req, res, next) {
 
-		res.render('show', {cUser:user});
-		console.log("id ",recipientId)
+		res.render('show');
 
-	})
+	});
 	
 
 
