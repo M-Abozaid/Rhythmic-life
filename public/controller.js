@@ -104,12 +104,12 @@ LogsFactory.query(
         // Set chart options
         var options = {'title':'Work',
                        curveType: 'none',
-                       legend: { position: 'bottom' },
-                       fontSize:16,
+                       legend: { position: 'top' },
+                       fontSize:14,
                        backgroundColor:'#d7d9d0',
                        chartArea:{height: 225},
                        titleTextStyle:{ 
-                                      fontSize: 22,
+                                      fontSize: 21,
                                       bold: true
                                        },
                         pointSize:5
