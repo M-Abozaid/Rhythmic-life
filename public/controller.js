@@ -105,10 +105,14 @@ LogsFactory.query(
         var options = {'title':'Work',
                        curveType: 'none',
                        legend: { position: 'bottom' },
-                       font:20,
+                       font:22,
                        backgroundColor:'#d7d9d0',
                        chartArea:{height: 225}
-                   };
+                       titleTextStyle:{ 
+                                      fontSize: 18,
+                                      bold: true,
+                                       }
+                       };
 
         // Instantiate and draw our chart, passing in some options.
         var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
