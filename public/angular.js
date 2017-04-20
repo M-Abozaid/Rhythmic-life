@@ -3,7 +3,6 @@
  * (c) 2010-2017 Google, Inc. http://angularjs.org
  * License: MIT
  */
- alert('angular loades ')
 (function(window) {'use strict';
 
 /**
@@ -32621,4 +32620,3 @@ $provide.value("$locale", {
 
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
 
-alert('angular finishes')

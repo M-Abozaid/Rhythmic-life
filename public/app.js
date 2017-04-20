@@ -1,4 +1,4 @@
-
+'use strict';
 alert('inside app out ')
 console.log('inside app out ')
 //angular.module('MyBot', ['ui.router','ngResource','n3-line-chart'])
