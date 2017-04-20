@@ -4,7 +4,7 @@ div
       h2(style='text-align: right; float:left; width: 80%; padding-right:15%; display:inline;') Your diary logs
       a(id='m-statistics' ui-sref="app.statistics") Statistics
     |     
-    div(ng-if="!showMenu")
+    div(ng-if="!showMenu" style='z-index : 1001;')
                 |<h1>{{message}} </h1>   
     .container(style='margin: 0px; padding: 0px; width: 100%;position: static; ',class='container',ng-if="showMenu")
       .Mmenu

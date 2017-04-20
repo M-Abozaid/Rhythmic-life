@@ -63,54 +63,60 @@ let takeAction = function(context){
 				default:
 				// create some fuzzy matching here
 				GraphAPI.sendPlainMessage(recipientId, 'I\'m sorry I don\'t understant! 😐😕 try typing help or you could keep a diry log of what you\'re doing right now.')
+
 			}
 		}else { 
-			if (context.current.panel){ // Send the panel
-			
-				data = {
-					"quick_replies":  [
-				    		{
-					        "content_type":"text",
-					        "title": 'Add a diary entry' ,
-					        "payload": 1
-					      }	,
-					      {
-					        "content_type":"text",
-					        "title": "Add a new activity",
-					        "payload": 3
-					      }],
+			if (context.msg == 'get started') {
+				
+			} else {
+				if (context.current.panel){ // Send the panel
+				
+					data = {
+						"quick_replies":  [
+					    		{
+						        "content_type":"text",
+						        "title": 'Add a diary entry' ,
+						        "payload": 1
+						      }	,
+						      {
+						        "content_type":"text",
+						        "title": "Add a new activity",
+						        "payload": 3
+						      }],
 
-					"attachment":{
-				      "type":"template",
-				      "payload":{
-				        "template_type":"button",
-				        "text":"What do you want to do next?",
-						"buttons":[
-					      {
-					        "type":"web_url",
-					        "url":"https://salty-plains-47076.herokuapp.com/show/"+recipientId,
-					        "title":"View your diary",
-					        "webview_height_ratio": "compact",
-					        "messenger_extensions": true
-					      },
-					      {
-					        "type":"web_url",
-					        "url":"https://salty-plains-47076.herokuapp.com/show/"+recipientId + "/#!/statistics",
-					        "title":"View your statistics",
-					        "webview_height_ratio": "compact",
-					        "messenger_extensions": true
-					      }
-					    ]
+						"attachment":{
+					      "type":"template",
+					      "payload":{
+					        "template_type":"button",
+					        "text":"What do you want to do next?",
+							"buttons":[
+						      {
+						        "type":"web_url",
+						        "url":"https://salty-plains-47076.herokuapp.com/show/"+recipientId,
+						        "title":"View your diary",
+						        "webview_height_ratio": "compact",
+						        "messenger_extensions": true
+						      },
+						      {
+						        "type":"web_url",
+						        "url":"https://salty-plains-47076.herokuapp.com/show/"+recipientId + "/#!/statistics",
+						        "title":"View your statistics",
+						        "webview_height_ratio": "compact",
+						        "messenger_extensions": true
+						      }
+						    ]
+							}
 						}
 					}
-				}
 
-				GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
-					context.current.main = 'offered';
-					context.current.panel = false;
-					resolve(context)})
-				
-			}else{
+					GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
+						context.current.main = 'offered';
+						context.current.panel = false;
+						resolve(context)})
+					
+				}
+			}
+			else{
 				//  there is a context going on
 				console.log('inside the last else n take action',JSON.stringify(context));
 				if(context.current.main == 'addingActivity'){
