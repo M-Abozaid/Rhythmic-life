@@ -8,6 +8,7 @@ let takeAction = function(context){
 	return new Promise(function(resolve, reject){
 	let recipientId = context.userData.recipientId;
 	console.log('inside takeAction() ---- ');
+
 	let offer = function(){
 		let data = platformHelpers.generateQuickReplies('What would you like to do? ', ['Add diary log','See you diary','Add a new activity']);
 		GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{resolve(context)})
@@ -103,9 +104,11 @@ let takeAction = function(context){
 						}
 					}
 				}
-				context.current.main = 'offered';
-				contest.current.panel = false;
-				GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{resolve(context)})
+
+				GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
+					context.current.main = 'offered';
+					context.current.panel = false;
+					resolve(context)})
 				
 			}else{
 				//  there is a context going on
