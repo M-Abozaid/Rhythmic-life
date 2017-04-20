@@ -36,57 +36,14 @@ let takeAction = function(context){
 		GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{resolve(context)})
 
 	}
-	if(context.msg == 'hi'){
+
+    if(context.msg == 'hi'){
 			context.current = {};
 			context.current.main = 'offered'
 			//context.current.sub = {};
 			GraphAPI.sendPlainMessage(recipientId, 'Hello! '+context.userData.first_name+' 😍😍').then(()=>{offer()})
 		}else{
-	
-
-	if (context.current.panel){ // Send the panel
-		
-		data = {
-			"quick_replies":  [
-		    		{
-			        "content_type":"text",
-			        "title": 'Add a diary entry' ,
-			        "payload": 1
-			      }	,
-			      {
-			        "content_type":"text",
-			        "title": "Add a new activity",
-			        "payload": 3
-			      }],
-
-			"attachment":{
-		      "type":"template",
-		      "payload":{
-		        "template_type":"button",
-		        "text":"What do you want to do next?",
-				"buttons":[
-			      {
-			        "type":"web_url",
-			        "url":"https://salty-plains-47076.herokuapp.com/show/"+recipientId,
-			        "title":"View your diary",
-			        "webview_height_ratio": "compact",
-			        "messenger_extensions": true
-			      },
-			      {
-			        "type":"web_url",
-			        "url":"https://salty-plains-47076.herokuapp.com/show/"+recipientId + "/#!/statistics",
-			        "title":"View your statistics",
-			        "webview_height_ratio": "compact",
-			        "messenger_extensions": true
-			      }
-			    ]
-				}
-			}
-		}
-		context.current.main = 'offered';
-		GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{resolve(context)})
-		
-	}else {   // if context 
+	// if context 
 		if(context.current.main == 'offered'){
 			switch(context.msg){
 				case 'add a diary entry': 
@@ -106,20 +63,63 @@ let takeAction = function(context){
 				// create some fuzzy matching here
 				GraphAPI.sendPlainMessage(recipientId, 'I\'m sorry I don\'t understant! 😐😕 try typing help or you could keep a diry log of what you\'re doing right now.')
 			}
-		}else{
-			//  there is a context going on
-			console.log('inside the last else n take action',JSON.stringify(context));
-			if(context.current.main == 'addingActivity'){
-				addActivity(context).then((cont)=>{resolve(cont)});
+		}else { 
+			if (context.current.panel){ // Send the panel
+			
+				data = {
+					"quick_replies":  [
+				    		{
+					        "content_type":"text",
+					        "title": 'Add a diary entry' ,
+					        "payload": 1
+					      }	,
+					      {
+					        "content_type":"text",
+					        "title": "Add a new activity",
+					        "payload": 3
+					      }],
+
+					"attachment":{
+				      "type":"template",
+				      "payload":{
+				        "template_type":"button",
+				        "text":"What do you want to do next?",
+						"buttons":[
+					      {
+					        "type":"web_url",
+					        "url":"https://salty-plains-47076.herokuapp.com/show/"+recipientId,
+					        "title":"View your diary",
+					        "webview_height_ratio": "compact",
+					        "messenger_extensions": true
+					      },
+					      {
+					        "type":"web_url",
+					        "url":"https://salty-plains-47076.herokuapp.com/show/"+recipientId + "/#!/statistics",
+					        "title":"View your statistics",
+					        "webview_height_ratio": "compact",
+					        "messenger_extensions": true
+					      }
+					    ]
+						}
+					}
+				}
+				context.current.main = 'offered';
+				GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{resolve(context)})
+				
 			}else{
-				if(context.current.main == 'addingLog'){
-					addLog(context).then((cont)=>{resolve(cont)});
+				//  there is a context going on
+				console.log('inside the last else n take action',JSON.stringify(context));
+				if(context.current.main == 'addingActivity'){
+					addActivity(context).then((cont)=>{resolve(cont)});
+				}else{
+					if(context.current.main == 'addingLog'){
+						addLog(context).then((cont)=>{resolve(cont)});
+					}
 				}
 			}
-		}
 		
 
-	}
+		}
 	}
 	//resolve(context)
 	})
