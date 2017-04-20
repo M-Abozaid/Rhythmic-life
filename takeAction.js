@@ -5,6 +5,7 @@ const platformHelpers = require('./platformHelpers');
 const GraphAPI = require('./graphAPI');
 
 let takeAction = function(context){
+
 	return new Promise(function(resolve, reject){
 	let recipientId = context.userData.recipientId;
 	console.log('inside takeAction() ---- ');
@@ -133,5 +134,6 @@ let takeAction = function(context){
 	//resolve(context)
 	}
 })
+}
 
 module.exports = takeAction;
