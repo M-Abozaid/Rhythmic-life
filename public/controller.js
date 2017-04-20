@@ -1,6 +1,6 @@
 
 'use strict';
-
+alert('inside controller out')
 angular.module('MyBot')
 
 .controller('LogsController', ['$scope', 'LogsFactory', function ($scope, LogsFactory) {

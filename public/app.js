@@ -1,5 +1,5 @@
 'use strict';
-
+alert('inside app out ')
 angular.module('MyBot', ['ui.router','ngResource','n3-line-chart'])
 .config(function($stateProvider, $urlRouterProvider) {
     alert('inside app config')
