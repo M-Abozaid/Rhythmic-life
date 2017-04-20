@@ -104,6 +104,7 @@ let takeAction = function(context){
 					}
 				}
 				context.current.main = 'offered';
+				contest.current.panel = false;
 				GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{resolve(context)})
 				
 			}else{
