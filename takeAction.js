@@ -61,7 +61,7 @@ let takeAction = function(context){
 			        "title": "add a new activity",
 			        "payload": 3
 			      }],
-			      
+
 			"attachment":{
 		      "type":"template",
 		      "payload":{
@@ -86,25 +86,32 @@ let takeAction = function(context){
 				}
 			}
 		}
-
+		context.current.main = 'offered';
 		GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{resolve(context)})
 		
 	}else {   // if context 
 		if(context.current.main == 'offered'){
 			switch(context.msg){
-				case 'Add diary log': 
+				case 'Keep a diary of what you\'re doning': 
 				context.current.main = 'addingLog';
+				context.current.future = true;
+				addLog(context).then((cont)=>{resolve(cont)});
+				break;
+				case 'Keep a diary of what you did': 
+				context.current.main = 'addingLog';
+				context.current.future = false;
 				addLog(context).then((cont)=>{resolve(cont)});
 				break;
 				case 'See you diary': 
 				context.current.main = 'gettingLogs';
 				getLogs(context);
 				break;
-				case 'Add a new activity': 
+				case 'add a new activity': 
 				context.current.main = 'addingActivity';
 				addActivity(context).then((cont)=>{resolve(cont)});
 				break;
 				default:
+				// create some fuzzy matching here
 				GraphAPI.sendPlainMessage(recipientId, 'I\'m sorry I don\'t understant! 😐😕 try typing help or you could keep a diry log of what you\'re doing right now.')
 			}
 		}else{
