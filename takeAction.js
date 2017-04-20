@@ -53,6 +53,7 @@ let takeAction = function(context){
 			        "title": 'Add what you\'re doing' ,
 			        "payload": 1
 			      }	,
+			      {
 			        "content_type":"text",
 			        "title": "Create a new activity",
 			        "payload": 3
