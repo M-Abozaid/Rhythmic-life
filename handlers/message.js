@@ -25,11 +25,13 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 			sessionStore.saveSession(sessionId, session)
 		})}else{
 				if(Object.keys(context.current).length == 0){
-					context.current.panel = true;
-					takeAction(context).then(()=>{
-					session.context = context;
-					sessionStore.saveSession(sessionId, session)
-					})
+					setTimeout(()=>{
+						context.current.panel = true;
+						takeAction(context).then(()=>{
+							session.context = context;
+							sessionStore.saveSession(sessionId, session)
+						})
+					}, 30000);
 				}else{
 					session.context = context;
 					sessionStore.saveSession(sessionId, session)
