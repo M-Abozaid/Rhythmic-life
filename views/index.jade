@@ -15,8 +15,8 @@ html(ng-app="MyBot")
     //style [ng\:cloak], [ng-cloak] { display: none;}    
     
   |   
-  body
-    div(ng-controller="LogsController")
+  body(ng-controller='LogsController')
+    div
     .Mnav-tab
       h2(style='text-align: right; float:left; width: 80%; padding-right:15%; display:inline;') Your diary logs
       a(id='m-statistics' ui-sref="app.statistics") Statistics
