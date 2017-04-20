@@ -30,4 +30,3 @@ angular.module('MyBot', ['ui.router','ngResource','n3-line-chart'])
               $urlRouterProvider.otherwise('/');
 })
 console.log(' app starts');
-alert('app starts ');
