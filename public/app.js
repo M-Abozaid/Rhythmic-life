@@ -29,5 +29,6 @@ angular.module('MyBot', ['ui.router','ngResource','n3-line-chart'])
             })
 
               $urlRouterProvider.otherwise('/');
+              alert('inside app config after')
 })
 console.log(' app starts');
