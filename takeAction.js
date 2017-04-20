@@ -50,15 +50,11 @@ let takeAction = function(context){
 			"quick_replies":  [
 		    		{
 			        "content_type":"text",
-			        "title": 'Keep a diary of what you\'re doning' ,
+			        "title": 'Add what you\'re doing' ,
 			        "payload": 1
-			      }	,{
+			      }	,
 			        "content_type":"text",
-			        "title": 'Keep a diary of what you did',
-			        "payload": 2
-			      },{
-			        "content_type":"text",
-			        "title": "add a new activity",
+			        "title": "Create a new activity",
 			        "payload": 3
 			      }],
 
@@ -71,7 +67,7 @@ let takeAction = function(context){
 			      {
 			        "type":"web_url",
 			        "url":"https://salty-plains-47076.herokuapp.com/show/"+recipientId,
-			        "title":"Your Logs",
+			        "title":"Your Diary",
 			        "webview_height_ratio": "compact",
 			        "messenger_extensions": true
 			      },
@@ -92,21 +88,16 @@ let takeAction = function(context){
 	}else {   // if context 
 		if(context.current.main == 'offered'){
 			switch(context.msg){
-				case 'Keep a diary of what you\'re doning': 
+				case 'add what you\'re doing': 
 				context.current.main = 'addingLog';
 				context.current.future = true;
 				addLog(context).then((cont)=>{resolve(cont)});
 				break;
-				case 'Keep a diary of what you did': 
-				context.current.main = 'addingLog';
-				context.current.future = false;
-				addLog(context).then((cont)=>{resolve(cont)});
-				break;
-				case 'See you diary': 
+				case 'see you diary': 
 				context.current.main = 'gettingLogs';
 				getLogs(context);
 				break;
-				case 'add a new activity': 
+				case 'create a new activity': 
 				context.current.main = 'addingActivity';
 				addActivity(context).then((cont)=>{resolve(cont)});
 				break;

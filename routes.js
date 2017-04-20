@@ -141,15 +141,17 @@ function processMessage(messaging) {
 			if (quickReply) {
 				//let payloadTokens = quickReply.payload.split(':');
 				const msg = messaging.message.text
+				const messege = msg.toLowerCase();
 				//return handleQuickReply(sender, sessionId, session.context, quickReply.payload);
 				console.log('handling quickreply');
-				return handleTextMessage(sessionId, session, msg);
+				return handleTextMessage(sessionId, session, messege);
 			} 
 
 			const msg = messaging.message && messaging.message.text;
 			if (msg) {
+				const messege = msg.toLowerCase();
 				console.log('session  ',JSON.stringify(session));
-				return handleTextMessage(sessionId, session, msg);
+				return handleTextMessage(sessionId, session, messege);
 			} 
 
 			const payload = messaging.postback && messaging.postback.payload;

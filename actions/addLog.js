@@ -71,6 +71,7 @@ let recipientId = context.userData.recipientId; // here because it was not acces
 		console.log("adding logs %j");
 
 		if(context.current.main && !context.current.chooseLog){
+			
 			User.findOne({recipientId : recipientId},(err,user)=>{
 				if (err) throw err;
 				list = _.map(user.activities,(elem)=>{return elem.name})
@@ -106,10 +107,10 @@ let recipientId = context.userData.recipientId; // here because it was not acces
 					context.current = {}
 					context.current.main = 'addingActivity';
 					context.current.nextAddLog = true;
-					context.current.continue = true
+					context.current.continue = true;
 					resolve(context);
 				}else{
-					if(context.msg == "See more!"){
+					if(context.msg == "see more!"){
 						context.current.chooseLog = false
 						context.current.continue = true;
 						resolve(context)
@@ -130,7 +131,7 @@ let recipientId = context.userData.recipientId; // here because it was not acces
 						})
 				}else{
 					if(context.current.howLong && !context.current.note){
-						if(context.msg == "No thats it"){
+						if(context.msg == "no thats it"){
 							context.current.note = " ";
 						}else{
 							context.current.note = context.msg;
