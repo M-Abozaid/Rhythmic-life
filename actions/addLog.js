@@ -47,7 +47,7 @@ let recipientId = context.userData.recipientId; // here because it was not acces
 				let obj = {
 					logName: context.current.logName,
 					note: context.current.note,
-					activityId: user.activities.find((elem)=>{return elem.name == context.current.logName })._id,
+					activityId: user.activities.find((elem)=>{return elem.name.toLowerCase() == context.current.logName })._id,  // ading to lower case temporarly because the bb have some activiy upper
 					time: Date.now(), //+ (user.timezone *60*60*1000),
 					span: howLongInMil
 				}
@@ -71,7 +71,7 @@ let recipientId = context.userData.recipientId; // here because it was not acces
 		console.log("adding logs %j");
 
 		if(context.current.main && !context.current.chooseLog){
-			
+
 			User.findOne({recipientId : recipientId},(err,user)=>{
 				if (err) throw err;
 				list = _.map(user.activities,(elem)=>{return elem.name})
