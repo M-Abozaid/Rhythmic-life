@@ -2,6 +2,7 @@
 
 angular.module('MyBot', ['ui.router','ngResource','n3-line-chart'])
 .config(function($stateProvider, $urlRouterProvider) {
+    alert('inside app config')
         $stateProvider
         	
             // route for the home page
