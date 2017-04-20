@@ -59,10 +59,8 @@ html(ng-app="MyBot")
                   .row.m-footer
                     h4.m-type {{log.activity.type}}
 
-    //div(ui-view="content")      
-    |
-    script(src="../../debugging.js")
-    |<script>console.log(' after debugging.js');</script>     
+    
+    script(src="../../debuggin.js")     
     //script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
     |<script> alert('after jquery ')</script>
     script(src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js')
@@ -76,9 +74,9 @@ html(ng-app="MyBot")
     //script(src="https://cdnjs.cloudflare.com/ajax/libs/line-chart/2.0.28/LineChart.min.js")
     //script(type="text/javascript" src="https://www.gstatic.com/charts/loader.js")
     script(src= 'https://cdnjs.cloudflare.com/ajax/libs/angular-resource/1.6.4/angular-resource.js')
-    |<script> alert('after ng resource ')</script>
+    <script> alert('after ng resource ')</script>
     script(src= '../../app.js')
-    |<script> alert('after app.js ')</script>
+    <script> alert('after app.js ')</script>
     //script(src= '../../service.js')
     //script(src= '../../controller.js')   
     //script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', integrity='sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa', crossorigin='anonymous')
