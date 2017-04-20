@@ -37,7 +37,7 @@ angular.module('MyBot', ['ui.router','ngResource','n3-line-chart'])
 console.log(' app starts');
 
 
-/*
+
 
 alert('inside service out')
 console.log('inside service out')
@@ -62,7 +62,6 @@ angular.module('MyBot')
 
 
 
-'use strict';
 alert('inside controller out')
 console.log('inside controller out')
 angular.module('MyBot')
@@ -285,4 +284,3 @@ LogsFactory.query(
     });
 }])
 
-*/
