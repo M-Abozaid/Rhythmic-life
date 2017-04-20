@@ -15,9 +15,49 @@ html(ng-app="MyBot", ng-cloak)
     //style [ng\:cloak], [ng-cloak] { display: none;}    
     
   |   
-  body
+    body
 
-    div(ui-view="content")      
+        //div(ui-view="content")  
+        div(ng-controller="LogsController")
+        .Mnav-tab
+          h2(style='text-align: right; float:left; width: 80%; padding-right:15%; display:inline;') Your diary logs
+          a(id='m-statistics' ui-sref="app.statistics") Statistics
+        |     
+        //- div(ng-if="!showMenu" style='z-index : 1001;')
+        //-             |<h1>{{message}} </h1>   
+        .container(style='margin: 0px; padding: 0px; width: 100%;position: static; ',class='container')
+          .Mmenu
+            ul(style='padding-left: 10px;  ')
+              li.m-day
+                a(ng-click='allTime()' ng-class='{active: isSelected()}' style='padding: 8px; text-align: center; font-size: 24px; display: block;') All time
+              |                               
+              |                                
+              li.m-day(ng-repeat='day in days')
+                a(ng-click='setDay(day)' ,ng-class='{active: isSelected(day)}', style='') {{day | date:  'dd MMM yyyy'}}
+          |           
+          div(style=' top: 80px;position: relative;')
+            .col-lg-6.col-lg-push-3.col-md-8.col-md-push-2.col-sm-12.col-xs-12(style='padding: 0px;')
+              .row
+                .Mrow.col-lg-8.col-md-8.col-sm-8.col-xs-8
+                  ul(style='padding-left: 0px;')
+                    li.m-log(ng-repeat='log in logs |filter: filterFn')
+                      .row.m-header
+                        .col-xs-9.col-sm-9.col-md-9.col-lg-9
+                          h3.m-activity-name {{log.logName}}
+                        |                                  
+                        .col-xs-3.col-sm-3.col-md-3.col-lg-3(style='padding-left: 0;')
+                          h5.m-date
+                            | {{log.time | date: 'hh:mm a' }}
+                            br
+                            |  {{log.time| date: ' dd MMM yyyy'}}
+                      |                                 
+                      .row.m-body
+                        h5.m-note
+                          span(style='font-size: 28px;')  Note: 
+                          |  {{log.note}}
+                      |                                 
+                      .row.m-footer
+                        h4.m-type {{log.activity.type}}    
     |     
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
     |     
@@ -25,11 +65,11 @@ html(ng-app="MyBot", ng-cloak)
     |  
     script(src= 'https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js')
     //script(src= '../../angular.js')
-    script(src="https://d3js.org/d3.v3.min.js")
-    script(src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular-route.min.js")
-    script(src="https://unpkg.com/angular-ui-router/release/angular-ui-router.min.js")
-    script(src="https://cdnjs.cloudflare.com/ajax/libs/line-chart/2.0.28/LineChart.min.js")
-    script(type="text/javascript" src="https://www.gstatic.com/charts/loader.js")
+    //script(src="https://d3js.org/d3.v3.min.js")
+    //script(src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular-route.min.js")
+    //script(src="https://unpkg.com/angular-ui-router/release/angular-ui-router.min.js")
+    //script(src="https://cdnjs.cloudflare.com/ajax/libs/line-chart/2.0.28/LineChart.min.js")
+    //script(type="text/javascript" src="https://www.gstatic.com/charts/loader.js")
     script(src= '../../angular-resource.min.js')
     script(src= '../../app.js')
     //script(src= '../../service.js')

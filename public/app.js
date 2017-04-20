@@ -1,36 +1,37 @@
 'use strict';
 alert('inside app out ')
 console.log('inside app out ')
-angular.module('MyBot', ['ui.router','ngResource','n3-line-chart'])
+//angular.module('MyBot', ['ui.router','ngResource','n3-line-chart'])
+angular.module('MyBot', ['ngResource'])
 .config(function($stateProvider, $urlRouterProvider) {
     alert('inside app config')
     console.log('inside app config')
-        $stateProvider
+        // $stateProvider
         	
-            // route for the home page
-            .state('app', {
-                url:'/',
-                views: {
+        //     // route for the home page
+        //     .state('app', {
+        //         url:'/',
+        //         views: {
                     
-                    'content': {
-                        templateUrl : 'https://salty-plains-47076.herokuapp.com/show/',
-                        controller  : 'LogsController'
-                    }
-                }
+        //             'content': {
+        //                 templateUrl : 'https://salty-plains-47076.herokuapp.com/show/',
+        //                 controller  : 'LogsController'
+        //             }
+        //         }
 
-            })
+        //     })
         
-            .state('app.statistics', {
-                url:'statistics',
-                views: {
-                    'content@': {
-                        templateUrl : 'https://salty-plains-47076.herokuapp.com/statistics.html',
-                        controller  : 'StatisticsController'                  
-                    }
-                }
-            })
+        //     .state('app.statistics', {
+        //         url:'statistics',
+        //         views: {
+        //             'content@': {
+        //                 templateUrl : 'https://salty-plains-47076.herokuapp.com/statistics.html',
+        //                 controller  : 'StatisticsController'                  
+        //             }
+        //         }
+        //     })
 
-              $urlRouterProvider.otherwise('/');
+        //       $urlRouterProvider.otherwise('/');
               alert('inside app config after')
               console.log('inside app config after')
 })
