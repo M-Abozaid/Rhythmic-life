@@ -67,7 +67,7 @@ let takeAction = function(context){
 			}
 		}else { 
 			if (context.msg == 'get started') {
-				
+
 			} else {
 				if (context.current.panel){ // Send the panel
 				
@@ -115,7 +115,6 @@ let takeAction = function(context){
 						resolve(context)})
 					
 				}
-			}
 			else{
 				//  there is a context going on
 				console.log('inside the last else n take action',JSON.stringify(context));
