@@ -1,22 +1,360 @@
 <!DOCTYPE html>
-<html >
+<html ng-app="MyBot">
   <head>
-
-      <meta charset="utf-8">
-      <title>Just tryin</title>
-     
-  </head>
-
-
-  <body>
-  
-  
-                    
-
-    <script > alert('inside a script')</script>
-   <!--  <script src="./app.js"></script> -->
-   <!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <meta charset="utf-8">      
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Your Logs</title>      
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">      
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">      
+    <link href="../../myStyles.css" rel="stylesheet" type="text/css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/line-chart/2.0.28/LineChart.min.css" rel="stylesheet" type="text/css">   
+    <!--style [ng\:cloak], [ng-cloak] { display: none;}    -->
+  </head>  
+  <body ng-controller="LogsController">
+    <div></div>
+    <div class="Mnav-tab">
+      <h2 style="text-align: right; float:left; width: 80%; padding-right:15%; display:inline">Your diary logs</h2><a id="m-statistics" ui-sref="app.statistics">Statistics</a>
+    </div>    
+    <div class="container container" style="margin: 0px; padding: 0px; width: 100%;position: static; ">
+      <div class="Mmenu">
+        <ul style="padding-left: 10px;  ">
+          <li class="m-day"><a ng-click="allTime()" ng-class="{active: isSelected()}" style="padding: 8px; text-align: center; font-size: 24px; display: block">All time</a></li>
+                                        
+                                         
+          <li class="m-day" ng-repeat="day in days"><a ng-click="setDay(day)" ng-class="{active: isSelected(day)}">{{day | date:  'dd MMM yyyy'}}</a></li>
+        </ul>
+      </div>          
+      <div style=" top: 80px;position: relative">
+        <div class="col-lg-6 col-lg-push-3 col-md-8 col-md-push-2 col-sm-12 col-xs-12" style="padding: 0px">
+          <div class="row">
+            <div class="Mrow col-lg-8 col-md-8 col-sm-8 col-xs-8">
+              <ul style="padding-left: 0px">
+                <li class="m-log" ng-repeat="log in logs |filter: filterFn">
+                  <div class="row m-header">
+                    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                      <h3 class="m-activity-name">{{log.logName}}</h3>
+                    </div>                                 
+                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style="padding-left: 0">
+                      <h5 class="m-date">{{log.time | date: 'hh:mm a' }}<br> {{log.time| date: ' dd MMM yyyy'}}</h5>
+                    </div>
+                  </div>                                
+                  <div class="row m-body">
+                    <h5 class="m-note"><span style="font-size: 28px"> Note: </span> {{log.note}}</h5>
+                  </div>                                
+                  <div class="row m-footer">
+                    <h4 class="m-type">{{log.activity.type}}</h4>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="https://getfirebug.com/firebug-lite-debug.js"></script>
+    <!--script(src="../../debuggin.js")     -->
+    <!--script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.js"></script>
+    <!--script(src= '../../angular.js')-->
+    <!--script(src="https://d3js.org/d3.v3.min.js")-->
+    <!--script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js")-->
+    <!--script(src="https://unpkg.com/angular-ui-router/release/angular-ui-router.min.js")-->
+    <!--script(src="https://cdnjs.cloudflare.com/ajax/libs/line-chart/2.0.28/LineChart.min.js")-->
+    <!--script(type="text/javascript" src="https://www.gstatic.com/charts/loader.js")-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-resource/1.6.4/angular-resource.js"></script>
+    <!--script(src= 'https://salty-plains-47076.herokuapp.com/app.js')-->
+    <!--script(src= '../../service.js')-->
+    <!--script(src= '../../controller.js')   -->
+    <!--script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', integrity='sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa', crossorigin='anonymous')-->
+    <script>
+      'use strict';
+          alert('inside app out ')
+          console.log('inside app out ')
+          //angular.module('MyBot', ['ui.router','ngResource','n3-line-chart'])
+          angular.module('MyBot', ['ngResource'])
+          //.config(function($stateProvider, $urlRouterProvider) {
+              alert('inside app config')
+              console.log('inside app config')
+                  // $stateProvider
+                      
+                  //     // route for the home page
+                  //     .state('app', {
+                  //         url:'/',
+                  //         views: {
+                              
+                  //             'content': {
+                  //                 templateUrl : 'https://salty-plains-47076.herokuapp.com/show/',
+                  //                 controller  : 'LogsController'
+                  //             }
+                  //         }
+      
+                  //     })
+                  
+                  //     .state('app.statistics', {
+                  //         url:'statistics',
+                  //         views: {
+                  //             'content@': {
+                  //                 templateUrl : 'https://salty-plains-47076.herokuapp.com/statistics.html',
+                  //                 controller  : 'StatisticsController'                  
+                  //             }
+                  //         }
+                  //     })
+      
+                  //       $urlRouterProvider.otherwise('/');
+                        alert('inside app config after')
+                        console.log('inside app config after')
+          //})
+          console.log(' app starts');
+      
+      
+      
+      
+          alert('inside service out')
+          console.log('inside service out')
+          angular.module('MyBot')
+          .constant("baseURL", "https://salty-plains-47076.herokuapp.com/")
+          .factory('LogsFactory', ['$resource', 'baseURL', function ($resource, baseURL) {
+                  alert('inside service ')
+                  console.log('inside service ')
+                  let parts = document.URL.split('/')
+                  console.log('parts ', parts);
+                  let Id = parts[4]
+                  
+                  return $resource(baseURL + "show/logs/"+ Id, null, {
+                      'update': {
+                          method: 'PUT'
+                      }
+                  });
+      
+          }])
+      
+      
+      
+      
+      
+          alert('inside controller out')
+          console.log('inside controller out')
+          angular.module('MyBot')
+      
+          .controller('LogsController', ['$scope', 'LogsFactory', function ($scope, LogsFactory) {
+          $scope.message = 'Loading...';
+          $scope.showMenu = false;
+          console.log(' controller starts');
+          alert('controller starts')
+          LogsFactory.query(
+              function (response) {
+                  $scope.logs = response;
+                  $scope.days = [];
+      
+                  var glog = $scope.logs;
+                  
+                  console.log('days ',$scope.days);
+      
+                  $scope.logs.sort(function(a, b){
+                      return b.time - a.time
+                  })
+      
+                  var lastDay = moment($scope.logs[0].time).startOf('day');
+                  var firstDay = moment($scope.logs[$scope.logs.length -1].time).startOf('day')
+      
+                  console.log('num of days --',moment.duration(lastDay - firstDay).asDays());
+                  for (var i = 0; i <=  moment.duration(lastDay - firstDay).asDays() ; i++) {
+      
+                      $scope.days.push(moment($scope.logs[0].time).subtract(i, 'days').valueOf());
+                  }
+                  alert('first ');
+                  console.log('first ');
+      
+                  $scope.showMenu = true;
+              },
+              function (response) {
+                  $scope.message = "Error: " + response.status + " " + response.statusText;
+      
+                   alert('error  ');
+              });
+      
+              $scope.all = true;
+      
+              $scope.setDay = function(day){
+              $scope.thisDay = day;
+              $scope.all = false;
+              }
+      
+              $scope.isSelected = function(day){
+                  if ($scope.all){return $scope.all}else{
+                  return (day==$scope.thisDay)
+              }
+              }
+      
+              $scope.allTime = function(){
+                  $scope.all = true;
+              }
+      
+              $scope.filterFn = function(lo){
+                  if($scope.all){
+                      return true;
+                  }else{
+                  return moment($scope.thisDay).isSame(lo.time , 'day');
+              }
+              }
+           
+          }])
+      
+          .controller('StatisticsController', ['$scope', 'LogsFactory', function ($scope, LogsFactory){
+      
+              console.log('statistics controller starts');
+              $scope.showChart = false;
+              $scope.message = 'Loading...';
+      
+              LogsFactory.query(
+              function (response) {
+                  $scope.logs = response;     
+                  console.log('logs ',$scope.logs);
+      
+                  $scope.work = $scope.logs.filter(function(log){
+                  return log.activity.type == "work";
+                  
+              });
+                  console.log('work ',$scope.work);
+              $scope.entertainment = $scope.logs.filter(function(log){
+                  return log.activity.type == "entertainment";
+                  
+              });
+              console.log('enter ',$scope.entertainment);
+              $scope.study = $scope.logs.filter(function(log){
+                  return log.activity.type == "study";
+                  
+              });
+              console.log('study ',$scope.study);
+      
+      
+              let workRows = $scope.work.map(function(elem){
+                  let temp = [new Date(elem.time) , (elem.span || 0) / (1000*60)];
+                  console.log('temp1 ',temp);
+                  return temp;
+              })
+      
+              let entertainmentRows = $scope.entertainment.map(function(elem){
+                  let temp = [new Date(elem.time) , (elem.span || 0) / (1000*60)];
+                  console.log('temp2 ',temp);
+                  return temp;
+              })
+      
+              let studyRows = $scope.study.map(function(elem){
+                  let temp = [new Date(elem.time) , (elem.span || 0) / (1000*60)];
+                  console.log('temp3 ',temp);
+                  return temp;
+              })
+      
+               google.charts.load('current', {'packages':['corechart']});
+      
+                // Set a callback to run when the Google Visualization API is loaded.
+                google.charts.setOnLoadCallback(drawChart1);
+                google.charts.setOnLoadCallback(drawChart2);
+                google.charts.setOnLoadCallback(drawChart3);
+      
+                // Callback that creates and populates a data table,
+                // instantiates the pie chart, passes in the data and
+                // draws it.
+                let options = {'title':'Work',
+                                 curveType: 'none',
+                                 legend: { position: 'in',
+                                          alignment:'center' },
+                                 fontSize:14,
+                                 backgroundColor:'#d7d9d0',
+                                 chartArea:{height: 225},
+                                 titleTextStyle:{ 
+                                                fontSize: 21,
+                                                bold: true
+                                                 },
+                                  pointSize:5
+                                 };
+      
+                
+      
+                function drawChart1() {
+                  $scope.showChart = true;
+                  let data1 = new google.visualization.DataTable();
+                  data1.addColumn('date', 'time');
+                  data1.addColumn('number', 'time spent (min)');
+                  data1.addRows(workRows);
+                  let formatter1 = new google.visualization.DateFormat({formatType: 'medium'});
+                  formatter1.format(data1,1);
+                   let options = {'title':'Work',
+                                 curveType: 'none',
+                                 legend: { position: 'in',
+                                          alignment:'center' },
+                                 fontSize:14,
+                                 backgroundColor:'#d7d9d0',
+                                 chartArea:{height: 225},
+                                 titleTextStyle:{ 
+                                                fontSize: 21,
+                                                bold: true
+                                                 },
+                                  pointSize:5
+                                 };
+                  let chart1 = new google.visualization.LineChart(document.getElementById('curve_chart1'));
+                  
+                  chart1.draw(data1, options);
+                }
+      
+                function drawChart2() {
+                  let data2 = new google.visualization.DataTable();
+                  data2.addColumn('date', 'time');
+                  data2.addColumn('number', 'time spent (min)');
+                  data2.addRows(entertainmentRows);
+                  let formatter2 = new google.visualization.DateFormat({formatType: 'medium'});
+                  formatter2.format(data2,1);
+                   let options = {'title':'Entertainment',
+                                 curveType: 'none',
+                                 legend: { position: 'in',
+                                          alignment:'center' },
+                                 fontSize:14,
+                                 backgroundColor:'#d7d9d0',
+                                 chartArea:{height: 225},
+                                 titleTextStyle:{ 
+                                                fontSize: 21,
+                                                bold: true
+                                                 },
+                                  pointSize:5
+                                 };
+                  let chart2 = new google.visualization.LineChart(document.getElementById('curve_chart2'));
+                  chart2.draw(data2, options);
+                }
+      
+                function drawChart3() {
+                  let data3 = new google.visualization.DataTable();
+                  data3.addColumn('date', 'time');
+                  data3.addColumn('number', 'time spent (min)');
+                  data3.addRows(studyRows);
+                  let formatter3 = new google.visualization.DateFormat({formatType: 'medium'});
+                  formatter3.format(data3,1);
+                   let options = {'title':'Study',
+                                 curveType: 'none',
+                                 legend: { position: 'in',
+                                          alignment:'center' },
+                                 fontSize:14,
+                                 backgroundColor:'#d7d9d0',
+                                 chartArea:{height: 225},
+                                 titleTextStyle:{ 
+                                                fontSize: 21,
+                                                bold: true
+                                                 },
+                                  pointSize:5
+                                 };
+                  let chart3 = new google.visualization.LineChart(document.getElementById('curve_chart3'));
+                  chart3.draw(data3, options);
+                }
+      
+              
+      
+              },
+              function (response) {
+                  $scope.message = "Error: " + response.status + " " + response.statusText;
+              });
+          }])
+    </script>
   </body>
 </html>
