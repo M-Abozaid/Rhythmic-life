@@ -1,6 +1,7 @@
 
 'use strict';
 alert('inside controller out')
+console.log('inside controller out')
 angular.module('MyBot')
 
 .controller('LogsController', ['$scope', 'LogsFactory', function ($scope, LogsFactory) {
@@ -30,6 +31,7 @@ LogsFactory.query(
             $scope.days.push(moment($scope.logs[0].time).subtract(i, 'days').valueOf());
         }
         alert('first ');
+        console.log('first ');
 
         $scope.showMenu = true;
     },

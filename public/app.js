@@ -1,8 +1,10 @@
 'use strict';
 alert('inside app out ')
+console.log('inside app out ')
 angular.module('MyBot', ['ui.router','ngResource','n3-line-chart'])
 .config(function($stateProvider, $urlRouterProvider) {
     alert('inside app config')
+    console.log('inside app config')
         $stateProvider
         	
             // route for the home page
@@ -30,5 +32,6 @@ angular.module('MyBot', ['ui.router','ngResource','n3-line-chart'])
 
               $urlRouterProvider.otherwise('/');
               alert('inside app config after')
+              console.log('inside app config after')
 })
 console.log(' app starts');
