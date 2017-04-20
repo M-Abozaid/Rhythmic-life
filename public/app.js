@@ -3,7 +3,7 @@ alert('inside app out ')
 console.log('inside app out ')
 //angular.module('MyBot', ['ui.router','ngResource','n3-line-chart'])
 angular.module('MyBot', ['ngResource'])
-.config(function($stateProvider, $urlRouterProvider) {
+//.config(function($stateProvider, $urlRouterProvider) {
     alert('inside app config')
     console.log('inside app config')
         // $stateProvider
@@ -34,7 +34,7 @@ angular.module('MyBot', ['ngResource'])
         //       $urlRouterProvider.otherwise('/');
               alert('inside app config after')
               console.log('inside app config after')
-})
+//})
 console.log(' app starts');
 
 
