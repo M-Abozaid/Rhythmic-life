@@ -44,18 +44,50 @@ let takeAction = function(context){
 		}else{
 	
 
-	if (Object.keys(context.current).length == 0){ // if No context 
+	if (context.current.panel){ // Send the panel
 		
-			if (context.msg == "add activity"){
-				context.current.main = 'addingActivity';
-				addActivity(context).then((cont)=>{resolve(cont)});
-
-			}else{
-				GraphAPI.sendPlainMessage(recipientId, 'I\'m sorry I don\'t understant! 😐😕 try typing help or you could keep a diry log of what you\'re doing right now.')
-				.then(()=>{resolve(context)})
+		data = {
+			"quick_replies":  [
+		    		{
+			        "content_type":"text",
+			        "title": 'Keep a diary of what you\'re doning' ,
+			        "payload": 1
+			      }	,{
+			        "content_type":"text",
+			        "title": 'Keep a diary of what you did',
+			        "payload": 2
+			      },{
+			        "content_type":"text",
+			        "title": "add a new activity",
+			        "payload": 3
+			      }],
+			      
+			"attachment":{
+		      "type":"template",
+		      "payload":{
+		        "template_type":"button",
+		        "text":"What do you want to do next?",
+				"buttons":[
+			      {
+			        "type":"web_url",
+			        "url":"https://salty-plains-47076.herokuapp.com/show/"+recipientId,
+			        "title":"Your Logs",
+			        "webview_height_ratio": "compact",
+			        "messenger_extensions": true
+			      },
+			      {
+			        "type":"web_url",
+			        "url":"https://salty-plains-47076.herokuapp.com/show/"+recipientId + "/#!/statistics",
+			        "title":"Your statistics",
+			        "webview_height_ratio": "compact",
+			        "messenger_extensions": true
+			      }
+			    ]
+				}
 			}
-		
+		}
 
+		GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{resolve(context)})
 		
 	}else {   // if context 
 		if(context.current.main == 'offered'){
