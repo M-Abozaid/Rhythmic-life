@@ -1,6 +1,6 @@
 
 'use strict';
-alert('inside controller out')
+// alert('inside controller out')
 console.log('inside controller out')
 angular.module('MyBot')
 
@@ -8,7 +8,7 @@ angular.module('MyBot')
 $scope.message = 'Loading...';
 $scope.showMenu = false;
 console.log(' controller starts');
-alert('controller starts')
+// alert('controller starts')
 LogsFactory.query(
     function (response) {
         $scope.logs = response;
@@ -30,7 +30,7 @@ LogsFactory.query(
 
             $scope.days.push(moment($scope.logs[0].time).subtract(i, 'days').valueOf());
         }
-        alert('first ');
+        // alert('first ');
         console.log('first ');
 
         $scope.showMenu = true;
@@ -38,7 +38,7 @@ LogsFactory.query(
     function (response) {
         $scope.message = "Error: " + response.status + " " + response.statusText;
 
-         alert('error  ');
+         // alert('error  ');
     });
 
     $scope.all = true;

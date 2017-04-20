@@ -1,10 +1,10 @@
 'use strict';
-alert('inside service out')
+// alert('inside service out')
 console.log('inside service out')
 angular.module('MyBot')
 .constant("baseURL", "https://salty-plains-47076.herokuapp.com/")
 .factory('LogsFactory', ['$resource', 'baseURL', function ($resource, baseURL) {
-		alert('inside service ')
+		// alert('inside service ')
 		console.log('inside service ')
 		let parts = document.URL.split('/')
 		console.log('parts ', parts);
