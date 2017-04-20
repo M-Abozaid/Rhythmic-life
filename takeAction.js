@@ -131,7 +131,7 @@ let takeAction = function(context){
 		}
 	}
 	//resolve(context)
-	})
-}
+	}
+})
 
 module.exports = takeAction;
