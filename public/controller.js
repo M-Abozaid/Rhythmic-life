@@ -109,13 +109,17 @@ angular.module('MyBot')
         console.log('temp3 ',temp);
         return temp;
     })
-    $scope.showChart = false;
+   
      google.charts.load('current', {'packages':['corechart']});
 
       // Set a callback to run when the Google Visualization API is loaded.
       console.log('showChart out',$scope.showChart);
       google.charts.setOnLoadCallback(function(){
-        
+        var show = true;
+      
+      });
+      $scope.showChart = !show;
+      google.charts.setOnLoadCallback(function(){
         console.log('showChart out',$scope.showChart);
         drawChart1()
         drawChart2()
