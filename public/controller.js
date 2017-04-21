@@ -114,9 +114,9 @@ angular.module('MyBot')
 
       // Set a callback to run when the Google Visualization API is loaded.
       
-      google.charts.setOnLoadCallback(function(){
+      google.charts.setOnLoadCallback(function($scope){
         console.log('showChart out',$scope.showChart);
-        drawChart1()
+        drawChart1($scope)
         drawChart2()
         drawChart3()
       });
@@ -143,7 +143,7 @@ angular.module('MyBot')
 
       
 
-      function drawChart1() {
+      function drawChart1($scope) {
         var data1 = new google.visualization.DataTable();
         data1.addColumn('date', 'time');
         data1.addColumn('number', 'time spent (min)');
