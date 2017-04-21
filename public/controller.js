@@ -67,7 +67,7 @@ angular.module('MyBot')
 .controller('StatisticsController', ['$scope', 'LogsFactory', function ($scope, LogsFactory){
 
     console.log('statistics controller starts');
-    $scope.showChart = true;
+    $scope.showChart = false;
     $scope.message = 'Loading...';
 
     LogsFactory.query(
@@ -113,12 +113,7 @@ angular.module('MyBot')
      google.charts.load('current', {'packages':['corechart']});
 
       // Set a callback to run when the Google Visualization API is loaded.
-      console.log('showChart out',$scope.showChart);
-      google.charts.setOnLoadCallback(function(){
-        var show = true;
       
-      });
-      $scope.showChart = !show;
       google.charts.setOnLoadCallback(function(){
         console.log('showChart out',$scope.showChart);
         drawChart1()
@@ -172,7 +167,7 @@ angular.module('MyBot')
         
         chart1.draw(data1, options);
       }
-
+    $scope.showChart = true;
       function drawChart2() {
         var data2 = new google.visualization.DataTable();
         data2.addColumn('date', 'time');
