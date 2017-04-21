@@ -1,6 +1,5 @@
 
-'use strict';
-// alert('inside controller out')
+
 console.log('inside controller out')
 angular.module('MyBot')
 
@@ -8,7 +7,6 @@ angular.module('MyBot')
 $scope.message = 'Loading...';
 $scope.showMenu = false;
 console.log(' controller starts');
-// alert('controller starts')
 LogsFactory.query(
     function (response) {
         $scope.logs = response;
@@ -30,7 +28,6 @@ LogsFactory.query(
 
             $scope.days.push(moment($scope.logs[0].time).subtract(i, 'days').valueOf());
         }
-        // alert('first ');
         console.log('first ');
 
         $scope.showMenu = true;
@@ -38,7 +35,6 @@ LogsFactory.query(
     function (response) {
         $scope.message = "Error: " + response.status + " " + response.statusText;
 
-         // alert('error  ');
     });
 
     $scope.all = true;
@@ -96,20 +92,20 @@ LogsFactory.query(
     console.log('study ',$scope.study);
 
 
-    let workRows = $scope.work.map(function(elem){
-        let temp = [new Date(elem.time) , (elem.span || 0) / (1000*60)];
+    var workRows = $scope.work.map(function(elem){
+        var temp = [new Date(elem.time) , (elem.span || 0) / (1000*60)];
         console.log('temp1 ',temp);
         return temp;
     })
 
-    let entertainmentRows = $scope.entertainment.map(function(elem){
-        let temp = [new Date(elem.time) , (elem.span || 0) / (1000*60)];
+    var entertainmentRows = $scope.entertainment.map(function(elem){
+        var temp = [new Date(elem.time) , (elem.span || 0) / (1000*60)];
         console.log('temp2 ',temp);
         return temp;
     })
 
-    let studyRows = $scope.study.map(function(elem){
-        let temp = [new Date(elem.time) , (elem.span || 0) / (1000*60)];
+    var studyRows = $scope.study.map(function(elem){
+        var temp = [new Date(elem.time) , (elem.span || 0) / (1000*60)];
         console.log('temp3 ',temp);
         return temp;
     })
@@ -124,7 +120,7 @@ LogsFactory.query(
       // Callback that creates and populates a data table,
       // instantiates the pie chart, passes in the data and
       // draws it.
-      let options = {'title':'Work',
+      var options = {'title':'Work',
                        curveType: 'none',
                        legend: { position: 'in',
                                 alignment:'center' },
@@ -142,13 +138,13 @@ LogsFactory.query(
 
       function drawChart1() {
         $scope.showChart = true;
-        let data1 = new google.visualization.DataTable();
+        var data1 = new google.visualization.DataTable();
         data1.addColumn('date', 'time');
         data1.addColumn('number', 'time spent (min)');
         data1.addRows(workRows);
-        let formatter1 = new google.visualization.DateFormat({formatType: 'medium'});
+        var formatter1 = new google.visualization.DateFormat({formatType: 'medium'});
         formatter1.format(data1,1);
-         let options = {'title':'Work',
+         var options = {'title':'Work',
                        curveType: 'none',
                        legend: { position: 'in',
                                 alignment:'center' },
@@ -161,19 +157,19 @@ LogsFactory.query(
                                        },
                         pointSize:5
                        };
-        let chart1 = new google.visualization.LineChart(document.getElementById('curve_chart1'));
+        var chart1 = new google.visualization.LineChart(document.getElementById('curve_chart1'));
         
         chart1.draw(data1, options);
       }
 
       function drawChart2() {
-        let data2 = new google.visualization.DataTable();
+        var data2 = new google.visualization.DataTable();
         data2.addColumn('date', 'time');
         data2.addColumn('number', 'time spent (min)');
         data2.addRows(entertainmentRows);
-        let formatter2 = new google.visualization.DateFormat({formatType: 'medium'});
+        var formatter2 = new google.visualization.DateFormat({formatType: 'medium'});
         formatter2.format(data2,1);
-         let options = {'title':'Entertainment',
+         var options = {'title':'Entertainment',
                        curveType: 'none',
                        legend: { position: 'in',
                                 alignment:'center' },
@@ -186,18 +182,18 @@ LogsFactory.query(
                                        },
                         pointSize:5
                        };
-        let chart2 = new google.visualization.LineChart(document.getElementById('curve_chart2'));
+        var chart2 = new google.visualization.LineChart(document.getElementById('curve_chart2'));
         chart2.draw(data2, options);
       }
 
       function drawChart3() {
-        let data3 = new google.visualization.DataTable();
+        var data3 = new google.visualization.DataTable();
         data3.addColumn('date', 'time');
         data3.addColumn('number', 'time spent (min)');
         data3.addRows(studyRows);
-        let formatter3 = new google.visualization.DateFormat({formatType: 'medium'});
+        var formatter3 = new google.visualization.DateFormat({formatType: 'medium'});
         formatter3.format(data3,1);
-         let options = {'title':'Study',
+         var options = {'title':'Study',
                        curveType: 'none',
                        legend: { position: 'in',
                                 alignment:'center' },
@@ -210,7 +206,7 @@ LogsFactory.query(
                                        },
                         pointSize:5
                        };
-        let chart3 = new google.visualization.LineChart(document.getElementById('curve_chart3'));
+        var chart3 = new google.visualization.LineChart(document.getElementById('curve_chart3'));
         chart3.draw(data3, options);
       }
 
@@ -221,4 +217,3 @@ LogsFactory.query(
         $scope.message = "Error: " + response.status + " " + response.statusText;
     });
 }])
-
