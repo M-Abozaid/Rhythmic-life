@@ -14,7 +14,7 @@ showRouter.use(bodyParser.json())
 showRouter.get('/:id',  function(req, res, next) {
 	let recipientId = req.params.id
 	User.findOne({recipientId : recipientId},(err,user)=>{
-		if (err) throw err;
+		if (err) next(err);
 
 		res.render('index', {cUser:user});
 		console.log("id ",recipientId)
@@ -24,7 +24,7 @@ showRouter.get('/:id',  function(req, res, next) {
 });
 
 showRouter.get('/',  function(req, res, next) {
-
+		
 		res.render('show');
 
 	});
@@ -34,7 +34,7 @@ showRouter.get('/',  function(req, res, next) {
 showRouter.get('/logs/:id',function(req, res, next){
 	let recipientId = req.params.id
 	User.findOne({recipientId : recipientId},(err,user)=>{
-		if (err) throw err;
+		if (err) next(err);
 
 		// this is the best solution so far 
 		let Logs = _.map( user.activityLogs ,(elem)=>{
