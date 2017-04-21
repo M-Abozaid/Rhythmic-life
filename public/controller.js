@@ -67,7 +67,7 @@ LogsFactory.query(
 .controller('StatisticsController', ['$scope', 'LogsFactory', function ($scope, LogsFactory){
 
     console.log('statistics controller starts');
-    $scope.showChart = true;
+    $scope.someObj.showChart = true;
     $scope.message = 'Loading...';
 
     LogsFactory.query(
@@ -115,7 +115,7 @@ LogsFactory.query(
       // Set a callback to run when the Google Visualization API is loaded.
       console.log('showChart out',$scope.showChart);
       google.charts.setOnLoadCallback(function(){
-        $scope.showChart = false;
+        $scope.someObj.showChart = false;
         console.log('showChart out',$scope.showChart);
         drawChart1()
         drawChart2()
