@@ -86,6 +86,22 @@ width: 22.1977%;
 left: 16.666%;
 width: 66.6666%;
 }
+
+.Mnav-tab h2 {
+font-size: 20px;}
+.m-activity-name {
+font-size: 17px;}
+.m-date {
+font-size: 12px;}
+.m-note {
+font-size: 12px;}
+.m-type {
+font-size: 16px;}
+li span {
+font-size: 17px;}
+a {
+font-size: 17px;}
+
 }
 @media (min-width: 1200px) {
 .Mmenu {
