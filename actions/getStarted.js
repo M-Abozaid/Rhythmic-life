@@ -39,13 +39,13 @@ console.log("getting logsssssssssssss");
 		GraphAPI.sendPlainMessage(recipientId, 'Oh Hello '+context.userData.first_name+'! let\'t  help keep track of your productivity.')
 		setTimeout(()=>{
 		GraphAPI.sendPlainMessage(recipientId, ' I can help you keep a diary of any activity you do, and give you a useful statistics about your time.')
-		}, 2000);
+		}, 2500);
 		setTimeout(()=>{
 		GraphAPI.sendPlainMessage(recipientId, ' First lets add a new activity.')
-		}, 2000);
+		}, 6000);
 		setTimeout(()=>{
 		GraphAPI.sendPlainMessage(recipientId, ' type a name of activity you\'d like to keep track of. (e.g. working out, studying)')
-		}, 2000);
+		}, 7500);
 		context.current.first = true
 	}else{
 		if(context.current.first && !context.current.name){
