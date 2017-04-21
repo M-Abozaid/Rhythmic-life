@@ -1,3 +1,4 @@
+const getStarted = require('./actions/getStarted')
 const addActivity = require('./actions/addActivity')
 const addLog = require('./actions/addLog')
 const getLogs = require('./actions/getLogs')
@@ -68,7 +69,8 @@ let takeAction = function(context){
 			}
 			}else { 
 				if (context.msg == 'get started') {
-
+					context.current.main = 'getStarted'
+					getStarted(context).then((cont)=>{resolve(cont)});
 				} else {
 					if (context.current.panel){ // Send the panel
 					
