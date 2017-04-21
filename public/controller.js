@@ -114,9 +114,9 @@ angular.module('MyBot')
 
       // Set a callback to run when the Google Visualization API is loaded.
       
-      google.charts.setOnLoadCallback(function($scope){
+      google.charts.setOnLoadCallback(function(){
         console.log('showChart out',$scope.showChart);
-        drawChart1($scope)
+        drawChart1()
         drawChart2()
         drawChart3()
       });
@@ -170,11 +170,11 @@ angular.module('MyBot')
         google.visualization.events.addListener(chart1, 'ready', readyHandler);
        
         function readyHandler(e) {
-            $scope.showChart = true;
+            document.chartReady = true;
         }
       }
 
-        //$scope.showChart //= document.chartReady;
+        $scope.showChart = document.chartReady;
 
       function drawChart2() {
         var data2 = new google.visualization.DataTable();
