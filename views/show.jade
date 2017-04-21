@@ -18,7 +18,7 @@ div
         .col-lg-6.col-lg-push-3.col-md-8.col-md-push-2.col-sm-12.col-xs-12(style='padding: 0px;')
           .row
             .Mrow.col-lg-8.col-md-8.col-sm-8.col-xs-8
-              div(ng-if="!showMenu" style='z-index : 1001; background-color: black;')
+              div(ng-if="!showMenu" style='z-index : 1001;')
                 h1(style="color: black; text-align: center;") Loading... 
               ul(ng-if="showMenu" style='padding-left: 0px;')
                 li.m-log(ng-repeat='log in logs |filter: filterFn')

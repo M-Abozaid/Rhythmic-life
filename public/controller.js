@@ -169,7 +169,7 @@ angular.module('MyBot')
 
         google.visualization.events.addListener(chart1, 'ready', readyHandler);
        
-        function selectHandler(e) {
+        function readyHandler(e) {
             $scope.showChart = true;
         }
       }
