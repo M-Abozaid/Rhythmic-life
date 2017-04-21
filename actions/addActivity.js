@@ -80,6 +80,7 @@ return new Promise(function(resolve, reject){
 										context.current.main = 'getStarted';
 										context.current.chooseLog = true;
 										context.current.continue = true;
+										context.current.first = false;
 										resolve(context)
 									}else{
 										context.current = {}
