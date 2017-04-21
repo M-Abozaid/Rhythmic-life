@@ -23,6 +23,7 @@ exports.getOrCreateUserByRecipientId = function(id, data) {
 	return exports.getByRecipientId(id)
 	.then( user => {
 		if (!user) {
+			console.log('Newwwwwwwww userrrrrrrrrrrrr');
 			user = new User({
 				recipientId: id,
 				firstName: data.first_name,
