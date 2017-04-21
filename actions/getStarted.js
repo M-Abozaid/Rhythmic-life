@@ -35,7 +35,7 @@ console.log("getting logsssssssssssss");
 
 	let saveLog = function(){
 
-
+		return new Promise(function(resolve, reject){
 			User.findOne({recipientId : recipientId},(err,user)=>{
 				if (err) throw err;
 				console.log('the user  ',JSON.stringify(user));
@@ -83,11 +83,11 @@ console.log("getting logsssssssssssss");
 				user.save(function (err, user) {
 							if (err) throw err;
 							
-							return GraphAPI.sendPlainMessage(recipientId, 'Log added successfully!  ✌️')
+							 GraphAPI.sendPlainMessage(recipientId, 'Log added successfully!  ✌️').then(()=>{resolve()})
 				});
 			})
 		
-
+		})
 	}
 
 
