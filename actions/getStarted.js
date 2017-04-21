@@ -72,7 +72,7 @@ console.log("getting logsssssssssssss");
 				let obj = {
 					logName: context.current.logName,
 					note: context.current.note,
-					activityId: user.activities.find((elem)=>{return elem.name.toLowerCase() == context.current.logName })._id,  // ading to lower case temporarly because the bb have some activiy upper
+					activityId: user.activities.find((elem)=>{return elem.name.toLowerCase() == context.current.logName.toLowerCase() })._id,  // ading to lower case temporarly because the bb have some activiy upper
 					time: Date.now(), //+ (user.timezone *60*60*1000),
 					span: howLongInMil
 				}
@@ -143,10 +143,10 @@ console.log("getting logsssssssssssss");
 					})
 				}else{
 					if(context.current.chooseLog && !context.current.logName){
-				if(context.msg == 'New Activity'){
+				if(context.msg == 'new activity'){
 					context.current = {}
 					context.current.main = 'addingActivity';
-					context.current.nextAddLog = true;
+					context.current.nextGetStarted = true;
 					context.current.continue = true;
 					resolve(context);
 				}else{
