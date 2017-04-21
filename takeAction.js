@@ -68,7 +68,7 @@ let takeAction = function(context){
 
 			}
 			}else { 
-				if (context.msg == 'get started') {
+				if (context.msg == 'GET_STARTED_PAYLOAD') {
 					context.current.main = 'getStarted'
 					getStarted(context).then((cont)=>{resolve(cont)});
 				} else {

@@ -156,10 +156,10 @@ function processMessage(messaging) {
 
 			const payload = messaging.postback && messaging.postback.payload;
 			if (payload) {
-				const msg = messaging.message.text
-				const messege = msg.toLowerCase();
-				console.log('handling postBack');
-				return handleTextMessage(sessionId, session, messege);
+				const msg = payload
+				//const messege = msg.toLowerCase();
+				console.log('handling postBack msg ', msg);
+				return handleTextMessage(sessionId, session, msg);
 				//return handlePostback(sender, sessionId, session.context, payload);
 			}
 		})
