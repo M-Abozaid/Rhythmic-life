@@ -113,10 +113,10 @@ angular.module('MyBot')
      google.charts.load('current', {'packages':['corechart']});
 
       // Set a callback to run when the Google Visualization API is loaded.
-      
-      google.charts.setOnLoadCallback(function(){
+      var chart = {}
+      google.charts.setOnLoadCallback(function(chart){
         console.log('showChart out',$scope.showChart);
-        drawChart1()
+        drawChart1(chart)
         drawChart2()
         drawChart3()
       });
@@ -141,9 +141,9 @@ angular.module('MyBot')
                         pointSize:5
                        };
 
-      var chartReady
+      
 
-      function drawChart1($scope) {
+      function drawChart1(chart) {
         var data1 = new google.visualization.DataTable();
         data1.addColumn('date', 'time');
         data1.addColumn('number', 'time spent (min)');
@@ -170,11 +170,11 @@ angular.module('MyBot')
         google.visualization.events.addListener(chart1, 'ready', readyHandler);
        
         function readyHandler(e) {
-            chartReady = true;
+            chart.Ready = true;
         }
       }
 
-        $scope.showChart = chartReady;
+        $scope.showChart = chart.Ready;
 
       function drawChart2() {
         var data2 = new google.visualization.DataTable();
