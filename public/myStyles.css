@@ -18,6 +18,15 @@ z-index: 900;
 width: 100%;
 display: inline;
 }
+
+.Mnav-tab h2 {
+font-size: 22;
+text-align: right;
+float:left;
+width: 80%;
+padding-right:15%;
+display:inline;
+}
 .Mcontainer {
 background-color: silver;
 border-style:none;
