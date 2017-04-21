@@ -167,13 +167,13 @@ angular.module('MyBot')
         
         chart1.draw(data1, options);
 
+        
+      }
         google.visualization.events.addListener(chart1, 'ready', readyHandler);
        
         function readyHandler(e) {
             chart.Ready = true;
         }
-      }
-
         $scope.showChart = chart.Ready;
 
       function drawChart2() {
