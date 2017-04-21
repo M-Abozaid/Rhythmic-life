@@ -47,21 +47,25 @@ console.log("getting logsssssssssssss");
 		GraphAPI.sendPlainMessage(recipientId, ' type a name of activity you\'d like to keep track of. (e.g. working out, studying)')
 		}, 7500);
 		context.current.first = true
+		resolve(context)
 	}else{
 		if(context.current.first && !context.current.name){
 			let data = platformHelpers.generateQuickReplies('Good now choose a type for the activity.', {0:'work',1:'study',2:'entertainment'});
 			GraphAPI.sendTemplateMessage(recipientId, data)
 			context.current.name = context.msg
+			resolve(context)
 		}else{
 			if(context.current.name && !context.current.type){
 				let data = platformHelpers.generateQuickReplies('Is it a positive thing?', {0:'positive',1:'ngative',2:'other'});
 				GraphAPI.sendTemplateMessage(recipientId, data)
 				context.current.type = context.msg
+				resolve(context)
 			}else{
 				if(context.current.type && !context.current.positivity){
 					let data = platformHelpers.generateQuickReplies('Do you think you do this activity as a habit?', {0:'Yes',1:'NO'});
 					GraphAPI.sendTemplateMessage(recipientId, data)
 					context.current.positivity = context.msg
+					resolve(context)
 				}else{
 					if(context.current.positivity && !context.current.habit){
 						context.current.habit = context.msg
