@@ -131,7 +131,7 @@ console.log("getting logsssssssssssss");
 						saveActivity().then(()=>{
 								GraphAPI.sendPlainMessage(recipientId, 'Activity created successfully!  👌🏼').then(()=>{
 								
-								let data = platformHelpers.generateQuickReplies('✋🏼 Now let\'s add your first diary. Choose what you\'re going to do next.', [context.current.name,'New Activity']);
+								let data = platformHelpers.generateQuickReplies('✋🏼 Now let\'s add your first diary. What activity  you\'re going to do now.', [context.current.name,'New Activity']);
 								//platformHelpers.generateButtonsTemplate('Choose the activity ',[{butn:'option1',},{butn:'opti2'}])
 								GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
 									context.current.chooseLog = true
