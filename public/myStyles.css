@@ -42,7 +42,7 @@ position: fixed;
 width: 33.3333%;
 left: 66.666667%;
 height: 100%;
-margin-top: 81px;
+margin-top: 75px;
 overflow:scroll;
 z-index: 1000;
 padding-right: 10px;
@@ -87,7 +87,7 @@ margin: 0px;
 height: 15%;
 background-color: rgb(215,217,208);
 border-radius: 55px;
-margin-top: 4px;
+margin-top: 5px;
 }
 .m-activity-name {
 border-radius: 20px;
