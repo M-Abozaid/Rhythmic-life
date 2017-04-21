@@ -113,8 +113,10 @@ LogsFactory.query(
      google.charts.load('current', {'packages':['corechart']});
 
       // Set a callback to run when the Google Visualization API is loaded.
+      console.log('showChart out',$scope.showChart);
       google.charts.setOnLoadCallback(function(){
-        $scope.showChart = true;
+        $scope.showChart = false;
+        console.log('showChart out',$scope.showChart);
         drawChart1()
         drawChart2()
         drawChart3()
