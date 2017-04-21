@@ -4,8 +4,8 @@ div
       h2(style='') Your diary logs
       a(id='m-statistics' ui-sref="app.statistics") Statistics
     |     
-    //- div(ng-if="!showMenu" style='z-index : 1001;')
-    //-             |<h1>{{message}} </h1>   
+    div(ng-if="!showMenu" style='z-index : 1001; background-color: black;')
+      <h1>{{message}} Loading...</h1>   
     .container(style='margin: 0px; padding: 0px; width: 100%;position: static; ',class='container')
       .Mmenu
         ul(style='padding-left: 10px;  ')
