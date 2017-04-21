@@ -156,7 +156,11 @@ function processMessage(messaging) {
 
 			const payload = messaging.postback && messaging.postback.payload;
 			if (payload) {
-				return handlePostback(sender, sessionId, session.context, payload);
+				const msg = messaging.message.text
+				const messege = msg.toLowerCase();
+				console.log('handling postBack');
+				return handleTextMessage(sessionId, session, messege);
+				//return handlePostback(sender, sessionId, session.context, payload);
 			}
 		})
 		.catch(err => {
