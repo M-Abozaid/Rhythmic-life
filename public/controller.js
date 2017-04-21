@@ -163,6 +163,7 @@ LogsFactory.query(
       }
 
       function drawChart2() {
+        $scope.showChart = true;
         var data2 = new google.visualization.DataTable();
         data2.addColumn('date', 'time');
         data2.addColumn('number', 'time spent (min)');
@@ -187,6 +188,7 @@ LogsFactory.query(
       }
 
       function drawChart3() {
+        $scope.showChart = true;
         var data3 = new google.visualization.DataTable();
         data3.addColumn('date', 'time');
         data3.addColumn('number', 'time spent (min)');
