@@ -166,8 +166,16 @@ angular.module('MyBot')
         var chart1 = new google.visualization.LineChart(document.getElementById('curve_chart1'));
         
         chart1.draw(data1, options);
+
+        google.visualization.events.addListener(chart1, 'ready', readyHandler);
+       
+        function selectHandler(e) {
+            $scope.showChart = true;
+        }
       }
-    $scope.showChart = true;
+
+        //$scope.showChart //= document.chartReady;
+
       function drawChart2() {
         var data2 = new google.visualization.DataTable();
         data2.addColumn('date', 'time');

@@ -3,9 +3,7 @@ div
     .Mnav-tab
       h2(style='') Your diary logs
       a(id='m-statistics' ui-sref="app.statistics") Statistics
-    |     
-    div(ng-if="!showMenu" style='z-index : 1001; background-color: black;')
-      <h1>{{message}} Loading...</h1>   
+    |       
     .container(style='margin: 0px; padding: 0px; width: 100%;position: static; ',class='container')
       .Mmenu
         ul(style='padding-left: 10px;  ')
@@ -20,7 +18,9 @@ div
         .col-lg-6.col-lg-push-3.col-md-8.col-md-push-2.col-sm-12.col-xs-12(style='padding: 0px;')
           .row
             .Mrow.col-lg-8.col-md-8.col-sm-8.col-xs-8
-              ul(style='padding-left: 0px;')
+              div(ng-if="!showMenu" style='z-index : 1001; background-color: black;')
+                h1(style="color: black; text-align: center;") Loading... 
+              ul(ng-if="showMenu" style='padding-left: 0px;')
                 li.m-log(ng-repeat='log in logs |filter: filterFn')
                   .row.m-header
                     .col-xs-9.col-sm-9.col-md-9.col-lg-9
