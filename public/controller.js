@@ -113,9 +113,15 @@ LogsFactory.query(
      google.charts.load('current', {'packages':['corechart']});
 
       // Set a callback to run when the Google Visualization API is loaded.
-      google.charts.setOnLoadCallback(drawChart1);
-      google.charts.setOnLoadCallback(drawChart2);
-      google.charts.setOnLoadCallback(drawChart3);
+      google.charts.setOnLoadCallback(function(){
+        $scope.showChart = true;
+        drawChart1()
+        drawChart2()
+        drawChart3()
+      });
+      // google.charts.setOnLoadCallback(drawChart1);
+      // google.charts.setOnLoadCallback(drawChart2);
+      // google.charts.setOnLoadCallback(drawChart3);
 
       // Callback that creates and populates a data table,
       // instantiates the pie chart, passes in the data and
@@ -137,7 +143,6 @@ LogsFactory.query(
       
 
       function drawChart1() {
-        $scope.showChart = true;
         var data1 = new google.visualization.DataTable();
         data1.addColumn('date', 'time');
         data1.addColumn('number', 'time spent (min)');
@@ -163,7 +168,6 @@ LogsFactory.query(
       }
 
       function drawChart2() {
-        $scope.showChart = true;
         var data2 = new google.visualization.DataTable();
         data2.addColumn('date', 'time');
         data2.addColumn('number', 'time spent (min)');
@@ -188,7 +192,6 @@ LogsFactory.query(
       }
 
       function drawChart3() {
-        $scope.showChart = true;
         var data3 = new google.visualization.DataTable();
         data3.addColumn('date', 'time');
         data3.addColumn('number', 'time spent (min)');
