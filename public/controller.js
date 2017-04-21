@@ -2,7 +2,6 @@
 
 console.log('inside controller out')
 angular.module('MyBot')
-
 .controller('LogsController', ['$scope', 'LogsFactory', function ($scope, LogsFactory) {
 $scope.message = 'Loading...';
 $scope.showMenu = false;
@@ -62,8 +61,9 @@ LogsFactory.query(
     }
     }
  
-}])
+}]);
 
+angular.module('MyBot')
 .controller('StatisticsController', ['$scope', 'LogsFactory', function ($scope, LogsFactory){
 
     console.log('statistics controller starts');
