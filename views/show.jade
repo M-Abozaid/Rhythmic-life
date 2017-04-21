@@ -1,7 +1,7 @@
 
 div
     .Mnav-tab
-      h2(style='text-align: right; float:left; width: 80%; padding-right:15%; display:inline;') Your diary logs
+      h2(style='') Your diary logs
       a(id='m-statistics' ui-sref="app.statistics") Statistics
     |     
     //- div(ng-if="!showMenu" style='z-index : 1001;')
@@ -10,7 +10,7 @@ div
       .Mmenu
         ul(style='padding-left: 10px;  ')
           li.m-day
-            a(ng-click='allTime()' ng-class='{active: isSelected()}' style='padding: 8px; text-align: center; font-size: 24px; display: block;') All time
+            a(ng-click='allTime()' ng-class='{active: isSelected()}' style='') All time
           |                               
           |                                
           li.m-day(ng-repeat='day in days')
