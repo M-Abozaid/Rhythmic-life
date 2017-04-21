@@ -141,7 +141,7 @@ angular.module('MyBot')
                         pointSize:5
                        };
 
-      
+      var chartReady
 
       function drawChart1($scope) {
         var data1 = new google.visualization.DataTable();
@@ -170,11 +170,11 @@ angular.module('MyBot')
         google.visualization.events.addListener(chart1, 'ready', readyHandler);
        
         function readyHandler(e) {
-            document.chartReady = true;
+            chartReady = true;
         }
       }
 
-        $scope.showChart = document.chartReady;
+        $scope.showChart = chartReady;
 
       function drawChart2() {
         var data2 = new google.visualization.DataTable();
