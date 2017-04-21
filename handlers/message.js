@@ -35,7 +35,7 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 				}else{
 					session.context = context;
 					sessionStore.saveSession(sessionId, session)
-					//sessionStore.destroy(sessionId)
+					sessionStore.destroy(sessionId)
 				}
 			}
 
