@@ -142,85 +142,85 @@ console.log("getting logsssssssssssss");
 							})
 					})
 				}else{
-					if(context.current.chooseLog && !context.current.logName){
-				if(context.msg == 'new activity'){
-					context.current = {}
-					context.current.main = 'addingActivity';
-					context.current.nextGetStarted = true;
-					context.current.continue = true;
-					resolve(context);
+				if(context.current.chooseLog && !context.current.logName){
+					if(context.msg == 'new activity'){
+						context.current = {}
+						context.current.main = 'addingActivity';
+						context.current.nextGetStarted = true;
+						context.current.continue = true;
+						resolve(context);
+					}else{
+							context.current.logName = context.msg;
+							let data = platformHelpers.generateQuickReplies('For how long do you intend to '+ context.current.logName+' ⌚. Choose or type the exact time in minutes.', ['30 min','1 hr','1.5 hr','2 hr','2.5 hr','3 hr','3.5 hr','4 hr','5 hr']);
+							GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
+								
+								resolve(context)
+							})					
+					}
 				}else{
-						context.current.logName = context.msg;
-						let data = platformHelpers.generateQuickReplies('For how long do you intend to '+ context.current.logName+' ⌚. Choose or type the exact time in minutes.', ['30 min','1 hr','1.5 hr','2 hr','2.5 hr','3 hr','3.5 hr','4 hr','5 hr']);
-						GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
-							
-							resolve(context)
-						})					
-				}
-			}else{
-				if(context.current.logName && !context.current.howLong){
-					let data = platformHelpers.generateQuickReplies('Finally you can add a note to your diary 📝. type a note to be included if you like', ['No thats it']);
-						GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
-							context.current.howLong = context.msg;
-							resolve(context)
-						})
-				}else{
-					if(context.current.howLong && !context.current.note){
-						if(context.msg == "no thats it"){
-							context.current.note = " ";
-						}else{
-							context.current.note = context.msg;
-						}
+					if(context.current.logName && !context.current.howLong){
+						let data = platformHelpers.generateQuickReplies('Finally you can add a note to your diary 📝. type a note to be included if you like', ['No thats it']);
+							GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
+								context.current.howLong = context.msg;
+								resolve(context)
+							})
+					}else{
+						if(context.current.howLong && !context.current.note){
+							if(context.msg == "no thats it"){
+								context.current.note = " ";
+							}else{
+								context.current.note = context.msg;
+							}
 
-						saveLog().then(()=>{
-						let	data = {
-							"quick_replies":  [
-						    		{
-							        "content_type":"text",
-							        "title": 'Add a diary entry' ,
-							        "payload": 1
-							      }	,
-							      {
-							        "content_type":"text",
-							        "title": "Add a new activity",
-							        "payload": 3
-							      }],
+							saveLog().then(()=>{
+							let	data = {
+								"quick_replies":  [
+							    		{
+								        "content_type":"text",
+								        "title": 'Add a diary entry' ,
+								        "payload": 1
+								      }	,
+								      {
+								        "content_type":"text",
+								        "title": "Add a new activity",
+								        "payload": 3
+								      }],
 
-							"attachment":{
-						      "type":"template",
-						      "payload":{
-						        "template_type":"button",
-						        "text":"Done, now if you want to view your diary and statistics, have a good day.",
-								"buttons":[
-							      {
-							        "type":"web_url",
-							        "url":"https://salty-plains-47076.herokuapp.com/show/"+recipientId,
-							        "title":"View your diary 📜",
-							        "webview_height_ratio": "compact",
-							        "messenger_extensions": true
-							      },
-							      {
-							        "type":"web_url",
-							        "url":"https://salty-plains-47076.herokuapp.com/show/"+recipientId + "/#!/statistics",
-							        "title":"View your statistics 📈",
-							        "webview_height_ratio": "compact",
-							        "messenger_extensions": true
-							      }
-							    ]
+								"attachment":{
+							      "type":"template",
+							      "payload":{
+							        "template_type":"button",
+							        "text":"Done, now if you want to view your diary and statistics, have a good day.",
+									"buttons":[
+								      {
+								        "type":"web_url",
+								        "url":"https://salty-plains-47076.herokuapp.com/show/"+recipientId,
+								        "title":"View your diary 📜",
+								        "webview_height_ratio": "compact",
+								        "messenger_extensions": true
+								      },
+								      {
+								        "type":"web_url",
+								        "url":"https://salty-plains-47076.herokuapp.com/show/"+recipientId + "/#!/statistics",
+								        "title":"View your statistics 📈",
+								        "webview_height_ratio": "compact",
+								        "messenger_extensions": true
+								      }
+								    ]
+									}
 								}
 							}
-						}
 
-						GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
-							context.current = {}
-							context.current.main = 'offered';
-							context.current.panel = false;
-							resolve(context)})
-							resolve(context)
-						});
+							GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
+								context.current = {}
+								context.current.main = 'offered';
+								context.current.panel = false;
+								resolve(context)})
+								resolve(context)
+							});
+						}
 					}
-				}
-				} 
+					} 
 			}
 		}
 
