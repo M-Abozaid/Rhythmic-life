@@ -74,8 +74,17 @@ return new Promise(function(resolve, reject){
 									context.current.continue = true;
 									resolve(context)
 								}else{
-									context.current = {}
-									resolve(context)
+									if(context.current.nextGetStarted){ // if we came from get started we go back
+										context.msg =  context.current.activityName;
+										context.current = {}
+										context.current.main = 'getStarted';
+										context.current.chooseLog = true;
+										context.current.continue = true;
+									}else{
+										context.current = {}
+										resolve(context)
+									}
+									
 								}
 							})
 							})
