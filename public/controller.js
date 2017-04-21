@@ -67,6 +67,7 @@ LogsFactory.query(
 .controller('StatisticsController', ['$scope', 'LogsFactory', function ($scope, LogsFactory){
 
     console.log('statistics controller starts');
+    $scope.someObj = {};
     $scope.someObj.showChart = true;
     $scope.message = 'Loading...';
 
