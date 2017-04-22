@@ -69,6 +69,7 @@ let takeAction = function(context){
 		if (context.msg == 'GET_STARTED_PAYLOAD' || context.current.newUser ) { // first msg ever
 				context.current.main = 'getStarted'
 				getStarted(context).then((cont)=>{resolve(cont)});
+				context.current.newUser = false;
 			}else{
 
 				  if(context.msg == 'hi' || context.msg == 'hello' || context.msg == 'hey' || context.msg == 'good morning' || context.msg == 'you' ||context.msg == 'good evening'|| context.msg == 'hey rhythmic' || context.msg == 'hello rhythmic' || context.msg == 'hi rhythmic' || context.msg == 'sup'){

@@ -190,7 +190,7 @@ console.log("getting logsssssssssssss");
 							      "type":"template",
 							      "payload":{
 							        "template_type":"button",
-							        "text":"Done, now if you want to view your diary and statistics, have a good day.",
+							        "text":"Done, now if you want to view your diary and statistics, have a nice day.",
 									"buttons":[
 								      {
 								        "type":"web_url",
