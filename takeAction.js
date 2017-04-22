@@ -62,17 +62,19 @@ let takeAction = function(context){
 		 	context.current.deleted = true;
 		  	resolve(context)}); };
 	    
-	    if(context.msg == 'hi' || context.msg == 'hello' || context.msg == 'hey' || context.msg == 'good morning' || context.msg == 'you' ||context.msg == 'good evening'|| context.msg == 'hey rhythmic' || context.msg == 'hello rhythmic' || context.msg == 'hi rhythmic' || context.msg == 'sup'){
-				context.current = {};
-				GraphAPI.sendPlainMessage(recipientId, 'Hello! '+context.userData.first_name+' 😍😍').then(()=>{console.log('Hello panal'); offer();})
-			}
+	  
 
 
 
 		if (context.msg == 'GET_STARTED_PAYLOAD' || context.current.newUser ) { // first msg ever
 				context.current.main = 'getStarted'
 				getStarted(context).then((cont)=>{resolve(cont)});
-			} 
+			}else{
+
+				  if(context.msg == 'hi' || context.msg == 'hello' || context.msg == 'hey' || context.msg == 'good morning' || context.msg == 'you' ||context.msg == 'good evening'|| context.msg == 'hey rhythmic' || context.msg == 'hello rhythmic' || context.msg == 'hi rhythmic' || context.msg == 'sup'){
+					context.current = {};
+					GraphAPI.sendPlainMessage(recipientId, 'Hello! '+context.userData.first_name+' 😍😍').then(()=>{console.log('Hello panal'); offer();})
+				}
 		// if context 
 		else { if(context.current.main == 'offered'){
 				switch(context.msg){
@@ -121,6 +123,7 @@ let takeAction = function(context){
 			
 
 			}
+	}
 	}
 	//resolve(context)
 	
