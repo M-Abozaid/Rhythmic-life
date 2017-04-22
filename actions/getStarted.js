@@ -216,7 +216,7 @@ console.log("getting logsssssssssssss");
 								context.current.main = 'offered';
 								context.current.panel = false;
 								resolve(context)})
-								resolve(context)
+								
 							});
 						}
 					}
