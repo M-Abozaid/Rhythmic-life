@@ -23,7 +23,8 @@ module.exports = function(){
 			 if(nowLocal.hour()>10 && nowLocal.hour()<23 ){
 			 	console.log('now hours ',nowLocal.hour());
 			 	
-			 	console.log(' time since last act ',nowLocal.subtract(lastLog));
+			 	console.log(' time since last act ',nowLocal.duration().hours());
+
 
 			 }
 
