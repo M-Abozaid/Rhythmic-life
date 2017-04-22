@@ -12,14 +12,14 @@ module.exports = function(){
 
 		User.findOne({recipientId : "1221099964674152"},(err,user)=>{
 			if (err) throw err;
-		
+			console.log('meeeeeee' ,user.lastName);
 			let sessionId;
 			let session;
 			let newSession;
 			console.log("inside set interval after finding the user");
 			sessionStore.findOrCreate(1221099964674152)
 				.then(data => {
-
+					console.log(" findOrCreate.then");
 					sessionId = data.sessionId;
 					session = data.session;
 					newSession = data.newSession;
