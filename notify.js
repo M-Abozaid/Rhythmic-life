@@ -38,7 +38,7 @@ module.exports = function(){
 									console.log('lasNotLocal ',lasNotLocal);
 									console.log('nowLocal.valueOf() ',nowLocal.valueOf());
 									console.log('nowLocal.valueOf() ',lasNotLocal.valueOf());
-									let lastNotH = moment.duration(moment(nowLocal.valueOf() - lasNotLocal.valueOf() )).hours()
+									let lastNotH = moment.duration(nowLocal.valueOf() - lasNotLocal.valueOf() ).hours()
 									console.log('lastNotH ',lastNotH);
 									if(lastNotH > 1 ){
 										console.log('inside last if');
