@@ -103,7 +103,7 @@ console.log("getting logsssssssssssss");
 		GraphAPI.sendPlainMessage(recipientId, ' First lets add a new activity.')
 		}, 6500);
 		setTimeout(()=>{
-		GraphAPI.sendPlainMessage(recipientId, ' Type a name of activity you\'d like to keep track of. (e.g. working out, studying)')
+		GraphAPI.sendPlainMessage(recipientId, ' Type a name of activity you\'d like to keep track of. (e.g. working out, studying physics)')
 		}, 7500);
 		context.current.first = true
 		resolve(context)
