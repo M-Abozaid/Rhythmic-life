@@ -6,7 +6,7 @@ const sessionStore = require('./sessionStore');
 
 module.exports = function(){
 	let recipientId = "1221099964674152";
-
+console.log('notifiction starts');
 	setInterval(function(){
 
 
