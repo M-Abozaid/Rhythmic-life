@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const User = require('./schemas/user');
 const sessionStore = require('./sessionStore');
 const _ = require('lodash')
-
+const moment = require('moment')
 module.exports = function(){
 	let recipientId = "1221099964674152";
 	//setInterval(function(){
@@ -15,7 +15,13 @@ module.exports = function(){
 			let sessionId;
 			let session;
 			let newSession;
-			console.log(users[2]);
+			var nowUTC =  Date.now()
+			for (var i = users.length - 1; i >= 0; i--) {
+				let user = users[i]
+				nowLocal = moment(mowUTC).add(user.timezone , 'hours')
+				lastLog =  moment(user.activityLogs[0].createdAt).add(user.timezone , 'hours')
+			 console.log('last log ',lastLog ,'now ')
+
 			// sessionStore.findOrCreate(1221099964674152)
 			// 	.then(data => {
 			// 		sessionId = data.sessionId;
@@ -54,6 +60,7 @@ module.exports = function(){
 
 				
 			// 	})
+			}
 		})
 
 	//}, 3600000);
