@@ -8,7 +8,7 @@ const moment = require('moment')
 module.exports = function(){
 	//let recipientId = "1221099964674152";
 	//setInterval(function(){
-//{recipientId : "1221099964674152"}
+	//{recipientId : "1221099964674152"}
 
 		User.find({},(err,users)=>{
 			if (err) throw err;
@@ -53,6 +53,7 @@ module.exports = function(){
 											let data = platformHelpers.generateQuickReplies( user.firstName + '! would you like to add what your doing now', view);
 											GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
 												if(context.current.thisVeiw != numOfVeiws ){context.current.thisVeiw += 1}else{context.current.thisVeiw = 0}
+												context.current = {};
 												context.current.main = "addingLog"
 												context.current.chooseLog = true;
 												session.context = context;
@@ -63,6 +64,7 @@ module.exports = function(){
 												let data = platformHelpers.generateQuickReplies(user.firstName + '! would you like to add what you\'re doing now', list);
 												//platformHelpers.generateButtonsTemplate('Choose the activity ',[{butn:'option1',},{butn:'opti2'}])
 												GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
+													context.current = {};
 													context.current.main = "addingLog";
 													context.current.chooseLog = true;
 													session.context = context;
