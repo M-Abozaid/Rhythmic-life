@@ -62,9 +62,9 @@ let takeAction = function(context){
 		 	context.current.deleted = true;
 		  	resolve(context)}); };
 	    
-	    if(context.msg == 'hi' || 'hello' || 'hey' || 'good morning' || 'you' ||'good evening'|| 'hey rhythmic' || 'hello rhythmic' || 'hi rhythmic'){
+	    if(context.msg == 'hi' || context.msg == 'hello' || context.msg == 'hey' || context.msg == 'good morning' || context.msg == 'you' ||context.msg == 'good evening'|| context.msg == 'hey rhythmic' || context.msg == 'hello rhythmic' || context.msg == 'hi rhythmic'){
 				context.current = {};
-				GraphAPI.sendPlainMessage(recipientId, 'Hello! '+context.userData.first_name+' 😍😍').then(()=>{console.log('Hello panal offer'); offer();})
+				GraphAPI.sendPlainMessage(recipientId, 'Hello! '+context.userData.first_name+' 😍😍').then(()=>{console.log('Hello panal'); offer();})
 			}
 
 
