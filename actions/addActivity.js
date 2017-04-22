@@ -37,7 +37,7 @@ return new Promise(function(resolve, reject){
 		//context.first.sub.activityName = true
 		
 		console.log('activity ',context.msg,' saved');
-		let data = platformHelpers.generateQuickReplies('Choose the Type ', {0:'work',1:'study',2:'entertainment'});
+		let data = platformHelpers.generateQuickReplies('Choose the Type ', {0:'work 🔧',1:'study 📖',2:'entertainment 💥'});
 		GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
 		context.current.chooseActivity = true ;
 		resolve(context)
@@ -53,13 +53,13 @@ return new Promise(function(resolve, reject){
 				if(context.current.activityType && !context.current.activityName){
 					context.current.activityName = context.msg
 					console.log('activity type ',context.msg,' saved');
-					let data = platformHelpers.generateQuickReplies('is it positve or ngative', {0:'positive',1:'ngative',2:'other'});
+					let data = platformHelpers.generateQuickReplies('is it positve or ngative', {0:'positive 👍🏼',1:'ngative 👎🏼',2:'other 🏼'});
 					GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{resolve(context)})
 					
 				}else{
 					if(context.current.activityName && !context.current.positivity){
 						context.current.positivity = context.msg
-						let data = platformHelpers.generateQuickReplies('Is it a habit ', {0:'Yes',1:'NO'});
+						let data = platformHelpers.generateQuickReplies('Is it a habit 🔁', {0:'Yes 👈🏼',1:'👉🏼 NO'});
 						GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{resolve(context)})
 					}else{
 						if(context.current.positivity && !context.current.hebitual){
