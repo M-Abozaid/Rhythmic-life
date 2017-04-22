@@ -3,6 +3,7 @@ const GraphAPI = require('./graphAPI');
 const mongoose = require('mongoose');
 const User = require('./schemas/user');
 const sessionStore = require('./sessionStore');
+const _ = require('lodash')
 
 module.exports = function(){
 	let recipientId = "1221099964674152";
@@ -26,7 +27,7 @@ module.exports = function(){
 				
 					let context = session.context;
 
-					list = _.map(user.activities,(elem)=>{return elem.name})
+					let list = _.map(user.activities,(elem)=>{return elem.name})
 					console.log('list first  ', JSON.stringify(list))
 					list.push('New activity')
 					let numOfQuick = list.length 
