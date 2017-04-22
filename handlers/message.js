@@ -8,9 +8,9 @@ const takeAction = require('../takeAction')
 module.exports = function handleTextMessage (sessionId, session, msg) {
 	const recipientId = session.fbid;
 	const context = session.context;
-	let mesLog = session.mesLog || [];
-	mesLog.push(msg)
-	session.mesLog = [] //mesLog
+	// let mesLog = session.mesLog || [];
+	// mesLog.push(msg)
+	// session.mesLog = [] //mesLog
 	context.msg = msg
 	session.state = session.state  || 'new';
 

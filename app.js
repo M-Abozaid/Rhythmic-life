@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 var path = require('path');
 var showRouter = require('./routes/showRoute')
+const notify = require('./notify')
 
 debug('loading configuration');
 const config = require('./config');
@@ -42,3 +43,4 @@ const server = app.listen(app.get('port'), function () {
     console.log('express server listening on port ' + server.address().port);
 });
 
+notify()
