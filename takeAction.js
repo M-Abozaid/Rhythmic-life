@@ -69,9 +69,12 @@ let takeAction = function(context){
 
 
 
-
+		if (context.msg == 'GET_STARTED_PAYLOAD' || context.current.newUser ) { // first msg ever
+				context.current.main = 'getStarted'
+				getStarted(context).then((cont)=>{resolve(cont)});
+			} 
 		// if context 
-		if(context.current.main == 'offered'){
+		else { if(context.current.main == 'offered'){
 				switch(context.msg){
 					case 'add a diary entry': 
 					context.current.main = 'addingLog';
@@ -93,11 +96,8 @@ let takeAction = function(context){
 					})
 				}
 
-			}else { 
-				if (context.msg == 'GET_STARTED_PAYLOAD' || context.current.newUser ) { // first msg ever
-					context.current.main = 'getStarted'
-					getStarted(context).then((cont)=>{resolve(cont)});
-				} else {
+			}
+				else {
 					if (context.current.panel){ // Send the panel
 						console.log("panal offer");
 						offer();
