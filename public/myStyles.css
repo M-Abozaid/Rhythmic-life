@@ -47,6 +47,9 @@ overflow:scroll;
 z-index: 1000;
 padding-right: 10px;
 }
+
+
+
   @media (min-width: 768px) {
 .Mmenu {
 width: 27.7777%;
@@ -58,7 +61,7 @@ left: 8.333%;
 }
 
 
-/*
+
 .Mnav-tab h2 {
 font-size: 20px;}
 .m-activity-name {
@@ -72,7 +75,7 @@ font-size: 16px;}
 li span {
 font-size: 17px;}
 a {
-font-size: 17px;}*/
+font-size: 17px;}
 
 }
 
@@ -87,7 +90,7 @@ left: 16.666%;
 width: 66.6666%;
 }
 
-/*.Mnav-tab h2 {
+.Mnav-tab h2 {
 font-size: 20px;}
 .m-activity-name {
 font-size: 17px;}
@@ -100,7 +103,7 @@ font-size: 16px;}
 li span {
 font-size: 17px;}
 a {
-font-size: 17px;}*/
+font-size: 17px;}
 
 }
 @media (min-width: 1200px) {

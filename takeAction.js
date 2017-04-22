@@ -60,7 +60,7 @@ let takeAction = function(context){
     
 	    if(context.msg == 'hi' || 'hello' || 'hey' || 'good morning' || 'you' ||'good evening'|| 'hey rhythmic' || 'hello rhythmic' || 'hi rhythmic'){
 				context.current = {};
-				
+				context.current.deleted =true;
 				GraphAPI.sendPlainMessage(recipientId, 'Hello! '+context.userData.first_name+' 😍😍').then(()=>{offer();})
 			}
 
