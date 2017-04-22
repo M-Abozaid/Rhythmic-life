@@ -56,6 +56,7 @@ class SessionStore {
 			console.log('newSession true');
 			return redis.setKey(key, JSON.stringify({fbid: fbid, context: {}}))
 			.then(() => {
+				console.log('in set key');
 				return key;
 			});
 		})
