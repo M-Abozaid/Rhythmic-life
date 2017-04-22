@@ -23,7 +23,7 @@ module.exports = function(){
 				lastLog =  moment(user.activityLogs[0].createdAt).add(user.timezone , 'hours')
 				 if(nowLocal.hour()>10 && nowLocal.hour()<23 ){
 				 	console.log('now hours ',nowLocal.hour());
-				 	if(moment.duration(nowLocal.valueOf() - lastLog.valueOf()).hours() > 24){
+				 	if(moment.duration(nowLocal.valueOf() - lastLog.valueOf()).hours() > 1){
 				 			sessionStore.findOrCreate(user.recipientId)
 								.then(data => {
 					
