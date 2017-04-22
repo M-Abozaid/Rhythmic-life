@@ -20,7 +20,12 @@ module.exports = function(){
 				let user = users[i]
 				nowLocal = moment(nowUTC).add(user.timezone , 'hours')
 				lastLog =  moment(user.activityLogs[0].createdAt).add(user.timezone , 'hours')
-			 console.log('last log ',lastLog ,' act',user.activityLogs[0].logName,' now ',nowUTC)
+			 if(nowLocal.hour()>10 && nowLocal.hour()<23 ){
+			 	console.log('now hours ',nowLocal.hour());
+			 	
+			 	console.log(' time since last act 'nowLocal.subtract(lastLog));
+
+			 }
 
 			// sessionStore.findOrCreate(1221099964674152)
 			// 	.then(data => {
