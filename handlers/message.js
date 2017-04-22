@@ -12,8 +12,10 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 	mesLog.push(msg)
 	session.mesLog = [] //mesLog
 	context.msg = msg
+	session.state = session.state  || 'new';
 
 	if (!context.current) { context.current = {}};  
+	if (session.state == 'new') { context.current.newUser = true; session.state = 'old'; } 
 	//if (!context.second) { context.second = {main:{},sub:{}}};
 
 	takeAction(context).then((context)=>{

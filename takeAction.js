@@ -29,7 +29,7 @@ let takeAction = function(context){
 						      "type":"template",
 						      "payload":{
 						        "template_type":"button",
-						        "text":"What do you want to do next?",
+						        "text":"What do you want to do?",
 								"buttons":[
 							      {
 							        "type":"web_url",
@@ -68,6 +68,8 @@ let takeAction = function(context){
 			}
 
 
+
+
 		// if context 
 		if(context.current.main == 'offered'){
 				switch(context.msg){
@@ -86,11 +88,13 @@ let takeAction = function(context){
 					break;
 					default:
 					// create some fuzzy matching here
-					GraphAPI.sendPlainMessage(recipientId, 'I\'m sorry I don\'t understant! 😐😕 try typing help or you could keep a diry log of what you\'re doing right now.')
+					GraphAPI.sendPlainMessage(recipientId, 'I\'m sorry I don\'t understant! 😐😕  Try choose on of these.').then(()=>{
+						offer();
+					})
 				}
 
 			}else { 
-				if (context.msg == 'GET_STARTED_PAYLOAD') { // first msg ever
+				if (context.msg == 'GET_STARTED_PAYLOAD' || context.current.newUser ) { // first msg ever
 					context.current.main = 'getStarted'
 					getStarted(context).then((cont)=>{resolve(cont)});
 				} else {
