@@ -36,7 +36,7 @@ module.exports = function(){
 						context.current.thisVeiw = context.current.thisVeiw || 0
 						let view = list.splice(context.current.thisVeiw * 10 ,10)
 						view.push("See more!")
-						let data = platformHelpers.generateQuickReplies('Choose the activity ', view);
+						let data = platformHelpers.generateQuickReplies( user.firstName + '! would you like to add what your doing now', view);
 						GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
 							if(context.current.thisVeiw != numOfVeiws ){context.current.thisVeiw += 1}else{context.current.thisVeiw = 0}
 							context.current.main = "addingLog"
@@ -61,5 +61,5 @@ module.exports = function(){
 				})
 		})
 
-	}, 60000);
+	}, 3600000);
 }
