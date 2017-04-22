@@ -20,7 +20,7 @@ module.exports = function(){
 				let user = users[i]
 				nowLocal = moment(nowUTC).add(user.timezone , 'hours')
 				lastLog =  moment(user.activityLogs[0].createdAt).add(user.timezone , 'hours')
-			 console.log('last log ',lastLog ,'now ')
+			 console.log('last log ',lastLog ,' act',user.activityLogs[0].logName,' now ',nowUTC)
 
 			// sessionStore.findOrCreate(1221099964674152)
 			// 	.then(data => {
