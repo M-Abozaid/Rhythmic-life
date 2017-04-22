@@ -10,7 +10,7 @@ module.exports = function(){
 	//setInterval(function(){
 //{recipientId : "1221099964674152"}
 
-		User.findOne({},(err,users)=>{
+		User.find({},(err,users)=>{
 			if (err) throw err;
 			let sessionId;
 			let session;
