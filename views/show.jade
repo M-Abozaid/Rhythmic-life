@@ -15,7 +15,7 @@ div
             a(ng-click='setDay(day)' ,ng-class='{active: isSelected(day)}', style='') {{day | date:  'dd MMM yyyy'}}
       |           
       div(id ='log-div' style=' position: relative;')
-        .col-lg-6.col-lg-push-3.col-md-8.col-md-push-2.col-sm-10.col-xs-12(style='padding: 0px;')
+        .col-lg-6.col-lg-push-3.col-md-8.col-md-push-2.col-sm-10.col-sm-push-1.col-xs-12(style='padding: 0px;')
           .row
             .Mrow.col-lg-8.col-md-8.col-sm-8.col-xs-8
               div(ng-if="!showMenu" style='z-index : 1001;')
