@@ -15,7 +15,7 @@ module.exports = function(){
 			let sessionId;
 			let session;
 			let newSession;
-			console.log(users);
+			console.log(users[2]);
 			// sessionStore.findOrCreate(1221099964674152)
 			// 	.then(data => {
 			// 		sessionId = data.sessionId;
