@@ -62,6 +62,7 @@ exports.receive = function(req, res, next) {
 	.then(function(){
 	})
 	.catch(function(err) {
+		next(err)
 	});
 }
 
