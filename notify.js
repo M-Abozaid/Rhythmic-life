@@ -31,12 +31,14 @@ module.exports = function(){
 									sessionId = data.sessionId;
 									session = data.session;
 									newSession = data.newSession;
-									let timeSinceLastNot = session.timeSinceLastNot || 100;
+									let lastNot = session.lastNot || 100;
 									let context = session.context;
+									let lasNotLocal = moment(lastNot).add(user.timezone , 'hours')
 
-									let timeSinceLastNotH = moment.duration(moment(timeSinceLastNot).valueOf() - nowLocal.valueOf()).hours()
-									if(timeSinceLastNotH > 1 ){
-
+									let lastNotH = moment.duration(moment(lasNotLocal).valueOf() - nowLocal.valueOf()).hours()
+									console.log('lastNotH ',lastNotH);
+									if(lastNotH > 1 ){
+										console.log('inside last if');
 										let list = _.map(user.activities,(elem)=>{return elem.name})
 										list.push('New activity')
 										let numOfQuick = list.length 
@@ -51,7 +53,7 @@ module.exports = function(){
 												context.current.main = "addingLog"
 												context.current.chooseLog = true;
 												session.context = context;
-												session.timeSinceLastNot = Date.now();
+												session.lastNot = Date.now();
 												sessionStore.saveSession(sessionId, session);
 											})
 											}else{
@@ -61,7 +63,7 @@ module.exports = function(){
 													context.current.main = "addingLog";
 													context.current.chooseLog = true;
 													session.context = context;
-													session.timeSinceLastNot = Date.now();
+													session.lastNot = Date.now();
 													sessionStore.saveSession(sessionId, session);
 												})
 											}
