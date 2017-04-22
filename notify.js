@@ -15,7 +15,7 @@ module.exports = function(){
 			let sessionId;
 			let session;
 			let newSession;
-			
+			let recipientId = user.recipientId
 			var nowUTC =  Date.now()
 			for (var i = users.length - 1; i >= 0; i--) {
 				let user = users[i]
@@ -24,15 +24,16 @@ module.exports = function(){
 				 if(nowLocal.hour()>10 && nowLocal.hour()<23 ){
 				 	console.log('now hours ',nowLocal.hour());
 				 	if(moment.duration(nowLocal.valueOf() - lastLog.valueOf()).hours() > 1){
-				 			sessionStore.findOrCreate(user.recipientId)
+				 			sessionStore.findOrCreate(recipientId)
 								.then(data => {
-					
+									
 									sessionId = data.sessionId;
 									session = data.session;
 									newSession = data.newSession;
-									let timeSinceLastNot = session.timeSinceLastNot || 100;
+									let timeSinceLastNot = session.timeSinceLastNot || moment(100);
 									let context = session.context;
 
+									let timeSinceLastNotH = moment.duration(timeSinceLastNot.valueOf() - nowLocal.valueOf()).hours()
 									if(timeSinceLastNot > 1 ){
 
 										let list = _.map(user.activities,(elem)=>{return elem.name})
@@ -49,7 +50,7 @@ module.exports = function(){
 												context.current.main = "addingLog"
 												context.current.chooseLog = true;
 												session.context = context;
-												session.timeSinceLastNot = timeSinceLastNot;
+												session.timeSinceLastNot = Date.now();
 												sessionStore.saveSession(sessionId, session);
 											})
 											}else{
@@ -59,7 +60,7 @@ module.exports = function(){
 													context.current.main = "addingLog";
 													context.current.chooseLog = true;
 													session.context = context;
-													session.timeSinceLastNot = timeSinceLastNot;
+													session.timeSinceLastNot = Date.now();
 													sessionStore.saveSession(sessionId, session);
 												})
 											}
