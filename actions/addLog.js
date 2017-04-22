@@ -103,7 +103,7 @@ let recipientId = context.userData.recipientId; // here because it was not acces
 			})
 		}else{
 			if(context.current.chooseLog && !context.current.logName){
-				if(context.msg == 'New activity'){
+				if(context.msg == 'new activity'){
 					context.current = {}
 					context.current.main = 'addingActivity';
 					context.current.nextAddLog = true;
