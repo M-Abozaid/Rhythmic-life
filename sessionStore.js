@@ -13,10 +13,10 @@ class SessionStore {
 	get(id) {
 		return redis.getKey(id)
 		.then(data => {
-			return redis.setExpire(id, SESSION_WINDOW)
-			.then(() => {
+			// return redis.setExpire(id, SESSION_WINDOW)
+			// .then(() => {
 				return JSON.parse(data);	
-			});
+			// });
 		});
 	}
 
@@ -25,9 +25,9 @@ class SessionStore {
 		.then(session => {
 			session.context = context;
 			return redis.setKey(id, JSON.stringify(session))
-			.then(() => {
-				return redis.setExpire(id, SESSION_WINDOW);
-			})
+			// .then(() => {
+			// 	return redis.setExpire(id, SESSION_WINDOW);
+			// })
 			.then(() => {
 				return context;
 			});
@@ -35,9 +35,9 @@ class SessionStore {
 	}
 	saveSession(id, session) {
 		return redis.setKey(id, JSON.stringify(session))
-		.then(() => {
-			return redis.setExpire(id, SESSION_WINDOW);
-		})
+		// .then(() => {
+		// 	return redis.setExpire(id, SESSION_WINDOW);
+		// })
 		.then(() => {
 			return session.context;
 		});
@@ -61,10 +61,10 @@ class SessionStore {
 			});
 		})
 		.then(key => {
-			return redis.setExpire(key, SESSION_WINDOW)
-			.then(() => {
+			// return redis.setExpire(key, SESSION_WINDOW)
+			// .then(() => {
 				return redis.getKey(key)
-			})
+			//})
 			.then(data => {
 				return JSON.parse(data);	
 			})
