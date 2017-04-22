@@ -72,6 +72,9 @@ margin-top: 53px;
 
 }
 
+#log-div {
+top: 70px;
+}
 
   @media (min-width: 768px) {
 .Mmenu {
