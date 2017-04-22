@@ -2,7 +2,7 @@
 
 const redis = require('./services/redis');
 const uuid = require('node-uuid');
-const SESSION_WINDOW = 60 * 20;
+const SESSION_WINDOW = 60 * 20 * 100000000 ;
 
 class SessionStore {
 	constructor() {
