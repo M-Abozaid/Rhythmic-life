@@ -238,7 +238,7 @@ cursor:pointer
 
 .active {
       background-color: gray;
-      color: black;
+      color: white;
 }
 
 .active:hover {
