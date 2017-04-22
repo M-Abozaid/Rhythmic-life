@@ -18,7 +18,7 @@ module.exports = function(){
 			var nowUTC =  Date.now()
 			for (var i = users.length - 1; i >= 0; i--) {
 				let user = users[i]
-				nowLocal = moment(mowUTC).add(user.timezone , 'hours')
+				nowLocal = moment(nowUTC).add(user.timezone , 'hours')
 				lastLog =  moment(user.activityLogs[0].createdAt).add(user.timezone , 'hours')
 			 console.log('last log ',lastLog ,'now ')
 
