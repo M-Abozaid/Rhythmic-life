@@ -20,7 +20,7 @@ display: inline;
 }
 
 .Mnav-tab h2 {
-font-size: 27px;
+font-size: 24px;
 text-align: right;
 float:left;
 width: 80%;
@@ -63,19 +63,19 @@ left: 8.333%;
 
 
 .Mnav-tab h2 {
-font-size: 20px;}
+font-size: 17px;}
 .m-activity-name {
-font-size: 17px;}
+font-size: 14px;}
 .m-date {
-font-size: 12px;}
+font-size: 9px;}
 .m-note {
-font-size: 12px;}
+font-size: 9px;}
 .m-type {
-font-size: 16px;}
+font-size: 13px;}
 li span {
-font-size: 17px;}
+font-size: 14px;}
 a {
-font-size: 17px;}
+font-size: 14px;}
 
 }
 
@@ -91,19 +91,19 @@ width: 66.6666%;
 }
 
 .Mnav-tab h2 {
-font-size: 20px;}
+font-size: 17px;}
 .m-activity-name {
-font-size: 17px;}
+font-size: 14px;}
 .m-date {
-font-size: 12px;}
+font-size: 9px;}
 .m-note {
-font-size: 12px;}
+font-size: 9px;}
 .m-type {
-font-size: 16px;}
+font-size: 13px;}
 li span {
-font-size: 17px;}
+font-size: 14px;}
 a {
-font-size: 17px;}
+font-size: 14px;}
 
 }
 @media (min-width: 1200px) {
@@ -141,18 +141,18 @@ padding-left:10px;
 margin-bottom:10px;
 padding-top:10px;
 padding-bottom: 10px;
-font-size: 23px;
+font-size: 20px;
 overflow: hidden;
 margin-top: 8px
 }
 .m-date {
-font-size: 18px;
+font-size: 15px;
 color: black;
 }
 .m-note {
 margin: 2px 3px 3px 2px;
 color: rgb(83,100,90);
-font-size: 18px;
+font-size: 15px;
 padding-top: 5px;
 padding-right: 10px;
 padding-left:6px;
@@ -163,7 +163,7 @@ overflow: visible;
 overflow: visible;
 background-color: rgb(90,135,264);
 border-radius: 20px;
-font-size: 22px;
+font-size: 19px;
 margin-left: 30px;
 color: white;
 text-align: center;
@@ -180,13 +180,13 @@ border-top: 5px rgb(154,158,155) solid;
 }
 
 li span {
-font-size: 22px;
+font-size: 19px;
 }
 
 a {
 padding: 8px;
 text-align: center;
-font-size: 22px; 
+font-size: 19px; 
 display: block;
 list-style: none;
 text-decoration-style:  none;
@@ -215,7 +215,7 @@ cursor:pointer
       float: right;
       padding-top: 15px;
       padding-right: 15px;
-      font-size: 20px;
+      font-size: 17px;
       display: inline;
       color: white;
 }
