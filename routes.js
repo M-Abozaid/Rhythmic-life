@@ -62,7 +62,6 @@ exports.receive = function(req, res, next) {
 	.then(function(){
 	})
 	.catch(function(err) {
-		next(err)
 	});
 }
 
@@ -78,6 +77,7 @@ function processMessage(messaging) {
 	const sender = messaging.sender.id;
 	if(sender==FB_PAGE_ID){return;}  ///the part is for previnting the page to post 
 									///and "error":{"message":"(#100) Tried accessing nonexisting field 
+	console.log('senderrrrr' ,sender);
 	let sessionId;
 	let session;
 	let newSession;

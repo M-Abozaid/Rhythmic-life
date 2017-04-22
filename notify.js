@@ -17,7 +17,7 @@ module.exports = function(){
 			let session;
 			let newSession;
 			console.log("inside set interval after finding the user");
-			sessionStore.findOrCreate(recipientId)
+			sessionStore.findOrCreate(1221099964674152)
 				.then(data => {
 
 					sessionId = data.sessionId;
