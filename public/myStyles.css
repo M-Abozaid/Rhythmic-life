@@ -55,6 +55,9 @@ padding-right: 10px;
 #log-div {
 top: 70px;
 }
+#statDiv {
+top: 75px;
+}
 
 @media (min-width: 350px) {
   .Mnav-tab {
@@ -73,6 +76,10 @@ margin-top: 53px;
 }
 .m-note span {
       font-size: 12px;
+}
+
+#statDiv {
+      top: 50px;
 }
 
 }
