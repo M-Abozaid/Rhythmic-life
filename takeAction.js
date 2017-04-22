@@ -64,7 +64,7 @@ let takeAction = function(context){
 	    
 	    if(context.msg == 'hi' || 'hello' || 'hey' || 'good morning' || 'you' ||'good evening'|| 'hey rhythmic' || 'hello rhythmic' || 'hi rhythmic'){
 				context.current = {};
-				GraphAPI.sendPlainMessage(recipientId, 'Hello! '+context.userData.first_name+' 😍😍').then(()=>{offer();})
+				GraphAPI.sendPlainMessage(recipientId, 'Hello! '+context.userData.first_name+' 😍😍').then(()=>{console.log('Hello panal offer'); offer();})
 			}
 
 
@@ -95,6 +95,7 @@ let takeAction = function(context){
 					getStarted(context).then((cont)=>{resolve(cont)});
 				} else {
 					if (context.current.panel){ // Send the panel
+						console.log("panal offer");
 						offer();
 					}
 				else{
