@@ -95,7 +95,7 @@ console.log("getting logsssssssssssss");
 
 	if(context.current.main == 'getStarted' && !context.current.first){
 
-		GraphAPI.sendPlainMessage(recipientId, 'Oh Hello '+context.userData.first_name+'! 😃 let\'t  help keep track of your productivity.')
+		GraphAPI.sendPlainMessage(recipientId, 'Oh Hello '+context.userData.first_name+'! 😃 let\'s  help You keep track of your productivity.')
 		setTimeout(()=>{
 		GraphAPI.sendPlainMessage(recipientId, ' I can help you keep a diary of any activity you do, and give you a useful statistics about your time.')
 		}, 3000);
