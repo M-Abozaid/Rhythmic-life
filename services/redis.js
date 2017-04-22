@@ -108,9 +108,8 @@ exports.getKey = function (keyName) {
 exports.findFirstKey = function(pattern) {
    console.log('findFirstKey inside bef post');
     return client.keysQ(pattern)
-    console.log("returnd");
     .then(function(keys) {
-       
+       console.log("returnd.then ");
         return keys && keys.length && keys[0];
          console.log('inside then');
     });
