@@ -15,7 +15,7 @@ module.exports = function(){
 			let sessionId;
 			let session;
 			let newSession;
-			let timeSinceLastNot = session.timeSinceLastNot || 100
+			
 			var nowUTC =  Date.now()
 			for (var i = users.length - 1; i >= 0; i--) {
 				let user = users[i]
@@ -24,48 +24,50 @@ module.exports = function(){
 				 if(nowLocal.hour()>10 && nowLocal.hour()<23 ){
 				 	console.log('now hours ',nowLocal.hour());
 				 	if(moment.duration(nowLocal.valueOf() - lastLog.valueOf()).hours() > 24){
-				 		if(timeSinceLastNot > 1 ){
 				 			sessionStore.findOrCreate(user.recipientId)
 								.then(data => {
+					
 									sessionId = data.sessionId;
 									session = data.session;
 									newSession = data.newSession;
-								
+									let timeSinceLastNot = session.timeSinceLastNot || 100;
 									let context = session.context;
 
-									let list = _.map(user.activities,(elem)=>{return elem.name})
-									list.push('New activity')
-									let numOfQuick = list.length 
-									if(numOfQuick>11){
-										let numOfVeiws = Math.floor(numOfQuick/10) 
-										context.current.thisVeiw = context.current.thisVeiw || 0
-										let view = list.splice(context.current.thisVeiw * 10 ,10)
-										view.push("See more!")
-										let data = platformHelpers.generateQuickReplies( user.firstName + '! would you like to add what your doing now', view);
-										GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
-											if(context.current.thisVeiw != numOfVeiws ){context.current.thisVeiw += 1}else{context.current.thisVeiw = 0}
-											context.current.main = "addingLog"
-											context.current.chooseLog = true;
-											session.context = context;
-											session.timeSinceLastNot = timeSinceLastNot;
-											sessionStore.saveSession(sessionId, session);
-										})
-									}else{
-										let data = platformHelpers.generateQuickReplies(user.firstName + '! would you like to add what you\'re doing now', list);
-										//platformHelpers.generateButtonsTemplate('Choose the activity ',[{butn:'option1',},{butn:'opti2'}])
-										GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
-											context.current.main = "addingLog";
-											context.current.chooseLog = true;
-											session.context = context;
-											session.timeSinceLastNot = timeSinceLastNot;
-											sessionStore.saveSession(sessionId, session);
-										})
+									if(timeSinceLastNot > 1 ){
+
+										let list = _.map(user.activities,(elem)=>{return elem.name})
+										list.push('New activity')
+										let numOfQuick = list.length 
+										if(numOfQuick>11){
+											let numOfVeiws = Math.floor(numOfQuick/10) 
+											context.current.thisVeiw = context.current.thisVeiw || 0
+											let view = list.splice(context.current.thisVeiw * 10 ,10)
+											view.push("See more!")
+											let data = platformHelpers.generateQuickReplies( user.firstName + '! would you like to add what your doing now', view);
+											GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
+												if(context.current.thisVeiw != numOfVeiws ){context.current.thisVeiw += 1}else{context.current.thisVeiw = 0}
+												context.current.main = "addingLog"
+												context.current.chooseLog = true;
+												session.context = context;
+												session.timeSinceLastNot = timeSinceLastNot;
+												sessionStore.saveSession(sessionId, session);
+											})
+											}else{
+												let data = platformHelpers.generateQuickReplies(user.firstName + '! would you like to add what you\'re doing now', list);
+												//platformHelpers.generateButtonsTemplate('Choose the activity ',[{butn:'option1',},{butn:'opti2'}])
+												GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
+													context.current.main = "addingLog";
+													context.current.chooseLog = true;
+													session.context = context;
+													session.timeSinceLastNot = timeSinceLastNot;
+													sessionStore.saveSession(sessionId, session);
+												})
+											}
+									
 									}
 								
-
-								
 								})
-				 		}
+				 		
 
 			 	}
 
