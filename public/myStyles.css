@@ -237,7 +237,7 @@ cursor:pointer
 }
 
 .active {
-      background-color: white;
+      background-color: gray;
       color: black;
 }
 
