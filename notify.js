@@ -6,7 +6,7 @@ const sessionStore = require('./sessionStore');
 
 module.exports = function(){
 	let recipientId = "1221099964674152";
-console.log('notifiction starts');
+	console.log('notifiction starts');
 	setInterval(function(){
 
 
@@ -16,7 +16,7 @@ console.log('notifiction starts');
 			let sessionId;
 			let session;
 			let newSession;
-
+			console.log("inside set interval after finding the user");
 			sessionStore.findOrCreate(recipientId)
 				.then(data => {
 
