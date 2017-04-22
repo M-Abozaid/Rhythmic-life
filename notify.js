@@ -15,10 +15,11 @@ module.exports = function(){
 			let sessionId;
 			let session;
 			let newSession;
-			let recipientId = user.recipientId
+			
 			var nowUTC =  Date.now()
 			for (var i = users.length - 1; i >= 0; i--) {
 				let user = users[i]
+				let recipientId = user.recipientId
 				nowLocal = moment(nowUTC).add(user.timezone , 'hours')
 				lastLog =  moment(user.activityLogs[0].createdAt).add(user.timezone , 'hours')
 				 if(nowLocal.hour()>10 && nowLocal.hour()<23 ){
@@ -30,11 +31,11 @@ module.exports = function(){
 									sessionId = data.sessionId;
 									session = data.session;
 									newSession = data.newSession;
-									let timeSinceLastNot = session.timeSinceLastNot || moment(100);
+									let timeSinceLastNot = session.timeSinceLastNot || 100;
 									let context = session.context;
 
-									let timeSinceLastNotH = moment.duration(timeSinceLastNot.valueOf() - nowLocal.valueOf()).hours()
-									if(timeSinceLastNot > 1 ){
+									let timeSinceLastNotH = moment.duration(moment(timeSinceLastNot).valueOf() - nowLocal.valueOf()).hours()
+									if(timeSinceLastNotH > 1 ){
 
 										let list = _.map(user.activities,(elem)=>{return elem.name})
 										list.push('New activity')
