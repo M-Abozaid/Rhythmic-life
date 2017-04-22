@@ -51,7 +51,7 @@ padding-right: 10px;
 .m-note span {
       font-size: 18px;
 }
-@media (min-width: 400px) {
+@media (min-width: 350px) {
   .Mnav-tab {
       height: 50px;
 }
