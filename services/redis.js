@@ -111,7 +111,7 @@ exports.findFirstKey = function(pattern) {
     .then(function(keys) {
        console.log("returnd.then ");
         return keys && keys.length && keys[0];
-         console.log('inside then');
+         
     });
 }
 

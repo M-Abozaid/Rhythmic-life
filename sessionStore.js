@@ -61,6 +61,7 @@ class SessionStore {
 			});
 		})
 		.then(key => {
+			console.log('inside then');
 			// return redis.setExpire(key, SESSION_WINDOW)
 			// .then(() => {
 				return redis.getKey(key)
