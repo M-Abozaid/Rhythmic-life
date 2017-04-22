@@ -33,8 +33,9 @@ module.exports = function(){
 									newSession = data.newSession;
 									let lastNot = session.lastNot || 100;
 									let context = session.context;
+									console.log('lastNot ',lastNot);
 									let lasNotLocal = moment(lastNot).add(user.timezone , 'hours')
-
+									console.log('lasNotLocal ',lasNotLocal);
 									let lastNotH = moment.duration(moment(lasNotLocal).valueOf() - nowLocal.valueOf()).hours()
 									console.log('lastNotH ',lastNotH);
 									if(lastNotH > 1 ){
