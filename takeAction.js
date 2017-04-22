@@ -56,11 +56,10 @@ let takeAction = function(context){
 							resolve(context)})
 	}
 	// deleting context for debugging
-		if(context.msg == 'delete.context'){context.current = {}; GraphAPI.sendPlainMessage(recipientId, 'context deleted').then(()=>{resolve(context)}); };
-    
+		if(context.msg == 'delete.context'){context.current = {}; context.current.deleted =true; GraphAPI.sendPlainMessage(recipientId, 'context deleted').then(()=>{resolve(context)}); };
+	    
 	    if(context.msg == 'hi' || 'hello' || 'hey' || 'good morning' || 'you' ||'good evening'|| 'hey rhythmic' || 'hello rhythmic' || 'hi rhythmic'){
 				context.current = {};
-				context.current.deleted =true;
 				GraphAPI.sendPlainMessage(recipientId, 'Hello! '+context.userData.first_name+' 😍😍').then(()=>{offer();})
 			}
 
