@@ -48,9 +48,9 @@ LogsFactory.query(
         return (day==$scope.thisDay)
     }
 
-     $scope.isAllTime = function(day){
-       return ($scope.all)
-    }
+    //  $scope.isAllTime = function(day){
+    //    return ($scope.all)
+    // }
 
     $scope.allTime = function(){
         $scope.all = true;
@@ -84,7 +84,7 @@ angular.module('MyBot')
     });
         console.log('work ',$scope.work);
     $scope.entertainment = $scope.logs.filter(function(log){
-        return log.activity.type == "entertainment";
+        return ((log.activity.type.indexOf("entertainment") >= 0) || (log.activity.type.indexOf("تسلية") >= 0));
         
     });
     console.log('enter ',$scope.entertainment);
