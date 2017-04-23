@@ -23,9 +23,9 @@ module.exports = function(){
 
 
 				if(user.activityLogs.length == 0 ){
-					let lastLog =  moment.utc(100).add(user.timezone , 'hours')
+					var lastLog =  moment.utc(100).add(user.timezone , 'hours')
 				}else {
-					let lastLog =  moment.utc(user.activityLogs[user.activityLogs.length - 1].createdAt).add(user.timezone , 'hours')
+					var lastLog =  moment.utc(user.activityLogs[user.activityLogs.length - 1].createdAt).add(user.timezone , 'hours')
 				}
 				nowLocal = moment(nowUTC).add(user.timezone , 'hours')
 
@@ -49,6 +49,7 @@ module.exports = function(){
 										let list = _.map(user.activities,(elem)=>{return elem.name})
 										list.push('New activity')
 										let numOfQuick = list.length 
+
 										if(numOfQuick>11){
 											let numOfVeiws = Math.floor(numOfQuick/10) 
 											context.current.thisVeiw = context.current.thisVeiw || 0
