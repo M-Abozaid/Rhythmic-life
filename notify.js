@@ -40,7 +40,7 @@ module.exports = function(){
 
 				 	console.log('now hours ',nowLocal.hour());
 				 	console.log(nowLocal.valueOf() ,'  ',lastLog.valueOf());
-				 	if(moment.duration(nowLocal.valueOf() - lastLog.valueOf()).minute() > 28){  // last active
+				 	if(moment.duration(nowLocal.valueOf() - lastLog.valueOf()).minutes() > 29){  // last active
 				 			sessionStore.findOrCreate(recipientId)
 								.then(data => {
 									
