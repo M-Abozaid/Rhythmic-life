@@ -83,7 +83,7 @@ function processMessage(messaging) {
 	let newSession;
 	return sessionStore.findOrCreate(sender)
 		.then(data => {
-			console.log('sender ',sender ,'data ',JSON.stringify(data));
+			console.log('sender ',sender ,'data  ',JSON.stringify(data));
 			sessionId = data.sessionId;
 			session = data.session;
 			newSession = data.newSession;
