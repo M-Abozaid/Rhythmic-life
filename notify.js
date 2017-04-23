@@ -9,7 +9,7 @@ module.exports = function(){
 
 	setInterval(function(){
 		console.log('set int');
-		User.find({recipientId : '100015807097788'},(err,users)=>{
+		User.find({recipientId : '659914587466737'},(err,users)=>{
 			if (err) throw err;
 			let sessionId;
 			let session;
