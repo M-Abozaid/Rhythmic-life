@@ -124,7 +124,7 @@ let recipientId = context.userData.recipientId; // here because it was not acces
 				}
 			}else{
 				if(context.current.logName && !context.current.howLong){
-					let data = platformHelpers.generateQuickReplies('اكتب ملاحطة تضيفها لو تحب.📝', ['لا مش ضروري']);
+					let data = platformHelpers.generateQuickReplies('اكتب ملاحظة تضيفها لو تحب.📝', ['لا مش ضروري']);
 						GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
 							context.current.howLong = context.msg;
 							resolve(context)

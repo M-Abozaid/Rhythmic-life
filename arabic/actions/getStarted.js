@@ -95,7 +95,7 @@ console.log("getting logsssssssssssss");
 
 	if(context.current.main == 'getStarted' && !context.current.first){
 
-		GraphAPI.sendPlainMessage(recipientId, 'أهلا '+context.userData.first_name+'! 😃 خليني اعدك تحافظ علي وقتك.')
+		GraphAPI.sendPlainMessage(recipientId, 'أهلا '+context.userData.first_name+'! 😃 خليني اساعدك تحافظ علي وقتك.')
 		setTimeout(()=>{
 		GraphAPI.sendPlainMessage(recipientId, ' انا هساعدك بسهولة تكتب مفكرة بأي نشاط انت بتمعمله و اديك إحصائيات مفيدة عن وقتك.')
 		}, 3000);

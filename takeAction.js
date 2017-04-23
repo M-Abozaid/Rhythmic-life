@@ -34,14 +34,14 @@ let takeAction = function(context){
 							      {
 							        "type":"web_url",
 							        "url":"https://salty-plains-47076.herokuapp.com/show/"+recipientId,
-							        "title":"View your diary",
+							        "title":"View your diary 📜",
 							        "webview_height_ratio": "compact",
 							        "messenger_extensions": true
 							      },
 							      {
 							        "type":"web_url",
 							        "url":"https://salty-plains-47076.herokuapp.com/show/"+recipientId + "/#!/statistics",
-							        "title":"View your statistics",
+							        "title":"View your statistics 📈",
 							        "webview_height_ratio": "compact",
 							        "messenger_extensions": true
 							      }
@@ -72,10 +72,10 @@ let takeAction = function(context){
 		
 		
 
-				  if(  context.msg == 'hi' || context.msg == 'hello' || context.msg == 'hey' || context.msg == 'good morning' || context.msg == 'you' ||context.msg == 'good evening'|| context.msg == 'hey rhythmic' || context.msg == 'hello rhythmic' || context.msg == 'hi rhythmic' || context.msg == 'sup'){
-					context.current = {};
-					GraphAPI.sendPlainMessage(recipientId, 'Hello! '+context.userData.first_name+' 😃').then(()=>{console.log('Hello panal'); offer();})
-				}
+		  if(  context.msg == 'hi' || context.msg == 'hello' || context.msg == 'hey' || context.msg == 'good morning' || context.msg == 'you' ||context.msg == 'good evening'|| context.msg == 'hey rhythmic' || context.msg == 'hello rhythmic' || context.msg == 'hi rhythmic' || context.msg == 'sup'){
+			context.current = {};
+			GraphAPI.sendPlainMessage(recipientId, 'Hello! '+context.userData.first_name+' 😃').then(()=>{console.log('Hello panal'); offer();})
+		}
 		// if context 
 		else { if(context.current.main == 'offered'){
 				switch(context.msg){
