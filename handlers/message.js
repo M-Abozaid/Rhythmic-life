@@ -8,7 +8,7 @@ const takeAction = require('../takeAction')
 module.exports = function handleTextMessage (sessionId, session, msg) {
 	
 	const context = session.context;
-	context.recipientId =  session.fbid;
+	context.userData.recipientId =  session.fbid;
 	// let mesLog = session.mesLog || [];
 	// mesLog.push(msg)
 	// session.mesLog = [] //mesLog
