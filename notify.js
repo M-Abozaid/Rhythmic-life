@@ -50,7 +50,7 @@ module.exports = function(){
 									let lastNot = session.lastNot || 100;
 									let context = session.context;
 									console.log('lastNot ',lastNot);
-									let lasNotLocal = moment(lastNot).add(user.timezone , 'hours')
+									let lasNotLocal = moment.utc(lastNot).add(user.timezone , 'hours')
 									console.log('lasNotLocal ',lasNotLocal);
 									console.log('nowLocal.valueOf() ',nowLocal.valueOf());
 									console.log('nowLocal.valueOf() ',lasNotLocal.valueOf());
@@ -69,27 +69,27 @@ module.exports = function(){
 											view.push("See more!")
 											let data = platformHelpers.generateQuickReplies( user.firstName + '! would you like to add what your doing now', view);
 											console.log('ifffff');
-												// GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
-												// 	if(context.current.thisVeiw != numOfVeiws ){context.current.thisVeiw += 1}else{context.current.thisVeiw = 0}
-												// 	context.current = {};
-												// 	context.current.main = "addingLog"
-												// 	context.current.chooseLog = true;
-												// 	session.context = context;
-												// 	session.lastNot = Date.now();
-												// 	sessionStore.saveSession(sessionId, session);
-												// })
+												GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
+													if(context.current.thisVeiw != numOfVeiws ){context.current.thisVeiw += 1}else{context.current.thisVeiw = 0}
+													context.current = {};
+													context.current.main = "addingLog"
+													context.current.chooseLog = true;
+													session.context = context;
+													session.lastNot = Date.now();
+													sessionStore.saveSession(sessionId, session);
+												})
 											}else{
 												let data = platformHelpers.generateQuickReplies(user.firstName + '! would you like to add what you\'re doing now', list);
 												console.log(' else');
-												//platformHelpers.generateButtonsTemplate('Choose the activity ',[{butn:'option1',},{butn:'opti2'}])
-												// GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
-												// 	context.current = {};
-												// 	context.current.main = "addingLog";
-												// 	context.current.chooseLog = true;
-												// 	session.context = context;
-												// 	session.lastNot = Date.now();
-												// 	sessionStore.saveSession(sessionId, session);
-												// })
+												platformHelpers.generateButtonsTemplate('Choose the activity ',[{butn:'option1',},{butn:'opti2'}])
+												GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
+													context.current = {};
+													context.current.main = "addingLog";
+													context.current.chooseLog = true;
+													session.context = context;
+													session.lastNot = Date.now();
+													sessionStore.saveSession(sessionId, session);
+												})
 											}
 									
 									}
