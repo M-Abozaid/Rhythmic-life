@@ -27,7 +27,7 @@ module.exports = function(){
 				}else {
 					lastAtcive = user.activityLogs[0].createdAt
 				}
-				console.log('lastAtcive ',lastAtcive);
+				console.log('lastAtcive ',typeof(lastAtcive));
 				nowLocal = moment(nowUTC).add(user.timezone , 'hours')
 				console.log('moment(lastActive) ',moment(lastActive));
 				lastLog =  moment(lastActive).add(user.timezone , 'hours')
