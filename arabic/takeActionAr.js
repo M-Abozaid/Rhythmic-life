@@ -2,8 +2,8 @@ const getStarted = require('./actions/getStarted')
 const addActivity = require('./actions/addActivity')
 const addLog = require('./actions/addLog')
 const getLogs = require('./actions/getLogs')
-const platformHelpers = require('./platformHelpers');
-const GraphAPI = require('./graphAPI');
+const platformHelpers = require('../platformHelpers');
+const GraphAPI = require('../graphAPI');
 
 let takeAction = function(context){
 
