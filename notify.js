@@ -27,17 +27,20 @@ module.exports = function(){
 				}else {
 					lastActive = user.activityLogs[user.activityLogs.length - 1].createdAt
 				}
-				console.log(' last activity ',user.activityLogs[user.activityLogs.length - 1].logName);
-				console.log('lastActive ',lastActive);
+
 				nowLocal = moment(nowUTC).add(user.timezone , 'hours')
+
 				console.log('moment(lastActive) ',moment(lastActive));
 				lastLog =  moment.utc(lastActive).add(user.timezone , 'hours')
+
 				console.log('lastLog ',lastLog);
+
+
 				 if(nowLocal.hour()>1 && nowLocal.hour()<23 ){
 
 				 	console.log('now hours ',nowLocal.hour());
 				 	console.log(nowLocal.valueOf() ,'  ',lastLog.valueOf());
-				 	if(moment.duration(nowLocal.valueOf() - lastLog.valueOf()).hours() > 2){  // last active
+				 	if(moment.duration(nowLocal.valueOf() - lastLog.valueOf()).hours() > 1){  // last active
 				 			sessionStore.findOrCreate(recipientId)
 								.then(data => {
 									
