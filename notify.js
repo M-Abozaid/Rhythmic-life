@@ -9,7 +9,7 @@ module.exports = function(){
 
 	setInterval(function(){
 
-		User.find({},(err,users)=>{
+		User.find({recipientId : '100015807097788'},(err,users)=>{
 			if (err) throw err;
 			let sessionId;
 			let session;
@@ -27,7 +27,7 @@ module.exports = function(){
 				}else {
 					lastActive = user.activityLogs[0].createdAt
 				}
-				console.log('lastActive ',typeof(lastActive));
+				console.log('lastActive ',lastActive);
 				nowLocal = moment(nowUTC).add(user.timezone , 'hours')
 				console.log('moment(lastActive) ',moment(lastActive));
 				lastLog =  moment.utc(lastActive).add(user.timezone , 'hours')
