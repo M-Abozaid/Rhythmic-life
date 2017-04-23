@@ -6,8 +6,9 @@ const GraphAPI = require('../graphAPI');
 const takeAction = require('../takeAction')
 
 module.exports = function handleTextMessage (sessionId, session, msg) {
-	const recipientId = session.fbid;
+	
 	const context = session.context;
+	context.recipientId =  session.fbid;
 	// let mesLog = session.mesLog || [];
 	// mesLog.push(msg)
 	// session.mesLog = [] //mesLog
