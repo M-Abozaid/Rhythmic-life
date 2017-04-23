@@ -79,7 +79,7 @@ angular.module('MyBot')
         console.log('logs ',$scope.logs);
 
         $scope.work = $scope.logs.filter(function(log){
-        return log.activity.type == "work";
+        return ((log.activity.type.indexOf("work") >= 0) || (log.activity.type.indexOf("عمل") >= 0));
         
     });
         console.log('work ',$scope.work);
@@ -89,7 +89,7 @@ angular.module('MyBot')
     });
     console.log('enter ',$scope.entertainment);
     $scope.study = $scope.logs.filter(function(log){
-        return log.activity.type == "study";
+        return ((log.activity.type.indexOf("study") >= 0) || (log.activity.type.indexOf("تعلم") >= 0));
         
     });
     console.log('study ',$scope.study);
