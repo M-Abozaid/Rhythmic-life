@@ -25,8 +25,9 @@ module.exports = function(){
 				if(user.activityLogs.length == 0 ){
 					lastActive = 100
 				}else {
-					lastActive = user.activityLogs[0].createdAt
+					lastActive = user.activityLogs[user.activityLogs.length - 1].createdAt
 				}
+				console.log(' last activity ',user.activityLogs[user.activityLogs.length - 1].logName);
 				console.log('lastActive ',lastActive);
 				nowLocal = moment(nowUTC).add(user.timezone , 'hours')
 				console.log('moment(lastActive) ',moment(lastActive));
