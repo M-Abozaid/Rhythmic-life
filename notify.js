@@ -34,6 +34,7 @@ module.exports = function(){
 				 if(nowLocal.hour()>1 && nowLocal.hour()<23 ){
 
 				 	console.log('now hours ',nowLocal.hour());
+				 	console.log(nowLocal.valueOf() ,'  ',lastLog.valueOf());
 				 	if(moment.duration(nowLocal.valueOf() - lastLog.valueOf()).hours() > 2){  // last active
 				 			sessionStore.findOrCreate(recipientId)
 								.then(data => {
@@ -99,5 +100,5 @@ module.exports = function(){
 			}
 		})
 
-	}, 60000);
+	}, 30000);
 }
