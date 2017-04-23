@@ -40,7 +40,7 @@ module.exports = function(){
 
 				 	console.log('now hours ',nowLocal.hour());
 				 	console.log(nowLocal.valueOf() ,'  ',lastLog.valueOf());
-				 	if(moment.duration(nowLocal.valueOf() - lastLog.valueOf()).minutes() > 29){  // last active
+				 	if(moment.duration(nowLocal.valueOf() - lastLog.valueOf()).minutes() > 4){  // last active
 				 			sessionStore.findOrCreate(recipientId)
 								.then(data => {
 									
@@ -54,10 +54,10 @@ module.exports = function(){
 									console.log('lasNotLocal ',lasNotLocal);
 									console.log('nowLocal.valueOf() ',nowLocal.valueOf());
 									console.log('nowLocal.valueOf() ',lasNotLocal.valueOf());
-									let lastNotH = moment.duration(nowLocal.valueOf() - lasNotLocal.valueOf())
+									let lastNotH = moment.duration(nowLocal.valueOf() - lasNotLocal.valueOf()).minutes()
 									console.log('lastNotH ',lastNotH);
-									console.log(' vars ','lastNotH ',lastNotH, 'nowLocal.hour() ',nowLocal.hour());
-									if(lastNotH.minutes() > 5 ){
+									//console.log(' vars ','lastNotH ',lastNotH, 'nowLocal.hour() ',nowLocal.hour());
+									if(lastNotH > 4 ){
 										console.log('inside last if');
 										let list = _.map(user.activities,(elem)=>{return elem.name})
 										list.push('New activity')
@@ -67,7 +67,7 @@ module.exports = function(){
 											context.current.thisVeiw = context.current.thisVeiw || 0
 											let view = list.splice(context.current.thisVeiw * 10 ,10)
 											view.push("See more!")
-											let data = platformHelpers.generateQuickReplies( user.firstName + '! would you like to add what your doing now', view);
+											let data = platformHelpers.generateQuickReplies( user.firstName + '! would you like to add what you\'re doing now', view);
 											console.log('ifffff');
 												GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
 													if(context.current.thisVeiw != numOfVeiws ){context.current.thisVeiw += 1}else{context.current.thisVeiw = 0}
