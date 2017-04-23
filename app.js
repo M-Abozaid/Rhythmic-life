@@ -8,7 +8,7 @@ const bodyParser = require('body-parser');
 var path = require('path');
 var showRouter = require('./routes/showRoute')
 const notify = require('./notify')
-notify();
+
 debug('loading configuration');
 const config = require('./config');
 require('./init')(config);
@@ -42,5 +42,5 @@ console.log('port -  ',process.env.PORT);
 const server = app.listen(app.get('port'), function () {
     console.log('express server listening on port ' + server.address().port);
 });
-
+notify();
 

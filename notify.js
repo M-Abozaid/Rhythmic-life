@@ -7,9 +7,9 @@ const _ = require('lodash')
 const moment = require('moment')
 module.exports = function(){
 
-	setInterval(function(){
+	//setInterval(function(){
 		console.log('set int');
-		User.find({recipientId : '1221099964674152'},(err,users)=>{
+		User.find({},(err,users)=>{
 			if (err) throw err;
 			let sessionId;
 			let session;
@@ -91,5 +91,5 @@ module.exports = function(){
 			}
 		})
 
-	}, 5*60*1000 );
+	//}, 5*60*1000 );
 }
