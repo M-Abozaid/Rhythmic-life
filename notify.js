@@ -40,7 +40,7 @@ module.exports = function(){
 
 				 	console.log('now hours ',nowLocal.hour());
 				 	console.log(nowLocal.valueOf() ,'  ',lastLog.valueOf());
-				 	if(moment.duration(nowLocal.valueOf() - lastLog.valueOf()).minute() > 26){  // last active
+				 	if(moment.duration(nowLocal.valueOf() - lastLog.valueOf()).minute() > 28){  // last active
 				 			sessionStore.findOrCreate(recipientId)
 								.then(data => {
 									
@@ -54,10 +54,10 @@ module.exports = function(){
 									console.log('lasNotLocal ',lasNotLocal);
 									console.log('nowLocal.valueOf() ',nowLocal.valueOf());
 									console.log('nowLocal.valueOf() ',lasNotLocal.valueOf());
-									let lastNotH = moment.duration(nowLocal.valueOf() - lasNotLocal.valueOf()).minutes()
+									let lastNotH = moment.duration(nowLocal.valueOf() - lasNotLocal.valueOf())
 									console.log('lastNotH ',lastNotH);
 									console.log(' vars ','lastNotH ',lastNotH, 'nowLocal.hour() ',nowLocal.hour());
-									if(lastNotH > 5 ){
+									if(lastNotH.minutes() > 5 ){
 										console.log('inside last if');
 										let list = _.map(user.activities,(elem)=>{return elem.name})
 										list.push('New activity')
