@@ -6,9 +6,8 @@ const sessionStore = require('./sessionStore');
 const _ = require('lodash')
 const moment = require('moment')
 module.exports = function(){
-	//let recipientId = "1221099964674152";
+
 	setInterval(function(){
-	//{recipientId : "1221099964674152"}
 
 		User.find({},(err,users)=>{
 			if (err) throw err;
@@ -17,6 +16,7 @@ module.exports = function(){
 			let newSession;
 			
 			var nowUTC =  Date.now()
+
 			for (var i = users.length - 1; i >= 0; i--) {
 				let user = users[i]
 				let recipientId = user.recipientId
@@ -30,7 +30,9 @@ module.exports = function(){
 
 				nowLocal = moment(nowUTC).add(user.timezone , 'hours')
 				lastLog =  moment(lastActive).add(user.timezone , 'hours')
+
 				 if(nowLocal.hour()>10 && nowLocal.hour()<23 ){
+
 				 	console.log('now hours ',nowLocal.hour());
 				 	if(moment.duration(nowLocal.valueOf() - lastLog.valueOf()).hours() > 2){  // last active
 				 			sessionStore.findOrCreate(recipientId)
@@ -48,6 +50,7 @@ module.exports = function(){
 									console.log('nowLocal.valueOf() ',lasNotLocal.valueOf());
 									let lastNotH = moment.duration(nowLocal.valueOf() - lasNotLocal.valueOf() ).hours()
 									console.log('lastNotH ',lastNotH);
+									console.log(' vars ','lastNotH ',lastNotH, 'nowLocal.hour() ',nowLocal.hour());
 									if(lastNotH > 2 ){
 										console.log('inside last if');
 										let list = _.map(user.activities,(elem)=>{return elem.name})
@@ -59,26 +62,28 @@ module.exports = function(){
 											let view = list.splice(context.current.thisVeiw * 10 ,10)
 											view.push("See more!")
 											let data = platformHelpers.generateQuickReplies( user.firstName + '! would you like to add what your doing now', view);
-											GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
-												if(context.current.thisVeiw != numOfVeiws ){context.current.thisVeiw += 1}else{context.current.thisVeiw = 0}
-												context.current = {};
-												context.current.main = "addingLog"
-												context.current.chooseLog = true;
-												session.context = context;
-												session.lastNot = Date.now();
-												sessionStore.saveSession(sessionId, session);
-											})
+											console.log('ifffff');
+												// GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
+												// 	if(context.current.thisVeiw != numOfVeiws ){context.current.thisVeiw += 1}else{context.current.thisVeiw = 0}
+												// 	context.current = {};
+												// 	context.current.main = "addingLog"
+												// 	context.current.chooseLog = true;
+												// 	session.context = context;
+												// 	session.lastNot = Date.now();
+												// 	sessionStore.saveSession(sessionId, session);
+												// })
 											}else{
 												let data = platformHelpers.generateQuickReplies(user.firstName + '! would you like to add what you\'re doing now', list);
+												console.log(' else');
 												//platformHelpers.generateButtonsTemplate('Choose the activity ',[{butn:'option1',},{butn:'opti2'}])
-												GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
-													context.current = {};
-													context.current.main = "addingLog";
-													context.current.chooseLog = true;
-													session.context = context;
-													session.lastNot = Date.now();
-													sessionStore.saveSession(sessionId, session);
-												})
+												// GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
+												// 	context.current = {};
+												// 	context.current.main = "addingLog";
+												// 	context.current.chooseLog = true;
+												// 	session.context = context;
+												// 	session.lastNot = Date.now();
+												// 	sessionStore.saveSession(sessionId, session);
+												// })
 											}
 									
 									}
@@ -94,5 +99,5 @@ module.exports = function(){
 			}
 		})
 
-	}, 3600000);
+	}, 60000);
 }

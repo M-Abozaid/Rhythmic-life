@@ -9,9 +9,7 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 	
 	const context = session.context;
 	context.userData.recipientId =  session.fbid;
-	// let mesLog = session.mesLog || [];
-	// mesLog.push(msg)
-	// session.mesLog = [] //mesLog
+
 	context.msg = msg
 	session.state = session.state  || 'new';
 
