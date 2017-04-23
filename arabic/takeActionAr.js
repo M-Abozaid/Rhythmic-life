@@ -16,12 +16,12 @@ let takeAction = function(context){
 							"quick_replies":  [
 						    		{
 							        "content_type":"text",
-							        "title": 'Add a diary entry' ,
+							        "title": 'اضافة مفكرة جديدة' ,
 							        "payload": 1
 							      }	,
 							      {
 							        "content_type":"text",
-							        "title": "Add a new activity",
+							        "title": "اضافة نشاط جديد",
 							        "payload": 3
 							      }],
 
@@ -29,19 +29,19 @@ let takeAction = function(context){
 						      "type":"template",
 						      "payload":{
 						        "template_type":"button",
-						        "text":"What do you want to do?",
+						        "text":"تحب تعمل ايه ؟ اختر اضافة مفكرة جديدة عشان تضيف اللي انت بتعمله دلوقت",
 								"buttons":[
 							      {
 							        "type":"web_url",
 							        "url":"https://salty-plains-47076.herokuapp.com/show/"+recipientId,
-							        "title":"View your diary",
+							        "title":"شوف المفكرة 📜",
 							        "webview_height_ratio": "compact",
 							        "messenger_extensions": true
 							      },
 							      {
 							        "type":"web_url",
 							        "url":"https://salty-plains-47076.herokuapp.com/show/"+recipientId + "/#!/statistics",
-							        "title":"View your statistics",
+							        "title":"شوف الاحصاءيات 📈",
 							        "webview_height_ratio": "compact",
 							        "messenger_extensions": true
 							      }
@@ -72,14 +72,14 @@ let takeAction = function(context){
 		
 		
 
-				  if(  context.msg == 'hi' || context.msg == 'hello' || context.msg == 'hey' || context.msg == 'good morning' || context.msg == 'you' ||context.msg == 'good evening'|| context.msg == 'hey rhythmic' || context.msg == 'hello rhythmic' || context.msg == 'hi rhythmic' || context.msg == 'sup'){
-					context.current = {};
-					GraphAPI.sendPlainMessage(recipientId, 'Hello! '+context.userData.first_name+' 😃').then(()=>{console.log('Hello panal'); offer();})
-				}
+	  if(  context.msg == 'hi' || context.msg == 'hello' || context.msg == 'hey' || context.msg == 'good morning' || context.msg == 'you' ||context.msg == 'good evening'|| context.msg == 'hey rhythmic' || context.msg == 'hello rhythmic' || context.msg == 'hi rhythmic' || context.msg == 'sup' || context.msg == 'هاي' ||  context.msg == 'هاى'  ){
+		context.current = {};
+		GraphAPI.sendPlainMessage(recipientId, 'اهلا! '+context.userData.first_name+' 😃').then(()=>{console.log('Hello panal'); offer();})
+	}
 		// if context 
 		else { if(context.current.main == 'offered'){
 				switch(context.msg){
-					case 'add a diary entry': 
+					case 'اضافة مفكرة جديدة': 
 					context.current.main = 'addingLog';
 					context.current.future = true;
 					addLog(context).then((cont)=>{resolve(cont)});
@@ -88,13 +88,13 @@ let takeAction = function(context){
 					context.current.main = 'gettingLogs';
 					getLogs(context);
 					break;
-					case 'add a new activity': 
+					case 'اضافة نشاط جديد': 
 					context.current.main = 'addingActivity';
 					addActivity(context).then((cont)=>{resolve(cont)});
 					break;
 					default:
 					// create some fuzzy matching here
-					GraphAPI.sendPlainMessage(recipientId, 'I\'m sorry I don\'t understant! 😐😕  Try choose on of these.').then(()=>{
+					GraphAPI.sendPlainMessage(recipientId, 'اسف انا مش فاهم انت تقد ايه اختار حاجة من دول.').then(()=>{
 						offer();
 					})
 				}

@@ -4,6 +4,7 @@ const sessionStore = require('../sessionStore');
 //const wit = require('../wit');
 const GraphAPI = require('../graphAPI');
 const takeAction = require('../takeAction')
+const takeActionAr = require('../arabic/takeActionAr')
 
 module.exports = function handleTextMessage (sessionId, session, msg) {
 	
@@ -14,39 +15,108 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 	session.state = session.state  || 'new';
 
 	if (!context.current) { context.current = {}};  
-	if (session.state == 'new') { context.current.newUser = true; session.state = 'old'; } 
-	//if (!context.second) { context.second = {main:{},sub:{}}};
-
-	takeAction(context).then((context)=>{
-
-		if(context.current.continue){takeAction(context).then(()=>{
-			console.log(' inside if in continue');
-			context.current.continue = false
+	if (session.state == 'new' || context.msg == 'GET_STARTED_PAYLOAD') { 
+		let data = platformHelpers.generateQuickReplies('Language', ['English','عربي']);
+		GraphAPI.sendTemplateMessage(context.userData.recipientId, data).then(()=>{
 			session.context = context;
 			sessionStore.saveSession(sessionId, session)
-		})}else{
-				if(Object.keys(context.current).length == 0){
-					setTimeout(()=>{
-						context.current.panel = true;
-						takeAction(context).then(()=>{
-							session.context = context;
-							sessionStore.saveSession(sessionId, session)
-						})
-					}, 3000);
-				}else{
-					session.context = context;
-					sessionStore.saveSession(sessionId, session)
-					//sessionStore.destroy(sessionId)
-				}
+		})
+		session.state = 'old'; 
+	}
+
+	if(!context.userData.lang ){
+		if (context.msg  == 'english' || context.msg == 'عربي'){
+		context.userData.lang = context.msg
+		context.current.main = 'getStarted'
+	}else{
+			let data = platformHelpers.generateQuickReplies('Please choose Language.', ['English','عربي']);
+			GraphAPI.sendTemplateMessage(context.userData.recipientId, data).then(()=>{
+				context.userData.lang = false;
+				session.context = context;
+				sessionStore.saveSession(sessionId, session)
+			})
+		}
+	}
+
+
+		if(session.state == 'old' && context.userData.lang){
+
+			if(context.userData.lang == 'english'){
+				takeAction(context).then((context)=>{
+
+					if(context.current.continue){takeAction(context).then(()=>{
+						console.log(' inside if in continue');
+						context.current.continue = false
+						session.context = context;
+						sessionStore.saveSession(sessionId, session)
+					})}else{
+							if(Object.keys(context.current).length == 0){
+								setTimeout(()=>{
+									context.current.panel = true;
+									takeAction(context).then(()=>{
+										session.context = context;
+										sessionStore.saveSession(sessionId, session)
+									})
+								}, 3000);
+							}else{
+								session.context = context;
+								sessionStore.saveSession(sessionId, session)
+								//sessionStore.destroy(sessionId)
+							}
+						}
+
+						
+
+					console.log('context inside  handleTextMessage ',JSON.stringify(context));
+					console.log('messeging  ',msg);
+					console.log('session  inside  handleTextMessage',JSON.stringify(session));
+				})
+				
 			}
 
-			
+			if(context.userData.lang == 'عربي'){
+				takeActionAr(context).then((context)=>{
 
-		console.log('context inside  handleTextMessage ',JSON.stringify(context));
-		console.log('messeging  ',msg);
-		console.log('session  inside  handleTextMessage',JSON.stringify(session));
-	})
+					if(context.current.continue){takeAction(context).then(()=>{
+						console.log(' inside if in continue');
+						context.current.continue = false
+						session.context = context;
+						sessionStore.saveSession(sessionId, session)
+					})}else{
+							if(Object.keys(context.current).length == 0){
+								setTimeout(()=>{
+									context.current.panel = true;
+									takeAction(context).then(()=>{
+										session.context = context;
+										sessionStore.saveSession(sessionId, session)
+									})
+								}, 3000);
+							}else{
+								session.context = context;
+								sessionStore.saveSession(sessionId, session)
+								//sessionStore.destroy(sessionId)
+							}
+						}
+
+						
+
+					console.log('context inside  handleTextMessage ',JSON.stringify(context));
+					console.log('messeging  ',msg);
+					console.log('session  inside  handleTextMessage',JSON.stringify(session));
+				})
+				
+			}
+
+		}
 	
+};
+
+
+
+
+
+	
+	//if (!context.second) { context.second = {main:{},sub:{}}};
 
 	
 	
@@ -99,6 +169,5 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 	"timezone":2,"gender":"male","recipientId":"1221099964674152"}}}}
 */
 
-};
 
 
