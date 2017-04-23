@@ -40,7 +40,7 @@ let takeAction = function(context){
 							      {
 							        "type":"web_url",
 							        "url":"https://salty-plains-47076.herokuapp.com/show/"+recipientId + "/#!/statistics",
-							        "title":"شوف الاحصاءيات 📈",
+							        "title":"شوف الاحصائيات 📈",
 							        "webview_height_ratio": "compact",
 							        "messenger_extensions": true
 							      }
@@ -93,7 +93,7 @@ let takeAction = function(context){
 					break;
 					default:
 					// create some fuzzy matching here
-					GraphAPI.sendPlainMessage(recipientId, 'اسف انا مش فاهم انت تقد ايه اختار حاجة من دول.').then(()=>{
+					GraphAPI.sendPlainMessage(recipientId, 'اسف انا مش فاهم انت تقصد ايه اختار حاجة من دول.').then(()=>{
 						offer();
 					})
 				}

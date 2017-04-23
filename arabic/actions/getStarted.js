@@ -95,15 +95,15 @@ console.log("getting logsssssssssssss");
 
 	if(context.current.main == 'getStarted' && !context.current.first){
 
-		GraphAPI.sendPlainMessage(recipientId, 'أهلا '+context.userData.first_name+'! 😃 خليني هساعدك تحافظ علي وقتك.')
+		GraphAPI.sendPlainMessage(recipientId, 'أهلا '+context.userData.first_name+'! 😃 خليني اعدك تحافظ علي وقتك.')
 		setTimeout(()=>{
-		GraphAPI.sendPlainMessage(recipientId, ' انا هساعدك بسهولة تكتب مفرة باي نشاط انت بتمعملة و اديك احصائيات مفيدة عن وقتك.')
+		GraphAPI.sendPlainMessage(recipientId, ' انا هساعدك بسهولة تكتب مفكرة بأي نشاط انت بتمعمله و اديك إحصائيات مفيدة عن وقتك.')
 		}, 3000);
 		setTimeout(()=>{
-		GraphAPI.sendPlainMessage(recipientId, ' ألاول خلينا نضيف نشاط.')
+		GraphAPI.sendPlainMessage(recipientId, ' الاول خلينا نضيف نشاط.')
 		}, 6500);
 		setTimeout(()=>{
-		GraphAPI.sendPlainMessage(recipientId, ' أكتب اسم نشاط تحب تتابع الوقت اللي بيستهلكه مثلا ( تمرين, تمرين شغل علي مشروع معين أو مذاكرة موضوع معين )')
+		GraphAPI.sendPlainMessage(recipientId, ' أكتب اسم نشاط تحب تتابع الوقت اللي بيستهلكه مثلا ( تمرين, شغل علي مشروع معين أو مذاكرة موضوع معين )')
 		}, 7500);
 		context.current.first = true
 		resolve(context)
@@ -159,7 +159,7 @@ console.log("getting logsssssssssssss");
 					}
 				}else{
 					if(context.current.logName && !context.current.howLong){
-						let data = platformHelpers.generateQuickReplies('أخير تقدر تضيف ملحوضة لو تحب  📝. ', ['مش ضروري']);
+						let data = platformHelpers.generateQuickReplies('أخيرا تقدر تضيف ملحوظة لو تحب  📝. ', ['مش ضروري']);
 							GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
 								context.current.howLong = context.msg;
 								resolve(context)
