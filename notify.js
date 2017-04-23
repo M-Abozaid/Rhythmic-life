@@ -20,19 +20,19 @@ module.exports = function(){
 				let user = users[i]
 				let recipientId = user.recipientId
 				let lastActive
-
+				let lastLog
 
 				if(user.activityLogs.length == 0 ){
-					var lastLog =  moment.utc(100).add(user.timezone , 'hours')
+					 lastLog =  moment.utc(100).add(user.timezone , 'hours')
 				}else {
-					var lastLog =  moment.utc(user.activityLogs[user.activityLogs.length - 1].createdAt).add(user.timezone , 'hours')
+					 lastLog =  moment.utc(user.activityLogs[user.activityLogs.length - 1].createdAt).add(user.timezone , 'hours')
 				}
 				nowLocal = moment(nowUTC).add(user.timezone , 'hours')
 
 
 				 if(nowLocal.hour()>1 && nowLocal.hour()<23 ){
 
-				 	if(moment.duration(nowLocal.valueOf() - lastLog.valueOf()).minutes() > 12){  // last active
+				 	if(moment.duration(nowLocal.valueOf() - lastLog.valueOf()).hours() > 1){  // last active
 				 			
 				 			sessionStore.findOrCreate(recipientId)
 								.then(data => {
@@ -43,9 +43,9 @@ module.exports = function(){
 									let context = session.context;
 
 									let lastNotH = moment.duration(nowLocal.valueOf() - moment.utc(lastNot)
-										.add(user.timezone , 'hours').valueOf()).minutes()
+										.add(user.timezone , 'hours').valueOf()).hours()
 									
-									if(lastNotH > 4 ){
+									if(lastNotH > 1 ){
 										let list = _.map(user.activities,(elem)=>{return elem.name})
 										list.push('New activity')
 										let numOfQuick = list.length 
