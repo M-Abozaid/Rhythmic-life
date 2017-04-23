@@ -77,7 +77,7 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 			if(context.userData.lang == 'عربي'){
 				takeActionAr(context).then((context)=>{
 
-					if(context.current.continue){takeAction(context).then(()=>{
+					if(context.current.continue){takeActionAr(context).then(()=>{
 						console.log(' inside if in continue');
 						context.current.continue = false
 						session.context = context;
@@ -86,7 +86,7 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 							if(Object.keys(context.current).length == 0){
 								setTimeout(()=>{
 									context.current.panel = true;
-									takeAction(context).then(()=>{
+									takeActionAr(context).then(()=>{
 										session.context = context;
 										sessionStore.saveSession(sessionId, session)
 									})
@@ -115,7 +115,7 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 
 
 
-	
+
 	//if (!context.second) { context.second = {main:{},sub:{}}};
 
 	
