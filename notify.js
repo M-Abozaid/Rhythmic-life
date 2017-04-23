@@ -8,7 +8,7 @@ const moment = require('moment')
 module.exports = function(){
 
 	setInterval(function(){
-
+		console.log('set int');
 		User.find({recipientId : '100015807097788'},(err,users)=>{
 			if (err) throw err;
 			let sessionId;
