@@ -23,14 +23,14 @@ module.exports = function(){
 				let lastActive
 
 				if(user.activityLogs.length == 0 ){
-					lastAtcive = 100
+					lastActive = 100
 				}else {
-					lastAtcive = user.activityLogs[0].createdAt
+					lastActive = user.activityLogs[0].createdAt
 				}
-				console.log('lastAtcive ',typeof(lastAtcive));
+				console.log('lastActive ',typeof(lastActive));
 				nowLocal = moment(nowUTC).add(user.timezone , 'hours')
 				console.log('moment(lastActive) ',moment(lastActive));
-				lastLog =  moment(lastActive).add(user.timezone , 'hours')
+				lastLog =  moment.utc(lastActive).add(user.timezone , 'hours')
 				console.log('lastLog ',lastLog);
 				 if(nowLocal.hour()>1 && nowLocal.hour()<23 ){
 
