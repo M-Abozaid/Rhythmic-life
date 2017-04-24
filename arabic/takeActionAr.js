@@ -11,7 +11,7 @@ let takeAction = function(context){
 	return new Promise(function(resolve, reject){
 	let recipientId = context.userData.recipientId;
 	console.log('inside takeAction() ---- ');	
-	var howAre = ['انت عامل ايه','اخبارك','ازيك','ايه الاحوال','عامل ايه','الدنيا عامله معاك ايه','انت عامل ايه','وانت اخبارك','وانت عامل ايه']
+	var howAre = ['انت عامل ايه','اخبارك','ازيك','ايه الاحوال','عامل ايه','الدنيا عامله معاك ايه','انت عامل ايه','وانت اخبارك','وانت عامل ايه','كيفك','انت ازيك','انت عامل ايه','انت اخبارك ايه','انت كيفك']
 	let offer = function(){
 		let data = {
 							"quick_replies":  [
@@ -75,9 +75,17 @@ let takeAction = function(context){
 					})
 				
 				}else{
-					GraphAPI.sendPlainMessage(recipientId, 'اسف انا مش فاهم انت تقصد ايه اختار حاجة من دول.').then(()=>{
-						offer();
-					})
+					let max = fuzzChech(howAre,context.msg);
+					console.log('max ',max);
+					if (max['1'] > 70){
+						GraphAPI.sendPlainMessage(recipientId, 'انا كويس الحمد لله .').then(()=>{
+							offer();
+						})
+					}else{
+						GraphAPI.sendPlainMessage(recipientId, 'اسف انا مش فاهم انت تقصد ايه اختار حاجة من دول.').then(()=>{
+							offer();
+						})
+					}
 				}
 		}
 
@@ -165,6 +173,10 @@ let takeAction = function(context){
 														
 												})//
 											
+									}else{
+										GraphAPI.sendPlainMessage(recipientId,'تمام ').then(()=>{
+													offer();
+												})
 									}
 								}
 							}
