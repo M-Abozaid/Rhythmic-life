@@ -14,7 +14,7 @@ return new Promise(function(resolve, reject){
 		return new Promise(function(resolve, reject){
 			User.findOne({recipientId : recipientId},(err,user)=>{
 				if (err) throw err;
-				console.log('the user  ',JSON.stringify(user));
+				//console.log('the user  ',JSON.stringify(user));
 				let obj = {
 					name: context.current.activityName,
 					type: context.current.activityType,

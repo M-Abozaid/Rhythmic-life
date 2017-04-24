@@ -14,7 +14,7 @@ return new Promise(function(resolve, reject){
 		return new Promise(function(resolve, reject){
 			User.findOne({recipientId : recipientId},(err,user)=>{
 				if (err) throw err;
-				console.log('the user  ',JSON.stringify(user));
+				//console.log('the user  ',JSON.stringify(user));
 				let obj = {
 					name: context.current.activityName,
 					type: context.current.activityType,
@@ -48,7 +48,7 @@ return new Promise(function(resolve, reject){
 			if(context.current.chooseActivity && !context.current.activityType){
 			context.current.activityType = context.msg	
 			resolve(context)
-			GraphAPI.sendPlainMessage(recipientId, 'Ok tell me the name of the activity! ')
+			GraphAPI.sendPlainMessage(recipientId, 'Ok! tell me the name of the activity ')
 		 	}else{
 				if(context.current.activityType && !context.current.activityName){
 					context.current.activityName = context.msg
