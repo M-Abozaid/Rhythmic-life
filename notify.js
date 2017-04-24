@@ -97,7 +97,7 @@ module.exports = function(){
 		
 		User.findOne({recipientId : "1221099964674152"},(err,user)=>{
 			if (err) throw err;
-			console.log(user);
+			//console.log(user);
 			let sessionId;
 			let session;
 			let newSession;
