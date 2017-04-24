@@ -8,6 +8,7 @@ const _ = require('lodash');
 module.exports = function(context){
 let recipientId = context.userData.recipientId; // here because it was not accessble at saveLog
 	return new Promise(function(resolve, reject){
+	var list
 	let saveLog = function(){
 
 

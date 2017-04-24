@@ -7,7 +7,9 @@ const _ = require('lodash');
 
 module.exports = function(context){
 let recipientId = context.userData.recipientId; // here because it was not accessble at saveLog
+	
 	return new Promise(function(resolve, reject){
+		var list;
 	let saveLog = function(){
 
 
@@ -74,7 +76,7 @@ let recipientId = context.userData.recipientId; // here because it was not acces
 
 			User.findOne({recipientId : recipientId},(err,user)=>{
 				if (err) throw err;
-				var list = _.map(user.activities,(elem)=>{return elem.name})
+				 list = _.map(user.activities,(elem)=>{return elem.name})
 				console.log('list first  ', JSON.stringify(list))
 				list.push('New activity')
 				let numOfQuick = list.length 
