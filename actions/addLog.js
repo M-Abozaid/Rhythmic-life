@@ -115,7 +115,7 @@ let recipientId = context.userData.recipientId; // here because it was not acces
 						context.current.continue = true;
 						resolve(context)
 					}else{
-						if(list.indexOf(context.msg) >= 0){
+						if(list.indexOf(context.msg) >= 0 && !context.current.nextAddLog){
 							context.current.logName = context.msg;
 							let data = platformHelpers.generateQuickReplies('For how long You will be '+ context.current.logName+' ⌚.. Choose or type the exact time in minutes.', ['30 min','1 hr','1.5 hr','2 hr','2.5 hr','3 hr','3.5 hr','4 hr','5 hr']);
 							GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
