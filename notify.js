@@ -7,7 +7,7 @@ const _ = require('lodash')
 const moment = require('moment')
 module.exports = function(){
 
-	//setInterval(function(){
+	setInterval(function(){
 		console.log('set int');
 		User.find({},(err,users)=>{
 			if (err) throw err;
@@ -122,8 +122,9 @@ module.exports = function(){
 				 if(nowLocal.hour()>3 && nowLocal.hour()<18 ){
 				 	
 				 	var lastLogH = moment.duration(nowLocal.valueOf() - lastLog.valueOf()).asMinutes()
+				 	
 				 	console.log('first if',lastLogH);
-				 	if(lastLogH > 2){  // last active
+				 	if(lastLogH > 40){  // last active
 				 			
 				 			sessionStore.findOrCreate(recipientId)
 								.then(data => {
@@ -136,7 +137,9 @@ module.exports = function(){
 									let lastNotH = moment.duration(nowLocal.valueOf() - moment(lastNot)
 										.add(user.timezone , 'hours').valueOf()).asMinutes()
 									console.log('sec if' , lastNotH);
-									if(lastNotH > 2 ){
+									
+
+									if(lastNotH > 40 ){
 										console.log('thired if');
 										let list = _.map(user.activities,(elem)=>{return elem.name})
 										list.push('نشاط جديد')
@@ -184,5 +187,5 @@ module.exports = function(){
 			
 		})
 
-	//}, 1*60*1000 );
+	}, 10*60*1000 );
 }
