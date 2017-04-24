@@ -71,7 +71,7 @@ let takeAction = function(context){
 		if (max['1'] > 70){
 			GraphAPI.sendPlainMessage(recipientId, max['0'] +' يا '+ context.userData.first_name + 'عامل ايه').then(()=>{
 						context.current.main == 'howAreYou';
-						resolve(context)	
+						resolve(context);	
 					})
 				
 				}else{
@@ -120,8 +120,9 @@ let takeAction = function(context){
 					addActivity(context).then((cont)=>{resolve(cont)});
 					break;
 					default:
+					console.log('context in default ',context);
 					others(context.msg)
-
+					break;
 					// create some fuzzy matching here
 					
 				}
