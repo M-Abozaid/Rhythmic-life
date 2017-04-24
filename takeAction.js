@@ -64,9 +64,7 @@ let takeAction = function(context){
 	    
 	  	if(context.msg == 'contexxt'){
 		  GraphAPI.sendPlainMessage(recipientId, JSON.stringify(context))
-		  .then(()=>{context.current = {};
-		 	context.current.deleted = true;
-		  	resolve(context)}); };
+		   };
 
 		if(context.msg == 'cancel'){
 			context.current = {};
