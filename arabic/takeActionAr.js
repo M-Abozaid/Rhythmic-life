@@ -153,7 +153,7 @@ let takeAction = function(context){
 									console.log('maxx ',max);
 									if (max['1'] > 50){
 										GraphAPI.sendPlainMessage(recipientId,'يا رب ديما').then(()=>{
-											console.log('maxx ',max);
+											//console.log('maxx ',max);
 											let max = fuzzChech(howAre,context.msg);
 											if(max['1'] > 50){
 												GraphAPI.sendPlainMessage(recipientId,'انا بخير الحمد لله ').then(()=>{
