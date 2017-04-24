@@ -67,9 +67,9 @@ let takeAction = function(context){
 		var greetings = ['اهلا' ,'سلام عليكم',	'السلام عليكم',	'هلو'	,'الو'	,'يابوت',	'صباح الخير',	'مساء الخير'	, 'صبح'	,	'هاي'	];
 
 		let max = fuzzChech(greetings,context.msg);
-		
-		if (max['0'] > 70){
-			GraphAPI.sendPlainMessage(recipientId, max['1'] +' يا '+ context.userData.first_name + 'عامل ايه').then(()=>{
+		console.log('max ',max);
+		if (max['1'] > 70){
+			GraphAPI.sendPlainMessage(recipientId, max['0'] +' يا '+ context.userData.first_name + 'عامل ايه').then(()=>{
 						context.current.main == 'howAreYou';	
 					})
 				
