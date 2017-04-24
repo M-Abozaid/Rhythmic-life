@@ -154,8 +154,8 @@ let takeAction = function(context){
 									if (max['1'] > 50){
 										GraphAPI.sendPlainMessage(recipientId,'يا رب ديما').then(()=>{
 											//console.log('maxx ',max);
-											let max = fuzzChech(howAre,context.msg);
-											if(max['1'] > 50){
+											let max = fuzzChech(howAre, context.msg);
+											if(max['1'] > 50 || context.msg.indexOf("وانت") >= 0){
 												GraphAPI.sendPlainMessage(recipientId,'انا بخير الحمد لله ').then(()=>{
 													offer();
 												})
