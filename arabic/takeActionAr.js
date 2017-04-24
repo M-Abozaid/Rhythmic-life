@@ -147,8 +147,10 @@ let takeAction = function(context){
 								if(context.current.main == 'howAreYou'){
 									var imFine =  ["الحمد لله ","تمام ","بخير","الحمد لله بخير" ," انا كويس الحمد لله ","كله تمام","اشطه","عنب"," حمادة" ,"حمادة بالجنزبيل","لوكس","نحمد الله"]
 									let max = fuzzChech(imFine,context.msg);
+									console.log('maxx ',max);
 									if (max['1'] > 50){
-										GraphAPI.sendPlainMessage('يا رب دايما').then(()=>{
+										GraphAPI.sendPlainMessage('يا رب ديما').then(()=>{
+											console.log('maxx ',max);
 											let max = fuzzChech(howAre,context.msg);
 											if(max['1'] > 50){
 												GraphAPI.sendPlainMessage('انا بخير الحمد لله ').then(()=>{
