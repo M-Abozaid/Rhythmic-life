@@ -118,8 +118,9 @@ module.exports = function(){
 
 
 				 if(nowLocal.hour()>3 && nowLocal.hour()<17 ){
-				 	console.log('first if',lastLogH);
+				 	
 				 	var lastLogH = moment.duration(nowLocal.valueOf() - lastLog.valueOf()).minutes()
+				 	console.log('first if',lastLogH);
 				 	if(lastLogH > 40){  // last active
 				 			
 				 			sessionStore.findOrCreate(recipientId)
