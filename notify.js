@@ -117,7 +117,7 @@ module.exports = function(){
 				nowLocal = moment(nowUTC).add(user.timezone , 'hours')
 
 
-				 if(nowLocal.hour()>3 && nowLocal.hour()<17 ){
+				 if(nowLocal.hour()>3 && nowLocal.hour()<18 ){
 				 	
 				 	var lastLogH = moment.duration(nowLocal.valueOf() - lastLog.valueOf()).minutes()
 				 	console.log('first if',lastLogH);
