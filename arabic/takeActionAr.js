@@ -152,11 +152,11 @@ let takeAction = function(context){
 									let max = fuzzChech(imFine,context.msg);
 									console.log('maxx ',max);
 									if (max['1'] > 50){
-										GraphAPI.sendPlainMessage('يا رب ديما').then(()=>{
+										GraphAPI.sendPlainMessage(recipientId,'يا رب ديما').then(()=>{
 											console.log('maxx ',max);
 											let max = fuzzChech(howAre,context.msg);
 											if(max['1'] > 50){
-												GraphAPI.sendPlainMessage('انا بخير الحمد لله ').then(()=>{
+												GraphAPI.sendPlainMessage(recipientId,'انا بخير الحمد لله ').then(()=>{
 													offer();
 												})
 											}else{
