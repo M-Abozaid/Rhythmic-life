@@ -158,7 +158,7 @@ let takeAction = function(context){
 												offer();
 											}
 														
-												})
+												})//
 											
 									}
 								}
