@@ -120,7 +120,7 @@ let recipientId = context.userData.recipientId; // here because it was not acces
 							if (err) throw err;
 							 list = _.map(user.activities,(elem)=>{return elem.name})
 							})
-						if(list.indexOf(context.msg) >= 0 && !context.current.nextAddLog){
+						if(list.indexOf(context.msg) >= 0 ){
 							context.current.logName = context.msg;
 							let data = platformHelpers.generateQuickReplies('هتفضل قد ايه تـ '+ context.current.logName+' ⌚.. اختار أو اكتب الوقت بالدقيقة.', ['30 دق','1 س','1.5 س','2 س','2.5 س','3 س','3.5 س','4 س','5 س']);
 							GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
