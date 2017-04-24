@@ -31,8 +31,8 @@ module.exports = function(){
 
 
 				 if(nowLocal.hour()>10 && nowLocal.hour()<23 ){
-
-				 	if(moment.duration(nowLocal.valueOf() - lastLog.valueOf()).hours() > 24){  // last active
+				 	var lastLogH = moment.duration(nowLocal.valueOf() - lastLog.valueOf()).hours()
+				 	if(lastLogH > 24){  // last active
 				 			
 				 			sessionStore.findOrCreate(recipientId)
 								.then(data => {
@@ -45,17 +45,18 @@ module.exports = function(){
 									let lastNotH = moment.duration(nowLocal.valueOf() - moment.utc(lastNot)
 										.add(user.timezone , 'hours').valueOf()).hours()
 									
-									if(lastNotH > 24 ){
+									if(lastNotH > 24 && lastNotH > lastLogH){
 										let list = _.map(user.activities,(elem)=>{return elem.name})
-										list.push('New activity')
+										list.push('نشاط جديد')
 										let numOfQuick = list.length 
 
 										if(numOfQuick>11){
 											let numOfVeiws = Math.floor(numOfQuick/10) 
 											context.current.thisVeiw = context.current.thisVeiw || 0
 											let view = list.splice(context.current.thisVeiw * 10 ,10)
-											view.push("See more!")
+											view.push("المزيد!")
 											let data = platformHelpers.generateQuickReplies( user.firstName + '! would you like to add what you\'re doing now', view);
+											if(context.userData.lang == 'عربي'){ data = platformHelpers.generateQuickReplies( user.firstName + '! تحب تضيف اللي انت بتعمله دلوقت للمفكرة', view);}
 												GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
 													if(context.current.thisVeiw != numOfVeiws ){context.current.thisVeiw += 1}else{context.current.thisVeiw = 0}
 													context.current = {};
@@ -67,7 +68,7 @@ module.exports = function(){
 												})
 											}else{
 												let data = platformHelpers.generateQuickReplies(user.firstName + '! would you like to add what you\'re doing now', list);
-												platformHelpers.generateButtonsTemplate('Choose the activity ',[{butn:'option1',},{butn:'opti2'}])
+												if(context.userData.lang == 'عربي'){ data = platformHelpers.generateQuickReplies( user.firstName + '! تحب تضيف اللي انت بتعمله دلوقت للمفكرة', view);}
 												GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
 													context.current = {};
 													context.current.main = "addingLog";
@@ -91,5 +92,5 @@ module.exports = function(){
 			}
 		})
 
-	}, 5*60*1000 );
+	}, 10*60*1000 );
 }
