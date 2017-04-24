@@ -70,7 +70,8 @@ let takeAction = function(context){
 		console.log('max ',max);
 		if (max['1'] > 70){
 			GraphAPI.sendPlainMessage(recipientId, max['0'] +' يا '+ context.userData.first_name + 'عامل ايه').then(()=>{
-						context.current.main == 'howAreYou';	
+						context.current.main == 'howAreYou';
+						resolve(context)	
 					})
 				
 				}else{
