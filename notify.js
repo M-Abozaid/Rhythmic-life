@@ -118,6 +118,7 @@ module.exports = function(){
 
 
 				 if(nowLocal.hour()>3 && nowLocal.hour()<17 ){
+				 	console.log('first if');
 				 	var lastLogH = moment.duration(nowLocal.valueOf() - lastLog.valueOf()).minutes()
 				 	if(lastLogH > 40){  // last active
 				 			
@@ -133,6 +134,7 @@ module.exports = function(){
 										.add(user.timezone , 'hours').valueOf()).minutes()
 									
 									if(lastNotH > 40 ){
+										console.log('sec if');
 										let list = _.map(user.activities,(elem)=>{return elem.name})
 										list.push('نشاط جديد')
 										let numOfQuick = list.length 
@@ -179,5 +181,5 @@ module.exports = function(){
 			
 		})
 
-	}, 3*60*1000 );
+	}, 1*60*1000 );
 }
