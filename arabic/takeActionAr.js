@@ -147,6 +147,7 @@ let takeAction = function(context){
 								getStarted(context).then((cont)=>{resolve(cont)});
 							}else{
 								if(context.current.main == 'howAreYou'){
+									console.log('inside how are you');
 									var imFine =  ["الحمد لله ","تمام ","بخير","الحمد لله بخير" ," انا كويس الحمد لله ","كله تمام","اشطه","عنب"," حمادة" ,"حمادة بالجنزبيل","لوكس","نحمد الله"]
 									let max = fuzzChech(imFine,context.msg);
 									console.log('maxx ',max);

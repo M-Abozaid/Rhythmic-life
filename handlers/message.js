@@ -76,7 +76,7 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 
 			if(context.userData.lang == 'عربي'){
 				takeActionAr(context).then((context)=>{
-
+					console.log('current main con',context.current.main);
 					if(context.current.continue){takeActionAr(context).then(()=>{
 						console.log(' inside if in continue');
 						context.current.continue = false
