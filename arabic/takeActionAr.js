@@ -3,13 +3,15 @@ const addActivity = require('./actions/addActivity')
 const addLog = require('./actions/addLog')
 const platformHelpers = require('../platformHelpers');
 const GraphAPI = require('../graphAPI');
+const fuzz = require('fuzzball');
+const _ = require('lodash');
 
 let takeAction = function(context){
 
 	return new Promise(function(resolve, reject){
 	let recipientId = context.userData.recipientId;
 	console.log('inside takeAction() ---- ');	
-
+	var howAre = ['انت عامل ايه','اخبارك','ازيك','ايه الاحوال','عامل ايه','الدنيا عامله معاك ايه','انت عامل ايه','وانت اخبارك','وانت عامل ايه']
 	let offer = function(){
 		let data = {
 							"quick_replies":  [
@@ -54,6 +56,30 @@ let takeAction = function(context){
 							context.current.panel = false;
 							resolve(context)})
 	}
+	var fuzzChech = function(choices,query){
+
+		return _.maxBy(fuzz.extract(query, choices), function(o) { 
+		  return o['1']; });
+		//console.log('',);
+	}
+	var others = function(mess){
+		var greetings = ['اهلا' ,'سلام عليكم',	'السلام عليكم',	'هلو'	,'الو'	,'يابوت',	'صباح الخير',	'مساء الخير'	, 'صبح'	,	'هاي'	];
+
+		let max = fuzzChech(greetings,context.msg);
+		
+		if (max['0'] > 70){
+			GraphAPI.sendPlainMessage(recipientId, max['1'] +' يا '+ context.userData.first_name + 'عامل ايه').then(()=>{
+						context.current.main == 'howAreYou';	
+					})
+				
+				}else{
+					GraphAPI.sendPlainMessage(recipientId, 'اسف انا مش فاهم انت تقصد ايه اختار حاجة من دول.').then(()=>{
+						offer();
+					})
+				}
+		}
+
+	
 	// deleting context for debugging
 		if(context.msg == 'delete.context'){
 		  GraphAPI.sendPlainMessage(recipientId, 'context deleted')
@@ -71,10 +97,10 @@ let takeAction = function(context){
 		
 		
 
-	  if(  context.msg == 'hi' || context.msg == 'hello' || context.msg == 'hey' || context.msg == 'good morning' || context.msg == 'you' ||context.msg == 'good evening'|| context.msg == 'hey rhythmic' || context.msg == 'hello rhythmic' || context.msg == 'hi rhythmic' || context.msg == 'sup' || context.msg == 'هاي' ||  context.msg == 'هاى'  ){
-		context.current = {};
-		GraphAPI.sendPlainMessage(recipientId, 'اهلا! '+context.userData.first_name+' 😃').then(()=>{console.log('Hello panal'); offer();})
-	}
+	 //  if(  context.msg == 'hi' || context.msg == 'hello' || context.msg == 'hey' || context.msg == 'good morning' || context.msg == 'you' ||context.msg == 'good evening'|| context.msg == 'hey rhythmic' || context.msg == 'hello rhythmic' || context.msg == 'hi rhythmic' || context.msg == 'sup' || context.msg == 'هاي' ||  context.msg == 'هاى'  ){
+		// context.current = {};
+		// GraphAPI.sendPlainMessage(recipientId, 'اهلا! '+context.userData.first_name+' 😃').then(()=>{console.log('Hello panal'); offer();})
+		// }
 		// if context 
 		else { if(context.current.main == 'offered'){
 				switch(context.msg){
@@ -92,10 +118,10 @@ let takeAction = function(context){
 					addActivity(context).then((cont)=>{resolve(cont)});
 					break;
 					default:
+
+
 					// create some fuzzy matching here
-					GraphAPI.sendPlainMessage(recipientId, 'اسف انا مش فاهم انت تقصد ايه اختار حاجة من دول.').then(()=>{
-						offer();
-					})
+					
 				}
 
 			}
@@ -116,6 +142,25 @@ let takeAction = function(context){
 							if(context.current.main == 'getStarted'){
 								context.current.main = 'getStarted'
 								getStarted(context).then((cont)=>{resolve(cont)});
+							}else{
+								if(context.current.main == 'howAreYou'){
+									var imFine =  ["الحمد لله ","تمام ","بخير","الحمد لله بخير" ," انا كويس الحمد لله ","كله تمام","اشطه","عنب"," حمادة" ,"حمادة بالجنزبيل","لوكس","نحمد الله"]
+									let max = fuzzChech(imFine,context.msg);
+									if (max['1'] > 50){
+										GraphAPI.sendPlainMessage('يا رب دايما').then(()=>{
+											let max = fuzzChech(howAre,context.msg);
+											if(max['1'] > 50){
+												GraphAPI.sendPlainMessage('انا بخير الحمد لله ').then(()=>{
+													offer();
+												})
+											}else{
+												offer();
+											}
+														
+												})
+											
+									}
+								}
 							}
 						}
 					}
