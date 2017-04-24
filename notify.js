@@ -31,7 +31,7 @@ module.exports = function(){
 
 
 				 if(nowLocal.hour()>10 && nowLocal.hour()<23 ){
-				 	var lastLogH = moment.duration(nowLocal.valueOf() - lastLog.valueOf()).hours()
+				 	var lastLogH = moment.duration(nowLocal.valueOf() - lastLog.valueOf()).asHours()
 				 	if(lastLogH > 24){  // last active //
 				 			
 				 			sessionStore.findOrCreate(recipientId)
@@ -43,7 +43,7 @@ module.exports = function(){
 									let context = session.context;
 
 									let lastNotH = moment.duration(nowLocal.valueOf() - moment(lastNot)
-										.add(user.timezone , 'hours').valueOf()).hours()
+										.add(user.timezone , 'hours').valueOf()).asHours()
 									
 									if(lastNotH > 24 && lastNotH > lastLogH){
 										let list = _.map(user.activities,(elem)=>{return elem.name})
@@ -121,7 +121,7 @@ module.exports = function(){
 				console.log('first if v ',nowLocal);
 				 if(nowLocal.hour()>3 && nowLocal.hour()<18 ){
 				 	
-				 	var lastLogH = moment.duration(nowLocal.valueOf() - lastLog.valueOf()).minutes()
+				 	var lastLogH = moment.duration(nowLocal.valueOf() - lastLog.valueOf()).asMinutes()
 				 	console.log('first if',lastLogH);
 				 	if(lastLogH > 2){  // last active
 				 			
@@ -134,7 +134,7 @@ module.exports = function(){
 									let context = session.context;
 
 									let lastNotH = moment.duration(nowLocal.valueOf() - moment(lastNot)
-										.add(user.timezone , 'hours').valueOf()).minutes()
+										.add(user.timezone , 'hours').valueOf()).asMinutes()
 									console.log('sec if' , lastNotH);
 									if(lastNotH > 2 ){
 										console.log('thired if');
