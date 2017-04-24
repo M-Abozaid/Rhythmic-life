@@ -118,11 +118,12 @@ module.exports = function(){
 
 				console.log('first if',lastLog);
 				console.log('first if v ',lastLog.valueOf());
+				console.log('first if v ',nowLocal);
 				 if(nowLocal.hour()>3 && nowLocal.hour()<18 ){
 				 	
 				 	var lastLogH = moment.duration(nowLocal.valueOf() - lastLog.valueOf()).minutes()
 				 	console.log('first if',lastLogH);
-				 	if(lastLogH > 40){  // last active
+				 	if(lastLogH > 2){  // last active
 				 			
 				 			sessionStore.findOrCreate(recipientId)
 								.then(data => {
@@ -135,7 +136,7 @@ module.exports = function(){
 									let lastNotH = moment.duration(nowLocal.valueOf() - moment(lastNot)
 										.add(user.timezone , 'hours').valueOf()).minutes()
 									console.log('sec if' , lastNotH);
-									if(lastNotH > 40 ){
+									if(lastNotH > 2 ){
 										console.log('thired if');
 										let list = _.map(user.activities,(elem)=>{return elem.name})
 										list.push('نشاط جديد')
