@@ -32,7 +32,7 @@ module.exports = function(){
 
 				 if(nowLocal.hour()>10 && nowLocal.hour()<23 ){
 				 	var lastLogH = moment.duration(nowLocal.valueOf() - lastLog.valueOf()).hours()
-				 	if(lastLogH > 24){  // last active
+				 	if(lastLogH > 24){  // last active //
 				 			
 				 			sessionStore.findOrCreate(recipientId)
 								.then(data => {
@@ -176,5 +176,6 @@ module.exports = function(){
 			
 			
 		})
+
 	}, 10*60*1000 );
 }
