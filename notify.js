@@ -23,9 +23,9 @@ module.exports = function(){
 				let lastLog
 
 				if(user.activityLogs.length == 0 ){
-					 lastLog =  moment.utc(100).add(user.timezone , 'hours')
+					 lastLog =  moment(100).add(user.timezone , 'hours')
 				}else {
-					 lastLog =  moment.utc(user.activityLogs[user.activityLogs.length - 1].createdAt).add(user.timezone , 'hours')
+					 lastLog =  moment(user.activityLogs[user.activityLogs.length - 1].createdAt).add(user.timezone , 'hours')
 				}
 				nowLocal = moment(nowUTC).add(user.timezone , 'hours')
 
@@ -42,7 +42,7 @@ module.exports = function(){
 									let lastNot = session.lastNot || 100;
 									let context = session.context;
 
-									let lastNotH = moment.duration(nowLocal.valueOf() - moment.utc(lastNot)
+									let lastNotH = moment.duration(nowLocal.valueOf() - moment(lastNot)
 										.add(user.timezone , 'hours').valueOf()).hours()
 									
 									if(lastNotH > 24 && lastNotH > lastLogH){
@@ -110,14 +110,14 @@ module.exports = function(){
 				let lastLog
 
 				if(user.activityLogs.length == 0 ){
-					 lastLog =  moment.utc(100).add(user.timezone , 'hours')
+					 lastLog =  moment(100).add(user.timezone , 'hours')
 				}else {
-					 lastLog =  moment.utc(user.activityLogs[user.activityLogs.length - 1].createdAt).add(user.timezone , 'hours')
+					 lastLog =  moment(user.activityLogs[user.activityLogs.length - 1].createdAt).add(user.timezone , 'hours')
 				}
 				nowLocal = moment(nowUTC).add(user.timezone , 'hours')
 
 				console.log('first if',lastLog);
-				console.log('first if v ',lastLog.lastLog.valueOf());
+				console.log('first if v ',lastLog.valueOf());
 				 if(nowLocal.hour()>3 && nowLocal.hour()<18 ){
 				 	
 				 	var lastLogH = moment.duration(nowLocal.valueOf() - lastLog.valueOf()).minutes()
@@ -132,7 +132,7 @@ module.exports = function(){
 									let lastNot = session.lastNot || 100;
 									let context = session.context;
 
-									let lastNotH = moment.duration(nowLocal.valueOf() - moment.utc(lastNot)
+									let lastNotH = moment.duration(nowLocal.valueOf() - moment(lastNot)
 										.add(user.timezone , 'hours').valueOf()).minutes()
 									console.log('sec if' , lastNotH);
 									if(lastNotH > 40 ){
