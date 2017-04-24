@@ -103,7 +103,7 @@ let takeAction = function(context){
 		// GraphAPI.sendPlainMessage(recipientId, 'اهلا! '+context.userData.first_name+' 😃').then(()=>{console.log('Hello panal'); offer();})
 		// }
 		// if context 
-		else { if(context.current.main == 'offered'){
+		if(context.current.main == 'offered'){
 				switch(context.msg){
 					case 'اضافة مفكرة جديدة': 
 					context.current.main = 'addingLog';
@@ -169,7 +169,7 @@ let takeAction = function(context){
 			
 
 			}
-	}
+	
 	
 }
 	//resolve(context)
