@@ -62,6 +62,7 @@ let takeAction = function(context){
 		  return o['1']; });
 		//console.log('',);
 	}
+
 	var others = function(mess){
 		var greetings = ['اهلا' ,'سلام عليكم',	'السلام عليكم',	'هلو'	,'الو'	,'يابوت',	'صباح الخير',	'مساء الخير'	, 'صبح'	,	'هاي'	];
 
@@ -118,7 +119,7 @@ let takeAction = function(context){
 					addActivity(context).then((cont)=>{resolve(cont)});
 					break;
 					default:
-
+					others(context.msg)
 
 					// create some fuzzy matching here
 					
