@@ -59,7 +59,7 @@ return new Promise(function(resolve, reject){
 				}else{
 					if(context.current.activityName && !context.current.positivity){
 						context.current.positivity = context.msg
-						let data = platformHelpers.generateQuickReplies('هل النشاط ده عادة؟ 🔁', {0:'نعم 👈🏼',1:'👉🏼 ال'});
+						let data = platformHelpers.generateQuickReplies('هل النشاط ده عادة؟ 🔁', {0:'نعم 👈🏼',1:'👉🏼 لا'});
 						GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{resolve(context)})
 					}else{
 						if(context.current.positivity && !context.current.hebitual){

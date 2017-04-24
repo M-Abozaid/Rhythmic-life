@@ -122,7 +122,7 @@ let recipientId = context.userData.recipientId; // here because it was not acces
 								resolve(context)
 							})
 						}else{
-							GraphAPI.sendPlainMessage(recipientId,'This activity does\'nt exist on your list if you want to add it choose new activity').then(()=>{
+							GraphAPI.sendPlainMessage(recipientId,'This activity doesn\'t exist on your list if you want to add it choose new activity').then(()=>{
 								context.current.chooseLog = false;
 								context.current.continue = true;
 								resolve(context)
