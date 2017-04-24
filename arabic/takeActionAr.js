@@ -78,8 +78,9 @@ let takeAction = function(context){
 					let max = fuzzChech(howAre,context.msg);
 					console.log('max ',max);
 					if (max['1'] > 70){
-						GraphAPI.sendPlainMessage(recipientId, 'انا كويس الحمد لله .').then(()=>{
-							offer();
+						GraphAPI.sendPlainMessage(recipientId, 'انا كويس الحمد لله انت اخبارك ايه.').then(()=>{
+							context.current.main = 'howAreYou';
+							resolve(context);
 						})
 					}else{
 						GraphAPI.sendPlainMessage(recipientId, 'اسف انا مش فاهم انت تقصد ايه اختار حاجة من دول.').then(()=>{
