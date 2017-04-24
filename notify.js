@@ -102,7 +102,7 @@ module.exports = function(){
 			let session;
 			let newSession;
 			var nowUTC =  Date.now()
-
+			console.log('user find');
 			
 				
 				let recipientId = user.recipientId
