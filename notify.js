@@ -68,7 +68,7 @@ module.exports = function(){
 												})
 											}else{
 												let data = platformHelpers.generateQuickReplies(user.firstName + '! would you like to add what you\'re doing now', list);
-												if(context.userData.lang == 'عربي'){ data = platformHelpers.generateQuickReplies( user.firstName + '! تحب تضيف اللي انت بتعمله دلوقت للمفكرة', view);}
+												if(context.userData.lang == 'عربي'){ data = platformHelpers.generateQuickReplies( user.firstName + '! تحب تضيف اللي انت بتعمله دلوقت للمفكرة', list);}
 												GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
 													context.current = {};
 													context.current.main = "addingLog";
