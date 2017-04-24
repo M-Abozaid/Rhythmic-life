@@ -94,7 +94,7 @@ module.exports = function(){
 
 
 
-		User.find({recipientId:"1221099964674152"},(err,user)=>{
+		User.find({"recipientId" : "1221099964674152"},(err,user)=>{
 			if (err) throw err;
 			let sessionId;
 			let session;
