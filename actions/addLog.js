@@ -74,14 +74,14 @@ let recipientId = context.userData.recipientId; // here because it was not acces
 
 			User.findOne({recipientId : recipientId},(err,user)=>{
 				if (err) throw err;
-				list = _.map(user.activities,(elem)=>{return elem.name})
+				var list = _.map(user.activities,(elem)=>{return elem.name})
 				console.log('list first  ', JSON.stringify(list))
 				list.push('New activity')
 				let numOfQuick = list.length 
 				if(numOfQuick>11){
 					let numOfVeiws = Math.floor(numOfQuick/10) 
 					context.current.thisVeiw = context.current.thisVeiw || 0
-					let view = list.splice(context.current.thisVeiw * 10 ,10)
+					var view = list.splice(context.current.thisVeiw * 10 ,10)
 					view.push("See more!")
 					let data = platformHelpers.generateQuickReplies('Choose the activity ', view);
 					GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
@@ -115,11 +115,20 @@ let recipientId = context.userData.recipientId; // here because it was not acces
 						context.current.continue = true;
 						resolve(context)
 					}else{
-						context.current.logName = context.msg;
-						let data = platformHelpers.generateQuickReplies('For how long You will be '+ context.current.logName+' ⌚.. Choose or type the exact time in minutes.', ['30 min','1 hr','1.5 hr','2 hr','2.5 hr','3 hr','3.5 hr','4 hr','5 hr']);
-						GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
-							resolve(context)
-						})
+						if(list.indexOf(context.msg) >= 0){
+							context.current.logName = context.msg;
+							let data = platformHelpers.generateQuickReplies('For how long You will be '+ context.current.logName+' ⌚.. Choose or type the exact time in minutes.', ['30 min','1 hr','1.5 hr','2 hr','2.5 hr','3 hr','3.5 hr','4 hr','5 hr']);
+							GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
+								resolve(context)
+							})
+						}else{
+							GraphAPI.sendPlainMessage(recipientId,'This activity does\'nt exist on your list if you want to add it choose new activity').then(()=>{
+								context.current.chooseLog = false;
+								context.current.continue = true;
+								resolve(context)
+							})
+						}
+						
 					}
 				}
 			}else{

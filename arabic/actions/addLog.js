@@ -115,11 +115,20 @@ let recipientId = context.userData.recipientId; // here because it was not acces
 						context.current.continue = true;
 						resolve(context)
 					}else{
-						context.current.logName = context.msg;
-						let data = platformHelpers.generateQuickReplies('هتفضل قد ايه تـ '+ context.current.logName+' ⌚.. اختار أو اكتب الوقت بالدقيقة.', ['30 دق','1 س','1.5 س','2 س','2.5 س','3 س','3.5 س','4 س','5 س']);
-						GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
-							resolve(context)
-						})
+						if(list.indexOf(context.msg) >= 0){
+							context.current.logName = context.msg;
+							let data = platformHelpers.generateQuickReplies('هتفضل قد ايه تـ '+ context.current.logName+' ⌚.. اختار أو اكتب الوقت بالدقيقة.', ['30 دق','1 س','1.5 س','2 س','2.5 س','3 س','3.5 س','4 س','5 س']);
+							GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
+								resolve(context)
+							})
+						}else{
+							GraphAPI.sendPlainMessage(recipientId,'النشاط ده مش موجود في القايمة اختار نشاط جديد لو عاوز تضيفه').then(()=>{
+								context.current.chooseLog = false;
+								context.current.continue = true;
+								resolve(context)
+							})
+						}
+						
 					}
 				}
 			}else{
