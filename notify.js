@@ -17,8 +17,7 @@ module.exports = function(){
 		console.log('now ',nowUTC);
 		
 		let recipientId = user.recipientId
-		let lastActive
-		let lastLog
+		const lastLog
 
 		if(user.activityLogs.length == 0 ){
 			 lastLog =  moment(100).add(user.timezone , 'hours')
@@ -37,7 +36,7 @@ module.exports = function(){
 							sessionId = data.sessionId;
 							session = data.session;
 							newSession = data.newSession;
-							let lastNot = session.lastNot || 100;
+							const lastNot = session.lastNot || 100;
 							let context = session.context;
 
 
