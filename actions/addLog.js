@@ -141,7 +141,7 @@ let recipientId = context.userData.recipientId; // here because it was not acces
 				}
 			}else{
 				if(context.current.logName && !context.current.howLong){
-					if(howMuchTime.indexOf(context.msg) >= 0 || typeof(context.msg) == 'number'){
+					if(howMuchTime.indexOf(context.msg) >= 0 || !(isNaN(context.msg)) ){
 					let data = platformHelpers.generateQuickReplies('Type a note to be included if you like.📝', ['No thats it']);
 						GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
 							context.current.howLong = context.msg;
