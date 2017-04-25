@@ -34,7 +34,7 @@ module.exports = function(){
 				nowLocal = nowUTC.add(user.timezone , 'hours')
 				console.log('nowlocal ',nowLocal,'timezone ',user.timezone);
 
-				 if(nowLocal.hour()>1 && nowLocal.hour()<23 ){
+				// if(nowLocal.hour()>1 && nowLocal.hour()<23 ){
 				 	var lastLogH = moment.duration(nowLocal.valueOf() - lastLog.valueOf()).asHours()
 				 	//if(lastLogH > 1){  // last active //
 				 			
@@ -99,7 +99,7 @@ module.exports = function(){
 
 			 	//}
 
-			}
+			//}
 
 			
 			}
