@@ -11,13 +11,15 @@ module.exports = function(){
 		console.log('set int');
 		User.find({},(err,users)=>{
 			if (err) throw err;
-			let sessionId;
-			let session;
-			let newSession;
-			var nowUTC = moment();
-			console.log('now ',nowUTC);
+		
 
 			for (var i = users.length - 1; i >= 0; i--) {
+				let sessionId;
+				let session;
+				let newSession;
+				var nowUTC = moment();
+				
+				console.log('now ',nowUTC);
 				let user = users[i]
 				let recipientId = user.recipientId
 				let lastActive
