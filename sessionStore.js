@@ -44,7 +44,7 @@ class SessionStore {
 	}
 
 	findOrCreate(fbid) {
-		console.log('findOrCreate inside');
+		// console.log('findOrCreate inside');
 		let newSession = false;
 		return redis.findFirstKey(this._redisPrefix + '*' + fbid)
 		.then(key => {
@@ -53,15 +53,15 @@ class SessionStore {
 			}
 			newSession = true;
 			key = this._redisPrefix + uuid.v1() + fbid;
-			console.log('newSession true');
+			// console.log('newSession true');
 			return redis.setKey(key, JSON.stringify({fbid: fbid, context: {}}))
 			.then(() => {
-				console.log('in set key');
+				// console.log('in set key');
 				return key;
 			});
 		})
 		.then(key => {
-			console.log('inside then');
+			// console.log('inside then');
 			// return redis.setExpire(key, SESSION_WINDOW)
 			// .then(() => {
 				return redis.getKey(key)
