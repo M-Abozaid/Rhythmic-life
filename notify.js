@@ -53,7 +53,7 @@ module.exports = function(){
 										console.log('user ',user.firstName + user.lastName);
 										console.log('lastNotH ',lastNotH);
 										console.log('lastLogH  ',lastLogH);
-										console.log('nowLocal   ',nowLocal);
+										console.log('nowLocal   ',nowLocal,' ',user.firstName);
 
 									if(lastNotH > 24 && lastNotH > lastLogH){
 										// let list = _.map(user.activities,(elem)=>{return elem.name})
