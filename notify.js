@@ -28,7 +28,7 @@ module.exports = function(){
 		console.log('nowlocal ',nowLocal,'timezone ',user.timezone);
 
 		// if(nowLocal.hour()>1 && nowLocal.hour()<23 ){
-			console.log('lastlog ',lastLog' ',user.firstName );
+			console.log('lastlog ',lastLog,' ',user.firstName );
 		 	let lastLogH = moment.duration(nowLocal.valueOf() - lastLog.valueOf()).asHours()
 		 	//if(lastLogH > 1){  // last active //
 		 			
