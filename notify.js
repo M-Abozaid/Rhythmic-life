@@ -13,18 +13,18 @@ module.exports = function(){
 			if (err) throw err;
 		
 
-			for (var i = users.length - 1; i >= 0; i--) {
+			for (let i = users.length - 1; i >= 0; i--) {
 
-				var sessionId;
-				var session;
-				var newSession;
-				var nowUTC = moment();
+				let sessionId;
+				let session;
+				let newSession;
+				let nowUTC = moment();
 
 				console.log('now ',nowUTC);
-				var user = users[i]
-				var recipientId = user.recipientId
-				var lastActive
-				var lastLog
+				let user = users[i]
+				let recipientId = user.recipientId
+				let lastActive
+				let lastLog
 
 				if(user.activityLogs.length == 0 ){
 					 lastLog =  moment(100).add(user.timezone , 'hours')
@@ -35,7 +35,7 @@ module.exports = function(){
 				console.log('nowlocal ',nowLocal,'timezone ',user.timezone);
 
 				// if(nowLocal.hour()>1 && nowLocal.hour()<23 ){
-				 	var lastLogH = moment.duration(nowLocal.valueOf() - lastLog.valueOf()).asHours()
+				 	let lastLogH = moment.duration(nowLocal.valueOf() - lastLog.valueOf()).asHours()
 				 	//if(lastLogH > 1){  // last active //
 				 			
 				 			sessionStore.findOrCreate(recipientId)
@@ -43,14 +43,14 @@ module.exports = function(){
 									sessionId = data.sessionId;
 									session = data.session;
 									newSession = data.newSession;
-									var lastNot = session.lastNot || 100;
-									var context = session.context;
+									let lastNot = session.lastNot || 100;
+									let context = session.context;
 
 
 									//  lastNot= moment(lastNot).add(user.timezone , 'hours')
-									//  var lastNotH = duration(nowLocal.valueOf() - moment(lastNot).valueOf()).asHours()
+									//  let lastNotH = duration(nowLocal.valueOf() - moment(lastNot).valueOf()).asHours()
 
-									var lastNotH = moment.duration(nowLocal.valueOf() - moment(lastNot)
+									let lastNotH = moment.duration(nowLocal.valueOf() - moment(lastNot)
 										.add(user.timezone , 'hours').valueOf()).asHours()
 										
 										console.log('user ',user.firstName + user.lastName);
@@ -59,16 +59,16 @@ module.exports = function(){
 										console.log('nowLocal   ',nowLocal,' ',user.firstName);
 
 									//if(lastNotH > 1 && lastNotH > lastLogH){
-										// var list = _.map(user.activities,(elem)=>{return elem.name})
+										// let list = _.map(user.activities,(elem)=>{return elem.name})
 										// list.push('نشاط جديد')
-										// var numOfQuick = list.length 
+										// let numOfQuick = list.length 
 
 										// if(numOfQuick>11){
-										// 	var numOfVeiws = Math.floor(numOfQuick/10) 
+										// 	let numOfVeiws = Math.floor(numOfQuick/10) 
 										// 	context.current.thisVeiw = context.current.thisVeiw || 0
-										// 	var view = list.splice(context.current.thisVeiw * 10 ,10)
+										// 	let view = list.splice(context.current.thisVeiw * 10 ,10)
 										// 	view.push("المزيد!")
-										// 	var data = platformHelpers.generateQuickReplies( user.firstName + '! would you like to add what you\'re doing now', view);
+										// 	let data = platformHelpers.generateQuickReplies( user.firstName + '! would you like to add what you\'re doing now', view);
 										// 	if(context.userData.lang == 'عربي'){ data = platformHelpers.generateQuickReplies( user.firstName + '! تحب تضيف اللي انت بتعمله دلوقت للمفكرة', view);}
 										// 		GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
 										// 			if(context.current.thisVeiw != numOfVeiws ){context.current.thisVeiw += 1}else{context.current.thisVeiw = 0}
@@ -80,7 +80,7 @@ module.exports = function(){
 										// 			sessionStore.saveSession(sessionId, session);
 										// 		})
 										// 	}else{
-										// 		var data = platformHelpers.generateQuickReplies(user.firstName + '! would you like to add what you\'re doing now', list);
+										// 		let data = platformHelpers.generateQuickReplies(user.firstName + '! would you like to add what you\'re doing now', list);
 										// 		if(context.userData.lang == 'عربي'){ data = platformHelpers.generateQuickReplies( user.firstName + '! تحب تضيف اللي انت بتعمله دلوقت للمفكرة', list);}
 										// 		GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
 										// 			context.current = {};
@@ -111,16 +111,16 @@ module.exports = function(){
 		// User.findOne({recipientId : "1221099964674152"},(err,user)=>{
 		// 	if (err) throw err;
 		// 	//console.log(user);
-		// 	var sessionId;
-		// 	var session;
-		// 	var newSession;
-		// 	var nowUTC =  Date.now()
+		// 	let sessionId;
+		// 	let session;
+		// 	let newSession;
+		// 	let nowUTC =  Date.now()
 		// 	// console.log('user find');
 			
 				
-		// 		var recipientId = user.recipientId
-		// 		var lastActive
-		// 		var lastLog
+		// 		let recipientId = user.recipientId
+		// 		let lastActive
+		// 		let lastLog
 
 		// 		if(user.activityLogs.length == 0 ){
 		// 			 lastLog =  moment(100).add(user.timezone , 'hours')
@@ -134,7 +134,7 @@ module.exports = function(){
 		// 		// console.log('first if v ',nowLocal);
 		// 		 if(nowLocal.hour()>3 && nowLocal.hour()<18 ){
 				 	
-		// 		 	var lastLogH = moment.duration(nowLocal.valueOf() - lastLog.valueOf()).asMinutes()
+		// 		 	let lastLogH = moment.duration(nowLocal.valueOf() - lastLog.valueOf()).asMinutes()
 				 	
 		// 		 	// console.log('first if',lastLogH);
 		// 		 	if(lastLogH > 40){  // last active
@@ -144,26 +144,26 @@ module.exports = function(){
 		// 							sessionId = data.sessionId;
 		// 							session = data.session;
 		// 							newSession = data.newSession;
-		// 							var lastNot = session.lastNot || 100;
-		// 							var context = session.context;
+		// 							let lastNot = session.lastNot || 100;
+		// 							let context = session.context;
 
-		// 							var lastNotH = moment.duration(nowLocal.valueOf() - moment(lastNot)
+		// 							let lastNotH = moment.duration(nowLocal.valueOf() - moment(lastNot)
 		// 								.add(user.timezone , 'hours').valueOf()).asMinutes()
 		// 							// console.log('sec if' , lastNotH);
 									
 
 		// 							if(lastNotH > 40 ){
 		// 								// console.log('thired if');
-		// 								var list = _.map(user.activities,(elem)=>{return elem.name})
+		// 								let list = _.map(user.activities,(elem)=>{return elem.name})
 		// 								list.push('نشاط جديد')
-		// 								var numOfQuick = list.length 
+		// 								let numOfQuick = list.length 
 
 		// 								if(numOfQuick>11){
-		// 									var numOfVeiws = Math.floor(numOfQuick/10) 
+		// 									let numOfVeiws = Math.floor(numOfQuick/10) 
 		// 									context.current.thisVeiw = context.current.thisVeiw || 0
-		// 									var view = list.splice(context.current.thisVeiw * 10 ,10)
+		// 									let view = list.splice(context.current.thisVeiw * 10 ,10)
 		// 									view.push("المزيد!")
-		// 									var data = platformHelpers.generateQuickReplies( user.firstName + '! would you like to add what you\'re doing now', view);
+		// 									let data = platformHelpers.generateQuickReplies( user.firstName + '! would you like to add what you\'re doing now', view);
 		// 									if(context.userData.lang == 'عربي'){ data = platformHelpers.generateQuickReplies( user.firstName + '! تحب تضيف اللي انت بتعمله دلوقت للمفكرة', view);}
 		// 										GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
 		// 											if(context.current.thisVeiw != numOfVeiws ){context.current.thisVeiw += 1}else{context.current.thisVeiw = 0}
@@ -175,7 +175,7 @@ module.exports = function(){
 		// 											sessionStore.saveSession(sessionId, session);
 		// 										})
 		// 									}else{
-		// 										var data = platformHelpers.generateQuickReplies(user.firstName + '! would you like to add what you\'re doing now', list);
+		// 										let data = platformHelpers.generateQuickReplies(user.firstName + '! would you like to add what you\'re doing now', list);
 		// 										if(context.userData.lang == 'عربي'){ data = platformHelpers.generateQuickReplies( user.firstName + '! تحب تضيف اللي انت بتعمله دلوقت للمفكرة', list);}
 		// 										GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
 		// 											context.current = {};
