@@ -29,7 +29,7 @@ module.exports = function(){
 					 lastLog =  moment(user.activityLogs[user.activityLogs.length - 1].createdAt).add(user.timezone , 'hours')
 				}
 				nowLocal = nowUTC.add(user.timezone , 'hours')
-
+				console.log('nowlocal ',nowLocal,'timezone ',user.timezone);
 
 				 if(nowLocal.hour()>1 && nowLocal.hour()<23 ){
 				 	var lastLogH = moment.duration(nowLocal.valueOf() - lastLog.valueOf()).asHours()
