@@ -7,7 +7,7 @@ const _ = require('lodash')
 const moment = require('moment')
 module.exports = function(){
 
-	setInterval(function(){
+	//setInterval(function(){
 		console.log('set int');
 		User.find({},(err,users)=>{
 			if (err) throw err;
@@ -49,6 +49,7 @@ module.exports = function(){
 									let lastNotH = moment.duration(nowLocal.valueOf() - moment(lastNot)
 										.add(user.timezone , 'hours').valueOf()).asHours()
 										
+										console.log('user ',user.firstName + user.lastName);
 										console.log('lastNotH ',lastNotH);
 										console.log('lastLogH  ',lastLogH);
 										console.log('nowLocal   ',nowLocal);
@@ -195,5 +196,5 @@ module.exports = function(){
 			
 		})
 
-	}, 10*60*1000 );
+	//}, 10*60*1000 );
 }
