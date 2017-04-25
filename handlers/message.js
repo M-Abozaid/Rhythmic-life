@@ -38,6 +38,13 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 		}
 	}
 
+	if(context.msg=='destroysess'){
+		sessionStore.destroy(sessionId).then(()=>{
+			GraphAPI.sendPlainMessage(recipientId, 'Session distroyed')
+						
+		})
+	}
+
 
 		if(session.state == 'old' && context.userData.lang){
 

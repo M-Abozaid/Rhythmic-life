@@ -52,7 +52,7 @@ module.exports = function(){
 								console.log('lastNotH ',lastNotH,user.firstName);
 								console.log('lastLogH  ',lastLogH,user.firstName);
 								console.log('nowLocal   ',nowLocal,' ',user.firstName);
-
+								sessionStore.destroy(sessionId)
 							//if(lastNotH > 1 && lastNotH > lastLogH){
 								// let list = _.map(user.activities,(elem)=>{return elem.name})
 								// list.push('نشاط جديد')
