@@ -8,6 +8,7 @@ const moment = require('moment')
 module.exports = function(){
 
 	var notify = function(user){
+		
 		let sessionId;
 		let session;
 		let newSession;
@@ -24,7 +25,7 @@ module.exports = function(){
 		}else {
 			 lastLog =  moment(user.activityLogs[user.activityLogs.length - 1].createdAt).add(user.timezone , 'hours')
 		}
-		nowLocal = nowUTC.add(user.timezone , 'hours')
+		const nowLocal = nowUTC.add(user.timezone , 'hours')
 		console.log('nowlocal ',nowLocal,'timezone ',user.timezone);
 
 		// if(nowLocal.hour()>1 && nowLocal.hour()<23 ){
