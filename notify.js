@@ -7,14 +7,14 @@ const _ = require('lodash')
 const moment = require('moment')
 module.exports = function(){
 
-	var notify = function(userI){
+	var notify = function(user){
 		let sessionId;
 		let session;
 		let newSession;
 		let nowUTC = moment();
 
 		console.log('now ',nowUTC);
-		let user = users[userI]
+		
 		let recipientId = user.recipientId
 		let lastActive
 		let lastLog
@@ -103,8 +103,8 @@ module.exports = function(){
 		
 
 			for (let i = users.length - 1; i >= 0; i--) {
-
-				notify(i);
+				let user = users[i]
+				notify(user);
 			
 			}
 		})
