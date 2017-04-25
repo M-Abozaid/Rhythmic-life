@@ -36,7 +36,7 @@ module.exports = function(){
 
 				 if(nowLocal.hour()>1 && nowLocal.hour()<23 ){
 				 	var lastLogH = moment.duration(nowLocal.valueOf() - lastLog.valueOf()).asHours()
-				 	if(lastLogH > 1){  // last active //
+				 	//if(lastLogH > 1){  // last active //
 				 			
 				 			sessionStore.findOrCreate(recipientId)
 								.then(data => {
@@ -58,7 +58,7 @@ module.exports = function(){
 										console.log('lastLogH  ',lastLogH);
 										console.log('nowLocal   ',nowLocal,' ',user.firstName);
 
-									if(lastNotH > 1 && lastNotH > lastLogH){
+									//if(lastNotH > 1 && lastNotH > lastLogH){
 										// var list = _.map(user.activities,(elem)=>{return elem.name})
 										// list.push('نشاط جديد')
 										// var numOfQuick = list.length 
@@ -92,12 +92,12 @@ module.exports = function(){
 										// 		})
 										// 	}
 									
-									}
+									//}
 								
 								})
 				 		
 
-			 	}
+			 	//}
 
 			}
 
