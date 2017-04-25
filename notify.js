@@ -54,8 +54,8 @@ module.exports = function(){
 										.add(user.timezone , 'hours').valueOf()).asHours()
 										
 										console.log('user ',user.firstName + user.lastName);
-										console.log('lastNotH ',lastNotH);
-										console.log('lastLogH  ',lastLogH);
+										console.log('lastNotH ',lastNotH,user.firstName);
+										console.log('lastLogH  ',lastLogH,user.firstName);
 										console.log('nowLocal   ',nowLocal,' ',user.firstName);
 
 									//if(lastNotH > 1 && lastNotH > lastLogH){
