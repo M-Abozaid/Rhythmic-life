@@ -9,7 +9,9 @@ module.exports = function(context){
 let recipientId = context.userData.recipientId; // here because it was not accessble at saveLog
 	
 	return new Promise(function(resolve, reject){
-		var list = [];
+	var list = [];
+	const howMuchTime = ['30 min','1 hr','1.5 hr','2 hr','2.5 hr','3 hr','3.5 hr','4 hr','5 hr','6 hr','7 hr']
+
 	let saveLog = function(){
 
 
@@ -123,7 +125,7 @@ let recipientId = context.userData.recipientId; // here because it was not acces
 							
 						if(list.indexOf(context.msg) >= 0){
 							context.current.logName = context.msg;
-							let data = platformHelpers.generateQuickReplies('For how long You will be '+ context.current.logName+' ⌚.. Choose or type the exact time in minutes.', ['30 min','1 hr','1.5 hr','2 hr','2.5 hr','3 hr','3.5 hr','4 hr','5 hr']);
+							let data = platformHelpers.generateQuickReplies('For how long You will be '+ context.current.logName+' ⌚.. Choose or type the exact time in minutes.',howMuchTime );
 							GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
 								resolve(context)
 							})
@@ -139,11 +141,20 @@ let recipientId = context.userData.recipientId; // here because it was not acces
 				}
 			}else{
 				if(context.current.logName && !context.current.howLong){
+					if(howMuchTime.indexOf(context.msg) >= 0 || typeof(context.msg) == 'number'){
 					let data = platformHelpers.generateQuickReplies('Type a note to be included if you like.📝', ['No thats it']);
 						GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
 							context.current.howLong = context.msg;
 							resolve(context)
 						})
+					}else{
+						GraphAPI.sendPlainMessage(recipientId,'Please choose one of these or type a number').then(()=>{
+								context.msg = context.current.logName;
+								context.current.logName = false;
+								context.current.continue = true;
+								resolve(context)
+							})
+					}
 				}else{
 					if(context.current.howLong && !context.current.note){
 						if(context.msg == "no thats it"){

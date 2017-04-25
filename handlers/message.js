@@ -38,7 +38,7 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 		}
 	}
 
-	if(context.msg=='destroysess'){
+	if(context.msg=='destroysession'){
 		sessionStore.destroy(sessionId).then(()=>{
 			GraphAPI.sendPlainMessage(recipientId, 'Session distroyed')
 						
