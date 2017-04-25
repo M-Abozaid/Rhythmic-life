@@ -10,7 +10,7 @@ let recipientId = context.userData.recipientId; // here because it was not acces
 	
 	return new Promise(function(resolve, reject){
 	var list = [];
-	const howMuchTime = ['30 min','1 hr','1.5 hr','2 hr','2.5 hr','3 hr','3.5 hr','4 hr','5 hr','6 hr','7 hr']
+	const howMuchTime = ['30 min','1 hr','1.5 hr','2 hr','2.5 hr','3 hr','3.5 hr','4 hr','5 hr','6 hr','7 hr'];
 
 	let saveLog = function(){
 
@@ -47,6 +47,14 @@ let recipientId = context.userData.recipientId; // here because it was not acces
 					case '5 hr':
 					howLongInMil = 5   * 60 * 60 *1000
 					break;
+					case '6 hr':
+					howLongInMil = 6   * 60 * 60 *1000
+					break;
+					case '7 hr':
+					howLongInMil = 7   * 60 * 60 *1000
+					break;
+					default:
+					howLongInMil = Number(context.current.howLong)  * 60 *1000
 				}
 				let obj = {
 					logName: context.current.logName,
