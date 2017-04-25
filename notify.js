@@ -98,7 +98,7 @@ module.exports = function(){
 
 	// }
 
-	setInterval(function(){
+	//setInterval(function(){
 	// 	console.log('set int');
 	// 	User.find({},(err,users)=>{
 	// 		if (err) throw err;
@@ -143,7 +143,7 @@ module.exports = function(){
 				 	let lastLogH = moment.duration(nowLocal.valueOf() - lastLog.valueOf()).asMinutes()
 				 	
 				 	// console.log('first if',lastLogH);
-				 	if(lastLogH > 30 && lastNotH > lastLogH){  // last active
+				 	if(lastLogH > 30 ){  // last active
 				 			
 				 			sessionStore.findOrCreate(recipientId)
 								.then(data => {
@@ -158,7 +158,7 @@ module.exports = function(){
 									// console.log('sec if' , lastNotH);
 									
 
-									if(lastNotH > 30 ){
+									if(lastNotH > 30 && lastNotH > lastLogH){
 										// console.log('thired if');
 										let list = _.map(user.activities,(elem)=>{return elem.name})
 										list.push('نشاط جديد')
@@ -206,5 +206,5 @@ module.exports = function(){
 			
 		})
 
-	}, 5*60*1000 );
+	//}, 5*60*1000 );
 }
