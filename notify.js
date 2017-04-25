@@ -14,7 +14,8 @@ module.exports = function(){
 			let sessionId;
 			let session;
 			let newSession;
-			var nowUTC =  Date.now()
+			var nowUTC = moment();
+			console.log('now ',nowUTC);
 
 			for (var i = users.length - 1; i >= 0; i--) {
 				let user = users[i]
@@ -27,7 +28,7 @@ module.exports = function(){
 				}else {
 					 lastLog =  moment(user.activityLogs[user.activityLogs.length - 1].createdAt).add(user.timezone , 'hours')
 				}
-				nowLocal = moment(nowUTC).add(user.timezone , 'hours')
+				nowLocal = nowUTC.add(user.timezone , 'hours')
 
 
 				 if(nowLocal.hour()>1 && nowLocal.hour()<23 ){
