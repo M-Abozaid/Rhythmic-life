@@ -17,7 +17,7 @@ module.exports = function(){
 		console.log('now ',nowUTC);
 		
 		let recipientId = user.recipientId
-		const lastLog
+		let lastLog
 
 		if(user.activityLogs.length == 0 ){
 			 lastLog =  moment(100).add(user.timezone , 'hours')
