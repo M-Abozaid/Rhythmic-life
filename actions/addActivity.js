@@ -48,13 +48,29 @@ return new Promise(function(resolve, reject){
 			if(context.current.chooseActivity && !context.current.activityType){
 			context.current.activityType = context.msg	
 			resolve(context)
-			GraphAPI.sendPlainMessage(recipientId, 'Ok! tell me the name of the activity ')
+			GraphAPI.sendPlainMessage(recipientId, ' Type a name for the activity ')
 		 	}else{
 				if(context.current.activityType && !context.current.activityName){
-					context.current.activityName = context.msg
-					console.log('activity type ',context.msg,' saved');
-					let data = platformHelpers.generateQuickReplies('is it positve or ngative', {0:'positive 👍🏼',1:'ngative 👎🏼',2:'other 🏼'});
-					GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{resolve(context)})
+					
+					User.findOne({recipientId : recipientId},(err,user)=>{
+							if (err) throw err;
+							let list = _.map(user.activities,(elem)=>{return elem.name})
+							
+						if(list.indexOf(context.msg) >= 0){
+							GraphAPI.sendPlainMessage(recipientId, 'The activity '+ context.msg +' already exists. Type cancel or type a new name.').then(()=>{
+								context.msg = context.current.activityType
+								context.current.activityType = false;
+								context.current.continue = true;
+								resolve(context)
+							})
+						}else{
+							context.current.activityName = context.msg
+							console.log('activity type ',context.msg,' saved');
+							let data = platformHelpers.generateQuickReplies('is it positve or ngative', {0:'positive 👍🏼',1:'ngative 👎🏼',2:'other 🏼'});
+							GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{resolve(context)})
+						}
+					})
+					
 					
 				}else{
 					if(context.current.activityName && !context.current.positivity){
