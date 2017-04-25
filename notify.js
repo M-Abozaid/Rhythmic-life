@@ -48,7 +48,7 @@ module.exports = function(){
 
 
 									//  lastNot= moment(lastNot).add(user.timezone , 'hours')
-									// var lastNotH = duration(nowLocal.valueOf() - moment(lastNot).valueOf()).asHours()
+									//  var lastNotH = duration(nowLocal.valueOf() - moment(lastNot).valueOf()).asHours()
 
 									var lastNotH = moment.duration(nowLocal.valueOf() - moment(lastNot)
 										.add(user.timezone , 'hours').valueOf()).asHours()
