@@ -48,6 +48,7 @@ module.exports = function(){
 								.add(user.timezone , 'hours').valueOf()).asHours()
 								
 								console.log('user ',user.firstName + user.lastName);
+								console.log('lastNotifiy   ',moment(lastNot).add(user.timezone , 'hours'),user.firstName);
 								console.log('lastNotH ',lastNotH,user.firstName);
 								console.log('lastLogH  ',lastLogH,user.firstName);
 								console.log('nowLocal   ',nowLocal,' ',user.firstName);
