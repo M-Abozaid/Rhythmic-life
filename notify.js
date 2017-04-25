@@ -108,97 +108,97 @@ module.exports = function(){
 
 
 		
-		User.findOne({recipientId : "1221099964674152"},(err,user)=>{
-			if (err) throw err;
-			//console.log(user);
-			var sessionId;
-			var session;
-			var newSession;
-			var nowUTC =  Date.now()
-			// console.log('user find');
+		// User.findOne({recipientId : "1221099964674152"},(err,user)=>{
+		// 	if (err) throw err;
+		// 	//console.log(user);
+		// 	var sessionId;
+		// 	var session;
+		// 	var newSession;
+		// 	var nowUTC =  Date.now()
+		// 	// console.log('user find');
 			
 				
-				var recipientId = user.recipientId
-				var lastActive
-				var lastLog
+		// 		var recipientId = user.recipientId
+		// 		var lastActive
+		// 		var lastLog
 
-				if(user.activityLogs.length == 0 ){
-					 lastLog =  moment(100).add(user.timezone , 'hours')
-				}else {
-					 lastLog =  moment(user.activityLogs[user.activityLogs.length - 1].createdAt).add(user.timezone , 'hours')
-				}
-				nowLocal = moment(nowUTC).add(user.timezone , 'hours')
+		// 		if(user.activityLogs.length == 0 ){
+		// 			 lastLog =  moment(100).add(user.timezone , 'hours')
+		// 		}else {
+		// 			 lastLog =  moment(user.activityLogs[user.activityLogs.length - 1].createdAt).add(user.timezone , 'hours')
+		// 		}
+		// 		nowLocal = moment(nowUTC).add(user.timezone , 'hours')
 
-				// console.log('first if',lastLog);
-				// console.log('first if v ',lastLog.valueOf());
-				// console.log('first if v ',nowLocal);
-				 if(nowLocal.hour()>3 && nowLocal.hour()<18 ){
+		// 		// console.log('first if',lastLog);
+		// 		// console.log('first if v ',lastLog.valueOf());
+		// 		// console.log('first if v ',nowLocal);
+		// 		 if(nowLocal.hour()>3 && nowLocal.hour()<18 ){
 				 	
-				 	var lastLogH = moment.duration(nowLocal.valueOf() - lastLog.valueOf()).asMinutes()
+		// 		 	var lastLogH = moment.duration(nowLocal.valueOf() - lastLog.valueOf()).asMinutes()
 				 	
-				 	// console.log('first if',lastLogH);
-				 	if(lastLogH > 40){  // last active
+		// 		 	// console.log('first if',lastLogH);
+		// 		 	if(lastLogH > 40){  // last active
 				 			
-				 			sessionStore.findOrCreate(recipientId)
-								.then(data => {
-									sessionId = data.sessionId;
-									session = data.session;
-									newSession = data.newSession;
-									var lastNot = session.lastNot || 100;
-									var context = session.context;
+		// 		 			sessionStore.findOrCreate(recipientId)
+		// 						.then(data => {
+		// 							sessionId = data.sessionId;
+		// 							session = data.session;
+		// 							newSession = data.newSession;
+		// 							var lastNot = session.lastNot || 100;
+		// 							var context = session.context;
 
-									var lastNotH = moment.duration(nowLocal.valueOf() - moment(lastNot)
-										.add(user.timezone , 'hours').valueOf()).asMinutes()
-									// console.log('sec if' , lastNotH);
+		// 							var lastNotH = moment.duration(nowLocal.valueOf() - moment(lastNot)
+		// 								.add(user.timezone , 'hours').valueOf()).asMinutes()
+		// 							// console.log('sec if' , lastNotH);
 									
 
-									if(lastNotH > 40 ){
-										// console.log('thired if');
-										var list = _.map(user.activities,(elem)=>{return elem.name})
-										list.push('نشاط جديد')
-										var numOfQuick = list.length 
+		// 							if(lastNotH > 40 ){
+		// 								// console.log('thired if');
+		// 								var list = _.map(user.activities,(elem)=>{return elem.name})
+		// 								list.push('نشاط جديد')
+		// 								var numOfQuick = list.length 
 
-										if(numOfQuick>11){
-											var numOfVeiws = Math.floor(numOfQuick/10) 
-											context.current.thisVeiw = context.current.thisVeiw || 0
-											var view = list.splice(context.current.thisVeiw * 10 ,10)
-											view.push("المزيد!")
-											var data = platformHelpers.generateQuickReplies( user.firstName + '! would you like to add what you\'re doing now', view);
-											if(context.userData.lang == 'عربي'){ data = platformHelpers.generateQuickReplies( user.firstName + '! تحب تضيف اللي انت بتعمله دلوقت للمفكرة', view);}
-												GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
-													if(context.current.thisVeiw != numOfVeiws ){context.current.thisVeiw += 1}else{context.current.thisVeiw = 0}
-													context.current = {};
-													context.current.main = "addingLog"
-													context.current.chooseLog = true;
-													session.context = context;
-													session.lastNot = Date.now();
-													sessionStore.saveSession(sessionId, session);
-												})
-											}else{
-												var data = platformHelpers.generateQuickReplies(user.firstName + '! would you like to add what you\'re doing now', list);
-												if(context.userData.lang == 'عربي'){ data = platformHelpers.generateQuickReplies( user.firstName + '! تحب تضيف اللي انت بتعمله دلوقت للمفكرة', list);}
-												GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
-													context.current = {};
-													context.current.main = "addingLog";
-													context.current.chooseLog = true;
-													session.context = context;
-													session.lastNot = Date.now();
-													sessionStore.saveSession(sessionId, session);
-												})
-											}
+		// 								if(numOfQuick>11){
+		// 									var numOfVeiws = Math.floor(numOfQuick/10) 
+		// 									context.current.thisVeiw = context.current.thisVeiw || 0
+		// 									var view = list.splice(context.current.thisVeiw * 10 ,10)
+		// 									view.push("المزيد!")
+		// 									var data = platformHelpers.generateQuickReplies( user.firstName + '! would you like to add what you\'re doing now', view);
+		// 									if(context.userData.lang == 'عربي'){ data = platformHelpers.generateQuickReplies( user.firstName + '! تحب تضيف اللي انت بتعمله دلوقت للمفكرة', view);}
+		// 										GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
+		// 											if(context.current.thisVeiw != numOfVeiws ){context.current.thisVeiw += 1}else{context.current.thisVeiw = 0}
+		// 											context.current = {};
+		// 											context.current.main = "addingLog"
+		// 											context.current.chooseLog = true;
+		// 											session.context = context;
+		// 											session.lastNot = Date.now();
+		// 											sessionStore.saveSession(sessionId, session);
+		// 										})
+		// 									}else{
+		// 										var data = platformHelpers.generateQuickReplies(user.firstName + '! would you like to add what you\'re doing now', list);
+		// 										if(context.userData.lang == 'عربي'){ data = platformHelpers.generateQuickReplies( user.firstName + '! تحب تضيف اللي انت بتعمله دلوقت للمفكرة', list);}
+		// 										GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
+		// 											context.current = {};
+		// 											context.current.main = "addingLog";
+		// 											context.current.chooseLog = true;
+		// 											session.context = context;
+		// 											session.lastNot = Date.now();
+		// 											sessionStore.saveSession(sessionId, session);
+		// 										})
+		// 									}
 									
-									}
+		// 							}
 								
-								})
+		// 						})
 				 		
 
-			 	}
+		// 	 	}
 
-			}
+		// 	}
 
 			
 			
-		})
+		// })
 
 	//}, 10*60*1000 );
 }
