@@ -21,7 +21,7 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 			session.context = context;
 			sessionStore.saveSession(sessionId, session)
 		})
-		session.state = 'old'; 
+		//session.state = 'old'; 
 	}
 
 	if(context.msg === 'CHOOSE_LANGUAGE'){
@@ -42,6 +42,7 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 				context.userData.lang = context.msg
 				context.current.main = {}
 			}else{
+				session.state = 'new';
 				context.userData.lang = context.msg
 				context.current.main = 'getStarted'
 			}
