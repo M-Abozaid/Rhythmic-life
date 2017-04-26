@@ -43,7 +43,7 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 			GraphAPI.sendPlainMessage(recipientId, 'Session distroyed')
 						
 		})
-	}
+	}else{
 
 
 		if(session.state == 'old' && context.userData.lang){
@@ -116,6 +116,10 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 
 		}
 	
+
+
+	}
+
 };
 
 
