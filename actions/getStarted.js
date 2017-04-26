@@ -1,6 +1,7 @@
 const platformHelpers = require('../platformHelpers');
 const GraphAPI = require('../graphAPI');
 const mongoose = require('mongoose');
+const _ = require('lodash');
 const User = require('../schemas/user');
 
 module.exports = function(context, msg){
