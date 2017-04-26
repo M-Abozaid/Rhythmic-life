@@ -164,6 +164,7 @@ console.log("getting logsssssssssssss");
 							})	
 						}else{
 							GraphAPI.sendPlainMessage(recipientId,'النشاط ده مش موجود اكتب cancel وا اختار نشاط جديد').then(()=>{
+								context.current.main = 'addingLog'
 								context.current.chooseLog = false;
 								context.current.continue = true;
 								resolve(context)
