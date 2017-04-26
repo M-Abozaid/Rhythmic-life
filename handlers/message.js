@@ -24,6 +24,15 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 		session.state = 'old'; 
 	}
 
+	if(context.msg === 'CHOOSE_LANGUAGE'){
+		let data = platformHelpers.generateQuickReplies('Language', ['English','عربي']);
+		GraphAPI.sendTemplateMessage(context.userData.recipientId, data).then(()=>{
+			context.userData.lang = false;
+			sessionStore.saveSession(sessionId, session)
+		})
+	}
+
+
 	if(!context.userData.lang ){
 		if (context.msg  == 'english' || context.msg == 'عربي'){
 		context.userData.lang = context.msg
@@ -38,12 +47,13 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 		}
 	}
 
-	if(context.msg=='destroysession'){
+
+
+if(context.msg=='destroysession'){
 		sessionStore.destroy(sessionId).then(()=>{
 			GraphAPI.sendPlainMessage(recipientId, 'Session distroyed')
 						
 		})
-
 	}else{
 
 		if(session.state == 'old' && context.userData.lang){
