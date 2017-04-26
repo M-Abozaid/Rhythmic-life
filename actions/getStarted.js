@@ -163,7 +163,7 @@ console.log("getting logsssssssssssss");
 								resolve(context)
 							})	
 						}else{
-							GraphAPI.sendPlainMessage(recipientId,'You haven\'t added this activity choose new activity to add it').then(()=>{
+							GraphAPI.sendPlainMessage(recipientId,'You haven\'t created this activity choose new activity to create it').then(()=>{
 								context.current.main = 'addingLog'
 								context.current.chooseLog = false;
 								context.current.continue = true;
