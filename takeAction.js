@@ -1,8 +1,9 @@
 const getStarted = require('./actions/getStarted')
 const addActivity = require('./actions/addActivity')
 const addLog = require('./actions/addLog')
-const platformHelpers = require('../platformHelpers');
-const GraphAPI = require('../graphAPI');
+const getLogs = require('./actions/getLogs')
+const platformHelpers = require('./platformHelpers');
+const GraphAPI = require('./graphAPI');
 const fuzz = require('fuzzball');
 const _ = require('lodash');
 
