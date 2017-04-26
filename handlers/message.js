@@ -45,7 +45,7 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 		})
 
 	}else{
-		
+
 		if(session.state == 'old' && context.userData.lang){
 
 			if(context.userData.lang == 'english'){
@@ -122,7 +122,7 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 
 };
 
-
+//
 
 
 
