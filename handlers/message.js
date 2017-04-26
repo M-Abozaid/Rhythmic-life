@@ -12,7 +12,7 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 	context.userData.recipientId =  session.fbid;
 
 	context.msg = msg
-	session.state = session.state  || 'new';
+	//session.state = session.state  || 'new';
 
 	if (!context.current) { context.current = {}};  
 	if (session.state == 'new' || context.msg == 'GET_STARTED_PAYLOAD') { 
@@ -21,7 +21,7 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 			session.context = context;
 			sessionStore.saveSession(sessionId, session)
 		})
-		//session.state = 'old'; 
+		session.state = 'old'; 
 	}
 
 	if(context.msg === 'CHOOSE_LANGUAGE'){
@@ -37,14 +37,16 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 
 	if(!context.userData.lang ){
 		if (context.msg  == 'english' || context.msg == 'عربي'){
+			if(session.state === 'new'){
+				session.state = ;
+				context.userData.lang = context.msg
+				context.current.main = 'getStarted'
+			}
 			if(session.state === 'old'){
 				context.current.panel = true;
 				context.userData.lang = context.msg
 				context.current.main = {}
-			}else{
-				session.state = 'new';
-				context.userData.lang = context.msg
-				context.current.main = 'getStarted'
+				
 			}
 	}else{
 			let data = platformHelpers.generateQuickReplies('Please choose Language.', ['English','عربي']);
