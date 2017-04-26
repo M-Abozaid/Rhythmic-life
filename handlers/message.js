@@ -36,8 +36,13 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 
 	if(!context.userData.lang ){
 		if (context.msg  == 'english' || context.msg == 'عربي'){
-		context.userData.lang = context.msg
-		context.current.main = 'getStarted'
+		if(session.state === 'old'){
+			context.userData.lang = context.msg
+			context.current.main = {}
+		}else{
+			context.userData.lang = context.msg
+			context.current.main = 'getStarted'
+		}
 	}else{
 			let data = platformHelpers.generateQuickReplies('Please choose Language.', ['English','عربي']);
 			GraphAPI.sendTemplateMessage(context.userData.recipientId, data).then(()=>{
