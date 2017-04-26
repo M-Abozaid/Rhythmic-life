@@ -23,10 +23,24 @@ showRouter.get('/:id',  function(req, res, next) {
 	
 });
 
-showRouter.get('/',  function(req, res, next) {
-		
-		res.render('show');
+showRouter.get('/:id/ar',  function(req, res, next) {
+	let recipientId = req.params.id
+	User.findOne({recipientId : recipientId},(err,user)=>{
+		if (err) next(err);
 
+		res.render('indexar', {cUser:user});
+		console.log("id ",recipientId)
+
+	})
+	
+});
+
+showRouter.get('/',  function(req, res, next) {
+		res.render('show');
+	});
+
+showRouter.get('/ar',  function(req, res, next) {
+		res.render('showar');
 	});
 	
 

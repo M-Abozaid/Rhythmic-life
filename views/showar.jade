@@ -1,0 +1,41 @@
+
+div
+    .Mnav-tab
+      h2(style='') المفكرة
+      a(id='m-statistics' ui-sref="app.statistics") إحصائيات
+    |       
+    .container(style='margin: 0px; padding: 0px; width: 100%;position: static; ',class='container')
+      .Mmenu
+        ul(style='padding-left: 10px;  ')
+          li.m-day
+            a(ng-click='allTime()' ng-class='{active: all}' style='') الكل
+          |                               
+          |                                
+          li.m-day(ng-repeat='day in days')
+            a(ng-click='setDay(day)' ,ng-class='{active: isSelected(day) && !all}', style='') {{day | date:  'dd MMM yyyy'}}
+      |           
+      div(id ='log-div' style=' position: relative;')
+        .col-lg-6.col-lg-push-3.col-md-8.col-md-push-2.col-sm-10.col-sm-push-1.col-xs-12(style='padding: 0px;')
+          .row
+            .Mrow.col-lg-8.col-md-8.col-sm-8.col-xs-8
+              div(ng-if="!showMenu" style='z-index : 1001;')
+                h1(style="color: black; text-align: center;") جاري التحميل... 
+              ul(ng-if="showMenu" style='padding-left: 0px;')
+                li.m-log(ng-repeat='log in logs |filter: filterFn')
+                  .row.m-header
+                    .col-xs-9.col-sm-9.col-md-9.col-lg-9
+                      h3.m-activity-name {{log.logName}}
+                    |                                  
+                    .col-xs-3.col-sm-3.col-md-3.col-lg-3(style='padding-left: 0;')
+                      h5.m-date
+                        | {{log.time | date: 'hh:mm a' }}
+                        br
+                        |  {{log.time| date: ' dd MMM yyyy'}}
+                  |                                 
+                  .row.m-body
+                    h5.m-note
+                      span(style='')  ملحوظة: 
+                      p(style="display: inline;") {{log.note}}
+                  |                                 
+                  .row.m-footer
+                    h4.m-type {{log.activity.type}}
