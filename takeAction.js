@@ -109,7 +109,7 @@ let takeAction = function(context){
 								offer();
 								})
 							}else{
-								let confusedRes = ['Dude! seriously','What made you think of that','Oh no do I have to think again. ','I\'m not into roket physics','Not following you. ','Be easy on me. ','I\'m sorry I did\'n understand you 😵','Oh my god is so complicated.','Why does it have to be so complicated. ','Explain more 😵😵.','alright alrght.','consider it done ','Oops I did\'nt git that 😵','Yes sair.','As you wish','(Y)']
+								let confusedRes = ['Dude! seriously','What made you think of that','Oh no do I have to think again. ','I\'m not into roket physics','Not following you. ','Be easy on me. ','I\'m sorry I did\'n understand you 😵','Oh my god why is it so complicated.','Why does it have to be so complicated. ','Explain more 😵😵.','alright alrght.','consider it done ','Oops I did\'nt git that 😵','Yes sair.','As you wish','(Y)']
 								GraphAPI.sendPlainMessage(recipientId, generateRandom(confusedRes)+' 😨😨 Why don\'t you try one of these?.').then(()=>{
 									offer();
 								})
