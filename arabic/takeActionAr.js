@@ -12,6 +12,9 @@ let takeAction = function(context){
 	let recipientId = context.userData.recipientId;
 	console.log('inside takeAction() ---- ');	
 	var howAre = ['انت عامل ايه','اخبارك','ازيك','ايه الاحوال','عامل ايه','الدنيا عامله معاك ايه','انت عامل ايه','وانت اخبارك','وانت عامل ايه','كيفك','انت ازيك','انت عامل ايه','انت اخبارك ايه','انت كيفك','باشا']
+	var thank = ['شكرا','الف شكر ','الله ينور ','شغل عالي','برافو','احسنت','بوت ممتاز','رائع','انت رائع','كويس']
+	var insult = ['يا خول ','يا متناك','ياع عرص','يا علق ','كسمك','متناك','عرص','اهبل ','هبيط','حمار','انت حمار','بقرة','حموسة','غبي','انت غبي','طيزك','طيزك حمرا','كس اختك']
+	
 	let offer = function(){
 		let data = {
 							"quick_replies":  [
@@ -78,14 +81,30 @@ let takeAction = function(context){
 					let max = fuzzChech(howAre,context.msg);
 					console.log('max ',max);
 					if (max['1'] > 70){
-						GraphAPI.sendPlainMessage(recipientId, 'انا كويس الحمد لله انت اخبارك ايه.').then(()=>{
+						GraphAPI.sendPlainMessage(recipientId, 'انا كويس الحمد لله انت اخبارك ايه.😀😀').then(()=>{
 							context.current.main = 'howAreYou';
 							resolve(context);
 						})
 					}else{
-						GraphAPI.sendPlainMessage(recipientId, 'اسف انا مش فاهم انت تقصد ايه اختار حاجة من دول.').then(()=>{
-							offer();
-						})
+						let max = fuzzChech(thank,context.msg);
+						if(max['1'] > 70){
+								GraphAPI.sendPlainMessage(recipientId, 'العفو دا بس من زوقك.😍😍').then(()=>{
+								offer();
+							})
+						}else{
+							let max = fuzzChech(insult,context.msg);
+							if(max['1'] > 70){
+								GraphAPI.sendPlainMessage(recipientId, 'الشتيمة بتلف تلف وترجع لصاحبها.😒😒').then(()=>{
+								offer();
+								})
+							}else{
+								GraphAPI.sendPlainMessage(recipientId, 'اسف انا مش فاهم انت تقصد ايه,😨😨 اختار حاجة من دول.').then(()=>{
+									offer();
+								})
+							}
+							
+						}
+						
 					}
 				}
 		}
