@@ -30,16 +30,16 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 		GraphAPI.sendTemplateMessage(context.userData.recipientId, data).then(()=>{
 			context.current.main = {}
 			session.context = context;
+			context.current.main = 'chooseLang'
 			sessionStore.saveSession(sessionId, session)
 		})
 	}else{
 			if(!context.userData.lang ){
 				if (context.msg  == 'english' || context.msg == 'عربي'){
-					if(session.state === 'old'){
+					if(context.current.main === 'chooseLang'){
+						context.current.main = {}
 						context.current.panel = true;
 						context.userData.lang = context.msg
-						context.current.main = {}
-						context.current.main = 'getStarted'
 					}else{
 						context.userData.lang = context.msg
 						context.current.main = 'getStarted'
