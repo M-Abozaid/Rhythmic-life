@@ -125,7 +125,7 @@ module.exports = function handleTextMessage (sessionId, session, msg) {
 //
 
 
-
+//
 
 	//if (!context.second) { context.second = {main:{},sub:{}}};
 
