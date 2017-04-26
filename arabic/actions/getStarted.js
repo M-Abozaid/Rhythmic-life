@@ -150,12 +150,26 @@ console.log("getting logsssssssssssss");
 						context.current.continue = true;
 						resolve(context);
 					}else{
+						User.findOne({recipientId : recipientId},(err,user)=>{
+							if (err) throw err;
+							 list = _.map(user.activities,(elem)=>{return elem.name})
+							
+						if(list.indexOf(context.msg) >= 0){
 							context.current.logName = context.msg;
 							let data = platformHelpers.generateQuickReplies('هتفضل قد ايه تـ '+ context.current.logName+' ⌚. اختار او اكتب الوقت بالدقايق', ['30 دق','1 س','1.5 س','2 س','2.5 س','3 س','3.5 س','4 س','5 س']);
 							GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
 								
 								resolve(context)
-							})					
+							})	
+						}else{
+							GraphAPI.sendPlainMessage(recipientId,'This activity doesn\'t exist on your list if you want to add it choose new activity').then(()=>{
+								context.current.chooseLog = false;
+								context.current.continue = true;
+								resolve(context)
+							})
+						}
+						})
+											
 					}
 				}else{
 					if(context.current.logName && !context.current.howLong){
