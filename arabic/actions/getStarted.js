@@ -162,7 +162,7 @@ console.log("getting logsssssssssssss");
 								resolve(context)
 							})	
 						}else{
-							GraphAPI.sendPlainMessage(recipientId,'This activity doesn\'t exist on your list if you want to add it choose new activity').then(()=>{
+							GraphAPI.sendPlainMessage(recipientId,'النشاط ده مش موجود اكتب cancel وا اختار نشاط جديد').then(()=>{
 								context.current.chooseLog = false;
 								context.current.continue = true;
 								resolve(context)
