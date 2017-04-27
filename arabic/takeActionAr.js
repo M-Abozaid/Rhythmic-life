@@ -1,5 +1,6 @@
 const getStarted = require('./actions/getStarted')
 const addActivity = require('./actions/addActivity')
+const deleteActivity = require('./actions/deleteActivity')
 const addLog = require('./actions/addLog')
 const platformHelpers = require('../platformHelpers');
 const GraphAPI = require('../graphAPI');
@@ -157,6 +158,10 @@ let takeAction = function(context){
 					context.current.main = 'addingActivity';
 					addActivity(context).then((cont)=>{resolve(cont)});
 					break;
+					case 'DELETE_ACTIVITY': 
+					context.current.main = 'deleteActivity';
+					deleteActivity(context).then((cont)=>{resolve(cont)});
+					break;
 					default:
 					console.log('context in default ',context);
 					others(context.msg)
@@ -207,6 +212,10 @@ let takeAction = function(context){
 										GraphAPI.sendPlainMessage(recipientId,'تمام ').then(()=>{
 													offer();
 												})
+									}
+								}else{
+									if(context.current.main === 'deleteActivity'){
+										deleteActivity(context).then((cont)=>{resolve(cont)});
 									}
 								}
 							}
