@@ -1,6 +1,6 @@
 const getStarted = require('./actions/getStarted')
 const addActivity = require('./actions/addActivity')
-const deleteActivity = require('./actions/deleteActivityِق')
+const deleteActivity = require('./actions/deleteActivityAr')
 const addLog = require('./actions/addLog')
 const platformHelpers = require('../platformHelpers');
 const GraphAPI = require('../graphAPI');
