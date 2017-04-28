@@ -68,6 +68,7 @@ module.exports = function(){
 								// 			context.current = {};
 								// 			context.current.main = "addingLog"
 								// 			context.current.chooseLog = true;
+								//			context.current.notifiy = true;
 								// 			session.context = context;
 								// 			session.lastNot = Date.now();
 								// 			sessionStore.saveSession(sessionId, session);
@@ -79,6 +80,7 @@ module.exports = function(){
 								// 			context.current = {};
 								// 			context.current.main = "addingLog";
 								// 			context.current.chooseLog = true;
+								// 			context.current.notifiy = true;
 								// 			session.context = context;
 								// 			session.lastNot = Date.now();
 								// 			sessionStore.saveSession(sessionId, session);
@@ -205,3 +207,4 @@ module.exports = function(){
 
 	//}, 5*60*1000 );
 }
+//
