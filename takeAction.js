@@ -122,6 +122,17 @@ let takeAction = function(context){
 				}
 		}
 
+		if (context.current.notifiy === true && !context.current.logName) {
+			let notifyRes = ['no','nope','fuck off','no thanks','go away']
+			let max = fuzzChech(notifyRes,context.msg);
+			if(max['1'] > 70){
+				context.current = {}
+				GraphAPI.sendPlainMessage(recipientId, generateRandom(confusedRes)+' 😨 Okey my friend as you wish.').then(()=>{
+					offer();
+				})
+			}
+		}
+
 	
 	// deleting context for debugging
 		if(context.msg == 'delete.context'){
