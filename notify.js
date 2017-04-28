@@ -95,10 +95,10 @@ module.exports = function(){
 
 	 	//}
 
-	//}
-
 	}
 
+	}
+}
 	//setInterval(function(){
 		console.log('set int');
 		User.find({},(err,users)=>{
