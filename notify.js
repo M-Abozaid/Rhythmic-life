@@ -88,6 +88,7 @@ module.exports = function(){
 											sessionStore.saveSession(sessionId, session);
 										}).catch((err) => {
 											console.log('Oops! An error occurred while forwarding the response to', user.firstName + user.lastName );
+											console.log(err);
 										});
 									}
 							
