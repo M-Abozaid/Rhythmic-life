@@ -99,7 +99,10 @@ module.exports = function(){
 							
 							}
 						
-						})
+						}).catch((err) => {
+											console.log('Oops! An error occurred while getting ', user.firstName + user.lastName );
+
+										});
 		 		
 
 	 	
