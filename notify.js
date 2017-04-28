@@ -46,11 +46,17 @@ module.exports = function(){
 								console.log('lastLogH  ',lastLogH,user.firstName+ user.lastName);
 							if((lastNotH > 1 && lastNotH > lastLogH) || lastNotH >72){
 
-								console.log(user.firstName +  user.lastName+' is elig ');
-								let list = _.map(user.activities,(elem)=>{return elem.name})
-								if(context.userData.lang == 'عربي'){list.push('نشاط جديد')}else{list.push('New activity')}
-								let numOfQuick = list.length 
 
+
+								console.log(user.firstName +  user.lastName+' is elig ');
+
+
+								let list = _.map(user.activities,(elem)=>{return elem.name})
+
+								if(context.userData.lang == 'عربي'){list.push('نشاط جديد')}else{list.push('New activity')}
+								
+								let numOfQuick = list.length 
+								console.log('why not');
 								if(numOfQuick>11){
 									let numOfVeiws = Math.floor(numOfQuick/10) 
 									context.current.thisVeiw = context.current.thisVeiw || 0
