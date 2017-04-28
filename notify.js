@@ -97,18 +97,18 @@ module.exports = function(){
 
 			}
 	}
-	//setInterval(function(){
-		console.log('set int');
-		User.find({},(err,users)=>{
-			if (err) throw err;
+	setInterval(function(){
+	 console.log('set int');
+		// User.find({},(err,users)=>{
+		// 	if (err) throw err;
 		
 
-			for (let i = users.length - 1; i >= 0; i--) {
-				let user = users[i]
-				notify(user);
+		// 	for (let i = users.length - 1; i >= 0; i--) {
+		// 		let user = users[i]
+		// 		notify(user);
 			
-			}
-		})
+		// 	}
+		// })
 
 
 
@@ -207,5 +207,5 @@ module.exports = function(){
 			
 		})
 
-	//}, 5*60*1000 );
+	}, 1*60*1000 );
 }
