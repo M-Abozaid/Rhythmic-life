@@ -165,11 +165,11 @@ module.exports = function(){
 
 									let lastNotH = moment.duration(nowLocal.valueOf() - moment(lastNot)
 										.add(user.timezone , 'hours').valueOf()).asMinutes()
-									 console.log('sec if' , lastNotH);
+									 console.log('sec if' , lastNotH,' ',lastLogH);
 									
 
 									if(lastNotH > 1 && lastNotH > lastLogH){
-										// console.log('thired if');
+										 console.log('thired if');
 										let list = _.map(user.activities,(elem)=>{return elem.name})
 										if(context.userData.lang == 'عربي'){list.push('نشاط جديد')}else{list.push('New activity')}
 										let numOfQuick = list.length 
