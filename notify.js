@@ -52,11 +52,12 @@ module.exports = function(){
 
 
 								let list = _.map(user.activities,(elem)=>{return elem.name})
-								console.log('why not');
+								
+								if(context.userData.lang){
 								if(context.userData.lang == 'عربي'){list.push('نشاط جديد')}else{list.push('New activity')}
-								
+								}
 								let numOfQuick = list.length 
-								
+								console.log('why not');
 								if(numOfQuick>11){
 									let numOfVeiws = Math.floor(numOfQuick/10) 
 									context.current.thisVeiw = context.current.thisVeiw || 0
