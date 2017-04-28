@@ -37,7 +37,7 @@ module.exports = function(){
 							sessionId = data.sessionId;
 							session = data.session;
 							newSession = data.newSession;
-							const lastNot = session.lastNot || 100;
+							const lastNot = session.lastNot || 10000;
 							let context = session.context;
 
 
@@ -73,7 +73,7 @@ module.exports = function(){
 											session.lastNot = Date.now();
 											sessionStore.saveSession(sessionId, session);
 										}).catch((err) => {
-											console.log('Oops! An error occurred while forwarding the response to', recipientId );
+											console.log('Oops! An error occurred while forwarding the response to', user.firstName + user.lastName );
 										});
 									}else{
 										let data = platformHelpers.generateQuickReplies(user.firstName + '! would you like to add what you\'re doing now to your diary', list);
