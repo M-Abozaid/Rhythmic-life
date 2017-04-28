@@ -20,7 +20,7 @@ module.exports = function(){
 		let lastLog
 
 		if(user.activityLogs.length == 0 ){
-			 lastLog =  moment(90).add(user.timezone , 'hours')
+			 lastLog =  moment(10000).add(user.timezone , 'hours')
 		}else {
 			 lastLog =  moment(user.activityLogs[user.activityLogs.length - 1].createdAt).add(user.timezone , 'hours')
 		}
@@ -37,7 +37,7 @@ module.exports = function(){
 							sessionId = data.sessionId;
 							session = data.session;
 							newSession = data.newSession;
-							const lastNot = session.lastNot || 10000;
+							const lastNot = session.lastNot || 90;
 							let context = session.context;
 
 
