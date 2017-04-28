@@ -152,7 +152,7 @@ module.exports = function(){
 				 	
 				 	let lastLogH = moment.duration(nowLocal.valueOf() - lastLog.valueOf()).asMinutes()
 				 	
-				 	// console.log('first if',lastLogH);
+				 	 console.log('first if',lastLogH);
 				 	if(lastLogH > 1 ){  // last active
 				 			
 				 			sessionStore.findOrCreate(recipientId)
@@ -165,7 +165,7 @@ module.exports = function(){
 
 									let lastNotH = moment.duration(nowLocal.valueOf() - moment(lastNot)
 										.add(user.timezone , 'hours').valueOf()).asMinutes()
-									// console.log('sec if' , lastNotH);
+									 console.log('sec if' , lastNotH);
 									
 
 									if(lastNotH > 1 && lastNotH > lastLogH){
