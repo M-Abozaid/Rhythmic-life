@@ -138,11 +138,20 @@ let recipientId = context.userData.recipientId; // here because it was not acces
 				}
 			}else{
 				if(context.current.logName && !context.current.howLong){
+					if(howMuchTime.indexOf(context.msg) >= 0 || !(isNaN(context.msg)) ){
 					let data = platformHelpers.generateQuickReplies('اكتب ملاحظة تضيفها لو تحب.📝', ['لا مش ضروري']);
 						GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
 							context.current.howLong = context.msg;
 							resolve(context)
 						})
+						}else{
+						GraphAPI.sendPlainMessage(recipientId,'من فضلك اختار او ادخل رقم').then(()=>{
+								context.msg = context.current.logName;
+								context.current.logName = false;
+								context.current.continue = true;
+								resolve(context)
+							})
+					}
 				}else{
 					if(context.current.howLong && !context.current.note){
 						if(context.msg == "لا مش ضروري"){
