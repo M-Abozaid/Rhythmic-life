@@ -127,7 +127,7 @@ let takeAction = function(context){
 			let max = fuzzChech(notifyRes,context.msg);
 			if(max['1'] > 70){
 				context.current = {}
-				GraphAPI.sendPlainMessage(recipientId, generateRandom(confusedRes)+' 😨 Okey my friend as you wish.').then(()=>{
+				GraphAPI.sendPlainMessage(recipientId, ' 😨 Okey my friend as you wish.').then(()=>{
 					offer();
 				})
 			}
