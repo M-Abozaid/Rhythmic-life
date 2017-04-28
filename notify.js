@@ -52,10 +52,11 @@ module.exports = function(){
 
 
 								let list = _.map(user.activities,(elem)=>{return elem.name})
-								
+								console.log(JSON.stringify(context.userData));
 								if(context.userData.lang){
 								if(context.userData.lang == 'عربي'){list.push('نشاط جديد')}else{list.push('New activity')}
 								}
+
 								let numOfQuick = list.length 
 								console.log('why not');
 								if(numOfQuick>11){
