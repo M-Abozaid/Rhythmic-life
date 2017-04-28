@@ -50,9 +50,8 @@ return new Promise(function(resolve, reject){
 				if(context.current.activityType && !context.current.activityName){
 					if (context.msg.length > 20) {
 						GraphAPI.sendPlainMessage(recipientId, 'الاسم ده طويل, من فضلك اختار اسم اقل من 20 حرف').then(()=>{
-						context.msg = context.current.activityType
-						context.current.chooseActivity = false;
-						context.current.continue = true;
+						// context.current.activityType = false;
+						// context.current.continue = true;
 						resolve(context)
 						})
 					}else{

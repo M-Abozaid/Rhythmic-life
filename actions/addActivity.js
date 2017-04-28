@@ -46,10 +46,10 @@ return new Promise(function(resolve, reject){
 		
 
 	}else {
-			if(context.current.chooseActivity && !context.current.activityType){
-			context.current.activityType = context.msg	
-			resolve(context)
-			GraphAPI.sendPlainMessage(recipientId, ' Type a name for the activity ')
+		if(context.current.chooseActivity && !context.current.activityType){
+		context.current.activityType = context.msg	
+		resolve(context)
+		GraphAPI.sendPlainMessage(recipientId, ' Type a name for the activity ')
 		 	}else{
 				if(context.current.activityType && !context.current.activityName){
 					
@@ -67,9 +67,8 @@ return new Promise(function(resolve, reject){
 						}else{
 							if (context.msg.length > 20) {
 								GraphAPI.sendPlainMessage(recipientId, 'This name is too long, Please type a name within 20 characters long.').then(()=>{
-								context.msg = context.current.activityType
-								context.current.activityType = false;
-								context.current.continue = true;
+								// context.current.activityType = false;
+								// context.current.continue = true;
 								resolve(context)
 							})
 							}else {
