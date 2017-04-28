@@ -44,7 +44,7 @@ module.exports = function(){
 								
 								console.log('lastNotH ',lastNotH,user.firstName+ user.lastName);
 								console.log('lastLogH  ',lastLogH,user.firstName+ user.lastName);
-							if((lastNotH > 1 && lastNotH > lastLogH) || lastNotH >72){
+							if((lastNotH > 4 && lastNotH > lastLogH) || lastNotH >72){
 
 
 
@@ -58,7 +58,6 @@ module.exports = function(){
 								}
 
 								let numOfQuick = list.length 
-								console.log('why not');
 								if(numOfQuick>11){
 									let numOfVeiws = Math.floor(numOfQuick/10) 
 									context.current.thisVeiw = context.current.thisVeiw || 0
@@ -79,7 +78,6 @@ module.exports = function(){
 											console.log('Oops! An error occurred while forwarding the response to', user.firstName + user.lastName );
 										});
 									}else{
-										console.log('sending');
 										let data = platformHelpers.generateQuickReplies(user.firstName + '! would you like to add what you\'re doing now to your diary', list);
 										if(context.userData.lang == 'عربي'){ data = platformHelpers.generateQuickReplies( user.firstName + '! تحب تضيف اللي انت بتعمله دلوقت للمفكرة', list);}
 										GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
@@ -110,7 +108,7 @@ module.exports = function(){
 
 			}
 	}
-	//setInterval(function(){
+	setInterval(function(){
 	 console.log('set int');
 		User.find({},(err,users)=>{
 			if (err) throw err;
@@ -173,14 +171,14 @@ module.exports = function(){
 									if(lastNotH > 1 && lastNotH > lastLogH){
 										// console.log('thired if');
 										let list = _.map(user.activities,(elem)=>{return elem.name})
-										list.push('نشاط جديد')
+										if(context.userData.lang == 'عربي'){list.push('نشاط جديد')}else{list.push('New activity')}
 										let numOfQuick = list.length 
 
 										if(numOfQuick>11){
 											let numOfVeiws = Math.floor(numOfQuick/10) 
 											context.current.thisVeiw = context.current.thisVeiw || 0
 											let view = list.splice(context.current.thisVeiw * 10 ,10)
-											view.push("المزيد!")
+											if(context.userData.lang == 'عربي'){view.push("المزيد!")}else{view.push("see more!")}
 											let data = platformHelpers.generateQuickReplies( user.firstName + '! would you like to add what you\'re doing now', view);
 											if(context.userData.lang == 'عربي'){ data = platformHelpers.generateQuickReplies( user.firstName + '! تحب تضيف اللي انت بتعمله دلوقت للمفكرة', view);}
 												GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
@@ -220,6 +218,6 @@ module.exports = function(){
 			
 		})
 
-//	}, 1*60*1000 );
+	}, 50*60*1000 );
 }
 //
