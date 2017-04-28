@@ -20,7 +20,7 @@ module.exports = function(){
 		let lastLog
 
 		if(user.activityLogs.length == 0 ){
-			 lastLog =  moment(100).add(user.timezone , 'hours')
+			 lastLog =  moment(90).add(user.timezone , 'hours')
 		}else {
 			 lastLog =  moment(user.activityLogs[user.activityLogs.length - 1].createdAt).add(user.timezone , 'hours')
 		}
