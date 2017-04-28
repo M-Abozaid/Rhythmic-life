@@ -86,10 +86,11 @@ module.exports = function(){
 											session.context = context;
 											session.lastNot = Date.now();
 											sessionStore.saveSession(sessionId, session);
-										}).catch((err) => {
-											console.log('Oops! An error occurred while forwarding the response to', user.firstName + user.lastName );
-											console.log(err);
-										});
+										})
+										// .catch((err) => {
+										// 	console.log('Oops! An error occurred while forwarding the response to', user.firstName + user.lastName );
+
+										// });
 									}
 							
 							}
@@ -147,7 +148,7 @@ module.exports = function(){
 				 	let lastLogH = moment.duration(nowLocal.valueOf() - lastLog.valueOf()).asMinutes()
 				 	
 				 	// console.log('first if',lastLogH);
-				 	if(lastLogH > 3 ){  // last active
+				 	if(lastLogH > 1 ){  // last active
 				 			
 				 			sessionStore.findOrCreate(recipientId)
 								.then(data => {
@@ -162,7 +163,7 @@ module.exports = function(){
 									// console.log('sec if' , lastNotH);
 									
 
-									if(lastNotH > 3 && lastNotH > lastLogH){
+									if(lastNotH > 1 && lastNotH > lastLogH){
 										// console.log('thired if');
 										let list = _.map(user.activities,(elem)=>{return elem.name})
 										list.push('نشاط جديد')
