@@ -45,6 +45,7 @@ module.exports = function(){
 								console.log('lastNotH ',lastNotH,user.firstName+ user.lastName);
 								console.log('lastLogH  ',lastLogH,user.firstName+ user.lastName);
 							if((lastNotH > 1 && lastNotH > lastLogH) || lastNotH >72){
+
 								console.log(user.firstName +  user.lastName+' is elig ');
 								let list = _.map(user.activities,(elem)=>{return elem.name})
 								if(context.userData.lang == 'عربي'){list.push('نشاط جديد')}else{list.push('New activity')}
@@ -70,6 +71,7 @@ module.exports = function(){
 											console.log('Oops! An error occurred while forwarding the response to', user.firstName + user.lastName );
 										});
 									}else{
+										console.log('sending');
 										let data = platformHelpers.generateQuickReplies(user.firstName + '! would you like to add what you\'re doing now to your diary', list);
 										if(context.userData.lang == 'عربي'){ data = platformHelpers.generateQuickReplies( user.firstName + '! تحب تضيف اللي انت بتعمله دلوقت للمفكرة', list);}
 										GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
