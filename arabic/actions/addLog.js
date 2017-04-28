@@ -6,9 +6,11 @@ const _ = require('lodash');
 
 
 module.exports = function(context){
+
 let recipientId = context.userData.recipientId; // here because it was not accessble at saveLog
 	return new Promise(function(resolve, reject){
 	var list
+	const howMuchTime = ['30 دق','1 س','1.5 س','2 س','2.5 س','3 س','3.5 س','4 س','5 س','6 س','7 س']
 	let saveLog = function(){
 
 
@@ -43,6 +45,12 @@ let recipientId = context.userData.recipientId; // here because it was not acces
 					break;
 					case '5 س':
 					howLongInMil = 5   * 60 * 60 *1000
+					break;
+					case '6 س':
+					howLongInMil = 6   * 60 * 60 *1000
+					break;
+					case '7 س':
+					howLongInMil = 7   * 60 * 60 *1000
 					break;
 				}
 				let obj = {
