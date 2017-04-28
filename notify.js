@@ -14,7 +14,6 @@ module.exports = function(){
 		let newSession;
 		let nowUTC = moment();
 
-		console.log('now ',nowUTC);
 		
 		let recipientId = user.recipientId
 		let lastLog
@@ -25,10 +24,8 @@ module.exports = function(){
 			 lastLog =  moment(user.activityLogs[user.activityLogs.length - 1].createdAt).add(user.timezone , 'hours')
 		}
 		const nowLocal = nowUTC.add(user.timezone , 'hours')
-		console.log('nowlocal ',nowLocal,'timezone ',user.timezone);
 
 		 if(nowLocal.hour()>10 && nowLocal.hour()<23 ){
-			console.log('lastlog ',lastLog,' ',user.firstName );
 		 	let lastLogH = moment.duration(nowLocal.valueOf() - lastLog.valueOf()).asHours()
 		 		if(lastLogH > 24 ){  // last active //
 		 			
@@ -45,11 +42,8 @@ module.exports = function(){
 							let lastNotH = moment.duration(nowLocal.valueOf() - moment(lastNot)
 								.add(user.timezone , 'hours').valueOf()).asHours()
 								
-								console.log('user ',user.firstName + user.lastName);
-								console.log('lastNotifiy   ',moment(lastNot).add(user.timezone , 'hours'),user.firstName);
-								console.log('lastNotH ',lastNotH,user.firstName);
-								console.log('lastLogH  ',lastLogH,user.firstName);
-								console.log('nowLocal   ',nowLocal,' ',user.firstName);
+								console.log('lastNotH ',lastNotH,user.firstName+ user.lastName);
+								console.log('lastLogH  ',lastLogH,user.firstName+ user.lastName);
 							if((lastNotH > 1 && lastNotH > lastLogH) || lastNotH >72){
 								console.log(user.firstName +  user.lastName+' is elig ');
 								let list = _.map(user.activities,(elem)=>{return elem.name})
