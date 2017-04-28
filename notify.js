@@ -52,7 +52,7 @@ module.exports = function(){
 
 
 								let list = _.map(user.activities,(elem)=>{return elem.name})
-								console.log(JSON.stringify(context.userData));
+								//console.log(JSON.stringify(context.userData));
 								if(context.userData.lang){
 								if(context.userData.lang == 'عربي'){list.push('نشاط جديد')}else{list.push('New activity')}
 								}
@@ -108,7 +108,7 @@ module.exports = function(){
 
 			}
 	}
-	//setInterval(function(){
+	setInterval(function(){
 	 console.log('set int');
 		User.find({},(err,users)=>{
 			if (err) throw err;
@@ -152,7 +152,7 @@ module.exports = function(){
 				 	
 				 	let lastLogH = moment.duration(nowLocal.valueOf() - lastLog.valueOf()).asMinutes()
 				 	
-				 	 console.log('first if',lastLogH);
+				 	// console.log('first if',lastLogH);
 				 	if(lastLogH > 1 ){  // last active
 				 			
 				 			sessionStore.findOrCreate(recipientId)
@@ -165,11 +165,11 @@ module.exports = function(){
 
 									let lastNotH = moment.duration(nowLocal.valueOf() - moment(lastNot)
 										.add(user.timezone , 'hours').valueOf()).asMinutes()
-									 console.log('sec if' , lastNotH,' ',lastLogH);
+									// console.log('sec if' , lastNotH,' ',lastLogH);
 									
 
 									if(lastNotH > 1 && lastNotH > lastLogH){
-										 console.log('thired if');
+										// console.log('thired if');
 										let list = _.map(user.activities,(elem)=>{return elem.name})
 										if(context.userData.lang == 'عربي'){list.push('نشاط جديد')}else{list.push('New activity')}
 										let numOfQuick = list.length 
@@ -218,5 +218,5 @@ module.exports = function(){
 			
 		})
 
-	//}, 50*60*1000 );
+	}, 50*60*1000 );
 }
