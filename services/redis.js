@@ -65,7 +65,7 @@ exports.redisIsReady = function () {
  * @param {Object} config configuration with host, port, pass
  */
 exports.init = function initRedis(config) {
-    console.log('config in initRedis '+JSON.stringify(config))
+    // console.log('config in initRedis '+JSON.stringify(config))
     client = createClient(config.redis);
 };
 
@@ -106,10 +106,10 @@ exports.getKey = function (keyName) {
 };
 
 exports.findFirstKey = function(pattern) {
-   console.log('findFirstKey inside bef post');
+   // console.log('findFirstKey inside bef post');
     return client.keysQ(pattern)
     .then(function(keys) {
-       console.log("returnd.then ");
+       // console.log("returnd.then ");
         return keys && keys.length && keys[0];
          
     });

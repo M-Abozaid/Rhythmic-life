@@ -7,109 +7,110 @@ const _ = require('lodash')
 const moment = require('moment')
 module.exports = function(){
 
-	// var notify = function(user){
+	var notify = function(user){
 		
-	// 	let sessionId;
-	// 	let session;
-	// 	let newSession;
-	// 	let nowUTC = moment();
+		let sessionId;
+		let session;
+		let newSession;
+		let nowUTC = moment();
 
-	// 	console.log('now ',nowUTC);
+		console.log('now ',nowUTC);
 		
-	// 	let recipientId = user.recipientId
-	// 	let lastLog
+		let recipientId = user.recipientId
+		let lastLog
 
-	// 	if(user.activityLogs.length == 0 ){
-	// 		 lastLog =  moment(100).add(user.timezone , 'hours')
-	// 	}else {
-	// 		 lastLog =  moment(user.activityLogs[user.activityLogs.length - 1].createdAt).add(user.timezone , 'hours')
-	// 	}
-	// 	const nowLocal = nowUTC.add(user.timezone , 'hours')
-	// 	console.log('nowlocal ',nowLocal,'timezone ',user.timezone);
+		if(user.activityLogs.length == 0 ){
+			 lastLog =  moment(100).add(user.timezone , 'hours')
+		}else {
+			 lastLog =  moment(user.activityLogs[user.activityLogs.length - 1].createdAt).add(user.timezone , 'hours')
+		}
+		const nowLocal = nowUTC.add(user.timezone , 'hours')
+		console.log('nowlocal ',nowLocal,'timezone ',user.timezone);
 
-	// 	// if(nowLocal.hour()>1 && nowLocal.hour()<23 ){
-	// 		console.log('lastlog ',lastLog,' ',user.firstName );
-	// 	 	let lastLogH = moment.duration(nowLocal.valueOf() - lastLog.valueOf()).asHours()
-	// 	 	//if(lastLogH > 1){  // last active //
+		 if(nowLocal.hour()>10 && nowLocal.hour()<23 ){
+			console.log('lastlog ',lastLog,' ',user.firstName );
+		 	let lastLogH = moment.duration(nowLocal.valueOf() - lastLog.valueOf()).asHours()
+		 	if(lastLogH > 24 ){  // last active //
 		 			
-	// 	 			sessionStore.findOrCreate(recipientId)
-	// 					.then(data => {
-	// 						sessionId = data.sessionId;
-	// 						session = data.session;
-	// 						newSession = data.newSession;
-	// 						const lastNot = session.lastNot || 100;
-	// 						let context = session.context;
+		 			sessionStore.findOrCreate(recipientId)
+						.then(data => {
+							sessionId = data.sessionId;
+							session = data.session;
+							newSession = data.newSession;
+							const lastNot = session.lastNot || 100;
+							let context = session.context;
 
 
-	// 						//  lastNot= moment(lastNot).add(user.timezone , 'hours')
-	// 						//  let lastNotH = duration(nowLocal.valueOf() - moment(lastNot).valueOf()).asHours()
+							//  lastNot= moment(lastNot).add(user.timezone , 'hours')
+							//  let lastNotH = duration(nowLocal.valueOf() - moment(lastNot).valueOf()).asHours()
 
-	// 						let lastNotH = moment.duration(nowLocal.valueOf() - moment(lastNot)
-	// 							.add(user.timezone , 'hours').valueOf()).asHours()
+							let lastNotH = moment.duration(nowLocal.valueOf() - moment(lastNot)
+								.add(user.timezone , 'hours').valueOf()).asHours()
 								
-	// 							console.log('user ',user.firstName + user.lastName);
-	// 							console.log('lastNotifiy   ',moment(lastNot).add(user.timezone , 'hours'),user.firstName);
-	// 							console.log('lastNotH ',lastNotH,user.firstName);
-	// 							console.log('lastLogH  ',lastLogH,user.firstName);
-	// 							console.log('nowLocal   ',nowLocal,' ',user.firstName);
-	// 							//sessionStore.destroy(sessionId)
-	// 						//if(lastNotH > 1 && lastNotH > lastLogH){
-	// 							// let list = _.map(user.activities,(elem)=>{return elem.name})
-	// 							// list.push('نشاط جديد')
-	// 							// let numOfQuick = list.length 
+								console.log('user ',user.firstName + user.lastName);
+								console.log('lastNotifiy   ',moment(lastNot).add(user.timezone , 'hours'),user.firstName);
+								console.log('lastNotH ',lastNotH,user.firstName);
+								console.log('lastLogH  ',lastLogH,user.firstName);
+								console.log('nowLocal   ',nowLocal,' ',user.firstName);
+								//sessionStore.destroy(sessionId)
+							if(lastNotH > 1 && lastNotH > lastLogH){
+								console.log(user.firstName + 'elig ');
+								// let list = _.map(user.activities,(elem)=>{return elem.name})
+								// list.push('نشاط جديد')
+								// let numOfQuick = list.length 
 
-	// 							// if(numOfQuick>11){
-	// 							// 	let numOfVeiws = Math.floor(numOfQuick/10) 
-	// 							// 	context.current.thisVeiw = context.current.thisVeiw || 0
-	// 							// 	let view = list.splice(context.current.thisVeiw * 10 ,10)
-	// 							// 	view.push("المزيد!")
-	// 							// 	let data = platformHelpers.generateQuickReplies( user.firstName + '! would you like to add what you\'re doing now', view);
-	// 							// 	if(context.userData.lang == 'عربي'){ data = platformHelpers.generateQuickReplies( user.firstName + '! تحب تضيف اللي انت بتعمله دلوقت للمفكرة', view);}
-	// 							// 		GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
-	// 							// 			if(context.current.thisVeiw != numOfVeiws ){context.current.thisVeiw += 1}else{context.current.thisVeiw = 0}
-	// 							// 			context.current = {};
-	// 							// 			context.current.main = "addingLog"
-	// 							// 			context.current.chooseLog = true;
-	// 							// 			session.context = context;
-	// 							// 			session.lastNot = Date.now();
-	// 							// 			sessionStore.saveSession(sessionId, session);
-	// 							// 		})
-	// 							// 	}else{
-	// 							// 		let data = platformHelpers.generateQuickReplies(user.firstName + '! would you like to add what you\'re doing now', list);
-	// 							// 		if(context.userData.lang == 'عربي'){ data = platformHelpers.generateQuickReplies( user.firstName + '! تحب تضيف اللي انت بتعمله دلوقت للمفكرة', list);}
-	// 							// 		GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
-	// 							// 			context.current = {};
-	// 							// 			context.current.main = "addingLog";
-	// 							// 			context.current.chooseLog = true;
-	// 							// 			session.context = context;
-	// 							// 			session.lastNot = Date.now();
-	// 							// 			sessionStore.saveSession(sessionId, session);
-	// 							// 		})
-	// 							// 	}
+								// if(numOfQuick>11){
+								// 	let numOfVeiws = Math.floor(numOfQuick/10) 
+								// 	context.current.thisVeiw = context.current.thisVeiw || 0
+								// 	let view = list.splice(context.current.thisVeiw * 10 ,10)
+								// 	view.push("المزيد!")
+								// 	let data = platformHelpers.generateQuickReplies( user.firstName + '! would you like to add what you\'re doing now', view);
+								// 	if(context.userData.lang == 'عربي'){ data = platformHelpers.generateQuickReplies( user.firstName + '! تحب تضيف اللي انت بتعمله دلوقت للمفكرة', view);}
+								// 		GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
+								// 			if(context.current.thisVeiw != numOfVeiws ){context.current.thisVeiw += 1}else{context.current.thisVeiw = 0}
+								// 			context.current = {};
+								// 			context.current.main = "addingLog"
+								// 			context.current.chooseLog = true;
+								// 			session.context = context;
+								// 			session.lastNot = Date.now();
+								// 			sessionStore.saveSession(sessionId, session);
+								// 		})
+								// 	}else{
+								// 		let data = platformHelpers.generateQuickReplies(user.firstName + '! would you like to add what you\'re doing now', list);
+								// 		if(context.userData.lang == 'عربي'){ data = platformHelpers.generateQuickReplies( user.firstName + '! تحب تضيف اللي انت بتعمله دلوقت للمفكرة', list);}
+								// 		GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
+								// 			context.current = {};
+								// 			context.current.main = "addingLog";
+								// 			context.current.chooseLog = true;
+								// 			session.context = context;
+								// 			session.lastNot = Date.now();
+								// 			sessionStore.saveSession(sessionId, session);
+								// 		})
+								// 	}
 							
-	// 						//}
+							}
 						
-	// 					})
+						})
 		 		
 
-	//  	//}
+	 	//}
 
-	// //}
+	//}
 
-	// }
+	}
 
-	setInterval(function(){
-	// 	console.log('set int');
-	// 	User.find({},(err,users)=>{
-	// 		if (err) throw err;
+	//setInterval(function(){
+		console.log('set int');
+		User.find({},(err,users)=>{
+			if (err) throw err;
 		
 
-	// 		for (let i = users.length - 1; i >= 0; i--) {
-	// 			let user = users[i]
-	// 			notify(user);
+			for (let i = users.length - 1; i >= 0; i--) {
+				let user = users[i]
+				notify(user);
 			
-	// 		}
-	// 	})
+			}
+		})
 
 
 
@@ -206,5 +207,5 @@ module.exports = function(){
 			
 		})
 
-	}, 5*60*1000 );
+	//}, 5*60*1000 );
 }
