@@ -56,36 +56,36 @@ module.exports = function(){
 								if(context.userData.lang == 'عربي'){list.push('نشاط جديد')}else{list.push('New activity')}
 								let numOfQuick = list.length 
 
-								// if(numOfQuick>11){
-								// 	let numOfVeiws = Math.floor(numOfQuick/10) 
-								// 	context.current.thisVeiw = context.current.thisVeiw || 0
-								// 	let view = list.splice(context.current.thisVeiw * 10 ,10)
-								// 	if(context.userData.lang == 'عربي'){view.push("المزيد!")}else{view.push("see more!")}
-								// 	let data = platformHelpers.generateQuickReplies( user.firstName + '! would you like to add what you\'re doing now to your dairy', view);
-								// 	if(context.userData.lang == 'عربي'){ data = platformHelpers.generateQuickReplies( user.firstName + '! تحب تضيف اللي انت بتعمله دلوقت للمفكرة', view);}
-								// 		GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
-								// 			if(context.current.thisVeiw != numOfVeiws ){context.current.thisVeiw += 1}else{context.current.thisVeiw = 0}
-								// 			context.current = {};
-								// 			context.current.main = "addingLog"
-								// 			context.current.chooseLog = true;
-								//			context.current.notifiy = true;
-								// 			session.context = context;
-								// 			session.lastNot = Date.now();
-								// 			sessionStore.saveSession(sessionId, session);
-								// 		})
-								// 	}else{
-								// 		let data = platformHelpers.generateQuickReplies(user.firstName + '! would you like to add what you\'re doing now to your diary', list);
-								// 		if(context.userData.lang == 'عربي'){ data = platformHelpers.generateQuickReplies( user.firstName + '! تحب تضيف اللي انت بتعمله دلوقت للمفكرة', list);}
-								// 		GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
-								// 			context.current = {};
-								// 			context.current.main = "addingLog";
-								// 			context.current.chooseLog = true;
-								// 			context.current.notifiy = true;
-								// 			session.context = context;
-								// 			session.lastNot = Date.now();
-								// 			sessionStore.saveSession(sessionId, session);
-								// 		})
-								// 	}
+								if(numOfQuick>11){
+									let numOfVeiws = Math.floor(numOfQuick/10) 
+									context.current.thisVeiw = context.current.thisVeiw || 0
+									let view = list.splice(context.current.thisVeiw * 10 ,10)
+									if(context.userData.lang == 'عربي'){view.push("المزيد!")}else{view.push("see more!")}
+									let data = platformHelpers.generateQuickReplies( user.firstName + '! would you like to add what you\'re doing now to your dairy', view);
+									if(context.userData.lang == 'عربي'){ data = platformHelpers.generateQuickReplies( user.firstName + '! تحب تضيف اللي انت بتعمله دلوقت للمفكرة', view);}
+										GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
+											if(context.current.thisVeiw != numOfVeiws ){context.current.thisVeiw += 1}else{context.current.thisVeiw = 0}
+											context.current = {};
+											context.current.main = "addingLog"
+											context.current.chooseLog = true;
+											context.current.notifiy = true;
+											session.context = context;
+											session.lastNot = Date.now();
+											sessionStore.saveSession(sessionId, session);
+										})
+									}else{
+										let data = platformHelpers.generateQuickReplies(user.firstName + '! would you like to add what you\'re doing now to your diary', list);
+										if(context.userData.lang == 'عربي'){ data = platformHelpers.generateQuickReplies( user.firstName + '! تحب تضيف اللي انت بتعمله دلوقت للمفكرة', list);}
+										GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
+											context.current = {};
+											context.current.main = "addingLog";
+											context.current.chooseLog = true;
+											context.current.notifiy = true;
+											session.context = context;
+											session.lastNot = Date.now();
+											sessionStore.saveSession(sessionId, session);
+										})
+									}
 							
 							}
 						
@@ -99,16 +99,16 @@ module.exports = function(){
 	}
 	setInterval(function(){
 	 console.log('set int');
-		// User.find({},(err,users)=>{
-		// 	if (err) throw err;
+		User.find({},(err,users)=>{
+			if (err) throw err;
 		
 
-		// 	for (let i = users.length - 1; i >= 0; i--) {
-		// 		let user = users[i]
-		// 		notify(user);
+			for (let i = users.length - 1; i >= 0; i--) {
+				let user = users[i]
+				notify(user);
 			
-		// 	}
-		// })
+			}
+		})
 
 
 
@@ -207,5 +207,5 @@ module.exports = function(){
 			
 		})
 
-	}, 1*60*1000 );
+	}, 5*60*1000 );
 }
