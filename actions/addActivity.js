@@ -65,10 +65,20 @@ return new Promise(function(resolve, reject){
 								resolve(context)
 							})
 						}else{
-							context.current.activityName = context.msg
-							console.log('activity type ',context.msg,' saved');
-							let data = platformHelpers.generateQuickReplies('is it positve or ngative', {0:'positive 👍🏼',1:'ngative 👎🏼',2:'other 🏼'});
-							GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{resolve(context)})
+							if (context.msg.length > 20) {
+								GraphAPI.sendPlainMessage(recipientId, 'This name is too long, Please type a name within 20 characters long.').then(()=>{
+								context.msg = context.current.activityType
+								context.current.activityType = false;
+								context.current.continue = true;
+								resolve(context)
+							})
+							}else {
+								context.current.activityName = context.msg
+								console.log('activity type ',context.msg,' saved');
+								let data = platformHelpers.generateQuickReplies('is it positve or ngative', {0:'positive 👍🏼',1:'ngative 👎🏼',2:'other 🏼'});
+								GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{resolve(context)})
+							}
+							
 						}
 					})
 					

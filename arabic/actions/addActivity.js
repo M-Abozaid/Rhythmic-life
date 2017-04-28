@@ -34,15 +34,12 @@ return new Promise(function(resolve, reject){
 	}
 	console.log('inside  --- addActivity ---');
 	if(context.current.main && !context.current.chooseActivity){ //  there is only main context 
-		//context.first.sub.activityName = true
-		
 		console.log('activity ',context.msg,' saved');
 		let data = platformHelpers.generateQuickReplies('اختار نوع النشاط ', {0:'عمل 🔧',1:'تعلم 📖',2:'تسلية 💥'});
 		GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{
 		context.current.chooseActivity = true ;
 		resolve(context)
 		})
-		
 
 	}else {
 			if(context.current.chooseActivity && !context.current.activityType){
@@ -51,11 +48,19 @@ return new Promise(function(resolve, reject){
 			GraphAPI.sendPlainMessage(recipientId, 'تمام اكتب اسم للنشاط! ')
 		 	}else{
 				if(context.current.activityType && !context.current.activityName){
-					context.current.activityName = context.msg
-					console.log('activity type ',context.msg,' saved');
-					let data = platformHelpers.generateQuickReplies('النشاط ده مفيد وللا ضار', {0:'مفيد 👍🏼',1:'ضار 👎🏼',2:'شئ اخر 🏼'});
-					GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{resolve(context)})
-					
+					if (context.msg.length > 20) {
+						GraphAPI.sendPlainMessage(recipientId, 'الاسم ده طويل, من فضلك اختار اسم اقل من 20 حرف').then(()=>{
+						context.msg = context.current.activityType
+						context.current.chooseActivity = false;
+						context.current.continue = true;
+						resolve(context)
+						})
+					}else{
+						context.current.activityName = context.msg
+						console.log('activity type ',context.msg,' saved');
+						let data = platformHelpers.generateQuickReplies('النشاط ده مفيد وللا ضار', {0:'مفيد 👍🏼',1:'ضار 👎🏼',2:'شئ اخر 🏼'});
+						GraphAPI.sendTemplateMessage(recipientId, data).then(()=>{resolve(context)})
+					}	
 				}else{
 					if(context.current.activityName && !context.current.positivity){
 						context.current.positivity = context.msg

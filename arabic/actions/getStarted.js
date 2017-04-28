@@ -110,10 +110,19 @@ console.log("getting logsssssssssssss");
 		resolve(context)
 	}else{
 		if(context.current.first && !context.current.name){
-			let data = platformHelpers.generateQuickReplies('👌🏼 تمام دلوقت اختار نوع النشاط.', {0:'عمل 🔧',1:'تعلم 📖',2:'تسلية 💥'});
-			GraphAPI.sendTemplateMessage(recipientId, data)
-			context.current.name = context.msg
-			resolve(context)
+			if (context.msg.length > 20) {
+				GraphAPI.sendPlainMessage(recipientId, 'الاسم ده طويل, من فضلك اختار اسم اقل من 20 حرف').then(()=>{
+				context.msg = context.current.activityType
+				//context.current.first = false;
+				//context.current.continue = true;
+				resolve(context)
+			})
+			}else{
+				let data = platformHelpers.generateQuickReplies('👌🏼 تمام دلوقت اختار نوع النشاط.', {0:'عمل 🔧',1:'تعلم 📖',2:'تسلية 💥'});
+				GraphAPI.sendTemplateMessage(recipientId, data)
+				context.current.name = context.msg
+				resolve(context)
+			}
 		}else{
 			if(context.current.name && !context.current.type){
 				let data = platformHelpers.generateQuickReplies('هل النشاط ده مفيد؟', {0:'نعم 👍🏼',1:'لا 👎🏼',2:'شئ اخر ☝🏼'});

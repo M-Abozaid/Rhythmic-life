@@ -110,10 +110,19 @@ console.log("getting logsssssssssssss");
 		resolve(context)
 	}else{
 		if(context.current.first && !context.current.name){
-			let data = platformHelpers.generateQuickReplies('👌🏼 Good now choose a type for the activity.', {0:'work 🔧',1:'study 📖',2:'entertainment 💥'});
-			GraphAPI.sendTemplateMessage(recipientId, data)
-			context.current.name = context.msg
-			resolve(context)
+			if (context.msg.length > 20) {
+				GraphAPI.sendPlainMessage(recipientId, 'This name is too long, Please type a name within 20 characters long.').then(()=>{
+				context.msg = context.current.activityType
+				//context.current.first = false;
+				//context.current.continue = true;
+				resolve(context)
+			})
+			}else{
+				let data = platformHelpers.generateQuickReplies('👌🏼 Good now choose a type for the activity.', {0:'work 🔧',1:'study 📖',2:'entertainment 💥'});
+				GraphAPI.sendTemplateMessage(recipientId, data)
+				context.current.name = context.msg
+				resolve(context)
+			}
 		}else{
 			if(context.current.name && !context.current.type){
 				let data = platformHelpers.generateQuickReplies('Is it a positive thing?', {0:'positive 👍🏼',1:'ngative 👎🏼',2:'other ☝🏼'});
