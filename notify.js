@@ -56,7 +56,7 @@ module.exports = function(){
 								if(context.userData.lang == 'عربي'){list.push('نشاط جديد')}else{list.push('New activity')}
 								
 								let numOfQuick = list.length 
-								//
+								
 								if(numOfQuick>11){
 									let numOfVeiws = Math.floor(numOfQuick/10) 
 									context.current.thisVeiw = context.current.thisVeiw || 0
