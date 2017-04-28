@@ -108,7 +108,7 @@ module.exports = function(){
 
 			}
 	}
-	setInterval(function(){
+	//setInterval(function(){
 	 console.log('set int');
 		User.find({},(err,users)=>{
 			if (err) throw err;
@@ -218,6 +218,6 @@ module.exports = function(){
 			
 		})
 
-	}, 50*60*1000 );
+	//}, 50*60*1000 );
 }
 //
