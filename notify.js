@@ -44,7 +44,7 @@ module.exports = function(){
 								
 								console.log('lastNotH ',lastNotH,user.firstName+ user.lastName);
 								console.log('lastLogH  ',lastLogH,user.firstName+ user.lastName);
-							if((lastNotH > 4 && lastNotH > lastLogH) || lastNotH >72){
+							if((lastNotH > 4 && lastNotH > lastLogH) || lastNotH > 10*24){
 
 
 
